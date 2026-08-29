@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{var m=location.search.match(/theme=(dark|light)/);var t=m?m[1]:null;document.documentElement.setAttribute('data-theme',t||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));}catch(e){}</script>
+<title>Sistema — Códice de Valédria</title>
+<meta name="description" content="Sistema de regras de Valédria: atributos, testes, dificuldade, combate, perícias, papéis e progressão.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=boska@700,600&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar para o conteúdo</a>
+<div class="nav-scrim" data-nav-scrim></div>
+<div class="shell">
+<aside class="sidebar">
+  <a href="index.html" class="brand">
+    <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-label="Emblema de Valédria" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="2.2" stroke-dasharray="94 8" stroke-linecap="round" transform="rotate(-90 24 24)"/>
+  <path d="M24 14c3.2 4.8 5.6 8.3 5.6 12.1a5.6 5.6 0 1 1-11.2 0C18.4 22.3 20.8 18.8 24 14Z" fill="currentColor"/>
+  <circle cx="24" cy="24" r="2.6" fill="var(--color-bg)"/>
+</svg>
+    <span class="brand-copy"><strong>Valédria</strong><span>Códice do Mundo</span></span>
+  </a>
+  
+    <nav class="nav-scroll" aria-label="Navegação principal">
+      <div>
+        <div class="nav-group-title">Começar</div>
+        <div class="nav-list">
+          <a class="nav-link" href="index.html"><span class="num">&bull;</span> Início</a>
+        </div>
+      </div>
+      <div>
+        <div class="nav-group-title">Os Dez Livros</div>
+        <div class="nav-list">
+          <a class="nav-link" href="livro-01-geografia.html"><span class="num">I</span> Livro I &middot; Geografia</a><a class="nav-link" href="livro-02-sociedade.html"><span class="num">II</span> Livro II &middot; Sociedade</a><a class="nav-link" href="livro-03-economia.html"><span class="num">III</span> Livro III &middot; Economia</a><a class="nav-link" href="livro-04-sistema.html" aria-current="page"><span class="num">IV</span> Livro IV &middot; Sistema</a><a class="nav-link" href="livro-05-racas.html"><span class="num">V</span> Livro V &middot; Raças</a><a class="nav-link" href="livro-06-magia.html"><span class="num">VI</span> Livro VI &middot; Magia</a><a class="nav-link" href="livro-07-aura.html"><span class="num">VII</span> Livro VII &middot; Aura</a><a class="nav-link" href="livro-08-itens.html"><span class="num">VIII</span> Livro VIII &middot; Itens</a><a class="nav-link" href="livro-09-bestiario.html"><span class="num">IX</span> Livro IX &middot; Bestiário</a><a class="nav-link" href="livro-10-guilda.html"><span class="num">X</span> Livro X &middot; Guilda</a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-block" href="ficha.html">Criar Ficha de Personagem</a>
+    </div>
+    
+</aside>
+<div>
+<header class="topbar">
+  <div class="topbar-title"><span class="eyebrow">Livro IV</span><h1>Sistema</h1></div>
+  <div class="topbar-actions">
+    <button class="icon-btn" data-theme-toggle aria-label="Alternar tema"></button>
+    <button class="icon-btn menu-toggle" data-menu-toggle aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</header>
+<main id="main" class="content">
+<div class="page-head">
+  <span class="eyebrow">Livro IV</span>
+  <h1>Sistema</h1>
+  <p class="lede">Atributos, testes, combate, perícias e a trilha de progressão de personagem.</p>
+  <div class="book-toc"><a href="livro-01-geografia.html">I &middot; Geografia</a><a href="livro-02-sociedade.html">II &middot; Sociedade</a><a href="livro-03-economia.html">III &middot; Economia</a><a href="livro-04-sistema.html">IV &middot; Sistema</a><a href="livro-05-racas.html">V &middot; Raças</a><a href="livro-06-magia.html">VI &middot; Magia</a><a href="livro-07-aura.html">VII &middot; Aura</a><a href="livro-08-itens.html">VIII &middot; Itens</a><a href="livro-09-bestiario.html">IX &middot; Bestiário</a><a href="livro-10-guilda.html">X &middot; Guilda</a><a href="ficha.html">Ficha de Personagem</a></div>
+</div>
+<section>
+  <div class="section-head"><div><div class="eyebrow">Base do personagem</div><h2>Os cinco atributos</h2></div></div>
+  <div class="card">
+    <p>Toda ficha em Valédria usa exatamente cinco atributos: <strong>Força</strong>, <strong>Destreza</strong>, <strong>Constituição</strong>, <strong>Sabedoria</strong> e <strong>Carisma</strong>. Na criação, você distribui <strong>15 pontos</strong> entre eles (e mais <strong>5 pontos por nível</strong> acima do 1º), com mínimo de 1 em cada atributo e sem um teto fixo por atributo &mdash; o único limite real é o total de pontos que você tem disponível.</p>
+  </div>
+</section>
+<section>
+  <div class="section-head"><div><div class="eyebrow">Resolvendo ações</div><h2>Testes e dificuldade</h2></div></div>
+  <p>Um teste é sempre <strong>1d20 + atributo relevante</strong>, comparado a um número de dificuldade. Quando você tem treino em uma perícia relacionada, isso soma vantagem ao teste (veja abaixo).</p>
+  <div class="table-wrap"><table class="data-table"><thead><tr><th>Dificuldade</th><th>ND</th><th>Descrição</th></tr></thead><tbody><tr><td>Trivial</td><td>8</td><td>Qualquer pessoa tenta sem medo de errar.</td></tr><tr><td>Fácil</td><td>10</td><td>Exige um mínimo de atenção ou habilidade.</td></tr><tr><td>Moderada</td><td>13</td><td>Um desafio real para alguém destreinado.</td></tr><tr><td>Difícil</td><td>16</td><td>Exige treino, atributo alto ou sorte.</td></tr><tr><td>Muito difícil</td><td>19</td><td>Poucos conseguem sem vantagem.</td></tr><tr><td>Quase impossível</td><td>22</td><td>Feito lendário, quase sempre precisa de ajuda ou vantagem.</td></tr></tbody></table></div>
+  <div class="two-col">
+    <div class="col-text">
+      <h3 class="section-title">Vantagem e desvantagem</h3>
+      <p>Vantagem e desvantagem são resolvidas rolando <strong>2d20</strong>: com vantagem, use o maior resultado; com desvantagem, use o menor. Se as duas se aplicam na mesma rolagem, elas se cancelam e o teste volta a ser um único d20.</p>
+      <p>Cada personagem começa com <strong>2 perícias treinadas</strong>, escolhidas livremente entre a lista abaixo.</p>
+    </div>
+    <div class="col-media"><div class="img-slot" style="--slot-ratio:4/3"><img src="assets/img/personagens/mesa-de-jogo.jpg" alt="Mesa de jogo com dados e fichas" onerror="this.classList.add(&quot;is-broken&quot;)"><div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.4"/><path d="M21 16l-5.2-5.2a2 2 0 0 0-2.8 0L5 19"/></svg><span>Imagem a inserir</span><code>assets/img/personagens/mesa-de-jogo.jpg</code></div></div></div>
+  </div>
+</section>
+<section>
+  <div class="section-head"><div><div class="eyebrow">Lista completa</div><h2>Perícias</h2></div></div>
+  <div class="table-wrap"><table class="data-table"><thead><tr><th>Perícia</th><th>Atributo</th><th>Uso típico</th></tr></thead><tbody><tr><td>Atletismo</td><td>Força</td><td>Correr, saltar, escalar, nadar contra a corrente, arrombar portas.</td></tr><tr><td>Acrobacia</td><td>Destreza</td><td>Manter equilíbrio, cair bem, se contorcer para escapar de agarrões.</td></tr><tr><td>Furtividade</td><td>Destreza</td><td>Mover-se sem ser visto ou ouvido.</td></tr><tr><td>Ladinagem</td><td>Destreza</td><td>Abrir fechaduras, batalhar bolsos, esconder pequenos objetos no corpo.</td></tr><tr><td>Iniciativa</td><td>Destreza</td><td>Reagir primeiro quando o perigo surge.</td></tr><tr><td>Montaria e Veículos</td><td>Destreza</td><td>Conduzir cavalos, carroças e barcaças em condições difíceis.</td></tr><tr><td>Percepção</td><td>Sabedoria</td><td>Notar detalhes, emboscadas e ruídos fora do lugar.</td></tr><tr><td>Investigação</td><td>Sabedoria</td><td>Juntar pistas, examinar cenas e documentos.</td></tr><tr><td>Memória</td><td>Sabedoria</td><td>Lembrar de fatos, lendas e rostos.</td></tr><tr><td>Medicina</td><td>Sabedoria</td><td>Estabilizar feridos, diagnosticar doenças.</td></tr><tr><td>Sobrevivência</td><td>Sabedoria</td><td>Rastrear, encontrar água e abrigo, prever o tempo.</td></tr><tr><td>Leitura de Ambiente</td><td>Sabedoria</td><td>Perceber tensões sociais e o clima de um lugar.</td></tr><tr><td>Persuasão</td><td>Carisma</td><td>Convencer sem ameaçar.</td></tr><tr><td>Intimidação</td><td>Carisma</td><td>Convencer pelo medo.</td></tr><tr><td>Enganação</td><td>Carisma</td><td>Mentir de forma convincente.</td></tr><tr><td>Intuição</td><td>Carisma</td><td>Perceber quando alguém está mentindo ou escondendo algo.</td></tr><tr><td>Comando</td><td>Carisma</td><td>Liderar, dar ordens que são seguidas em momentos de tensão.</td></tr></tbody></table></div>
+</section>
+<section>
+  <div class="section-head"><div><div class="eyebrow">Na linha de frente</div><h2>Combate</h2></div></div>
+  <div class="mini-grid cols-3">
+    <div class="mini-card"><h4>Ataque</h4><p><strong>1d20 + atributo</strong> relevante para a arma ou magia usada, contra a Defesa do alvo.</p></div>
+    <div class="mini-card"><h4>Dano</h4><p><strong>Dado da arma + metade do atributo</strong> (arredondado para baixo).</p></div>
+    <div class="mini-card"><h4>Defesa</h4><p>Número fixo que o ataque precisa alcançar ou superar para acertar.</p></div>
+  </div>
+  <p style="margin-top:var(--space-4)">A <strong>Iniciativa</strong> usa Destreza para decidir a ordem dos turnos em combate.</p>
+</section>
+<section>
+  <div class="section-head"><div><div class="eyebrow">Como jogar</div><h2>Papéis de personagem</h2></div></div>
+  <div class="mini-grid cols-3" id="papeis-mount"></div>
+</section>
+<section>
+  <div class="section-head"><div><div class="eyebrow">Magia e Aura</div><h2>Dois caminhos, uma escolha</h2></div></div>
+  <div class="card">
+    <p>Todo personagem começa com <strong>50 pontos de Mana</strong>. A partir daí, dois caminhos avançados se abrem &mdash; e são <strong>mutuamente exclusivos</strong>: a <strong>Magia Externa</strong> (Livro VI), que consome Mana e escala pelo Grimório, ou a <strong>Aura</strong> (Livro VII), que consome Fôlego de Aura e escala pelos Caminhos marciais. Nenhum personagem pratica os dois ao mesmo tempo.</p>
+  </div>
+</section>
+<section>
+  <div class="section-head"><div><div class="eyebrow">Crescimento</div><h2>Trilha de progressão</h2></div></div>
+  <p>Nas terras humanas, a progressão vai do nível 1 ao nível 10. A partir daí, o crescimento deixa de ser medido em níveis fixos e passa a ser medido pelos <strong>graus de poder</strong> concedidos por professores, grimórios e forjas rúnicas nos arcos élfico, anão e demoníaco.</p>
+</section>
+
+</main>
+<footer class="footer">
+  <span>&copy; Valédria &mdash; Códice do Mundo. Documento vivo, feito para uso na mesa.</span>
+  <span>Construído para jogadores e mestres explorarem o continente juntos.</span>
+</footer>
+</div>
+</div>
+<script src="app.js"></script>
+<script src="assets/render.js"></script><script>
+(function(){
+  var papeis = [{"nome": "Guardião", "desc": "Absorve dano, protege aliados e domina a linha de frente. Prioriza Força e Constituição."}, {"nome": "Aventureiro", "desc": "Versátil, equilibra combate, exploração e perícias sociais. Não depende de um único atributo."}, {"nome": "Especialista", "desc": "Foca em magia, aura ou perícias técnicas de alto impacto. Prioriza Sabedoria, Carisma ou Destreza conforme o caminho escolhido."}];
+  var html = papeis.map(function(p){ return '<div class="mini-card"><h4>'+p.nome+'</h4><p>'+p.desc+'</p></div>'; }).join('');
+  document.getElementById('papeis-mount').innerHTML = html;
+  VR.bindImgSlots();
+})();
+</script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>

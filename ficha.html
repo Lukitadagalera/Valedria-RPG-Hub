@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{var m=location.search.match(/theme=(dark|light)/);var t=m?m[1]:null;document.documentElement.setAttribute('data-theme',t||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));}catch(e){}</script>
+<title>Ficha de Personagem — Códice de Valédria</title>
+<meta name="description" content="Criador de ficha de personagem de Valédria: identidade, atributos por compra de pontos, perícias, itens e história, com exportação e importação em JSON.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=boska@700,600&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar para o conteúdo</a>
+<div class="nav-scrim" data-nav-scrim></div>
+<div class="shell">
+<aside class="sidebar">
+  <a href="index.html" class="brand">
+    <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-label="Emblema de Valédria" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="2.2" stroke-dasharray="94 8" stroke-linecap="round" transform="rotate(-90 24 24)"/>
+  <path d="M24 14c3.2 4.8 5.6 8.3 5.6 12.1a5.6 5.6 0 1 1-11.2 0C18.4 22.3 20.8 18.8 24 14Z" fill="currentColor"/>
+  <circle cx="24" cy="24" r="2.6" fill="var(--color-bg)"/>
+</svg>
+    <span class="brand-copy"><strong>Valédria</strong><span>Códice do Mundo</span></span>
+  </a>
+  
+    <nav class="nav-scroll" aria-label="Navegação principal">
+      <div>
+        <div class="nav-group-title">Começar</div>
+        <div class="nav-list">
+          <a class="nav-link" href="index.html"><span class="num">&bull;</span> Início</a>
+        </div>
+      </div>
+      <div>
+        <div class="nav-group-title">Os Dez Livros</div>
+        <div class="nav-list">
+          <a class="nav-link" href="livro-01-geografia.html"><span class="num">I</span> Livro I &middot; Geografia</a><a class="nav-link" href="livro-02-sociedade.html"><span class="num">II</span> Livro II &middot; Sociedade</a><a class="nav-link" href="livro-03-economia.html"><span class="num">III</span> Livro III &middot; Economia</a><a class="nav-link" href="livro-04-sistema.html"><span class="num">IV</span> Livro IV &middot; Sistema</a><a class="nav-link" href="livro-05-racas.html"><span class="num">V</span> Livro V &middot; Raças</a><a class="nav-link" href="livro-06-magia.html"><span class="num">VI</span> Livro VI &middot; Magia</a><a class="nav-link" href="livro-07-aura.html"><span class="num">VII</span> Livro VII &middot; Aura</a><a class="nav-link" href="livro-08-itens.html"><span class="num">VIII</span> Livro VIII &middot; Itens</a><a class="nav-link" href="livro-09-bestiario.html"><span class="num">IX</span> Livro IX &middot; Bestiário</a><a class="nav-link" href="livro-10-guilda.html"><span class="num">X</span> Livro X &middot; Guilda</a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-block" href="ficha.html" aria-current="page">Criar Ficha de Personagem</a>
+    </div>
+    
+</aside>
+<div>
+<header class="topbar">
+  <div class="topbar-title"><span class="eyebrow">Ferramenta</span><h1>Ficha de Personagem</h1></div>
+  <div class="topbar-actions">
+    <button class="icon-btn" data-theme-toggle aria-label="Alternar tema"></button>
+    <button class="icon-btn menu-toggle" data-menu-toggle aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</header>
+<main id="main" class="content">
+<div class="page-head">
+  <span class="eyebrow">Ferramenta interativa</span>
+  <h1>Criador de Ficha de Personagem</h1>
+  <p class="lede">Monte e ajuste a ficha do seu aventureiro para jogar em Valédria. Sua ficha é salva automaticamente neste navegador enquanto você edita &mdash; use exportar/importar em JSON para levar a ficha para outro dispositivo ou guardar uma cópia de segurança.</p>
+</div>
+<div class="sheet-layout">
+  <form class="sheet-form-card" id="ficha-form" autocomplete="off">
+
+<div class="card">
+  <h2 class="section-title">Identidade</h2>
+  <div class="field-grid">
+    <div class="field"><label for="f-nome">Nome do personagem</label><input type="text" id="f-nome" placeholder="Ex: Aelric Corvo-Negro"></div>
+    <div class="field"><label for="f-jogador">Nome do jogador</label><input type="text" id="f-jogador" placeholder="Seu nome"></div>
+    <div class="field">
+      <label for="f-raca">Raça</label>
+      <select id="f-raca" style="width: 100%;">
+        <option value="">Selecione</option>
+        <option>Humano</option><option>Elfo</option><option>Anão</option><option>Demônio</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-subraca">Casta / Subraça / Clã</label>
+      <select id="f-subraca" style="width: 100%;"><option value="">Selecione a raça primeiro</option></select>
+    </div>
+    <div class="field">
+      <label for="f-papel">Papel</label>
+      <select id="f-papel" style="width: 100%;"><option value="">Selecione</option><option>Guardião</option><option>Aventureiro</option><option>Especialista</option></select>
+    </div>
+    <div class="field"><label for="f-nivel">Nível</label><input type="number" id="f-nivel" min="1" max="10" value="1"></div>
+    
+    <!-- LINHA 4: CAMINHO DE PODER E VIDA ATUAL -->
+    <div class="field">
+      <label for="f-caminho">Caminho de poder</label>
+      <select id="f-caminho" style="width: 100%;"><option value="">Nenhum</option><option>Magia</option><option>Aura</option></select>
+    </div>
+    <div class="field">
+      <label for="f-vida-atual">Vida atual</label>
+      <input type="number" id="f-vida-atual" min="0" value="5">
+    </div>
+
+    <!-- LINHA 5: VIDA MÁXIMA (OCUPANDO LARGURA TOTAL PARA HARMONIZAR) -->
+    <div class="field" style="grid-column: span 2;">
+      <label>Vida máxima</label>
+      <div class="readonly-pill" id="vida-max-display" style="text-align: center;">5</div>
+    </div>
+  </div>
+  <p class="field-hint">Magia e Aura são mutuamente exclusivas. O personagem não é limitado a uma escola ou caminho específico &mdash; magias e técnicas específicas serão aprendidas em jogo (ex.: por um grimório) e controladas pelo mestre. Veja o Livro IV para as regras completas.</p>
+</div>
+
+    <div class="card" id="poder-card" hidden>
+      <h2 class="section-title">Reserva de poder</h2>
+      <div class="field-grid" id="mana-block" hidden>
+        <div class="field">
+          <label for="f-mana-potencial">Potencial de Mana</label>
+          <select id="f-mana-potencial">
+            <option value="Estagnada">Estagnada</option>
+            <option value="Comum" selected>Comum</option>
+            <option value="Elevado">Elevado</option>
+            <option value="Superior">Superior</option>
+            <option value="Anomalia de Mana">Anomalia de Mana</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-mana-atual">Mana atual</label><input type="number" id="f-mana-atual" min="0" value="50"></div>
+        <div class="field"><label>Mana máxima neste nível</label><div class="readonly-pill" id="mana-max-display">50</div></div>
+        <div class="field"><button type="button" class="btn btn-secondary btn-sm no-print" id="btn-mana-restaurar">Restaurar Mana ao máximo</button></div>
+      </div>
+      <p class="field-hint" id="mana-hint" hidden>Todo conjurador começa com 50 de Mana no nível 1; o Potencial define o quanto essa reserva cresce a cada nível (veja o Livro VI). Use "Mana atual" para acompanhar o gasto durante a sessão.</p>
+      <div class="field-grid" id="aura-block" hidden>
+        <div class="field">
+          <label for="f-aura-grau">Grau marcial</label>
+          <select id="f-aura-grau">
+            <option value="Aprendiz" selected>Aprendiz</option>
+            <option value="Guerreiro">Guerreiro</option>
+            <option value="Mestre">Mestre</option>
+            <option value="Grande Mestre">Grande Mestre</option>
+            <option value="Imperador">Imperador</option>
+            <option value="Deus">Deus</option>
+          </select>
+        </div>
+        
+        <div class="field"><label for="f-aura-atual">Fôlego de Aura atual</label><input type="number" id="f-aura-atual" min="0" value="3"></div>
+        <div class="field"><label>Fôlego máximo por cena</label><div class="readonly-pill" id="aura-max-display">3</div></div>
+        <div class="field"><button type="button" class="btn btn-secondary btn-sm no-print" id="btn-aura-restaurar">Restaurar Fôlego ao máximo</button></div>
+      </div>
+      <p class="field-hint" id="aura-hint" hidden>O Fôlego de Aura é uma reserva por cena (3 a 8 pontos, conforme o grau marcial), restaurada com um breve descanso &mdash; veja o Livro VII. Nos graus Imperador e Deus a técnica é reservada e narrada pelo mestre, sem consumo do pool comum.</p>
+    </div>
+    
+    <div class="card">
+      <h2 class="section-title">Atributos</h2>
+      <p class="field-hint" id="attr-hint">Compra por pontos: todo personagem começa com 15 pontos (1 base + 4 extra em cada um dos 5 atributos) e ganha mais 5 pontos a cada nível acima do 1.</p>
+      <div class="attr-grid"><div class="attr-box"><label for="attr-forca">Força</label><input type="number" id="attr-forca" min="1" value="1" data-attr="forca"></div><div class="attr-box"><label for="attr-destreza">Destreza</label><input type="number" id="attr-destreza" min="1" value="1" data-attr="destreza"></div><div class="attr-box"><label for="attr-constituicao">Constituição</label><input type="number" id="attr-constituicao" min="1" value="1" data-attr="constituicao"></div><div class="attr-box"><label for="attr-sabedoria">Sabedoria</label><input type="number" id="attr-sabedoria" min="1" value="1" data-attr="sabedoria"></div><div class="attr-box"><label for="attr-carisma">Carisma</label><input type="number" id="attr-carisma" min="1" value="1" data-attr="carisma"></div></div>
+      <div class="attr-points" id="attr-points"><span>Pontos usados:</span> <strong id="attr-points-value">0 / 15</strong></div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Perícias treinadas</h2>
+      <datalist id="pericias-lista"><option value="Atletismo"><option value="Acrobacia"><option value="Furtividade"><option value="Ladinagem"><option value="Iniciativa"><option value="Montaria e Veículos"><option value="Percepção"><option value="Investigação"><option value="Memória"><option value="Medicina"><option value="Sobrevivência"><option value="Leitura de Ambiente"><option value="Persuasão"><option value="Intimidação"><option value="Enganação"><option value="Intuição"><option value="Comando"></datalist>
+      <div class="list-editor" id="pericias-editor"></div>
+      <button type="button" class="btn btn-secondary btn-sm no-print" id="btn-add-pericia">+ Adicionar perícia</button>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Itens e equipamento</h2>
+      <datalist id="itens-lista"></datalist>
+      <div class="list-editor" id="itens-editor"></div>
+      <button type="button" class="btn btn-secondary btn-sm no-print" id="btn-add-item">+ Adicionar item</button>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">História e notas</h2>
+      <div class="field"><label for="f-historia">História pessoal, motivações e ligações</label><textarea id="f-historia" placeholder="De onde vem seu personagem, o que ele busca, com quem se importa…"></textarea></div>
+      <div class="field"><label for="f-notas">Notas de mesa (para o mestre ou para você)</label><textarea id="f-notas" placeholder="Ganchos pendentes, dívidas, promessas, segredos…"></textarea></div>
+    </div>
+
+    <div class="sheet-actions no-print">
+      <button type="button" class="btn btn-primary" id="btn-salvar">Salvar ficha agora</button>
+      <button type="button" class="btn btn-secondary" id="btn-exportar">Exportar ficha (JSON)</button>
+      <button type="button" class="btn btn-secondary" id="btn-importar-trigger">Importar ficha (JSON)</button>
+      <input type="file" id="input-importar" accept="application/json" hidden>
+      <button type="button" class="btn btn-secondary" id="btn-imprimir">Imprimir / salvar em PDF</button>
+      <button type="button" class="btn btn-ghost" id="btn-limpar">Limpar tudo</button>
+    </div>
+    <div class="save-indicator no-print" id="save-indicator"><span class="dot"></span> <span id="save-indicator-text">Salvando automaticamente neste navegador&hellip;</span></div>
+    <p class="field-hint no-print">Esta ficha fica guardada apenas neste navegador/dispositivo (não é uma conta na nuvem). Se for jogar em outro computador ou trocar de navegador, exporte o JSON aqui e importe-o do outro lado.</p>
+  </form>
+
+  <aside class="sheet-preview">
+    <div class="card">
+      <div class="preview-name" id="pv-nome">Personagem sem nome</div>
+      <div class="preview-meta" id="pv-meta"><span>Raça &mdash;</span><span>Nível &mdash;</span><span>Papel &mdash;</span></div>
+      <div class="preview-attrs" id="pv-attrs"></div>
+      <div class="preview-power" id="pv-power" hidden></div>
+    </div>
+    <div class="card">
+      <h2 class="section-title">Perícias</h2>
+      <div class="preview-list" id="pv-pericias"><div class="row"><span>Nenhuma perícia adicionada</span></div></div>
+    </div>
+    <div class="card">
+      <h2 class="section-title">Itens</h2>
+      <div class="preview-list" id="pv-itens"><div class="row"><span>Nenhum item adicionado</span></div></div>
+    </div>
+  </aside>
+</div>
+
+</main>
+<footer class="footer">
+  <span>&copy; Valédria &mdash; Códice do Mundo. Documento vivo, feito para uso na mesa.</span>
+  <span>Construído para jogadores e mestres explorarem o continente juntos.</span>
+</footer>
+</div>
+</div>
+<script src="app.js"></script>
+<script src="assets/data/itens.js"></script>
+<script>
+
+(function(){
+  var RACAS_SUB = {"Humano": ["Plebeus", "Artesãos e mercadores estabelecidos", "Nobreza menor", "Alta nobreza e realeza"], "Elfo": ["Elfos da Floresta", "Elfos Negros", "Elfos Costeiros"], "Anão": ["Clã Ferro-Fundo", "Clã Pedra-Funda", "Clã Chama-Antiga", "Clã Veio-Negro"], "Demônio": ["Orcs das Planícies", "Goblins das Minas", "Demônios do Mar Profundo", "Naga-Demônios do Deserto", "Demônios das Montanhas Vermelhas"]};
+  var ATTR_LABELS = {"forca": "Força", "destreza": "Destreza", "constituicao": "Constituição", "sabedoria": "Sabedoria", "carisma": "Carisma"};
+  var BASE_POINTS = 15;
+  var POINTS_PER_LEVEL = 5;
+  /* Progressão de Mana por Potencial (Livro VI): reserva inicial de 50 no
+     nível 1, crescendo por composição percentual a cada nível acima do 1º. */
+  var MANA_BASE = 50;
+  var MANA_CRESCIMENTO = { 'Estagnada': 0, 'Comum': 0.10, 'Elevado': 0.20, 'Superior': 0.50, 'Anomalia de Mana': 1.00 };
+  function manaMax(nivel, potencial){
+    var taxa = MANA_CRESCIMENTO[potencial];
+    if (taxa == null) taxa = MANA_CRESCIMENTO['Comum'];
+    return Math.round(MANA_BASE * Math.pow(1 + taxa, Math.max(0, nivel - 1)));
+  }
+  /* Fôlego de Aura por grau marcial (Livro VII): reserva fixa por cena —
+     Imperador/Deus não tem pool comum, são técnicas reservadas narradas pelo mestre. */
+  var AURA_FOLEGO_POR_GRAU = { 'Aprendiz': 3, 'Guerreiro': 4, 'Mestre': 5, 'Grande Mestre': 8, 'Imperador': null, 'Deus': null };
+  function auraMax(grau){
+    var v = AURA_FOLEGO_POR_GRAU[grau];
+    return v == null ? 8 : v;
+  }
+  var ITENS_MAP = {};
+  (window.ITENS || []).forEach(function(it){ ITENS_MAP[it.nome] = it; });
+  var itensLista = el('#itens-lista');
+  if (itensLista) itensLista.innerHTML = (window.ITENS || []).map(function(it){ return '<option value="'+esc(it.nome)+'">'; }).join('');
+
+  function el(sel, root){ return (root||document).querySelector(sel); }
+  function els(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  /* Persistência local da ficha via cookies: salvamos automaticamente
+     enquanto o jogador edita, e recarregamos ao abrir a página de novo no
+     mesmo navegador. Como um cookie sozinho tem limite de ~4KB, quebramos
+     o JSON em pedaços (chunks) numerados. Isso fica preso a este
+     navegador/dispositivo — não é uma conta na nuvem — por isso o
+     exportar/importar em JSON continua disponível como cópia de segurança. */
+  var SAVE_PREFIX = 'vf_ficha_';
+  var SAVE_CHUNK = 3500;
+  function setCookie(name, value, days){
+    try {
+      var d = new Date(); d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+      document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
+    } catch (e) { /* cookie indisponivel neste contexto */ }
+  }
+  function getCookie(name){
+    try {
+      var target = name + '=';
+      var parts = document.cookie.split('; ');
+      for (var i = 0; i < parts.length; i++) {
+        if (parts[i].indexOf(target) === 0) return decodeURIComponent(parts[i].slice(target.length));
+      }
+    } catch (e) { /* cookie indisponivel neste contexto */ }
+    return null;
+  }
+  function deleteCookie(name){ try { document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/'; } catch (e) {} }
+  function clearFichaCookies(){
+    try {
+      var n = parseInt(getCookie(SAVE_PREFIX + 'n') || '0', 10);
+      for (var i = 0; i < n; i++) deleteCookie(SAVE_PREFIX + i);
+      deleteCookie(SAVE_PREFIX + 'n');
+    } catch (e) { /* nao bloqueia o restante do botao Limpar */ }
+  }
+  function markSaveStatus(ok){
+    var txt = el('#save-indicator-text');
+    if (!txt) return;
+    if (ok) {
+      var t = new Date();
+      var hh = String(t.getHours()).padStart(2, '0'), mm = String(t.getMinutes()).padStart(2, '0');
+      txt.textContent = 'Ficha salva automaticamente neste navegador às ' + hh + ':' + mm + '.';
+    } else {
+      txt.textContent = 'Não foi possível salvar automaticamente neste navegador — exporte o JSON para não perder sua ficha.';
+    }
+  }
+  function saveFichaToBrowser(){
+    try {
+      var json = encodeURIComponent(JSON.stringify(getState()));
+      var chunks = [];
+      for (var i = 0; i < json.length; i += SAVE_CHUNK) chunks.push(json.slice(i, i + SAVE_CHUNK));
+      var prevN = parseInt(getCookie(SAVE_PREFIX + 'n') || '0', 10);
+      for (var p = 0; p < prevN; p++) deleteCookie(SAVE_PREFIX + p);
+      chunks.forEach(function(c, idx){ setCookie(SAVE_PREFIX + idx, c, 365); });
+      setCookie(SAVE_PREFIX + 'n', String(chunks.length), 365);
+      markSaveStatus(true);
+    } catch (e) { markSaveStatus(false); }
+  }
+  function loadFichaFromBrowser(){
+    try {
+      var n = parseInt(getCookie(SAVE_PREFIX + 'n') || '0', 10);
+      if (!n) return null;
+      var parts = [];
+      for (var i = 0; i < n; i++) {
+        var c = getCookie(SAVE_PREFIX + i);
+        if (c == null) return null;
+        parts.push(c);
+      }
+      return JSON.parse(decodeURIComponent(parts.join('')));
+    } catch (e) { return null; }
+  }
+  var saveTimer = null;
+  function scheduleSave(){
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveFichaToBrowser, 600);
+  }
+
+  var racaSel = el('#f-raca'), subracaSel = el('#f-subraca');
+  racaSel.addEventListener('change', function(){
+    var opts = RACAS_SUB[racaSel.value];
+    if (!opts) { subracaSel.innerHTML = '<option value="">Selecione a raça primeiro</option>'; subracaSel.disabled = true; }
+    else {
+      subracaSel.disabled = false;
+      subracaSel.innerHTML = '<option value="">Selecione</option>' + opts.map(function(o){ return '<option>'+esc(o)+'</option>'; }).join('');
+    }
+    updatePreview();
+  });
+
+  var caminhoSel = el('#f-caminho');
+  var poderCard = el('#poder-card'), manaBlock = el('#mana-block'), manaHint = el('#mana-hint');
+  var auraBlock = el('#aura-block'), auraHint = el('#aura-hint');
+  var manaPotencialSel = el('#f-mana-potencial'), manaAtualInput = el('#f-mana-atual'), manaMaxDisplay = el('#mana-max-display');
+  var auraGrauSel = el('#f-aura-grau'), auraAtualInput = el('#f-aura-atual'), auraMaxDisplay = el('#aura-max-display');
+
+  function updatePoderVisibility(){
+    var caminho = caminhoSel.value;
+    poderCard.hidden = !caminho;
+    manaBlock.hidden = caminho !== 'Magia';
+    manaHint.hidden = caminho !== 'Magia';
+    auraBlock.hidden = caminho !== 'Aura';
+    auraHint.hidden = caminho !== 'Aura';
+  }
+  function clampMana(){
+    var max = manaMax(currentNivel(), manaPotencialSel.value);
+    manaMaxDisplay.textContent = String(max);
+    var v = parseInt(manaAtualInput.value, 10);
+    if (isNaN(v)) v = max;
+    v = Math.max(0, Math.min(max, v));
+    manaAtualInput.value = v;
+    manaAtualInput.max = max;
+    return v;
+  }
+  function clampAura(){
+    var grauReservado = AURA_FOLEGO_POR_GRAU[auraGrauSel.value] == null;
+    var max = auraMax(auraGrauSel.value);
+    auraMaxDisplay.textContent = grauReservado ? 'Reservado (técnicas narradas pelo mestre)' : String(max);
+    auraAtualInput.disabled = grauReservado;
+    var btnRestaurar = el('#btn-aura-restaurar');
+    if (btnRestaurar) btnRestaurar.disabled = grauReservado;
+    var v = parseInt(auraAtualInput.value, 10);
+    if (isNaN(v)) v = max;
+    v = Math.max(0, Math.min(max, v));
+    auraAtualInput.value = v;
+    auraAtualInput.max = max;
+    return v;
+  }
+  caminhoSel.addEventListener('change', function(){
+    updatePoderVisibility();
+    if (caminhoSel.value === 'Magia') clampMana();
+    if (caminhoSel.value === 'Aura') clampAura();
+    updatePreview();
+  });
+  manaPotencialSel.addEventListener('change', function(){ clampMana(); updatePreview(); });
+  manaAtualInput.addEventListener('input', function(){ scheduleDebounced(clampAndPreview); });
+  manaAtualInput.addEventListener('blur', function(){ clampMana(); updatePreview(); });
+  manaAtualInput.addEventListener('change', function(){ clampMana(); updatePreview(); });
+  el('#btn-mana-restaurar').addEventListener('click', function(){
+    manaAtualInput.value = manaMax(currentNivel(), manaPotencialSel.value);
+    clampMana(); updatePreview();
+  });
+  auraGrauSel.addEventListener('change', function(){ clampAura(); updatePreview(); });
+  auraAtualInput.addEventListener('input', function(){ scheduleDebounced(clampAndPreview); });
+  auraAtualInput.addEventListener('blur', function(){ clampAura(); updatePreview(); });
+  auraAtualInput.addEventListener('change', function(){ clampAura(); updatePreview(); });
+  el('#btn-aura-restaurar').addEventListener('click', function(){
+    auraAtualInput.value = auraMax(auraGrauSel.value);
+    clampAura(); updatePreview();
+  });
+  var debounceTimer = null;
+  function scheduleDebounced(fn){
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(fn, 500);
+  }
+  function clampAndPreview(){
+    if (caminhoSel.value === 'Magia') clampMana();
+    if (caminhoSel.value === 'Aura') clampAura();
+    updateAttrPoints();
+    updatePreview();
+  }
+
+  ['#f-nome', '#f-jogador', '#f-papel', '#f-historia', '#f-notas'].forEach(function(sel){
+    var field = el(sel);
+    if (field) { field.addEventListener('input', updatePreview); field.addEventListener('change', updatePreview); }
+  });
+
+  var nivelInput = el('#f-nivel');
+  function currentNivel(){
+    var n = parseInt(nivelInput.value, 10);
+    if (isNaN(n) || n < 1) n = 1;
+    return n;
+  }
+  function totalPoints(){ return BASE_POINTS + POINTS_PER_LEVEL * (currentNivel() - 1); }
+  /* Sem limite escalonado por nível: o único teto de cada atributo é o total
+     de pontos disponíveis no nível atual, ou seja, desde o nível 1 o jogador
+     pode colocar qualquer quantidade em um só atributo (o contador de pontos
+     usados/disponíveis já avisa em vermelho se isso ultrapassar o total). */
+  function attrMax(){ return totalPoints(); }
+  if (nivelInput) {
+    nivelInput.addEventListener('input', function(){ updateAttrPoints(); updatePreview(); scheduleDebounced(reclampTodosAtributos); });
+    /* Ao mudar de nível (change/blur), o máximo por atributo muda junto —
+       reaplicamos o travamento em todos os atributos já preenchidos para
+       garantir que, por exemplo, ninguém fique com um atributo acima de 4
+       ao voltar para o nível 1 depois de ter subido de nível. O nível
+       também afeta o máximo de Mana, por isso reclampamos Mana/Fôlego aqui. */
+    nivelInput.addEventListener('change', reclampTodosAtributos);
+    nivelInput.addEventListener('blur', reclampTodosAtributos);
+  }
+
+  var attrInputs = els('[data-attr]');
+  /* Corrige a trava de digitação: NÃO reescrevemos o valor a cada tecla digitada
+     (isso travava o campo em 4). O ajuste/limite só é aplicado ao sair do campo
+     (blur) ou quando o navegador dispara 'change'. Durante a digitação apenas
+     lemos o valor (sem sobrescrever) para atualizar o contador de pontos. */
+  function readAttr(inp){
+    var v = parseInt(inp.value, 10);
+    if (isNaN(v)) return 0;
+    return v;
+  }
+  function clampAttr(inp){
+    var v = parseInt(inp.value, 10);
+    if (isNaN(v)) v = 1;
+    v = Math.max(1, Math.min(attrMax(), v));
+    inp.value = v;
+    return v;
+  }
+  function reclampTodosAtributos(){
+    attrInputs.forEach(function(inp){ clampAttr(inp); });
+    if (caminhoSel.value === 'Magia') clampMana();
+    if (caminhoSel.value === 'Aura') clampAura();
+    updateAttrPoints();
+    updatePreview();
+  }
+  function updateAttrPoints(){
+    var total = totalPoints();
+    var spent = 0;
+    attrInputs.forEach(function(inp){ spent += readAttr(inp); });
+    var box = el('#attr-points'), val = el('#attr-points-value');
+    val.textContent = spent + ' / ' + total;
+    box.classList.toggle('is-over', spent > total);
+    var hint = el('#attr-hint');
+    if (hint) {
+      hint.textContent = 'Compra por pontos: seu personagem tem ' + total + ' pontos no nível ' + currentNivel() +
+        ' (15 iniciais + 5 por nível acima do 1º) para distribuir entre os 5 atributos, com mínimo de 1 em cada e sem teto fixo por atributo — o limite real é o total disponível.';
+    }
+  }
+  attrInputs.forEach(function(inp){
+    /* Sem trava a cada tecla (não reescreve o valor durante a digitação), mas
+       agenda um auto-ajuste (debounce) para corrigir sozinho se o jogador
+       parar de digitar um valor acima do limite sem sair do campo (blur). */
+    inp.addEventListener('input', function(){ updateAttrPoints(); updatePreview(); scheduleDebounced(function(){ clampAttr(inp); updateAttrPoints(); updatePreview(); }); });
+    inp.addEventListener('blur', function(){ clampAttr(inp); updateAttrPoints(); updatePreview(); });
+    inp.addEventListener('change', function(){ clampAttr(inp); updateAttrPoints(); updatePreview(); });
+  });
+
+  function makeRow(container, fields, values){
+    values = values || {};
+    var row = document.createElement('div');
+    row.className = 'list-row';
+    row.innerHTML = fields.map(function(f){
+      if (f.type === 'select') {
+        return '<select data-field="'+f.key+'">' + f.options.map(function(o){
+          return '<option'+(o===values[f.key]?' selected':'')+'>'+esc(o)+'</option>';
+        }).join('') + '</select>';
+      }
+      var v = values[f.key] != null ? esc(values[f.key]) : '';
+      var list = f.list ? ' list="'+f.list+'"' : '';
+      return '<input type="text" data-field="'+f.key+'" placeholder="'+esc(f.placeholder||'')+'"'+list+' value="'+v+'">';
+    }).join('') + '<button type="button" class="btn btn-ghost btn-sm remove-row no-print" aria-label="Remover">&times;</button>';
+    row.querySelector('.remove-row').addEventListener('click', function(){ row.remove(); updatePreview(); });
+    els('input, select', row).forEach(function(inputEl){ inputEl.addEventListener('input', updatePreview); inputEl.addEventListener('change', updatePreview); });
+    container.appendChild(row);
+    return row;
+  }
+
+  function itemFields(){
+    return [
+      { key: 'nome', placeholder: 'Nome do item (escolha da lista ou digite)', list: 'itens-lista' },
+      { key: 'descricao', placeholder: 'Descrição' },
+      { key: 'efeito', placeholder: 'Efeito' }
+    ];
+  }
+  function wireItemAutofill(row){
+    var nomeInp = el('[data-field="nome"]', row);
+    if (!nomeInp) return;
+    function tryAutofill(){
+      var it = ITENS_MAP[nomeInp.value];
+      if (!it) return;
+      var descInp = el('[data-field="descricao"]', row);
+      var efInp = el('[data-field="efeito"]', row);
+      if (descInp) descInp.value = it.descricao || '';
+      if (efInp) efInp.value = it.efeito || '';
+      updatePreview();
+    }
+    nomeInp.addEventListener('input', tryAutofill);
+    nomeInp.addEventListener('change', tryAutofill);
+  }
+
+  var itensEditor = el('#itens-editor');
+  el('#btn-add-item').addEventListener('click', function(){
+    var row = makeRow(itensEditor, itemFields());
+    wireItemAutofill(row);
+    updatePreview();
+  });
+
+  var periciasEditor = el('#pericias-editor');
+  el('#btn-add-pericia').addEventListener('click', function(){
+    makeRow(periciasEditor, [
+      { key: 'nome', placeholder: 'Nome da perícia', list: 'pericias-lista' },
+      { key: 'atributo', type: 'select', options: ['Força','Destreza','Constituição','Sabedoria','Carisma'] }
+    ]);
+    updatePreview();
+  });
+
+  function getState(){
+    var nivelAtual = currentNivel();
+    var attrs = {};
+    /* Leitura defensiva: mesmo que o campo ainda mostre um valor fora do
+       limite (antes do auto-ajuste com debounce ou do blur), o estado usado
+       para prévia, exportação e salvamento nunca ultrapassa o máximo do nível. */
+    attrInputs.forEach(function(inp){
+      var v = readAttr(inp) || 1;
+      attrs[inp.dataset.attr] = Math.max(1, Math.min(attrMax(), v));
+    });
+    var manaPotencial = manaPotencialSel.value;
+    var manaAtualV = parseInt(manaAtualInput.value, 10);
+    if (isNaN(manaAtualV)) manaAtualV = manaMax(nivelAtual, manaPotencial);
+    manaAtualV = Math.max(0, Math.min(manaMax(nivelAtual, manaPotencial), manaAtualV));
+    var auraGrau = auraGrauSel.value;
+    var auraAtualV = parseInt(auraAtualInput.value, 10);
+    if (isNaN(auraAtualV)) auraAtualV = auraMax(auraGrau);
+    auraAtualV = Math.max(0, Math.min(auraMax(auraGrau), auraAtualV));
+    var itens = els('.list-row', itensEditor).map(function(row){
+      return {
+        nome: el('[data-field="nome"]', row).value,
+        descricao: el('[data-field="descricao"]', row).value,
+        efeito: el('[data-field="efeito"]', row).value
+      };
+    }).filter(function(i){ return i.nome; });
+    var pericias = els('.list-row', periciasEditor).map(function(row){
+      return { nome: el('[data-field="nome"]', row).value, atributo: el('[data-field="atributo"]', row).value };
+    }).filter(function(p){ return p.nome; });
+    return {
+      nome: el('#f-nome').value, jogador: el('#f-jogador').value,
+      raca: racaSel.value, subraca: subracaSel.value, papel: el('#f-papel').value,
+      nivel: el('#f-nivel').value, caminho: caminhoSel.value,
+      manaPotencial: manaPotencial, manaAtual: manaAtualV,
+      auraGrau: auraGrau, auraAtual: auraAtualV,
+      atributos: attrs, pericias: pericias, itens: itens,
+      historia: el('#f-historia').value, notas: el('#f-notas').value
+    };
+  }
+
+  function setState(s){
+    el('#f-nome').value = s.nome || '';
+    el('#f-jogador').value = s.jogador || '';
+    racaSel.value = s.raca || '';
+    racaSel.dispatchEvent(new Event('change'));
+    subracaSel.value = s.subraca || '';
+    el('#f-papel').value = s.papel || '';
+    el('#f-nivel').value = s.nivel || 1;
+    caminhoSel.value = s.caminho || '';
+    caminhoSel.dispatchEvent(new Event('change'));
+    manaPotencialSel.value = s.manaPotencial || 'Comum';
+    manaAtualInput.value = (s.manaAtual != null) ? s.manaAtual : manaMax(parseInt(s.nivel, 10) || 1, manaPotencialSel.value);
+    clampMana();
+    auraGrauSel.value = s.auraGrau || 'Aprendiz';
+    auraAtualInput.value = (s.auraAtual != null) ? s.auraAtual : auraMax(auraGrauSel.value);
+    clampAura();
+    attrInputs.forEach(function(inp){ inp.value = (s.atributos && s.atributos[inp.dataset.attr]) || 1; clampAttr(inp); });
+    itensEditor.innerHTML = '';
+    (s.itens || []).forEach(function(it){
+      var row = makeRow(itensEditor, itemFields(), it);
+      wireItemAutofill(row);
+    });
+    periciasEditor.innerHTML = '';
+    (s.pericias || []).forEach(function(p){ makeRow(periciasEditor, [
+      { key: 'nome', placeholder: 'Nome da perícia', list: 'pericias-lista' },
+      { key: 'atributo', type: 'select', options: ['Força','Destreza','Constituição','Sabedoria','Carisma'] }
+    ], p); });
+    el('#f-historia').value = s.historia || '';
+    el('#f-notas').value = s.notas || '';
+    updateAttrPoints();
+    updatePreview();
+  }
+
+  function updatePreview(){
+    var s = getState();
+    el('#pv-nome').textContent = s.nome || 'Personagem sem nome';
+    var meta = [];
+    meta.push(s.raca ? (s.raca + (s.subraca ? ' · ' + s.subraca : '')) : 'Raça —');
+    meta.push('Nível ' + (s.nivel || '—'));
+    meta.push(s.papel || 'Papel —');
+    if (s.caminho) meta.push(s.caminho);
+    el('#pv-meta').innerHTML = meta.map(function(m){ return '<span>'+esc(m)+'</span>'; }).join('');
+    el('#pv-attrs').innerHTML = Object.keys(ATTR_LABELS).map(function(k){
+      return '<div class="mini-card"><strong>'+(s.atributos[k]||1)+'</strong><span>'+esc(ATTR_LABELS[k])+'</span></div>';
+    }).join('');
+    var pvPower = el('#pv-power');
+    if (s.caminho === 'Magia') {
+      pvPower.hidden = false;
+      pvPower.innerHTML = '<div class="mini-card"><strong>'+s.manaAtual+' / '+manaMax(currentNivel(), s.manaPotencial)+'</strong><span>Mana ('+esc(s.manaPotencial)+')</span></div>';
+    } else if (s.caminho === 'Aura') {
+      pvPower.hidden = false;
+      var auraReservado = AURA_FOLEGO_POR_GRAU[s.auraGrau] == null;
+      var auraTxt = auraReservado ? 'Reservado' : (s.auraAtual+' / '+auraMax(s.auraGrau));
+      pvPower.innerHTML = '<div class="mini-card"><strong>'+auraTxt+'</strong><span>Fôlego ('+esc(s.auraGrau)+')</span></div>';
+    } else {
+      pvPower.hidden = true;
+      pvPower.innerHTML = '';
+    }
+    el('#pv-itens').innerHTML = s.itens.length ? s.itens.map(function(it){
+      return '<div class="row"><span>'+esc(it.nome)+'</span><span>'+esc(it.descricao||it.efeito||'')+'</span></div>';
+    }).join('') : '<div class="row"><span>Nenhum item adicionado</span></div>';
+    el('#pv-pericias').innerHTML = s.pericias.length ? s.pericias.map(function(p){
+      return '<div class="row"><span>'+esc(p.nome)+'</span><span>'+esc(p.atributo||'')+'</span></div>';
+    }).join('') : '<div class="row"><span>Nenhuma perícia adicionada</span></div>';
+    scheduleSave();
+  }
+
+  el('#btn-salvar').addEventListener('click', function(){
+    if (saveTimer) clearTimeout(saveTimer);
+    saveFichaToBrowser();
+    var btn = el('#btn-salvar');
+    var original = btn.textContent;
+    btn.textContent = 'Salvo!';
+    btn.disabled = true;
+    setTimeout(function(){ btn.textContent = original; btn.disabled = false; }, 1200);
+  });
+
+  el('#btn-exportar').addEventListener('click', function(){
+    var s = getState();
+    var blob = new Blob([JSON.stringify(s, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = (s.nome ? s.nome.replace(/[^a-z0-9-]+/gi, '-') : 'ficha-valedria') + '.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  el('#btn-importar-trigger').addEventListener('click', function(){ el('#input-importar').click(); });
+  el('#input-importar').addEventListener('change', function(ev){
+    var file = ev.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(){
+      try { setState(JSON.parse(reader.result)); }
+      catch (e) { alert('Não foi possível ler este arquivo. Verifique se é um JSON de ficha exportado por este site.'); }
+    };
+    reader.readAsText(file);
+    ev.target.value = '';
+  });
+
+  el('#btn-imprimir').addEventListener('click', function(){ window.print(); });
+  el('#btn-limpar').addEventListener('click', function(){
+    if (confirm('Limpar toda a ficha atual? Esta ação não pode ser desfeita (inclusive a cópia salva neste navegador).')) {
+      el('#ficha-form').reset();
+      itensEditor.innerHTML = '';
+      periciasEditor.innerHTML = '';
+      attrInputs.forEach(function(inp){ inp.value = 1; });
+      subracaSel.innerHTML = '<option value="">Selecione a raça primeiro</option>'; subracaSel.disabled = true;
+      manaPotencialSel.value = 'Comum'; manaAtualInput.value = 50;
+      auraGrauSel.value = 'Aprendiz'; auraAtualInput.value = 3;
+      updatePoderVisibility();
+      clearFichaCookies();
+      updateAttrPoints();
+      updatePreview();
+    }
+  });
+
+  updatePoderVisibility();
+  clampMana();
+  clampAura();
+  var fichaSalva = loadFichaFromBrowser();
+  if (fichaSalva) {
+    setState(fichaSalva);
+    markSaveStatus(true);
+  } else {
+    updateAttrPoints();
+    updatePreview();
+  }
+})();
+</script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
