@@ -80,7 +80,9 @@
   });
 
 // ============================================================
-// LÓGICA DE VIDA (Calculada por Constituição: 5 base + 2 por ponto)
+// LÓGICA DE VIDA
+// Vida máxima = 5 base + 2 por ponto de Constituição.
+// Vida atual é persistida enquanto o jogador navega pelo códice.
 // ============================================================
 document.addEventListener('DOMContentLoaded', function () {
   const vidaAtualInput = document.getElementById('f-vida-atual');
@@ -88,63 +90,99 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnDano = document.getElementById('btn-vida-dano');
   const btnCura = document.getElementById('btn-vida-cura');
 
-  // Tenta localizar o campo numérico da Constituição
-  const inputCon = document.getElementById('attr-constituicao') || 
-                   document.querySelector('input[data-attr="constituicao"]') ||
-                   document.querySelector('input[name="constituicao"]');
+  const inputCon =
+    document.getElementById('attr-constituicao') ||
+    document.querySelector('input[data-attr="constituicao"]') ||
+    document.querySelector('input[name="constituicao"]');
+
+  const CHAVE_VIDA_ATUAL = 'valedria-ficha-vida-atual';
 
   function obterConstituicao() {
     if (!inputCon) return 0;
-    return parseInt(inputCon.value, 10) || 0;
+    return Number.parseInt(inputCon.value, 10) || 0;
+  }
+
+  function obterVidaMaxima() {
+    return 5 + obterConstituicao() * 2;
+  }
+
+  function salvarVidaAtual() {
+    if (!vidaAtualInput) return;
+
+    const vidaMax = obterVidaMaxima();
+    const valorDigitado = Number.parseInt(vidaAtualInput.value, 10);
+    const vidaAtual = Number.isNaN(valorDigitado)
+      ? vidaMax
+      : Math.max(0, Math.min(valorDigitado, vidaMax));
+
+    vidaAtualInput.value = vidaAtual;
+    sessionStorage.setItem(CHAVE_VIDA_ATUAL, String(vidaAtual));
+  }
+
+  function restaurarVidaAtual(vidaMax) {
+    if (!vidaAtualInput) return;
+
+    const valorSalvo = sessionStorage.getItem(CHAVE_VIDA_ATUAL);
+    const vidaSalva = Number.parseInt(valorSalvo, 10);
+
+    const vidaAtual = Number.isNaN(vidaSalva)
+      ? vidaMax
+      : Math.max(0, Math.min(vidaSalva, vidaMax));
+
+    vidaAtualInput.value = vidaAtual;
   }
 
   function recalcularVida() {
     if (!vidaMaxDisplay || !vidaAtualInput) return;
 
-    const con = obterConstituicao();
-    const vidaMax = 5 + (con * 2);
-
-    // Atualiza a pílula de leitura da Vida Máxima
+    const vidaMax = obterVidaMaxima();
     vidaMaxDisplay.textContent = vidaMax;
 
-    // Garante que a Vida Atual não seja maior que a Vida Máxima
-    let atual = parseInt(vidaAtualInput.value, 10) || 0;
-    if (atual > vidaMax) {
-      atual = vidaMax;
-      vidaAtualInput.value = atual;
-    }
+    const valorDigitado = Number.parseInt(vidaAtualInput.value, 10);
+    const vidaAtual = Number.isNaN(valorDigitado)
+      ? vidaMax
+      : Math.max(0, Math.min(valorDigitado, vidaMax));
+
+    vidaAtualInput.value = vidaAtual;
+    sessionStorage.setItem(CHAVE_VIDA_ATUAL, String(vidaAtual));
   }
 
   function alterarVida(delta) {
-    if (!vidaAtualInput || !vidaMaxDisplay) return;
+    if (!vidaAtualInput) return;
 
-    const vidaMax = parseInt(vidaMaxDisplay.textContent, 10) || 5;
-    let atual = parseInt(vidaAtualInput.value, 10) || 0;
+    const vidaMax = obterVidaMaxima();
+    const valorDigitado = Number.parseInt(vidaAtualInput.value, 10);
+    const atual = Number.isNaN(valorDigitado) ? vidaMax : valorDigitado;
 
-    atual += delta;
-    if (atual > vidaMax) atual = vidaMax;
-    if (atual < 0) atual = 0;
-
-    vidaAtualInput.value = atual;
+    vidaAtualInput.value = Math.max(0, Math.min(atual + delta, vidaMax));
+    salvarVidaAtual();
   }
 
-  // Escutadores para os botões de - e +
-  if (btnDano) btnDano.addEventListener('click', function () { alterarVida(-1); });
-  if (btnCura) btnCura.addEventListener('click', function () { alterarVida(1); });
+  if (btnDano) {
+    btnDano.addEventListener('click', function () {
+      alterarVida(-1);
+    });
+  }
 
-  // Validação se o jogador digitar a Vida Atual manualmente
+  if (btnCura) {
+    btnCura.addEventListener('click', function () {
+      alterarVida(1);
+    });
+  }
+
   if (vidaAtualInput) {
-    vidaAtualInput.addEventListener('change', function () { alterarVida(0); });
+    vidaAtualInput.addEventListener('input', salvarVidaAtual);
+    vidaAtualInput.addEventListener('change', salvarVidaAtual);
   }
 
-  // Atualiza a Vida Máxima sempre que alterar a Constituição
   if (inputCon) {
     inputCon.addEventListener('input', recalcularVida);
     inputCon.addEventListener('change', recalcularVida);
   }
 
-  // Executa uma vez ao carregar a página
-  recalcularVida();
+  const vidaMaxInicial = obterVidaMaxima();
+  vidaMaxDisplay.textContent = vidaMaxInicial;
+  restaurarVidaAtual(vidaMaxInicial);
 });
 
   var menuToggle = document.querySelector('[data-menu-toggle]');
