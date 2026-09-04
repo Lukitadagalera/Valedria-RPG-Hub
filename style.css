@@ -817,6 +817,13 @@ table.data-table tbody tr:last-child td { border-bottom: none; }
 .entry-card details summary { cursor: pointer; font-size: var(--text-sm); color: var(--color-primary); font-weight: 600; }
 .entry-card details[open] summary { margin-bottom: var(--space-2); }
 
+/* Cards que contêm tabelas ocupam a largura total da grade —
+   evita colunas estreitas e altas quando o conteúdo é tabular. */
+.entry-card:has(.table-wrap) { grid-column: 1 / -1; }
+.entry-card:has(.table-wrap) .table-wrap { width: 100%; }
+.entry-grid:has(> .entry-card:has(.table-wrap)) { grid-template-columns: 1fr; }
+
+
 /* ============================================================
    IMAGE FRAMES + PLACEHOLDERS (editáveis)
    ============================================================ */
