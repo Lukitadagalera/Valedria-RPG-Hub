@@ -16,16 +16,16 @@ window.RELIGIAO = {
 };
 
 window.FACCOES_NPCS = [
-  { grupo: "Coroas e nobreza", nome: "Rei Halvard de Valmeira", papel: "Governa Portovale com foco em comércio marítimo, mantendo boas relações com mercadores estrangeiros, mas enfrentando descontentamento de nobres do interior." },
-  { grupo: "Coroas e nobreza", nome: "Rainha Ismalda de Cárdenas", papel: "Monarca militar, respeitada pela disciplina, mas criticada por gastar recursos excessivos em expedições contra o Bestiário enquanto estradas comerciais seguem inseguras." },
-  { grupo: "Coroas e nobreza", nome: "Rei Bortan de Ostenfeld", papel: "Mantém relação cautelosa com os clãs anões; o mais dependente de comércio exterior entre os três monarcas." },
-  { grupo: "Guilda e comércio", nome: "Mestra Oriane", papel: "Líder da guilda de mercadores em Ponte Alta, controla boa parte do fluxo comercial fluvial entre Amieiro, Ponte Alta e Portovale — fonte confiável de missões de escolta e investigação comercial." },
-  { grupo: "Guilda e comércio", nome: "Velho Tancredo", papel: "Ferreiro de Ponte Alta, conhecido por dívidas antigas e contatos discretos com contrabandistas — pode ser aliado ou gancho de missão." },
-  { grupo: "Academia e magia", nome: "Arquimago Salendir", papel: "Um dos anciãos da Academia de Valédria, guardião de registros sobre Transformação de Linhagem e figura central em missões relacionadas a magia proibida ou alunos desertores." },
-  { grupo: "Encruzilhada", nome: "Conselheira Nyx", papel: "Representante demoníaca no conselho de Encruzilhada, pragmática e cética quanto às intenções dos reinos humanos, mas respeita acordos quando lhe são vantajosos." },
-  { grupo: "Encruzilhada", nome: "Velho Aerith", papel: "Representante élfico no mesmo conselho, atua como voz moderada entre as facções, frequentemente mediando disputas antes que cheguem a conflito aberto." },
-  { grupo: "Vilões e ameaças", nome: "Capitão Draven", papel: "Líder de uma banda de bandidos que opera nas estradas entre Cárdenas e Feira Nova — antagonista recorrente de nível inicial a intermediário." },
-  { grupo: "Vilões e ameaças", nome: "A Voz Sem Rosto", papel: "Rumor de um contrabandista misterioso que negocia itens de origem demoníaca em Encruzilhada sem passar pelo conselho — gancho de mistério para arcos avançados." }
+  { grupo: "Coroas e nobreza", nome: "Rei Halvard de Valmeira", papel: "Governa Portovale com foco em comércio marítimo, mantendo boas relações com mercadores estrangeiros, mas enfrentando descontentamento de nobres do interior.", img: "assets/img/sociedade/npc-rei-halvard-de-valmeira.jpg" },
+  { grupo: "Coroas e nobreza", nome: "Rainha Ismalda de Cárdenas", papel: "Monarca militar, respeitada pela disciplina, mas criticada por gastar recursos excessivos em expedições contra o Bestiário enquanto estradas comerciais seguem inseguras.", img: "assets/img/sociedade/npc-rainha-ismalda-de-cardenas.jpg" },
+  { grupo: "Coroas e nobreza", nome: "Rei Bortan de Ostenfeld", papel: "Mantém relação cautelosa com os clãs anões; o mais dependente de comércio exterior entre os três monarcas.", img: "assets/img/sociedade/npc-rei-bortan-de-ostenfeld.jpg" },
+  { grupo: "Guilda e comércio", nome: "Mestra Oriane", papel: "Líder da guilda de mercadores em Ponte Alta, controla boa parte do fluxo comercial fluvial entre Amieiro, Ponte Alta e Portovale — fonte confiável de missões de escolta e investigação comercial.", img: "assets/img/sociedade/npc-mestra-oriane.jpg" },
+  { grupo: "Guilda e comércio", nome: "Velho Tancredo", papel: "Ferreiro de Ponte Alta, conhecido por dívidas antigas e contatos discretos com contrabandistas — pode ser aliado ou gancho de missão.", img: "assets/img/sociedade/npc-velho-tancredo.jpg" },
+  { grupo: "Academia e magia", nome: "Arquimago Salendir", papel: "Um dos anciãos da Academia de Valédria, guardião de registros sobre Transformação de Linhagem e figura central em missões relacionadas a magia proibida ou alunos desertores.", img: "assets/img/sociedade/npc-arquimago-salendir.jpg" },
+  { grupo: "Encruzilhada", nome: "Conselheira Nyx", papel: "Representante demoníaca no conselho de Encruzilhada, pragmática e cética quanto às intenções dos reinos humanos, mas respeita acordos quando lhe são vantajosos.", img: "assets/img/sociedade/npc-conselheira-nyx.jpg" },
+  { grupo: "Encruzilhada", nome: "Velho Aerith", papel: "Representante élfico no mesmo conselho, atua como voz moderada entre as facções, frequentemente mediando disputas antes que cheguem a conflito aberto.", img: "assets/img/sociedade/npc-velho-aerith.jpg" },
+  { grupo: "Vilões e ameaças", nome: "Capitão Draven", papel: "Líder de uma banda de bandidos que opera nas estradas entre Cárdenas e Feira Nova — antagonista recorrente de nível inicial a intermediário.", img: "assets/img/sociedade/npc-capitao-draven.jpg" },
+  { grupo: "Vilões e ameaças", nome: "A Voz Sem Rosto", papel: "Rumor de um contrabandista misterioso que negocia itens de origem demoníaca em Encruzilhada sem passar pelo conselho — gancho de mistério para arcos avançados.", img: "assets/img/sociedade/npc-a-voz-sem-rosto.jpg" }
 ];
 
 window.LEIS_JUSTICA = {
@@ -41,8 +41,9 @@ window.LEIS_JUSTICA = {
 window.CALENDARIO_HISTORIA = {
   calendario: "Valédria segue um calendário de doze meses, com quatro estações bem definidas, reconhecido pelos três reinos humanos e usado como referência mesmo em Encruzilhada para fins comerciais. Cada estação tem um festival principal: o Festival da Semeadura na primavera, a Feira das Colheitas no verão, a Noite das Fogueiras no outono e a Vigília do Frio no inverno, celebrada com mais intensidade em Ostenfeld e Montegris.",
   marcos: [
-    { nome: "A Cisão dos Três Reinos", quando: "Há aproximadamente 200 anos", descricao: "O antigo reino humano unificado se dividiu em Valmeira, Cárdenas e Ostenfeld após disputas de sucessão, criando as fronteiras que existem hoje." },
-    { nome: "O Tratado de Encruzilhada", quando: "Há cerca de 80 anos", descricao: "Transformou um antigo posto de comércio em cidade livre multirracial, após um período de conflitos fronteiriços entre humanos, elfos e demônios que ameaçava se tornar guerra aberta." },
-    { nome: "A Fundação da Academia", quando: "Há pouco mais de 60 anos", descricao: "Os três reinos concordaram em ceder terreno neutro para centralizar o ensino de magia externa, evitando que o conhecimento arcano ficasse concentrado em apenas um reino." }
-  ]
+    { nome: "A Cisão dos Três Reinos", quando: "Há aproximadamente 200 anos", descricao: "O antigo reino humano unificado se dividiu em Valmeira, Cárdenas e Ostenfeld após disputas de sucessão, criando as fronteiras que existem hoje.", img: "assets/img/sociedade/marco-a-cisao-dos-tres-reinos.jpg" },
+    { nome: "O Tratado de Encruzilhada", quando: "Há cerca de 80 anos", descricao: "Transformou um antigo posto de comércio em cidade livre multirracial, após um período de conflitos fronteiriços entre humanos, elfos e demônios que ameaçava se tornar guerra aberta.", img: "assets/img/sociedade/marco-o-tratado-de-encruzilhada.jpg" },
+    { nome: "A Fundação da Academia", quando: "Há pouco mais de 60 anos", descricao: "Os três reinos concordaram em ceder terreno neutro para centralizar o ensino de magia externa, evitando que o conhecimento arcano ficasse concentrado em apenas um reino.", img: "assets/img/sociedade/marco-a-fundacao-da-academia.jpg" }
+  ],
+  img: "assets/img/sociedade/calendario-valedria.jpg"
 };

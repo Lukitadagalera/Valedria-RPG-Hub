@@ -246,6 +246,40 @@ window.BESTIARIO = [
     descricao: "Ave lendária de fogo vivo, cinza ardente e brilho vulcânico, que paira sobre ruínas queimadas, crateras e regiões marcadas por cataclismos antigos. Sua presença altera o clima, aquece a pedra e deixa rastros de brasa mesmo quando não combate.",
     img: "assets/img/monstros/fenix-carmesim.jpg"
   }
+  ,
+  // ---------------- Territórios não-humanos ----------------
+  {
+    nome: "Guardião do Véu Verde", categoria: "Floresta e ruína", ameaca: "Alta", nivel: "6-7",
+    atributos: { forca: 5, destreza: 4, constituicao: 5, sabedoria: 3, carisma: 1 },
+    defesa: 16, vida: 190,
+    local: "Coração Verde e Raízes Antigas, nas Terras Élficas",
+    descricao: "Ser feito de casca viva, raízes entrelaçadas e musgo luminoso, criado pela própria floresta para expulsar invasores que ameacem o Véu Verde. Move-se em silêncio absoluto entre as árvores e ataca com galhos que se comportam como lâminas quando provocado.",
+    img: "assets/img/monstros/guardiao-do-veu-verde.jpg"
+  },
+  {
+    nome: "Verme de Granito", categoria: "Montanha e profundidade", ameaca: "Moderada a Alta", nivel: "4-6",
+    atributos: { forca: 4, destreza: 1, constituicao: 6, sabedoria: 1, carisma: 1 },
+    defesa: 15, vida: 140,
+    local: "Abismo Interior e túneis profundos das Terras Anãs",
+    descricao: "Criatura cega e blindada que escava através da pedra maciça no Ventre de Pedra, atraída pelo calor de forjas e corpos vivos. Anões de Gryndak treinam para reconhecer o tremor característico de sua aproximação antes que rompa o piso de uma galeria.",
+    img: "assets/img/monstros/verme-de-granito.jpg"
+  },
+  {
+    nome: "Devorador de Areia", categoria: "Deserto e cinzas", ameaca: "Moderada", nivel: "3-5",
+    atributos: { forca: 3, destreza: 4, constituicao: 3, sabedoria: 2, carisma: 1 },
+    defesa: 13, vida: 60,
+    local: "Mar de Areia e Ruínas Ardentes, nas Terras Demoníacas",
+    descricao: "Massa de areia animada por energia residual das Ruínas Ardentes, que assume forma vagamente humanoide para emboscar viajantes. Dissolve-se em uma nuvem de poeira quando destruído, apenas para se reformar horas depois se a energia da ruína próxima permanecer instável.",
+    img: "assets/img/monstros/devorador-de-areia.jpg"
+  },
+  {
+    nome: "Cão de Brasa de Vrak'Thon", categoria: "Deserto e cinzas", ameaca: "Alta", nivel: "6",
+    atributos: { forca: 4, destreza: 5, constituicao: 4, sabedoria: 2, carisma: 1 },
+    defesa: 15, vida: 120,
+    local: "Borda das Cinzas e proximidades de Vrak'Thon",
+    descricao: "Fera de pelagem incandescente criada ou domesticada por castas altas demoníacas para patrulhar as fronteiras de Vrak'Thon. Caça em pares, deixando marcas de queimadura no solo por onde passa, e é temida até por goblins de Skral que conhecem bem o deserto.",
+    img: "assets/img/monstros/cao-de-brasa.jpg"
+  }
 ];
 
 window.BESTIARIO_AMEACA_VIDA = [
