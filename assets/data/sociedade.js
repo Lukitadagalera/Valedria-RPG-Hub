@@ -16,6 +16,8 @@ window.RELIGIAO = {
 };
 
 window.FACCOES_NPCS = [
+  { grupo: "Amieiro", nome: "Mara, a Curandeira", papel: "Curandeira da vila de Amieiro, capturada durante o ataque ao tentar proteger as crianças e jovens levados junto com ela — vítima, não cúmplice, pode ser reencontrada mais tarde como aliada ferida e traumatizada, com informações valiosas sobre o cativeiro.", img: "assets/img/sociedade/npc-mara.jpg" },
+  { grupo: "Amieiro", nome: "Doran, o Vigia", papel: "Observava secretamente os jovens de Amieiro antes do ataque, parte de uma rede informal de vigias espalhada pela coroa em vilas remotas para identificar jovens com potencial mágico elevado, sem saber o destino real dessas crianças. Pode ser reencontrado com culpa pesada e se tornar fonte de informação valiosa.", img: "assets/img/sociedade/npc-doran.jpg" },
   { grupo: "Coroas e nobreza", nome: "Rei Halvard de Valmeira", papel: "Governa Portovale com foco em comércio marítimo, mantendo boas relações com mercadores estrangeiros, mas enfrentando descontentamento de nobres do interior.", img: "assets/img/sociedade/npc-rei-halvard-de-valmeira.jpg" },
   { grupo: "Coroas e nobreza", nome: "Rainha Ismalda de Cárdenas", papel: "Monarca militar, respeitada pela disciplina, mas criticada por gastar recursos excessivos em expedições contra o Bestiário enquanto estradas comerciais seguem inseguras.", img: "assets/img/sociedade/npc-rainha-ismalda-de-cardenas.jpg" },
   { grupo: "Coroas e nobreza", nome: "Rei Bortan de Ostenfeld", papel: "Mantém relação cautelosa com os clãs anões; o mais dependente de comércio exterior entre os três monarcas.", img: "assets/img/sociedade/npc-rei-bortan-de-ostenfeld.jpg" },
