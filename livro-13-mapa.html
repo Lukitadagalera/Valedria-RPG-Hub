@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{var m=location.search.match(/theme=(dark|light)/);var t=m?m[1]:null;document.documentElement.setAttribute('data-theme',t||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));}catch(e){}</script>
+<title>Mapa e Aventuras — Códice de Valédria</title>
+<meta name="description" content="Mapa clicável de Valédria, dossiês de cidades, gerador de aventuras regionais e relações entre personagens.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=boska@700,600&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .mapa-wrap{position:relative;max-width:100%;border-radius:var(--radius-lg,12px);overflow:hidden;border:1px solid var(--color-border,#333)}
+  .mapa-wrap img{display:block;width:100%;height:auto}
+  .mapa-ponto{position:absolute;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--color-primary,#c9a24b);border:2px solid #fff;cursor:pointer;box-shadow:0 0 0 3px rgba(0,0,0,.25)}
+  .mapa-ponto:hover{transform:translate(-50%,-50%) scale(1.3)}
+  .mapa-ponto[data-sem-dossie="1"]{background:#888}
+  .painel-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;z-index:50}
+  .painel-overlay.aberto{display:block}
+  .painel{position:fixed;top:0;right:0;height:100%;width:min(420px,92vw);background:var(--color-bg,#fff);box-shadow:-8px 0 24px rgba(0,0,0,.25);transform:translateX(100%);transition:transform .25s ease;z-index:51;overflow-y:auto;padding:var(--space-6,1.5rem)}
+  .painel.aberto{transform:translateX(0)}
+  .painel-fechar{cursor:pointer;background:none;border:none;font-size:1.5rem;line-height:1;float:right}
+  .painel h3{margin-top:0}
+  .painel ul{padding-left:1.1rem}
+  .gerador-resultado{border:1px solid var(--color-border,#333);border-radius:8px;padding:var(--space-4,1rem);margin-top:var(--space-4,1rem)}
+  .relacoes-table td, .relacoes-table th{vertical-align:top}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar para o conteúdo</a>
+<div class="nav-scrim" data-nav-scrim></div>
+<div class="shell">
+<aside class="sidebar">
+  <a href="index.html" class="brand">
+    <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-label="Emblema de Valédria" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="2.2" stroke-dasharray="94 8" stroke-linecap="round" transform="rotate(-90 24 24)"/>
+  <path d="M24 14c3.2 4.8 5.6 8.3 5.6 12.1a5.6 5.6 0 1 1-11.2 0C18.4 22.3 20.8 18.8 24 14Z" fill="currentColor"/>
+  <circle cx="24" cy="24" r="2.6" fill="var(--color-bg)"/>
+</svg>
+    <span class="brand-copy"><strong>Valédria</strong><span>Códice do Mundo</span></span>
+  </a>
+    <nav class="nav-scroll" aria-label="Navegação principal">
+      <div>
+        <div class="nav-group-title">Começar</div>
+        <div class="nav-list">
+          <a class="nav-link" href="index.html"><span class="num">&bull;</span> Início</a>
+        </div>
+      </div>
+      <div>
+        <div class="nav-group-title">Os Doze Livros</div>
+        <div class="nav-list"><a class="nav-link" href="livro-01-geografia.html"><span class="num">I</span> Livro I &middot; Geografia</a><a class="nav-link" href="livro-02-sociedade.html"><span class="num">II</span> Livro II &middot; Sociedade</a><a class="nav-link" href="livro-03-economia.html"><span class="num">III</span> Livro III &middot; Economia</a><a class="nav-link" href="livro-04-sistema.html"><span class="num">IV</span> Livro IV &middot; Sistema</a><a class="nav-link" href="livro-05-racas.html"><span class="num">V</span> Livro V &middot; Raças</a><a class="nav-link" href="livro-06-magia.html"><span class="num">VI</span> Livro VI &middot; Magia</a><a class="nav-link" href="livro-07-aura.html"><span class="num">VII</span> Livro VII &middot; Aura</a><a class="nav-link" href="livro-08-artefatos.html"><span class="num">VIII</span> Livro VIII &middot; Artefatos</a><a class="nav-link" href="livro-09-bestiario.html"><span class="num">IX</span> Livro IX &middot; Bestiário</a><a class="nav-link" href="livro-10-faccoes.html"><span class="num">X</span> Livro X &middot; Facções</a><a class="nav-link" href="livro-11-exploracao.html"><span class="num">XI</span> Livro XI &middot; Clima, Viagem e Encontros</a><a class="nav-link" href="livro-12-mestre.html"><span class="num">XII</span> Livro XII &middot; Livro do Mestre</a><a class="nav-link" href="livro-13-mapa.html" aria-current="page"><span class="num">XIII</span> Mapa e Aventuras</a></div>
+      </div>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-block" href="ficha.html">Criar Ficha de Personagem</a>
+    </div>
+</aside>
+<div>
+<header class="topbar">
+  <div class="topbar-title"><span class="eyebrow">Extra</span><h1>Mapa e Aventuras</h1></div>
+  <div class="topbar-actions">
+    <button class="icon-btn" data-theme-toggle aria-label="Alternar tema"></button>
+    <button class="icon-btn menu-toggle" data-menu-toggle aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</header>
+<main id="main" class="content">
+<div class="page-head">
+  <span class="eyebrow">Extra</span>
+  <h1>Mapa e Aventuras</h1>
+  <p class="lede">Mapa clicável das Terras Humanas, dossiês de cidades, gerador de ganchos regionais e o mapa de relações entre os personagens já nomeados no mundo.</p>
+</div>
+
+<section>
+  <div class="section-head"><div><div class="eyebrow">Navegação</div><h2>Mapa clicável</h2></div></div>
+  <p class="muted">Clique em um ponto para abrir o dossiê da localidade.</p>
+  <div class="mapa-wrap" id="mapa-wrap"></div>
+</section>
+
+<section>
+  <div class="section-head"><div><div class="eyebrow">Guilda</div><h2>Gerador de aventuras regionais</h2></div></div>
+  <div class="field">
+    <label for="gerador-regiao">Região</label>
+    <select id="gerador-regiao"></select>
+  </div>
+  <button class="btn btn-primary" id="gerador-btn">Sortear gancho de missão</button>
+  <div class="gerador-resultado" id="gerador-resultado" style="display:none"></div>
+</section>
+
+<section>
+  <div class="section-head"><div><div class="eyebrow">Livro V</div><h2>Relações entre personagens</h2></div></div>
+  <div id="relacoes-mount"></div>
+</section>
+
+</main>
+<footer class="footer">
+  <span>&copy; Valédria &mdash; Códice do Mundo. Documento vivo, feito para uso na mesa.</span>
+  <span>Construído para jogadores e mestres explorarem o continente juntos.</span>
+</footer>
+</div>
+</div>
+
+<div class="painel-overlay" id="painel-overlay"></div>
+<aside class="painel" id="painel">
+  <button class="painel-fechar" id="painel-fechar" aria-label="Fechar">&times;</button>
+  <div id="painel-conteudo"></div>
+</aside>
+
+<script src="app.js"></script>
+<script src="assets/data/mapa.js"></script>
+<script src="assets/data/dossies.js"></script>
+<script src="assets/data/aventuras.js"></script>
+<script src="assets/data/relacoes.js"></script>
+<script src="assets/render.js"></script>
+<script>
+(function(){
+  var overlay = document.getElementById('painel-overlay');
+  var painel = document.getElementById('painel');
+  var conteudo = document.getElementById('painel-conteudo');
+
+  function abrirPainelHtml(html){
+    conteudo.innerHTML = html;
+    overlay.classList.add('aberto');
+    painel.classList.add('aberto');
+  }
+  function fecharPainel(){
+    overlay.classList.remove('aberto');
+    painel.classList.remove('aberto');
+  }
+  document.getElementById('painel-fechar').addEventListener('click', fecharPainel);
+  overlay.addEventListener('click', fecharPainel);
+
+  function dossieHtml(nomeDossie){
+    var d = window.DOSSIES_CIDADES.filter(function(x){ return x.nome === nomeDossie; })[0];
+    if(!d) return '<p>Dossiê ainda não disponível para esta localidade.</p>';
+    var locais = '<ul>'+d.locaisInternos.map(function(l){return '<li>'+VR.esc(l)+'</li>';}).join('')+'</ul>';
+    var npcs = d.npcs.length ? '<ul>'+d.npcs.map(function(n){return '<li>'+VR.esc(n)+'</li>';}).join('')+'</ul>' : '<p class="muted">Nenhum NPC nomeado ainda.</p>';
+    var missoes = d.missoesGuilda.length ? '<ul>'+d.missoesGuilda.map(function(m){return '<li>'+VR.esc(m)+'</li>';}).join('')+'</ul>' : '<p class="muted">Nenhuma missão fixa registrada.</p>';
+    var faccoes = d.faccoesPresentes.length ? d.faccoesPresentes.map(function(f){return VR.chip(f,'outline');}).join('') : '<span class="muted">Nenhuma facção com presença marcada.</span>';
+    return '<h3>'+VR.esc(d.nome)+'</h3>'+
+      '<p class="entry-meta">'+VR.chip(d.tipo,'outline')+(d.reino?VR.chip(d.reino,'blue'):'')+'</p>'+
+      '<p>'+VR.esc(d.geografia)+'</p>'+
+      '<p class="muted"><strong>População:</strong> '+VR.esc(d.populacao)+'</p>'+
+      '<h4>Locais internos</h4>'+locais+
+      '<h4>NPCs</h4>'+npcs+
+      '<h4>Missões da Guilda</h4>'+missoes+
+      '<h4>Facções presentes</h4><p>'+faccoes+'</p>'+
+      '<h4>Gancho atual</h4><p>'+VR.esc(d.ganchoPublico)+'</p>';
+  }
+
+  var mapaWrap = document.getElementById('mapa-wrap');
+  var img = document.createElement('img');
+  img.src = window.MAPA_IMAGEM;
+  img.alt = 'Mapa das Terras Humanas de Valédria';
+  mapaWrap.appendChild(img);
+  window.MAPA_PONTOS.forEach(function(p){
+    var pt = document.createElement('div');
+    pt.className = 'mapa-ponto';
+    pt.style.left = p.x + '%';
+    pt.style.top = p.y + '%';
+    pt.title = p.nome + ' — ' + p.tipo;
+    if(!p.dossie) pt.setAttribute('data-sem-dossie','1');
+    pt.addEventListener('click', function(){
+      abrirPainelHtml(p.dossie ? dossieHtml(p.dossie) : '<h3>'+VR.esc(p.nome)+'</h3><p class="entry-meta">'+VR.chip(p.tipo,'outline')+'</p><p class="muted">Dossiê detalhado ainda não criado para esta localidade.</p>');
+    });
+    mapaWrap.appendChild(pt);
+  });
+
+  var sel = document.getElementById('gerador-regiao');
+  Object.keys(window.GERADOR_NIVEL_POR_REGIAO).forEach(function(r){
+    var o = document.createElement('option'); o.value = r; o.textContent = r; sel.appendChild(o);
+  });
+  document.getElementById('gerador-btn').addEventListener('click', function(){
+    var regiao = sel.value;
+    var nivel = window.GERADOR_NIVEL_POR_REGIAO[regiao];
+    var problema = window.GERADOR_PROBLEMAS[Math.floor(Math.random()*window.GERADOR_PROBLEMAS.length)];
+    var complicacao = window.GERADOR_COMPLICACOES[Math.floor(Math.random()*window.GERADOR_COMPLICACOES.length)];
+    var rec = window.GERADOR_RECOMPENSAS.filter(function(r){return r.nivel === nivel;})[0] || window.GERADOR_RECOMPENSAS[0];
+    var out = document.getElementById('gerador-resultado');
+    out.style.display = 'block';
+    out.innerHTML = '<p class="entry-meta">'+VR.chip(regiao,'outline')+VR.chip(nivel,'gold')+'</p>'+
+      '<p><strong>Problema:</strong> '+VR.esc(problema)+'</p>'+
+      '<p><strong>Complicação:</strong> '+VR.esc(complicacao)+'</p>'+
+      '<p><strong>Recompensa:</strong> '+VR.esc(rec.faixa)+' &mdash; pago por '+VR.esc(rec.pagoPor)+'</p>';
+  });
+
+  var relRows = window.RELACOES_NPCS.map(function(r){
+    return [VR.esc(r.a), VR.esc(r.b), VR.esc(r.tipo), VR.esc(r.contexto)];
+  });
+  VR.mount('#relacoes-mount', VR.table(['Personagem/Facção A','Personagem/Facção B','Tipo de relação','Contexto'], relRows));
+})();
+</script>
+</body>
+</html>

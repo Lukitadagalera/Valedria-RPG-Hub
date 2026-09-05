@@ -35,7 +35,7 @@
       </div>
       <div>
         <div class="nav-group-title">Os Doze Livros</div>
-        <div class="nav-list"><a class="nav-link" href="livro-01-geografia.html" aria-current="page"><span class="num">I</span> Livro I &middot; Geografia</a><a class="nav-link" href="livro-02-sociedade.html"><span class="num">II</span> Livro II &middot; Sociedade</a><a class="nav-link" href="livro-03-economia.html"><span class="num">III</span> Livro III &middot; Economia</a><a class="nav-link" href="livro-04-sistema.html"><span class="num">IV</span> Livro IV &middot; Sistema</a><a class="nav-link" href="livro-05-racas.html"><span class="num">V</span> Livro V &middot; Raças</a><a class="nav-link" href="livro-06-magia.html"><span class="num">VI</span> Livro VI &middot; Magia</a><a class="nav-link" href="livro-07-aura.html"><span class="num">VII</span> Livro VII &middot; Aura</a><a class="nav-link" href="livro-08-artefatos.html"><span class="num">VIII</span> Livro VIII &middot; Artefatos</a><a class="nav-link" href="livro-09-bestiario.html"><span class="num">IX</span> Livro IX &middot; Bestiário</a><a class="nav-link" href="livro-10-faccoes.html"><span class="num">X</span> Livro X &middot; Facções</a><a class="nav-link" href="livro-11-exploracao.html"><span class="num">XI</span> Livro XI &middot; Clima, Viagem e Encontros</a><a class="nav-link" href="livro-12-mestre.html"><span class="num">XII</span> Livro XII &middot; Livro do Mestre</a></div>
+        <div class="nav-list"><a class="nav-link" href="livro-01-geografia.html" aria-current="page"><span class="num">I</span> Livro I &middot; Geografia</a><a class="nav-link" href="livro-02-sociedade.html"><span class="num">II</span> Livro II &middot; Sociedade</a><a class="nav-link" href="livro-03-economia.html"><span class="num">III</span> Livro III &middot; Economia</a><a class="nav-link" href="livro-04-sistema.html"><span class="num">IV</span> Livro IV &middot; Sistema</a><a class="nav-link" href="livro-05-racas.html"><span class="num">V</span> Livro V &middot; Raças</a><a class="nav-link" href="livro-06-magia.html"><span class="num">VI</span> Livro VI &middot; Magia</a><a class="nav-link" href="livro-07-aura.html"><span class="num">VII</span> Livro VII &middot; Aura</a><a class="nav-link" href="livro-08-artefatos.html"><span class="num">VIII</span> Livro VIII &middot; Artefatos</a><a class="nav-link" href="livro-09-bestiario.html"><span class="num">IX</span> Livro IX &middot; Bestiário</a><a class="nav-link" href="livro-10-faccoes.html"><span class="num">X</span> Livro X &middot; Facções</a><a class="nav-link" href="livro-11-exploracao.html"><span class="num">XI</span> Livro XI &middot; Clima, Viagem e Encontros</a><a class="nav-link" href="livro-12-mestre.html"><span class="num">XII</span> Livro XII &middot; Livro do Mestre</a><a class="nav-link" href="livro-13-mapa.html"><span class="num">XIII</span> Mapa e Aventuras</a></div>
       </div>
     </nav>
     <div class="nav-cta">
@@ -96,10 +96,14 @@
     var cidadesRows = r.cidades.map(function(c){
       return [VR.esc(c.nome), VR.esc(c.tipo), VR.esc(c.populacao||'—'), VR.esc(c.descricao)];
     });
+    var cidadesComImagem = r.cidades.filter(function(c){ return c.img; }).map(function(c){
+      return '<div class="mini-card">'+VR.imgSlot(c.img, c.nome, '4/3')+'<h4>'+VR.esc(c.nome)+'</h4></div>';
+    }).join('');
     return '<article class="entry-card">'+VR.imgSlot(r.img, r.nome, '16/9')+
       '<div class="entry-head"><h3>'+VR.esc(r.nome)+'</h3></div>'+
       '<div class="entry-meta">'+VR.chip(r.regiao,'outline')+'</div>'+
       '<div class="entry-body"><p>'+VR.esc(r.descricao)+'</p>'+
+      (cidadesComImagem ? '<div class="mini-grid" style="margin:var(--space-4) 0">'+cidadesComImagem+'</div>' : '')+
       VR.table(['Localidade','Tipo','Populacao','Descricao'], cidadesRows)+
       '</div></article>';
   }).join('');
