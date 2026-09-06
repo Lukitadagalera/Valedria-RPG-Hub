@@ -15,7 +15,7 @@ window.BESTIARIO = [
     defesa: 11, vida: 14,
     local: "Estradas, colinas e bordas de floresta de todas as nações",
     descricao: "Fera comum de pelagem cinza-acastanhada, encontrada em florestas, colinas e beiras de estrada. Caça em grupos e tenta isolar alvos frágeis antes de recuar diante de força superior.",
-    img: "assets/img/monstros/lobo-das-estradas.jpg"
+    img: "assets/img/monstros/lobo-das-estradas.png"
   },
   {
     nome: "Javali Selvagem", categoria: "Comum", ameaca: "Baixa (Moderada em bando)", nivel: "1–2",
@@ -23,7 +23,7 @@ window.BESTIARIO = [
     defesa: 10, vida: 20,
     local: "Florestas, matas úmidas e campos abertos das regiões temperadas",
     descricao: "Fera baixa e musculosa, de presas curvas, dorso blindado por placas naturais espessas e temperamento extremamente territorial. Ataca em linha reta e pode derrubar qualquer um em seu caminho quando surpreendido ou acuado.",
-    img: "assets/img/monstros/javali-selvagem.jpg"
+    img: "assets/img/monstros/javali-selvagem.png"
   },
   {
     nome: "Corvos-Sombra", categoria: "Comum", ameaca: "Baixa", nivel: "1",
@@ -31,7 +31,7 @@ window.BESTIARIO = [
     defesa: 13, vida: 8,
     local: "Ruínas, torres antigas, santuários quebrados e regiões de magia instável",
     descricao: "Aves negras de olhos brilhantes, atraídas por magia instável, ruínas e proteções antigas enfraquecidas. Não são naturalmente agressivas, mas em grande número tornam-se um presságio de corrupção mágica e atacam olhos, rostos e feridos expostos.",
-    img: "assets/img/monstros/corvos-sombra.jpg"
+    img: "assets/img/monstros/corvos-sombra.png"
   },
   {
     nome: "Aranha-de-Casca", categoria: "Comum", ameaca: "Baixa a Moderada", nivel: "1–2",
@@ -39,7 +39,7 @@ window.BESTIARIO = [
     defesa: 12, vida: 18,
     local: "Florestas densas, matas antigas e trilhas fechadas",
     descricao: "Aranha grande, de corpo pesado e textura de madeira úmida, perfeitamente camuflada entre troncos, raízes e copas escuras. Fica imóvel por longos períodos e ataca quando a presa cruza sua trilha ou toca sua teia.",
-    img: "assets/img/monstros/aranha-de-casca.jpg"
+    img: "assets/img/monstros/aranha-de-casca.png"
   },
   // ---------------- Floresta e ruína ----------------
   {
@@ -48,7 +48,7 @@ window.BESTIARIO = [
     defesa: 12, vida: 16,
     local: "Florestas próximas a selos, santuários e monumentos antigos enfraquecidos",
     descricao: "Criatura pequena e inquieta, formada por névoa, galhos, pelos úmidos e olhos apagados. Surge em áreas onde proteções antigas falharam e tende a agir em grupo, atacando sob escuridão e neblina.",
-    img: "assets/img/monstros/rasga-bruma.jpg"
+    img: "assets/img/monstros/rasga-bruma.png"
   },
   {
     nome: "Uivador de Névoa", categoria: "Floresta e ruína", ameaca: "Moderada", nivel: "3–4",
@@ -56,7 +56,7 @@ window.BESTIARIO = [
     defesa: 13, vida: 34,
     local: "Florestas sombrias, caminhos abandonados e ruínas cobertas por névoa",
     descricao: "Predador noturno de porte médio, semelhante a um lobo espectral de pelagem escura e névoa arrastando pelo corpo. Caça sozinho ou em pares, usando seu uivo para desorientar antes do bote.",
-    img: "assets/img/monstros/uivador-de-nevoa.jpg"
+    img: "assets/img/monstros/uivador-de-nevoa.png"
   },
   {
     nome: "Lobo da Floresta", categoria: "Floresta e ruína", ameaca: "Moderada em matilha", nivel: "2–3",
@@ -64,7 +64,7 @@ window.BESTIARIO = [
     defesa: 12, vida: 30,
     local: "Florestas densas, montes arborizados e regiões de caça afastadas",
     descricao: "Predador lupino maior que o lobo comum, de pelagem branca ou azulada, marcada por espinhos, cristas ou placas ósseas. Vive em matilhas organizadas e domina trilhas profundas de florestas antigas.",
-    img: "assets/img/monstros/lobo-da-floresta.jpg"
+    img: "assets/img/monstros/lobo-da-floresta.png"
   },
   {
     nome: "Escamado das Ruínas", categoria: "Floresta e ruína", ameaca: "Moderada", nivel: "3–4",
@@ -72,7 +72,7 @@ window.BESTIARIO = [
     defesa: 13, vida: 38,
     local: "Ruínas antigas, entradas de tumbas, santuários quebrados e vales pedregosos",
     descricao: "Predador reptiliano bípede, coberto de escamas secas, com garras fortes e hábito de usar armas ou ferramentas roubadas de antigos exploradores. É hostil, territorial e embosca intrusos em passagens estreitas.",
-    img: "assets/img/monstros/escamado-das-ruinas.jpg"
+    img: "assets/img/monstros/escamado-das-ruinas.png"
   },
   {
     nome: "Lagarto de Ruína", categoria: "Floresta e ruína", ameaca: "Moderada a Alta", nivel: "4–5",
@@ -80,7 +80,7 @@ window.BESTIARIO = [
     defesa: 14, vida: 55,
     local: "Ruínas ensolaradas, vales rochosos, templos semiabertos e cavernas rasas",
     descricao: "Réptil pesado e blindado por placas minerais, de patas curtas e mordida esmagadora. Hostil por natureza, caça qualquer intruso que se aproxime de seu território, ovos ou área de aquecimento nas pedras antigas.",
-    img: "assets/img/monstros/lagarto-de-ruina.jpg"
+    img: "assets/img/monstros/lagarto-de-ruina.png"
   },
   {
     nome: "Saqueador Verde", categoria: "Floresta e ruína", ameaca: "Moderada em grupo", nivel: "2–3",
@@ -88,7 +88,7 @@ window.BESTIARIO = [
     defesa: 12, vida: 32,
     local: "Beiras de estrada, gargantas de pedra, vales estreitos e fronteiras ermas",
     descricao: "Humanoide selvagem de pele esverdeada, corpo ágil e hábito de emboscar viajantes em estradas secundárias. Não possui linguagem nem cultura; age por instinto de caça, oportunismo e território.",
-    img: "assets/img/monstros/saqueador-verde.jpg"
+    img: "assets/img/monstros/saqueador-verde.png"
   },
   {
     nome: "Raposa de Nove Caudas", categoria: "Floresta e ruína", ameaca: "Alta", nivel: "5–6",
@@ -96,7 +96,7 @@ window.BESTIARIO = [
     defesa: 15, vida: 220,
     local: "Florestas encantadas, regiões crepusculares e áreas de Mana instável ligadas ao fogo",
     descricao: "Fera arcana de pelo vermelho intenso, patas aquecidas e múltiplas caudas flamejantes. Não fala nem raciocina como um povo, mas possui astúcia sobrenatural, evitando confrontos desnecessários e manipulando o terreno com fogo e distração.",
-    img: "assets/img/monstros/raposa-de-nove-caudas.jpg"
+    img: "assets/img/monstros/raposa-de-nove-caudas.png"
   },
   {
     nome: "Cervo dos Galhos Mortos", categoria: "Floresta e ruína", ameaca: "Moderada", nivel: "4–5",
@@ -104,7 +104,7 @@ window.BESTIARIO = [
     defesa: 14, vida: 48,
     local: "Bosques antigos, clareiras sagradas e trilhas florestais esquecidas",
     descricao: "Cervo branco e silencioso, de olhos pálidos e galhadas que lembram raízes secas, galhos retorcidos e madeira antiga. É normalmente pacífico e arisco, mas reage com violência se for caçado, ferido ou encurralado.",
-    img: "assets/img/monstros/cervo-dos-galhos-mortos.jpg"
+    img: "assets/img/monstros/cervo-dos-galhos-mortos.png"
   },
   {
     nome: "Náiade da Fonte Antiga", categoria: "Floresta e ruína", ameaca: "Alta em território próprio", nivel: "5–6",
@@ -112,7 +112,7 @@ window.BESTIARIO = [
     defesa: 15, vida: 240,
     local: "Nascentes antigas, riachos profundos, bosques sagrados e fontes escondidas",
     descricao: "Entidade de água viva com forma humanoide fluida, ligada a nascentes, poços e riachos protegidos. É pacífica e raramente inicia hostilidade, mas reage se sua fonte for corrompida, saqueada ou profanada.",
-    img: "assets/img/monstros/naiade-da-fonte-antiga.jpg"
+    img: "assets/img/monstros/naiade-da-fonte-antiga.png"
   },
   {
     nome: "Guardião de Raiz", categoria: "Floresta e ruína", ameaca: "Alta", nivel: "6–7",
@@ -120,7 +120,7 @@ window.BESTIARIO = [
     defesa: 15, vida: 320,
     local: "Florestas élficas antigas, santuários naturais e regiões protegidas por magia vegetal",
     descricao: "Colosso de tronco, pedra, raízes e musgo, semelhante a uma estátua viva da própria floresta. Costuma apenas vigiar e expulsar intrusos, atacando somente quando a mata, um santuário natural ou ele mesmo são ameaçados.",
-    img: "assets/img/monstros/guardiao-de-raiz.jpg"
+    img: "assets/img/monstros/guardiao-de-raiz.png"
   },
   // ---------------- Montanha, pedra e profundidade ----------------
   {
@@ -129,7 +129,7 @@ window.BESTIARIO = [
     defesa: 14, vida: 260,
     local: "Desfiladeiros, montanhas altas, cavernas e passagens anãs",
     descricao: "Urso enorme de pelagem áspera, garras minerais e placas de cristal ou rocha incrustadas no dorso. Extremamente territorial, combate até expulsar ou esmagar quem invadiu sua caverna ou passagem de montanha.",
-    img: "assets/img/monstros/urso-de-pedra.jpg"
+    img: "assets/img/monstros/urso-de-pedra.png"
   },
   {
     nome: "Harpia das Fendas", categoria: "Montanha e profundidade", ameaca: "Moderada", nivel: "4–5",
@@ -137,7 +137,7 @@ window.BESTIARIO = [
     defesa: 13, vida: 40,
     local: "Penhascos, fendas profundas e cânions montanhosos",
     descricao: "Criatura alada de rosto quase humano e voz enganosa, especializada em atrair vítimas para precipícios. Atua com emboscada e evita combate sem vantagem.",
-    img: "assets/img/monstros/harpia-das-fendas.jpg"
+    img: "assets/img/monstros/harpia-das-fendas.png"
   },
   {
     nome: "Golem de Fronteira", categoria: "Montanha e profundidade", ameaca: "Alta", nivel: "6–8",
@@ -145,7 +145,7 @@ window.BESTIARIO = [
     defesa: 16, vida: 350,
     local: "Ruínas antigas, fronteiras esquecidas, santuários e corredores monumentais",
     descricao: "Construto colossal de pedra rúnica, criado por civilizações antigas para guardar limites sagrados, ruínas e entradas proibidas. Não tem malícia nem fala, apenas ordens muito antigas e poder suficiente para massacrar invasores descuidados.",
-    img: "assets/img/monstros/golem-de-fronteira.jpg"
+    img: "assets/img/monstros/golem-de-fronteira.png"
   },
   {
     nome: "Grifo das Alturas", categoria: "Montanha e profundidade", ameaca: "Alta", nivel: "6–7",
@@ -153,7 +153,7 @@ window.BESTIARIO = [
     defesa: 15, vida: 280,
     local: "Cordilheiras, penhascos, ninhos de altitude e picos acima das nuvens",
     descricao: "Predador nobre de corpo felino e asas enormes, capaz de planar entre picos nevados e atacar de cima com precisão brutal. Caça cabras montesas, cervos e viajantes isolados em trilhas de altitude.",
-    img: "assets/img/monstros/grifo-das-alturas.jpg"
+    img: "assets/img/monstros/grifo-das-alturas.png"
   },
   {
     nome: "Minotauro das Ruínas", categoria: "Montanha e profundidade", ameaca: "Regional", nivel: "7–8",
@@ -161,7 +161,7 @@ window.BESTIARIO = [
     defesa: 15, vida: 520,
     local: "Labirintos de pedra, templos subterrâneos, ruínas profundas e salões abandonados",
     descricao: "Monstro taurino gigantesco, musculoso e agressivo, que vagueia por labirintos, corredores de pedra e ruínas subterrâneas como dono absoluto do espaço. Não fala, mas demonstra inteligência tática elevada, reconhecendo armadilhas, rotas e fraquezas de grupos invasores.",
-    img: "assets/img/monstros/minotauro-das-ruinas.jpg"
+    img: "assets/img/monstros/minotauro-das-ruinas.png"
   },
   // ---------------- Pântano, rio e água parada ----------------
   {
@@ -170,7 +170,7 @@ window.BESTIARIO = [
     defesa: 13, vida: 300,
     local: "Pântanos, ruínas inundadas, mangues e rios mortos",
     descricao: "Gigante disforme coberto por lodo, musgo e pele grossa, capaz de atravessar água rasa e lama sem perder velocidade. Não é racional, mas escolhe o melhor ângulo para atacar, esperando até que suas presas afundem ou se cansem.",
-    img: "assets/img/monstros/troll-do-pantano.jpg"
+    img: "assets/img/monstros/troll-do-pantano.png"
   },
   {
     nome: "Hidra do Pântano", categoria: "Pântano e água", ameaca: "Regional", nivel: "8–10",
@@ -178,7 +178,7 @@ window.BESTIARIO = [
     defesa: 16, vida: 800,
     local: "Grandes pântanos, lagos escuros, deltas isolados e ruínas afundadas",
     descricao: "Réptil colossal de múltiplas cabeças, pele encharcada e corpo semissubmerso, adaptado a emboscadas em águas turvas. Cada cabeça observa um ângulo diferente, tornando quase impossível surpreendê-la em seu território.",
-    img: "assets/img/monstros/hidra-do-pantano.jpg"
+    img: "assets/img/monstros/hidra-do-pantano.png"
   },
   {
     nome: "Serpente da Lua Velada", categoria: "Pântano e água", ameaca: "Alta", nivel: "6–7",
@@ -186,7 +186,7 @@ window.BESTIARIO = [
     defesa: 15, vida: 270,
     local: "Brejos de luar, riachos antigos, círculos de pedra e bosques noturnos",
     descricao: "Serpente longa e elegante de escamas azul-violeta, sempre envolta por névoa fina e brilho lunar. Caça em silêncio absoluto perto de água parada, monólitos e regiões onde a magia da noite é forte.",
-    img: "assets/img/monstros/serpente-da-lua-velada.jpg"
+    img: "assets/img/monstros/serpente-da-lua-velada.png"
   },
   // ---------------- Mortos, ruínas e magia antiga ----------------
   {
@@ -195,7 +195,7 @@ window.BESTIARIO = [
     defesa: 15, vida: 280,
     local: "Faróis antigos, torres, ruínas sagradas e monumentos de proteção",
     descricao: "Espírito ligado a santuários, torres ou selos antigos. Nem sempre é hostil; ataca apenas quando algo tenta destruir, corromper ou remover o que protege.",
-    img: "assets/img/monstros/guardiao-esquecido.jpg"
+    img: "assets/img/monstros/guardiao-esquecido.png"
   },
   {
     nome: "Enxame de Sussurros", categoria: "Mortos e magia antiga", ameaca: "Alta", nivel: "6–8",
@@ -203,7 +203,7 @@ window.BESTIARIO = [
     defesa: 14, vida: 240,
     local: "Locais de corrupção mágica, selos rompidos e ruínas contaminadas",
     descricao: "Nuvem etérea de memórias corrompidas, vozes fragmentadas e culpa antiga condensada. Surge quando uma proteção antiga falha lentamente e se alimenta de medo, confusão e presença prolongada.",
-    img: "assets/img/monstros/enxame-de-sussurros.jpg"
+    img: "assets/img/monstros/enxame-de-sussurros.png"
   },
   // ---------------- Lendários ----------------
   {
@@ -212,7 +212,7 @@ window.BESTIARIO = [
     defesa: "Desconhecida", vida: "Desconhecida",
     local: "Necrópoles, ruínas fúnebres, caminhos amaldiçoados e marcos esquecidos",
     descricao: "Figura negra de armadura completa, espada longa e presença funerária esmagadora, surgindo em estradas mortas, cemitérios antigos e rotas onde juramentos foram quebrados. Não fala, mas parece julgar, escolher e punir aqueles que considera indignos.",
-    img: "assets/img/monstros/cavaleiro-sepulcral.jpg"
+    img: "assets/img/monstros/cavaleiro-sepulcral.png"
   },
   {
     nome: "Dragão de Cristal", categoria: "Lendário", ameaca: "Lendária", nivel: "Lendário",
@@ -220,7 +220,7 @@ window.BESTIARIO = [
     defesa: "Desconhecida", vida: "Desconhecida",
     local: "Cavernas de cristal, montanhas profundas e veios de Mana mineral",
     descricao: "Dracônico colossal de escamas facetadas e brilho mineral, ligado a cavernas de cristal, Mana condensada e profundezas montanhosas. Observa, mede e protege seu domínio com cálculo frio, reagindo apenas quando percebe ameaça real ou cobiça excessiva.",
-    img: "assets/img/monstros/dragao-de-cristal.jpg"
+    img: "assets/img/monstros/dragao-de-cristal.png"
   },
   {
     nome: "Grifo Solar", categoria: "Lendário", ameaca: "Lendária", nivel: "Lendário",
@@ -228,7 +228,7 @@ window.BESTIARIO = [
     defesa: "Desconhecida", vida: "Desconhecida",
     local: "Montanhas sagradas, picos solares e templos altos",
     descricao: "Criatura majestosa de asas douradas e porte celeste, associada a picos acima das nuvens, antigos santuários e lugares tocados por luz sagrada. Não age como predador comum; escolhe quando intervir, quando caçar e quando apenas observar do alto.",
-    img: "assets/img/monstros/grifo-solar.jpg"
+    img: "assets/img/monstros/grifo-solar.png"
   },
   {
     nome: "Serpente das Profundezas Frias", categoria: "Lendário", ameaca: "Lendária", nivel: "Lendário",
@@ -236,7 +236,7 @@ window.BESTIARIO = [
     defesa: "Desconhecida", vida: "Desconhecida",
     local: "Mares e quedas d'água ligadas aos Portais do Paraíso",
     descricao: "Entidade ancestral das águas ligadas às Lágrimas do Criador, colossal, silenciosa e quase impossível de descrever por completo. Marinheiros e peregrinos a conhecem por marés estranhas, cardumes em fuga e o brilho anormal da água antes do desastre.",
-    img: "assets/img/monstros/serpente-das-profundezas-frias.jpg"
+    img: "assets/img/monstros/serpente-das-profundezas-frias.png"
   },
   {
     nome: "Fênix Carmesim", categoria: "Lendário", ameaca: "Lendária", nivel: "Lendário",
@@ -244,7 +244,7 @@ window.BESTIARIO = [
     defesa: "Desconhecida", vida: "Desconhecida",
     local: "Vulcões, ruínas incendiadas, desertos quentes e montanhas de fogo",
     descricao: "Ave lendária de fogo vivo, cinza ardente e brilho vulcânico, que paira sobre ruínas queimadas, crateras e regiões marcadas por cataclismos antigos. Sua presença altera o clima, aquece a pedra e deixa rastros de brasa mesmo quando não combate.",
-    img: "assets/img/monstros/fenix-carmesim.jpg"
+    img: "assets/img/monstros/fenix-carmesim.png"
   }
   ,
   // ---------------- Territórios não-humanos ----------------
@@ -254,7 +254,7 @@ window.BESTIARIO = [
     defesa: 16, vida: 190,
     local: "Coração Verde e Raízes Antigas, nas Terras Élficas",
     descricao: "Ser feito de casca viva, raízes entrelaçadas e musgo luminoso, criado pela própria floresta para expulsar invasores que ameacem o Véu Verde. Move-se em silêncio absoluto entre as árvores e ataca com galhos que se comportam como lâminas quando provocado.",
-    img: "assets/img/monstros/guardiao-do-veu-verde.jpg"
+    img: "assets/img/monstros/guardiao-do-veu-verde.png"
   },
   {
     nome: "Verme de Granito", categoria: "Montanha e profundidade", ameaca: "Moderada a Alta", nivel: "4-6",
@@ -262,7 +262,7 @@ window.BESTIARIO = [
     defesa: 15, vida: 140,
     local: "Abismo Interior e túneis profundos das Terras Anãs",
     descricao: "Criatura cega e blindada que escava através da pedra maciça no Ventre de Pedra, atraída pelo calor de forjas e corpos vivos. Anões de Gryndak treinam para reconhecer o tremor característico de sua aproximação antes que rompa o piso de uma galeria.",
-    img: "assets/img/monstros/verme-de-granito.jpg"
+    img: "assets/img/monstros/verme-de-granito.png"
   },
   {
     nome: "Devorador de Areia", categoria: "Deserto e cinzas", ameaca: "Moderada", nivel: "3-5",
@@ -270,7 +270,7 @@ window.BESTIARIO = [
     defesa: 13, vida: 60,
     local: "Mar de Areia e Ruínas Ardentes, nas Terras Demoníacas",
     descricao: "Massa de areia animada por energia residual das Ruínas Ardentes, que assume forma vagamente humanoide para emboscar viajantes. Dissolve-se em uma nuvem de poeira quando destruído, apenas para se reformar horas depois se a energia da ruína próxima permanecer instável.",
-    img: "assets/img/monstros/devorador-de-areia.jpg"
+    img: "assets/img/monstros/devorador-de-areia.png"
   },
   {
     nome: "Cão de Brasa de Vrak'Thon", categoria: "Deserto e cinzas", ameaca: "Alta", nivel: "6",
@@ -278,7 +278,7 @@ window.BESTIARIO = [
     defesa: 15, vida: 120,
     local: "Borda das Cinzas e proximidades de Vrak'Thon",
     descricao: "Fera de pelagem incandescente criada ou domesticada por castas altas demoníacas para patrulhar as fronteiras de Vrak'Thon. Caça em pares, deixando marcas de queimadura no solo por onde passa, e é temida até por goblins de Skral que conhecem bem o deserto.",
-    img: "assets/img/monstros/cao-de-brasa.jpg"
+    img: "assets/img/monstros/cao-de-brasa.png"
   }
 ];
 

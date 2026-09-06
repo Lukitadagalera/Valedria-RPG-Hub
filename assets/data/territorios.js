@@ -19,7 +19,7 @@ window.TERRITORIOS = [
       { com: "Anões", texto: "Rivalidade histórica por território de fronteira no noroeste; desentendimentos comerciais frequentes por madeira." },
       { com: "Demônios", texto: "Desconfiança profunda, sem contato diplomático ativo, monitoram qualquer movimentação demoníaca com alarme." }
     ],
-    img: "assets/img/territorios/terras-elficas.jpg"
+    img: "assets/img/territorios/terras-elficas.png"
   },
   {
     nome: "Terras Anãs — O Ventre de Pedra",
@@ -47,7 +47,7 @@ window.TERRITORIOS = [
       { com: "Elfos", texto: "Rivalidade histórica por madeira e fronteira, desconfiança mútua constante, sem conflito armado recente." },
       { com: "Demônios", texto: "Historicamente hostil, memória de conflitos antigos guardada como cicatriz cultural pelos mais velhos." }
     ],
-    img: "assets/img/territorios/terras-anas.jpg"
+    img: "assets/img/territorios/terras-anas.png"
   },
   {
     nome: "Terras Demoníacas — As Areias da Maldição",
@@ -75,6 +75,6 @@ window.TERRITORIOS = [
       { com: "Elfos", texto: "Nenhum contato diplomático; os elfos monitoram de longe." },
       { com: "Anões", texto: "Hostilidade histórica sem conflito ativo recente; anões mais velhos guardam memórias de incursões antigas." }
     ],
-    img: "assets/img/territorios/terras-demoniacas.jpg"
+    img: "assets/img/territorios/terras-demoniacas.png"
   }
 ];

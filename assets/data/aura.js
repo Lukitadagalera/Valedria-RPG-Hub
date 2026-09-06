@@ -22,7 +22,7 @@ window.AURA_CAMINHOS = [
   {
     nome: "Caminho da Força", foco: "Poder físico bruto e impacto", atributos_bonus: ["Força"],
     distribuicao: "+1 de Força a cada grau, até +6 de Força no total",
-    img: "assets/img/aura/caminho-da-forca.jpg",
+    img: "assets/img/aura/caminho-da-forca.png",
     tecnicas: [
       { grau: "Aprendiz", nome: "Punho Firme", folego: 3, efeito: "Um golpe físico ganha +2 de dano e ignora parte da armadura leve do alvo." },
       { grau: "Guerreiro", nome: "Impacto Assentado", folego: 4, efeito: "Um ataque corpo a corpo com acerto derruba o alvo se ele falhar em teste de Constituição dificuldade 13." },
@@ -35,7 +35,7 @@ window.AURA_CAMINHOS = [
   {
     nome: "Caminho da Velocidade", foco: "Reflexo, mobilidade e precisão", atributos_bonus: ["Destreza"],
     distribuicao: "+1 de Destreza a cada grau, até +6 de Destreza no total",
-    img: "assets/img/aura/caminho-da-velocidade.jpg",
+    img: "assets/img/aura/caminho-da-velocidade.png",
     tecnicas: [
       { grau: "Aprendiz", nome: "Passo Rápido", folego: 3, efeito: "Concede um deslocamento extra sem gastar ação, útil para reposicionamento ou fuga curta." },
       { grau: "Guerreiro", nome: "Corte Duplo", folego: 4, efeito: "Permite dois ataques leves em sequência contra o mesmo alvo ou alvos adjacentes, cada um com o dano normal da arma." },
@@ -48,7 +48,7 @@ window.AURA_CAMINHOS = [
   {
     nome: "Caminho da Morte", foco: "Resistência letal e golpes decisivos", atributos_bonus: ["Força", "Constituição"],
     distribuicao: "+1 alternando entre Força e Constituição a cada grau, até +3 em cada atributo (+6 no total)",
-    img: "assets/img/aura/caminho-da-morte.jpg",
+    img: "assets/img/aura/caminho-da-morte.png",
     tecnicas: [
       { grau: "Aprendiz", nome: "Golpe Certeiro", folego: 3, efeito: "Ataque que ignora resistências de criaturas de baixa ameaça, garantindo dano completo mesmo contra couraças leves." },
       { grau: "Guerreiro", nome: "Peso da Lâmina", folego: 4, efeito: "Um ataque com acerto causa sangramento: 1d4 de dano adicional na rodada seguinte." },
@@ -61,7 +61,7 @@ window.AURA_CAMINHOS = [
   {
     nome: "Caminho da Técnica", foco: "Estratégia, liderança e domínio de armas", atributos_bonus: ["Destreza", "Sabedoria", "Carisma"],
     distribuicao: "+1 rotativo entre Destreza, Sabedoria e Carisma a cada grau, até +2 em cada atributo (+6 no total)",
-    img: "assets/img/aura/caminho-da-tecnica.jpg",
+    img: "assets/img/aura/caminho-da-tecnica.png",
     tecnicas: [
       { grau: "Aprendiz", nome: "Leitura de Combate", folego: 3, efeito: "Revela a próxima ação pretendida de um inimigo antes que ela ocorra, concedendo vantagem para reagir a ela." },
       { grau: "Guerreiro", nome: "Manobra Ensaiada", folego: 4, efeito: "Concede vantagem no próximo ataque de um aliado próximo que siga a instrução do usuário." },

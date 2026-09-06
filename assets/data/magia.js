@@ -29,7 +29,7 @@ window.MANA_CUSTO_DANO = [
 
 window.GRIMORIO = [
   {
-    escola: "Água", img: "assets/img/magia/escola-agua.jpg",
+    escola: "Água", img: "assets/img/magia/escola-agua.png",
     magias: [
       { grau: "Aprendiz", nome: "Chuva Purificadora", custo: "4 Mana", alcance: "curto", efeito: "Cria ou purifica até um litro de água; limpa ferimentos leves e remove sujeira ou venenos de contato leves." },
       { grau: "Aprendiz", nome: "Névoa Refrescante", custo: "5 Mana", alcance: "área pequena", efeito: "Cria névoa em área pequena por uma cena; dá vantagem em Furtividade dentro dela e reduz efeitos de calor." },
@@ -43,7 +43,7 @@ window.GRIMORIO = [
     ]
   },
   {
-    escola: "Terra", img: "assets/img/magia/escola-terra.jpg",
+    escola: "Terra", img: "assets/img/magia/escola-terra.png",
     magias: [
       { grau: "Aprendiz", nome: "Firmeza da Pedra", custo: "5 Mana", alcance: "toque", efeito: "Repara fissuras pequenas ou reforça porta, ponte curta ou parede simples contra dano leve." },
       { grau: "Aprendiz", nome: "Mão de Barro", custo: "6 Mana", alcance: "curto", efeito: "Molda argila ou terra em ferramenta, selo, barreira pequena ou objeto simples de uso único." },
@@ -57,7 +57,7 @@ window.GRIMORIO = [
     ]
   },
   {
-    escola: "Fogo", img: "assets/img/magia/escola-fogo.jpg",
+    escola: "Fogo", img: "assets/img/magia/escola-fogo.png",
     magias: [
       { grau: "Aprendiz", nome: "Chama Pequena", custo: "4 Mana", alcance: "curto", efeito: "Produz uma chama controlada; ilumina, acende fogo e pode causar 1d4 de dano a curta distância." },
       { grau: "Aprendiz", nome: "Brasa Viajante", custo: "6 Mana", alcance: "pessoal", efeito: "Mantém uma brasa utilizável por um dia, mesmo com vento ou umidade leve." },
@@ -71,7 +71,7 @@ window.GRIMORIO = [
     ]
   },
   {
-    escola: "Ar", img: "assets/img/magia/escola-ar.jpg",
+    escola: "Ar", img: "assets/img/magia/escola-ar.png",
     magias: [
       { grau: "Aprendiz", nome: "Sopro Direcionado", custo: "4 Mana", alcance: "curto", efeito: "Rajada curta que apaga chamas, move objetos leves ou desequilibra um alvo." },
       { grau: "Aprendiz", nome: "Passo Leve", custo: "5 Mana", alcance: "pessoal", efeito: "Reduz o peso do conjurador por uma cena, concedendo vantagem em saltos, quedas curtas e deslocamento silencioso sobre superfícies instáveis." },
@@ -85,7 +85,7 @@ window.GRIMORIO = [
     ]
   },
   {
-    escola: "Espacial", img: "assets/img/magia/escola-espacial.jpg",
+    escola: "Espacial", img: "assets/img/magia/escola-espacial.png",
     magias: [
       { grau: "Aprendiz", nome: "Marca de Retorno", custo: "6 Mana", alcance: "toque", efeito: "Fixa um ponto de referência mágica por um dia; o conjurador sente a direção e distância aproximada até ele." },
       { grau: "Aprendiz", nome: "Empurrão Curto", custo: "5 Mana", alcance: "curto", efeito: "Desloca um objeto pequeno ou alvo leve até 2 metros sem causar dano — útil para desarmar armadilhas simples ou reposicionar objetos." },
@@ -99,7 +99,7 @@ window.GRIMORIO = [
     ]
   },
   {
-    escola: "Barreiras", img: "assets/img/magia/escola-barreiras.jpg",
+    escola: "Barreiras", img: "assets/img/magia/escola-barreiras.png",
     magias: [
       { grau: "Aprendiz", nome: "Escudo Breve", custo: "5 Mana", alcance: "pessoal ou toque", efeito: "Concede +2 na Defesa do alvo por 1 rodada." },
       { grau: "Aprendiz", nome: "Selo Simples", custo: "6 Mana", alcance: "toque", efeito: "Sela uma porta ou baú pequeno contra abertura casual; qualquer teste de Força ou Destreza para forçá-lo recebe desvantagem." },
@@ -113,7 +113,7 @@ window.GRIMORIO = [
     ]
   },
   {
-    escola: "Cura", img: "assets/img/magia/escola-cura.jpg",
+    escola: "Cura", img: "assets/img/magia/escola-cura.png",
     magias: [
       { grau: "Aprendiz", nome: "Fechar Ferida", custo: "5 Mana", alcance: "toque", efeito: "Restaura 1d6+1 de Vida a um único alvo." },
       { grau: "Aprendiz", nome: "Alívio da Dor", custo: "4 Mana", alcance: "toque", efeito: "Remove dor e desconforto leve por uma cena, concedendo vantagem em um teste afetado por ferimento leve." },
