@@ -11,11 +11,11 @@ window.DOSSIES_CIDADES = [
     tipo: "Vila inicial",
     populacao: "150–250 habitantes",
     geografia: "Pequena vila agrícola no interior de Valmeira, cercada por campos de trigo, um riacho e a borda de uma floresta antiga, sem muralhas.",
-    locaisInternos: ["Taverna com quartos simples", "Forja pequena", "Capela de pedra", "Moinho junto ao rio", "Feira semanal"],
-    npcs: ["Mara, a Curandeira", "Doran, o Vigia"],
+    locaisInternos: ["Taverna com quartos simples", "Forja pequena", "Capela de pedra / orfanato", "Moinho junto ao rio", "Feira semanal"],
+    npcs: ["Mara, a Porta-voz", "Irmã Iria", "Doran", "Fazendeira de Amieiro", "Artesã de Amieiro", "Mercador de Amieiro"],
     missoesGuilda: ["O Poço Silencioso", "Carroça Perdida na Estrada de Ponte Alta", "A Floresta que Sussurra"],
     faccoesPresentes: [],
-    ganchoPublico: "Ataque recente à vila, aparentemente organizado — moradores suspeitam que crianças e jovens foram alvo específico, embora o motivo exato permaneça desconhecido."
+    ganchoPublico: "Um acontecimento recente deixou a vila em alerta — os detalhes exatos do que houve e quem esteve envolvido cabem ao mestre definir de acordo com os rumos da campanha."
   },
   {
     nome: "Ponte Alta",

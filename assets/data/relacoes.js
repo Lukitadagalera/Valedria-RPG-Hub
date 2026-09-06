@@ -4,8 +4,8 @@
    sociedade.js, faccoes.js e mestre.js. Não introduz nomes novos.
    ============================================================ */
 window.RELACOES_NPCS = [
-  { a: "Mara, a Curandeira", b: "Doran, o Vigia", tipo: "Colegas de vila / culpa", contexto: "Doran reportava sobre os jovens que Mara tentou proteger no ataque a Amieiro." },
-  { a: "Doran, o Vigia", b: "Ministro do Rei", tipo: "Subordinado involuntário", contexto: "Doran acredita reportar para um programa de proteção de talentos, mas serve ao esquema do Ministro." },
+  { a: "Mara, a Porta-voz", b: "Irmã Iria", tipo: "Parceria de liderança local", contexto: "Mara resolve assuntos práticos e políticos da vila, enquanto Iria cuida do lado espiritual e social — juntas mantêm Amieiro funcionando." },
+  { a: "Irmã Iria", b: "Doran", tipo: "Auxiliar de confiança", contexto: "Doran ajuda Iria com o orfanato e a igreja, conhecendo bem as crianças e famílias da vila." },
   { a: "Liga dos Caminhos", b: "Mercenários de Amieiro", tipo: "Cúmplice involuntário", contexto: "A Liga pode ter vendido informação aos mercenários sem saber o propósito real do ataque." },
   { a: "Osmar Vantte", b: "Liga dos Caminhos", tipo: "Nó confiável da rede", contexto: "Principal ponto de contato da Liga dos Caminhos em Ponte Alta." },
   { a: "Mestra Oriane", b: "Osmar Vantte", tipo: "Concorrência comercial discreta", contexto: "Ambos operam o fluxo comercial de Ponte Alta por vias opostas — uma oficial, outro informal." },
