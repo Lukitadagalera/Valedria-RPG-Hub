@@ -2,21 +2,49 @@
    PLAYER DE MÚSICA — Valédria
    O player é injetado globalmente ao lado do botão de tema.
    As faixas ficam cadastradas em assets/data/musicas.js.
+
+   Comportamento:
+   - tenta iniciar a trilha automaticamente;
+   - se o navegador bloquear autoplay com som, inicia na primeira
+     interação do usuário com a página;
+   - preserva faixa, posição, volume e intenção de reprodução;
+   - ao navegar entre páginas, retoma a faixa do ponto salvo;
+   - não pausa apenas porque a aba ficou em segundo plano.
    ============================================================ */
 (function () {
-  var STORAGE_KEY = 'valedria-music-state';
+  var STORAGE_KEY = 'valedria-music-state-v2';
+  var LEGACY_STORAGE_KEY = 'valedria-music-state';
   var playlistLoaded = false;
 
   function safeParse(value) {
     try { return JSON.parse(value); } catch (e) { return null; }
   }
 
+  function saveRawState(key, state) {
+    try { localStorage.setItem(key, JSON.stringify(state)); } catch (e) {}
+  }
+
   function getSavedState() {
-    try { return safeParse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { return {}; }
+    try {
+      var current = safeParse(localStorage.getItem(STORAGE_KEY));
+      if (current) return current;
+
+      var legacy = safeParse(localStorage.getItem(LEGACY_STORAGE_KEY)) || {};
+      var migrated = {
+        index: Number.isInteger(legacy.index) ? legacy.index : 0,
+        volume: typeof legacy.volume === 'number' ? legacy.volume : 0.45,
+        time: typeof legacy.time === 'number' ? legacy.time : 0,
+        playing: true
+      };
+      saveRawState(STORAGE_KEY, migrated);
+      return migrated;
+    } catch (e) {
+      return { index: 0, volume: 0.45, time: 0, playing: true };
+    }
   }
 
   function saveState(state) {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+    saveRawState(STORAGE_KEY, state);
   }
 
   function formatTime(seconds) {
@@ -85,7 +113,7 @@
         '<input class="music-progress" type="range" min="0" max="1000" value="0" aria-label="Progresso da música">' +
         '<div class="music-time"><span class="music-current">0:00</span><span class="music-duration">0:00</span></div>' +
         '<label class="music-volume-row"><span>Volume</span><input class="music-volume" type="range" min="0" max="100" value="45" aria-label="Volume"></label>' +
-        '<audio class="music-audio" preload="metadata"></audio>' +
+        '<audio class="music-audio" preload="auto" playsinline></audio>' +
       '</div>';
 
     var themeButton = actions.querySelector('[data-theme-toggle]');
@@ -109,15 +137,38 @@
     var saved = getSavedState();
     var index = Number.isInteger(saved.index) ? saved.index : 0;
     if (index < 0 || index >= tracks.length) index = 0;
-    audio.volume = typeof saved.volume === 'number' ? Math.max(0, Math.min(saved.volume, 1)) : 0.45;
+
+    var desiredPlaying = saved.playing !== false;
+    var loadingTrack = false;
+    var unlockArmed = false;
+    var lastPersistAt = 0;
+
+    audio.volume = typeof saved.volume === 'number'
+      ? Math.max(0, Math.min(saved.volume, 1))
+      : 0.45;
+    audio.autoplay = true;
     volume.value = Math.round(audio.volume * 100);
 
     function persist() {
-      saveState({ index: index, volume: audio.volume, time: audio.currentTime || 0, playing: !audio.paused });
+      saveState({
+        index: index,
+        volume: audio.volume,
+        time: audio.currentTime || 0,
+        playing: desiredPlaying
+      });
+    }
+
+    function persistThrottled() {
+      var now = Date.now();
+      if (now - lastPersistAt < 1200) return;
+      lastPersistAt = now;
+      persist();
     }
 
     function setPlayingUI(isPlaying) {
       toggle.classList.toggle('is-playing', isPlaying);
+      toggle.removeAttribute('data-autoplay-blocked');
+      toggle.setAttribute('aria-label', isPlaying ? 'Música tocando — abrir player' : 'Abrir player de música');
       play.setAttribute('aria-label', isPlaying ? 'Pausar' : 'Reproduzir');
       play.innerHTML = isPlaying
         ? '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>'
@@ -125,7 +176,9 @@
     }
 
     function setDisabled(disabled) {
-      [select, play, prev, next, progress].forEach(function (el) { el.disabled = disabled; });
+      [select, play, prev, next, progress].forEach(function (el) {
+        el.disabled = disabled;
+      });
     }
 
     function updateProgress() {
@@ -136,10 +189,66 @@
       duration.textContent = formatTime(total);
     }
 
+    function cleanupUnlock() {
+      if (!unlockArmed) return;
+      unlockArmed = false;
+      document.removeEventListener('pointerdown', unlockPlayback, true);
+      document.removeEventListener('keydown', unlockPlayback, true);
+    }
+
+    function unlockPlayback() {
+      cleanupUnlock();
+      if (!desiredPlaying || !audio.paused || !tracks.length) return;
+      attemptPlay();
+    }
+
+    function armAutoplayUnlock() {
+      if (unlockArmed || !desiredPlaying) return;
+      unlockArmed = true;
+      toggle.setAttribute('data-autoplay-blocked', '');
+      toggle.setAttribute('aria-label', 'Música pronta — interaja com a página para iniciar');
+      document.addEventListener('pointerdown', unlockPlayback, true);
+      document.addEventListener('keydown', unlockPlayback, true);
+    }
+
+    function attemptPlay() {
+      if (!tracks.length || !desiredPlaying || !audio.src) return;
+
+      var promise;
+      try {
+        promise = audio.play();
+      } catch (e) {
+        armAutoplayUnlock();
+        return;
+      }
+
+      if (promise && typeof promise.catch === 'function') {
+        promise.catch(function (error) {
+          setPlayingUI(false);
+          if (!error || error.name === 'NotAllowedError' || error.name === 'AbortError') {
+            armAutoplayUnlock();
+          }
+        });
+      }
+    }
+
+    function setMediaSessionTrack(track) {
+      if (!('mediaSession' in navigator) || typeof MediaMetadata === 'undefined') return;
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: track.titulo,
+          artist: track.artista || 'Valédria'
+        });
+      } catch (e) {}
+    }
+
     function loadTrack(newIndex, keepSavedTime) {
       if (!tracks.length) return;
+
+      loadingTrack = true;
       index = (newIndex + tracks.length) % tracks.length;
       var track = tracks[index];
+
       audio.src = track.arquivo;
       title.textContent = track.titulo;
       artist.textContent = track.artista || 'Valédria';
@@ -147,30 +256,35 @@
       progress.value = 0;
       currentTime.textContent = '0:00';
       duration.textContent = '0:00';
+      setMediaSessionTrack(track);
+
       audio.addEventListener('loadedmetadata', function restoreTime() {
         audio.removeEventListener('loadedmetadata', restoreTime);
+
         if (keepSavedTime && typeof saved.time === 'number' && saved.time > 0 && saved.time < audio.duration) {
           audio.currentTime = saved.time;
         }
-        updateProgress();
-      });
-      persist();
-    }
 
-    function playCurrent() {
-      if (!tracks.length) return;
-      var promise = audio.play();
-      if (promise && typeof promise.catch === 'function') {
-        promise.catch(function () { setPlayingUI(false); });
-      }
+        loadingTrack = false;
+        updateProgress();
+        persist();
+
+        if (desiredPlaying) attemptPlay();
+      });
+
+      audio.load();
     }
 
     if (!tracks.length) {
       select.innerHTML = '<option>Nenhuma faixa cadastrada</option>';
       setDisabled(true);
+      desiredPlaying = false;
+      persist();
     } else {
       select.innerHTML = tracks.map(function (track, i) {
-        return '<option value="' + i + '">' + String(track.titulo).replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</option>';
+        return '<option value="' + i + '">' +
+          String(track.titulo).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+          '</option>';
       }).join('');
       setDisabled(false);
       loadTrack(index, true);
@@ -204,31 +318,41 @@
     });
 
     play.addEventListener('click', function () {
-      if (audio.paused) playCurrent(); else audio.pause();
+      if (audio.paused) {
+        desiredPlaying = true;
+        persist();
+        attemptPlay();
+      } else {
+        desiredPlaying = false;
+        cleanupUnlock();
+        audio.pause();
+        persist();
+      }
     });
 
     prev.addEventListener('click', function () {
-      var wasPlaying = !audio.paused;
+      desiredPlaying = !audio.paused || desiredPlaying;
+      saved.time = 0;
       loadTrack(index - 1, false);
-      if (wasPlaying) playCurrent();
     });
 
     next.addEventListener('click', function () {
-      var wasPlaying = !audio.paused;
+      desiredPlaying = !audio.paused || desiredPlaying;
+      saved.time = 0;
       loadTrack(index + 1, false);
-      if (wasPlaying) playCurrent();
     });
 
     select.addEventListener('change', function () {
-      var wasPlaying = !audio.paused;
+      desiredPlaying = !audio.paused || desiredPlaying;
+      saved.time = 0;
       loadTrack(Number.parseInt(select.value, 10) || 0, false);
-      if (wasPlaying) playCurrent();
     });
 
     progress.addEventListener('input', function () {
       if (!audio.duration) return;
       audio.currentTime = (Number(progress.value) / 1000) * audio.duration;
       updateProgress();
+      persist();
     });
 
     volume.addEventListener('input', function () {
@@ -236,20 +360,85 @@
       persist();
     });
 
-    audio.addEventListener('play', function () { setPlayingUI(true); persist(); });
-    audio.addEventListener('pause', function () { setPlayingUI(false); persist(); });
-    audio.addEventListener('timeupdate', updateProgress);
-    audio.addEventListener('durationchange', updateProgress);
-    audio.addEventListener('ended', function () {
-      loadTrack(index + 1, false);
-      playCurrent();
+    audio.addEventListener('play', function () {
+      desiredPlaying = true;
+      cleanupUnlock();
+      setPlayingUI(true);
+      persist();
     });
+
+    audio.addEventListener('pause', function () {
+      setPlayingUI(false);
+      if (!loadingTrack) persist();
+    });
+
+    audio.addEventListener('timeupdate', function () {
+      updateProgress();
+      persistThrottled();
+    });
+
+    audio.addEventListener('durationchange', updateProgress);
+
+    audio.addEventListener('ended', function () {
+      desiredPlaying = true;
+      saved.time = 0;
+      loadTrack(index + 1, false);
+    });
+
     audio.addEventListener('error', function () {
       artist.textContent = 'Arquivo de áudio não encontrado';
       setPlayingUI(false);
     });
 
+    function resumeIfWanted() {
+      if (desiredPlaying && audio.paused && !audio.ended && tracks.length) {
+        attemptPlay();
+      }
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        persist();
+      } else {
+        resumeIfWanted();
+      }
+    });
+
+    window.addEventListener('pageshow', resumeIfWanted);
+    window.addEventListener('pagehide', persist);
     window.addEventListener('beforeunload', persist);
+
+    if ('mediaSession' in navigator) {
+      try {
+        navigator.mediaSession.setActionHandler('play', function () {
+          desiredPlaying = true;
+          persist();
+          attemptPlay();
+        });
+        navigator.mediaSession.setActionHandler('pause', function () {
+          desiredPlaying = false;
+          cleanupUnlock();
+          audio.pause();
+          persist();
+        });
+        navigator.mediaSession.setActionHandler('previoustrack', function () {
+          desiredPlaying = true;
+          saved.time = 0;
+          loadTrack(index - 1, false);
+        });
+        navigator.mediaSession.setActionHandler('nexttrack', function () {
+          desiredPlaying = true;
+          saved.time = 0;
+          loadTrack(index + 1, false);
+        });
+        navigator.mediaSession.setActionHandler('seekto', function (details) {
+          if (typeof details.seekTime !== 'number' || !audio.duration) return;
+          audio.currentTime = Math.max(0, Math.min(details.seekTime, audio.duration));
+          updateProgress();
+          persist();
+        });
+      } catch (e) {}
+    }
   }
 
   function start() {
