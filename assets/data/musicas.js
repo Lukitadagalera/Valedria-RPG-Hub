@@ -10,5 +10,9 @@
    { titulo: "Tema de Valédria", artista: "Trilha oficial", arquivo: "assets/audio/tema-valedria.mp3" }
    ============================================================ */
 window.VALEDRIA_MUSICAS = [
-  // Adicione as músicas aqui.
+  {
+    titulo: "Frieren Beyond Journey's End OST",
+    artista: "Frieren: Beyond Journey's End",
+    arquivo: "assets/audio/Frieren Beyond Journey's End OST.mp3"
+  }
 ];
