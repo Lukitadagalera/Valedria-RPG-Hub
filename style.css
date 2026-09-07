@@ -3,7 +3,7 @@
 /* ============================================================
    RETRATOS 3:4 + AMPLIAÇÃO DE IMAGENS
    Mantém o sistema visual original em style-core.css e concentra
-   aqui apenas as extensões de imagem usadas pelo renderer global.
+   aqui apenas as extensões visuais globais.
    ============================================================ */
 
 .img-zoom {
@@ -31,17 +31,10 @@
   background: var(--color-surface-2);
   border-color: var(--color-primary);
 }
-.img-zoom svg {
-  width: 20px;
-  height: 20px;
-}
-.img-slot img.is-broken ~ .img-zoom {
-  display: none;
-}
+.img-zoom svg { width: 20px; height: 20px; }
+.img-slot img.is-broken ~ .img-zoom { display: none; }
 
-body.vr-lightbox-open {
-  overflow: hidden;
-}
+body.vr-lightbox-open { overflow: hidden; }
 .vr-lightbox {
   position: fixed;
   inset: 0;
@@ -100,22 +93,161 @@ body.vr-lightbox-open {
   cursor: pointer;
 }
 .vr-lightbox__close:hover,
-.vr-lightbox__close:focus-visible {
-  background: rgba(45, 35, 24, 0.98);
+.vr-lightbox__close:focus-visible { background: rgba(45, 35, 24, 0.98); }
+
+/* ============================================================
+   PLAYER DE MÚSICA GLOBAL
+   ============================================================ */
+.music-control { position: relative; }
+.music-toggle { position: relative; }
+.music-toggle.is-playing::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 18%, transparent);
 }
+.music-panel[hidden] { display: none !important; }
+.music-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 260;
+  width: min(340px, calc(100vw - 32px));
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in oklab, var(--color-surface) 96%, transparent);
+  color: var(--color-text);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(18px);
+}
+.music-panel__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.music-panel__head > div { display: grid; gap: 2px; }
+.music-panel__head strong { font-size: var(--text-base); }
+.music-close {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.music-close:hover,
+.music-close:focus-visible { color: var(--color-text); border-color: var(--color-primary); }
+.music-now {
+  min-height: 48px;
+  display: grid;
+  gap: 2px;
+  margin-bottom: var(--space-3);
+}
+.music-now__title {
+  overflow: hidden;
+  color: var(--color-text);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.music-now__artist {
+  overflow: hidden;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.music-track-select {
+  width: 100%;
+  margin-bottom: var(--space-3);
+  padding: 9px 34px 9px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  font: inherit;
+}
+.music-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 var(--space-3);
+}
+.music-btn {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform var(--transition-interactive), border-color var(--transition-interactive), background var(--transition-interactive);
+}
+.music-btn:hover:not(:disabled),
+.music-btn:focus-visible:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
+  background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface-2));
+}
+.music-play { width: 48px; height: 48px; background: color-mix(in oklab, var(--color-primary) 14%, var(--color-surface-2)); }
+.music-btn svg { width: 18px; height: 18px; }
+.music-play svg { width: 21px; height: 21px; }
+.music-btn:disabled,
+.music-track-select:disabled,
+.music-progress:disabled { opacity: 0.42; cursor: not-allowed; }
+.music-progress,
+.music-volume {
+  width: 100%;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+.music-time {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.music-volume-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+.music-audio { display: none; }
 
 @media (max-width: 640px) {
-  .vr-lightbox {
-    padding: var(--space-3);
-  }
-  .vr-lightbox__close {
-    top: 6px;
-    right: 6px;
-  }
-  .img-zoom {
-    width: 38px;
-    height: 38px;
-    right: var(--space-2);
-    bottom: var(--space-2);
+  .vr-lightbox { padding: var(--space-3); }
+  .vr-lightbox__close { top: 6px; right: 6px; }
+  .img-zoom { width: 38px; height: 38px; right: var(--space-2); bottom: var(--space-2); }
+  .music-panel {
+    position: fixed;
+    top: 76px;
+    right: 12px;
+    left: auto;
+    width: min(340px, calc(100vw - 24px));
   }
 }
