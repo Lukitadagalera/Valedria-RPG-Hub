@@ -36,6 +36,44 @@
   root.setAttribute('data-theme', current);
   setCookie('vcodex_theme', current, 365);
 
+  function ensureBookThirteenNavigation() {
+    document.querySelectorAll('.nav-scroll').forEach(function (nav) {
+      var groups = Array.prototype.slice.call(nav.children);
+      groups.forEach(function (group) {
+        var list = group.querySelector('.nav-list');
+        if (!list || !list.querySelector('a[href^="livro-12-mestre.html"]')) return;
+
+        var title = group.querySelector('.nav-group-title');
+        if (title) title.textContent = 'Os Treze Livros';
+
+        if (!list.querySelector('a[href^="livro-13-mapa.html"]')) {
+          var link = document.createElement('a');
+          link.className = 'nav-link';
+          link.href = 'livro-13-mapa.html';
+          link.innerHTML = '<span class="num">XIII</span> Livro XIII · Mapa e Aventuras';
+          var page = (location.pathname.split('/').pop() || 'index.html').split('?')[0];
+          if (page === 'livro-13-mapa.html') link.setAttribute('aria-current', 'page');
+          link.addEventListener('click', function () { document.body.classList.remove('nav-open'); });
+          list.appendChild(link);
+        }
+      });
+    });
+
+    document.querySelectorAll('.book-toc').forEach(function (toc) {
+      if (!toc.querySelector('a[href^="livro-13-mapa.html"]')) {
+        var link = document.createElement('a');
+        link.href = 'livro-13-mapa.html';
+        link.textContent = 'XIII · Mapa e Aventuras';
+        toc.appendChild(link);
+      }
+    });
+
+    var masterCardText = document.querySelector('.book-card[href^="livro-12-mestre.html"] p');
+    if (masterCardText) {
+      masterCardText.textContent = 'Guia para narrar Valédria: campanhas, aventuras, NPCs, facções, encontros, consequências e ferramentas do Mestre.';
+    }
+  }
+
   function ensureChroniclesNavigation() {
     var nav = document.querySelector('.nav-scroll');
     if (nav && !nav.querySelector('[data-cronicas-nav]')) {
@@ -85,6 +123,7 @@
     });
   }
 
+  ensureBookThirteenNavigation();
   ensureChroniclesNavigation();
   propagateTheme(current);
   syncThemeIcon();
@@ -120,6 +159,7 @@
   });
 
   document.addEventListener('DOMContentLoaded', function () {
+    ensureBookThirteenNavigation();
     ensureChroniclesNavigation();
     propagateTheme(current);
 
