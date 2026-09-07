@@ -20,7 +20,8 @@ window.VR = (function () {
   function isPortraitImage(src) {
     var s = String(src || '').toLowerCase();
     if (!s) return false;
-    if (/assets\/img\/(?:racas|monstros)\//.test(s)) return true;
+    if (/assets\/img\/racas\//.test(s)) return s.indexOf('transformacao-de-linhagem') === -1;
+    if (/assets\/img\/monstros\//.test(s)) return true;
     if (/assets\/img\/faccoes\//.test(s) && s.indexOf('quadro-de-missoes') === -1) return true;
     if (/assets\/img\/sociedade\//.test(s)) {
       return !/(?:tres-rostos|calendario-valedria|marco-)/.test(s);
@@ -31,6 +32,65 @@ window.VR = (function () {
   function resolveImageRatio(src, ratio) {
     return isPortraitImage(src) ? '3/4' : normalizeRatio(ratio);
   }
+
+  function applyContentAdjustments() {
+    if (Array.isArray(window.FACCOES_NPCS)) {
+      var hasNpc = function (name) {
+        return window.FACCOES_NPCS.some(function (npc) { return npc.nome === name; });
+      };
+
+      if (!hasNpc('Auror, o Professor')) {
+        window.FACCOES_NPCS.push({
+          grupo: 'Academia e magia',
+          nome: 'Auror, o Professor',
+          papel: 'Professor da Academia de Valédria especializado em história arcana, teoria de linhagens e fenômenos mágicos raros. É conhecido por transformar relatos antigos e registros incompletos em hipóteses úteis para expedições, embora sua curiosidade acadêmica frequentemente o leve a investigar assuntos que outros magos prefeririam deixar esquecidos.',
+          img: 'assets/img/sociedade/auror-o-professor.png'
+        });
+      }
+
+      if (!hasNpc('Klein, o Perseguidor')) {
+        window.FACCOES_NPCS.push({
+          grupo: 'Vilões e ameaças',
+          nome: 'Klein, o Perseguidor',
+          papel: 'Rastreador persistente conhecido por seguir alvos através de estradas, vilas e regiões selvagens por longos períodos. Trabalha por contratos e favores difíceis de recusar, reunindo pistas com paciência e aparecendo quando seus alvos acreditam que já despistaram qualquer perseguição.',
+          img: 'assets/img/sociedade/klein-o-perseguidor.png'
+        });
+      }
+    }
+
+    if (window.ANOES && Array.isArray(window.ANOES.clas)) {
+      var clanImages = {
+        'Clã Ferro-Fundo': 'assets/img/racas/cla-ferro-fundo.png',
+        'Clã Pedra-Funda': 'assets/img/racas/cla-pedra-funda.png',
+        'Clã Chama-Antiga': 'assets/img/racas/cla-chama-antiga.png',
+        'Clã Veio-Negro': 'assets/img/racas/cla-veio-negro.png'
+      };
+      window.ANOES.clas.forEach(function (clan) {
+        if (clanImages[clan.nome]) clan.img = clanImages[clan.nome];
+      });
+    }
+
+    if (Array.isArray(window.BESTIARIO)) {
+      var devoradorIndex = window.BESTIARIO.findIndex(function (creature) {
+        return creature.nome === 'Devorador de Areia';
+      });
+
+      if (devoradorIndex !== -1) {
+        var devorador = window.BESTIARIO.splice(devoradorIndex, 1)[0];
+        devorador.categoria = 'Lendário';
+        devorador.ameaca = 'Lendária';
+        devorador.nivel = 'Lendário';
+        devorador.atributos = null;
+        devorador.defesa = 'Desconhecida';
+        devorador.vida = 'Desconhecida';
+        devorador.local = 'Mar de Areia e Ruínas Ardentes, nas Terras Demoníacas';
+        devorador.descricao = 'Entidade lendária do Mar de Areia, formada por uma massa colossal de areia animada pela energia residual das Ruínas Ardentes. Sua presença altera dunas e rotas inteiras, fazendo viajantes desaparecerem em tempestades súbitas. Mesmo quando sua forma é desfeita, histórias antigas afirmam que ela pode se recompor enquanto a energia das ruínas permanecer ativa.';
+        window.BESTIARIO.push(devorador);
+      }
+    }
+  }
+
+  applyContentAdjustments();
 
   function ensureLightbox() {
     var lightbox = el('#vr-lightbox');
@@ -153,6 +213,25 @@ window.VR = (function () {
     );
   }
 
+  function injectTransformationArt() {
+    var text = el('#transformacao-texto');
+    if (!text) return;
+    var section = text.closest ? text.closest('section') : null;
+    if (!section || el('.transformacao-linhagem-art', section)) return;
+
+    var art = document.createElement('div');
+    art.className = 'transformacao-linhagem-art';
+    art.style.marginTop = 'var(--space-6)';
+    art.innerHTML = figure(
+      'assets/img/racas/transformacao-de-linhagem.png',
+      'Transformação de Linhagem',
+      'Representação da Transformação de Linhagem em Valédria',
+      '16-9'
+    );
+    section.appendChild(art);
+    bindImgSlots();
+  }
+
   function table(headers, rows) {
     var thead = '<tr>' + headers.map(function (h) { return '<th>' + esc(h) + '</th>'; }).join('') + '</tr>';
     var tbody = rows.map(function (r) {
@@ -204,6 +283,7 @@ window.VR = (function () {
 
   document.addEventListener('DOMContentLoaded', function () {
     bindImgSlots();
+    injectTransformationArt();
     ensureLightbox();
   });
 
