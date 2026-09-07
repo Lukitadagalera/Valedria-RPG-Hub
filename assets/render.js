@@ -13,20 +13,125 @@ window.VR = (function () {
   function els(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function mount(sel, html) { var n = el(sel); if (n) n.innerHTML = html; bindImgSlots(); }
 
+  function normalizeRatio(ratio) {
+    return String(ratio || '4/3').replace('-', '/');
+  }
+
+  function isPortraitImage(src) {
+    var s = String(src || '').toLowerCase();
+    if (!s) return false;
+    if (/assets\/img\/(?:racas|monstros)\//.test(s)) return true;
+    if (/assets\/img\/faccoes\//.test(s) && s.indexOf('quadro-de-missoes') === -1) return true;
+    if (/assets\/img\/sociedade\//.test(s)) {
+      return !/(?:tres-rostos|calendario-valedria|marco-)/.test(s);
+    }
+    return false;
+  }
+
+  function resolveImageRatio(src, ratio) {
+    return isPortraitImage(src) ? '3/4' : normalizeRatio(ratio);
+  }
+
+  function ensureLightbox() {
+    var lightbox = el('#vr-lightbox');
+    if (lightbox) return lightbox;
+
+    lightbox = document.createElement('div');
+    lightbox.id = 'vr-lightbox';
+    lightbox.className = 'vr-lightbox';
+    lightbox.hidden = true;
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Visualização da imagem em tamanho real');
+    lightbox.innerHTML =
+      '<button class="vr-lightbox__backdrop" type="button" data-vr-lightbox-close aria-label="Fechar imagem ampliada"></button>' +
+      '<div class="vr-lightbox__dialog" role="document">' +
+      '<button class="vr-lightbox__close" type="button" data-vr-lightbox-close aria-label="Fechar imagem ampliada">&times;</button>' +
+      '<img class="vr-lightbox__image" alt="">' +
+      '<p class="vr-lightbox__caption"></p>' +
+      '</div>';
+    document.body.appendChild(lightbox);
+
+    els('[data-vr-lightbox-close]', lightbox).forEach(function (button) {
+      button.addEventListener('click', closeLightbox);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+    return lightbox;
+  }
+
+  function openLightbox(src, alt) {
+    if (!src) return;
+    var lightbox = ensureLightbox();
+    var image = el('.vr-lightbox__image', lightbox);
+    var caption = el('.vr-lightbox__caption', lightbox);
+    image.src = src;
+    image.alt = alt || '';
+    caption.textContent = alt || '';
+    caption.hidden = !alt;
+    lightbox.hidden = false;
+    lightbox.classList.add('is-open');
+    document.body.classList.add('vr-lightbox-open');
+    var closeButton = el('.vr-lightbox__close', lightbox);
+    if (closeButton) closeButton.focus();
+  }
+
+  function closeLightbox() {
+    var lightbox = el('#vr-lightbox');
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.hidden = true;
+    document.body.classList.remove('vr-lightbox-open');
+  }
+
   function bindImgSlots() {
-    els('.img-slot img').forEach(function (img) {
-      if (img.dataset.vrBound) return;
-      img.dataset.vrBound = '1';
-      if (img.complete && img.naturalWidth === 0) { img.classList.add('is-broken'); return; }
-      img.addEventListener('error', function () { img.classList.add('is-broken'); }, { once: true });
+    els('.img-slot').forEach(function (slot) {
+      var img = el('img', slot);
+      if (!img) return;
+
+      var src = img.getAttribute('src') || '';
+      if (isPortraitImage(src)) slot.style.setProperty('--slot-ratio', '3/4');
+
+      if (!img.dataset.vrBound) {
+        img.dataset.vrBound = '1';
+        img.addEventListener('error', function () {
+          img.classList.add('is-broken');
+          var zoom = el('.img-zoom', slot);
+          if (zoom) zoom.hidden = true;
+        }, { once: true });
+      }
+
+      if (img.complete && img.naturalWidth === 0) {
+        img.classList.add('is-broken');
+      }
+
+      if (!el('.img-zoom', slot) && src) {
+        var zoomButton = document.createElement('button');
+        zoomButton.type = 'button';
+        zoomButton.className = 'img-zoom';
+        zoomButton.setAttribute('aria-label', 'Ampliar ' + (img.alt || 'imagem'));
+        zoomButton.setAttribute('title', 'Ver em tamanho real');
+        zoomButton.innerHTML =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+          '<circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>' +
+          '<path d="M11 8v6M8 11h6"></path></svg>';
+        zoomButton.addEventListener('click', function () {
+          if (img.classList.contains('is-broken')) return;
+          openLightbox(img.currentSrc || img.src, img.alt || '');
+        });
+        if (img.classList.contains('is-broken')) zoomButton.hidden = true;
+        slot.appendChild(zoomButton);
+      }
     });
   }
 
   function imgSlot(src, alt, ratio) {
-    ratio = ratio || '4/3';
+    if (!src) return '';
+    ratio = resolveImageRatio(src, ratio || '4/3');
     return (
       '<div class="img-slot" style="--slot-ratio:' + esc(ratio) + '">' +
-      '<img src="' + esc(src) + '" alt="' + esc(alt || '') + '" onerror="this.classList.add(&quot;is-broken&quot;)" data-vr-bound="1">' +
+      '<img src="' + esc(src) + '" alt="' + esc(alt || '') + '" onerror="this.classList.add(&quot;is-broken&quot;)">' +
       '<div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">' +
       '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.4"/>' +
       '<path d="M21 16l-5.2-5.2a2 2 0 0 0-2.8 0L5 19"/></svg>' +
@@ -39,9 +144,11 @@ window.VR = (function () {
   }
 
   function figure(src, alt, caption, ratio) {
+    if (!src) return '';
+    var resolvedRatio = resolveImageRatio(src, ratio || '4-3');
     return (
-      '<figure class="figure ratio-' + (ratio || '4-3').replace('/', '-') + '">' +
-      imgSlot(src, alt) + (caption ? '<figcaption>' + esc(caption) + '</figcaption>' : '') +
+      '<figure class="figure ratio-' + resolvedRatio.replace('/', '-') + '">' +
+      imgSlot(src, alt, resolvedRatio) + (caption ? '<figcaption>' + esc(caption) + '</figcaption>' : '') +
       '</figure>'
     );
   }
@@ -95,7 +202,25 @@ window.VR = (function () {
     apply();
   }
 
-  document.addEventListener('DOMContentLoaded', bindImgSlots);
+  document.addEventListener('DOMContentLoaded', function () {
+    bindImgSlots();
+    ensureLightbox();
+  });
 
-  return { esc, el, els, mount, bindImgSlots, imgSlot, chip, figure, table, ameacaVariant, grauVariant, setupFilter };
+  return {
+    esc: esc,
+    el: el,
+    els: els,
+    mount: mount,
+    bindImgSlots: bindImgSlots,
+    imgSlot: imgSlot,
+    chip: chip,
+    figure: figure,
+    table: table,
+    ameacaVariant: ameacaVariant,
+    grauVariant: grauVariant,
+    setupFilter: setupFilter,
+    openLightbox: openLightbox,
+    closeLightbox: closeLightbox
+  };
 })();

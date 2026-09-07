@@ -64,16 +64,16 @@ window.ANOES = {
   caracteristica: "Resistência natural da pedra: tolerância elevada a venenos, exaustão e ambientes hostis de profundidade, além de percepção instintiva de estruturas instáveis ou passagens ocultas em rocha.",
   img: "assets/img/racas/anoes.png",
   clas: [
-    { nome: "Clã Ferro-Fundo", descricao: "Especialistas em forja e metalurgia, controlam algumas das minas mais profundas e ricas em minério. Mantêm relação tensa com o Clã Pedra-Funda por disputas antigas de território de mineração, mas comercializam abertamente com humanos e elfos costeiros." },
-    { nome: "Clã Pedra-Funda", descricao: "Focado em construção, arquitetura e engenharia de túneis, responsável por algumas das fortalezas mais duradouras do mundo anão. Vê o Clã Ferro-Fundo com desconfiança, mas mantém aliança estreita e histórica com o Clã Chama-Antiga." },
-    { nome: "Clã Chama-Antiga", descricao: "Guardião de forjas rituais e tradições de fé ligadas ao fogo sagrado das profundezas. Considerado o clã mais espiritual, frequentemente mediando disputas entre outros clãs quando a tradição exige um árbitro neutro." },
-    { nome: "Clã Veio-Negro", descricao: "Especializado em mineração de materiais raros e comércio com regiões demoníacas próximas às montanhas. Visto com certa suspeita pelos demais clãs por seus negócios discretos, mas tolerado por sua riqueza e utilidade comercial." }
+    { nome: "Clã Ferro-Fundo", descricao: "Especialistas em forja e metalurgia, controlam algumas das minas mais profundas e ricas em minério. Mantêm relação tensa com o Clã Pedra-Funda por disputas antigas de território de mineração, mas comercializam abertamente com humanos e elfos costeiros.", img: "assets/img/racas/anoes.png" },
+    { nome: "Clã Pedra-Funda", descricao: "Focado em construção, arquitetura e engenharia de túneis, responsável por algumas das fortalezas mais duradouras do mundo anão. Vê o Clã Ferro-Fundo com desconfiança, mas mantém aliança estreita e histórica com o Clã Chama-Antiga.", img: "assets/img/racas/anoes.png" },
+    { nome: "Clã Chama-Antiga", descricao: "Guardião de forjas rituais e tradições de fé ligadas ao fogo sagrado das profundezas. Considerado o clã mais espiritual, frequentemente mediando disputas entre outros clãs quando a tradição exige um árbitro neutro.", img: "assets/img/racas/anoes.png" },
+    { nome: "Clã Veio-Negro", descricao: "Especializado em mineração de materiais raros e comércio com regiões demoníacas próximas às montanhas. Visto com certa suspeita pelos demais clãs por seus negócios discretos, mas tolerado por sua riqueza e utilidade comercial.", img: "assets/img/racas/anoes.png" }
   ]
 };
 
 window.DEMONIOS = {
   intro: "Demônios formam uma grande raça dividida em muitas linhagens. Demônio descreve origem, não caráter: dentro dela existem povos organizados, culturas ricas e tradições tão legítimas quanto as de qualquer outro povo de Valédria.",
-  img: "assets/img/racas/demonios.png",
+  img: null,
   subracas: [
     {
       nome: "Orcs das Planícies",
