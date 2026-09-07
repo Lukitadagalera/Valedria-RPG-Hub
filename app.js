@@ -1,5 +1,5 @@
 /* app.js — comportamento compartilhado do Códice de Valédria
-   Tema claro/escuro, menu mobile, vida da ficha, placeholders e carregamento do player. */
+   Tema claro/escuro, menu mobile, vida da ficha, navegação extra, placeholders e carregamento do player. */
 (function () {
   var root = document.documentElement;
 
@@ -36,6 +36,31 @@
   root.setAttribute('data-theme', current);
   setCookie('vcodex_theme', current, 365);
 
+  function ensureChroniclesNavigation() {
+    var nav = document.querySelector('.nav-scroll');
+    if (nav && !nav.querySelector('[data-cronicas-nav]')) {
+      var group = document.createElement('div');
+      group.setAttribute('data-cronicas-nav', '');
+      group.innerHTML =
+        '<div class="nav-group-title">Crônicas de Valédria</div>' +
+        '<div class="nav-list"><a class="nav-link" href="cronicas-valedria.html"><span class="num">✦</span> Aventuras e campanhas</a></div>';
+      nav.appendChild(group);
+
+      var link = group.querySelector('a');
+      var page = (location.pathname.split('/').pop() || 'index.html').split('?')[0];
+      if (page === 'cronicas-valedria.html') link.setAttribute('aria-current', 'page');
+      link.addEventListener('click', function () { document.body.classList.remove('nav-open'); });
+    }
+
+    document.querySelectorAll('.book-toc').forEach(function (toc) {
+      if (toc.querySelector('a[href^="cronicas-valedria.html"]')) return;
+      var link = document.createElement('a');
+      link.href = 'cronicas-valedria.html';
+      link.textContent = 'Crônicas de Valédria';
+      toc.appendChild(link);
+    });
+  }
+
   function propagateTheme(theme) {
     try {
       document.querySelectorAll('a[href*=".html"]').forEach(function (a) {
@@ -60,6 +85,7 @@
     });
   }
 
+  ensureChroniclesNavigation();
   propagateTheme(current);
   syncThemeIcon();
 
@@ -94,6 +120,9 @@
   });
 
   document.addEventListener('DOMContentLoaded', function () {
+    ensureChroniclesNavigation();
+    propagateTheme(current);
+
     var vidaAtualInput = document.getElementById('f-vida-atual');
     var vidaMaxDisplay = document.getElementById('vida-max-display');
     var btnDano = document.getElementById('btn-vida-dano');
