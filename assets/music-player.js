@@ -146,7 +146,8 @@
     audio.volume = typeof saved.volume === 'number'
       ? Math.max(0, Math.min(saved.volume, 1))
       : 0.45;
-    audio.autoplay = true;
+    // A reprodução automática passa por attemptPlay e respeita desiredPlaying.
+    audio.autoplay = false;
     volume.value = Math.round(audio.volume * 100);
 
     function persist() {
@@ -361,7 +362,10 @@
     });
 
     audio.addEventListener('play', function () {
-      desiredPlaying = true;
+      if (!desiredPlaying) {
+        audio.pause();
+        return;
+      }
       cleanupUnlock();
       setPlayingUI(true);
       persist();
@@ -380,7 +384,7 @@
     audio.addEventListener('durationchange', updateProgress);
 
     audio.addEventListener('ended', function () {
-      desiredPlaying = true;
+      if (!desiredPlaying) return;
       saved.time = 0;
       loadTrack(index + 1, false);
     });
