@@ -1,0 +1,7 @@
+(() => {
+ const form=document.getElementById('intro-form'),result=document.getElementById('intro-result'),text=document.getElementById('intro-text'),status=document.getElementById('copy-status');
+ form.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(form);const name=String(data.get('apelido')).trim();if(!name)return;const about=String(data.get('sobre')).trim();text.value=`Olá! Podem me chamar de ${name}.\nCheguei à comunidade de Valédria para: ${data.get('interesse')}.`+(about?`\n${about}`:'')+'\nE vocês, que histórias gostam de viver à mesa?';result.hidden=false;status.textContent='';text.focus();});
+ document.getElementById('copy-intro').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(text.value);status.textContent='Apresentação copiada. Agora você pode colar no Discord.';}catch{text.focus();text.select();status.textContent='Selecione e copie o texto acima para compartilhar.';}});
+ const prompts=['Que pequeno hábito torna seu personagem inesquecível?','Qual lugar de Valédria você gostaria de visitar com o grupo?','Que decisão de outro jogador surpreendeu você numa sessão?','Que objeto seu personagem nunca deixaria para trás?','Qual foi a melhor ajuda que você recebeu de alguém numa mesa?','Que tipo de aventura você gostaria de viver com novos amigos?'];let index=0;
+ document.getElementById('next-prompt').addEventListener('click',()=>{index=(index+1)%prompts.length;document.getElementById('conversation-prompt').textContent=prompts[index];});
+})();
