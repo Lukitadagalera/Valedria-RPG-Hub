@@ -23,3 +23,18 @@ Usar arte dourada com fundo transparente, 160 × 160 px.
 - `assets/img/home/simbolo-bestiario.png`
 - `assets/img/home/simbolo-mapa.png`
 - `assets/img/home/marca-valedria.png` — Rosa dos ventos dourada da marca, 160 × 160 px, transparente.
+
+
+## Capas restantes
+- `assets/img/home/capa-sociedade.png` — Sociedade; capa vertical 660 × 860 px, com título e numeral.
+- `assets/img/home/capa-economia.png` — Economia; capa vertical 660 × 860 px, com título e numeral.
+- `assets/img/home/capa-faccoes.png` — Facções; capa vertical 660 × 860 px, com título e numeral.
+- `assets/img/home/capa-racas.png` — Raças; capa vertical 660 × 860 px, com título e numeral.
+- `assets/img/home/capa-aura.png` — Aura; capa vertical 660 × 860 px, com título e numeral.
+- `assets/img/home/capa-artefatos.png` — Artefatos; capa vertical 660 × 860 px, com título e numeral.
+- `assets/img/home/capa-exploracao.png` — Clima, Viagem e Encontros; capa vertical 660 × 860 px, com título e numeral.
+- `assets/img/home/capa-mestre.png` — Livro do Mestre; capa vertical 660 × 860 px, com título e numeral.
+- `assets/img/home/capa-mapa.png` — Mapa e Aventuras; capa vertical 660 × 860 px, com título e numeral.
+
+## Arte de fundo
+- `assets/img/decoracao/fundo-ornamental.png` — 2400 × 1800 px. Arabescos botânicos dourados delicados, inspirados em tapeçaria de castelo, concentrados nas laterais. Centro livre e fundo transparente. A arte fica discreta atrás do conteúdo, sem movimento para preservar a leitura.
