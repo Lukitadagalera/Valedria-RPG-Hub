@@ -1,0 +1,49 @@
+/* Tema único: especificidade explícita evita que o tema antigo do sistema vença. */
+html:root,html:root[data-theme='dark']{
+ --color-bg:#10171c;--color-surface:#171f25;--color-surface-2:#202a31;
+ --color-surface-offset:#1b252c;--color-surface-offset-2:#253139;--color-surface-dynamic:#303e47;
+ --color-text:#e9e8e2;--color-text-muted:#b9bfc2;--color-text-faint:#9ca7ad;--color-text-inverse:#11191e;
+ --color-primary:#c2ac77;--color-primary-hover:#dcc99c;--color-primary-active:#a99365;--color-primary-highlight:#293036;
+ --color-border:#454b4c;--color-divider:#35434b;--color-accent-2:#af8185;--color-accent-2-highlight:#30262d;
+ --color-warning:#c2ac77;--color-warning-highlight:#2c2c27;--color-gold:#c2ac77;--color-gold-highlight:#303129;
+ --font-display:Georgia,'Times New Roman',serif;--font-body:Georgia,'Times New Roman',serif;
+ --radius-sm:2px;--radius-md:3px;--radius-lg:4px;--radius-xl:4px;
+}
+html:root[data-theme='light']{--color-bg:#e9eef0;--color-surface:#f6f8f8;--color-surface-2:#fff;--color-surface-offset:#dce4e8;--color-surface-offset-2:#d1dce2;--color-text:#24323c;--color-text-muted:#4d606e;--color-text-faint:#596c76;--color-primary:#78643e;--color-primary-hover:#5d4b2b;--color-text-inverse:#f8f9fa;--color-border:#b4c0c5;--color-divider:#c4cdd1;--color-primary-highlight:#dce3e5}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-weight:400}
+h1,h2,h3,h4,.page-head h1,.chronicle-card h2{font-family:var(--font-display);color:var(--color-text);font-weight:400}
+p,li{color:inherit}.lede,.muted,.page-head .lede,.chronicle-meta span,.entry-meta,.mini-card p{color:var(--color-text-muted)}
+.site-header,.reference-header{background:var(--color-bg);border-bottom:1px solid #86795655;height:64px;min-height:64px;padding:0 4.3%;align-items:center}
+.reference-header .primary-nav{height:auto;align-items:center}.reference-header .primary-nav a{position:relative;padding:4px 0;font-size:14px;color:var(--color-text-muted);box-shadow:none;line-height:1.3}
+.reference-header .primary-nav a[aria-current],.reference-header .primary-nav a:hover{color:var(--color-primary)}
+.reference-header .primary-nav a[aria-current]:after{content:'';position:absolute;bottom:-5px;left:0;right:0;height:1px;background:linear-gradient(90deg,#ad9561,#d9c696,#ad9561)}
+.wordmark,.eyebrow,.reference-hero .eyebrow,.reference-quick .ref-icon{color:var(--color-primary)}
+.btn,.reference-home .btn,.reference-campaign .btn{font-family:var(--font-body);font-weight:400;border-radius:2px;min-height:40px;line-height:1.25}
+.btn-primary,.reference-header .header-sheet{background:linear-gradient(115deg,#d3c18e 0%,#bda16b 48%,#d6c391 100%);border:1px solid #cfbc88;color:#152028;box-shadow:inset 0 1px #f1e5bc55;font-weight:600}
+.btn-primary:hover{background:linear-gradient(115deg,#e0d1a6,#cbb580,#e0cea0)}
+.btn-secondary,.reference-home .btn-secondary{background:linear-gradient(130deg,#1b252b77,#111a2188);border:1px solid #a38d5b;color:var(--color-text)}
+.reference-main{max-width:none;width:100%}.reference-hero{height:auto;min-height:360px;overflow:visible;background:#10191f}
+.reference-hero-copy{padding:54px 4.3% 32px;max-width:none}.reference-hero h1{font-size:clamp(38px,4.6vw,64px);font-weight:600;line-height:1.02;max-width:none;letter-spacing:-.035em;text-wrap:initial;color:#eae9e3;margin:10px 0 16px}
+.reference-hero h1 .title-line{display:block;white-space:nowrap}.reference-hero-copy>p:not(.hero-footnote){font-weight:400;color:#d7dde0;font-size:17px}
+.hero-footnote{color:#87949c;max-width:100%;margin-top:18px}.hero-art-slot{background:radial-gradient(ellipse at 80% 35%,#293941 0%,#18262f 38%,#10191f 78%)}
+.hero-art-slot.art-ready:after{background:linear-gradient(90deg,#10191f 0%,#10191fd9 26%,#10191f55 59%,#10191f0a 100%)}
+.reference-quick{background:linear-gradient(100deg,#111b22,#172229 55%,#111b22);height:70px}.reference-quick span{color:#e4e6e4}.reference-quick small{color:#a4afb4}
+.reference-heading h2,.reference-book h3,.campaign-copy h3,.player-copy h3{color:var(--color-text);font-weight:400}.reference-heading>span{background:linear-gradient(90deg,#bdab7855,#cab987,#a3905c66)}
+.reference-heading>a{color:var(--color-primary)}.reference-book p,.campaign-copy p,.player-copy p{color:var(--color-text-muted)}
+.art-slot{background:radial-gradient(ellipse at 30% 12%,#34434b66,transparent 65%),linear-gradient(135deg,#1c2b34,#121c23);border-color:#7c827366}
+.cover-capa-geografia{background:radial-gradient(ellipse at 25% 10%,#a69c7f44,transparent 65%),linear-gradient(135deg,#4a4b40,#273239)}
+.cover-capa-sistema{background:radial-gradient(ellipse at 25% 10%,#946d6633,transparent 65%),linear-gradient(135deg,#343239,#19252d)}
+.cover-capa-magia{background:radial-gradient(ellipse at 25% 10%,#7893af33,transparent 65%),linear-gradient(135deg,#293b4a,#121f2a)}
+.cover-capa-bestiario{background:radial-gradient(ellipse at 25% 10%,#718e7d33,transparent 65%),linear-gradient(135deg,#293b37,#132326)}
+.art-label,.cover-capa-geografia .art-label{color:#c3cbd0}.art-label code,.cover-capa-geografia .art-label code{color:#bead83}
+.reference-player,.reference-campaign,.card,.mini-card,.subcard,.entry-card,.master-chapter,.master-tool-card,.master-pillar,.chronicle-card,.chronicle-secret,.mestre-gate,.hall-empty{background:radial-gradient(ellipse at 10% 0%,#59717b12,transparent 65%),linear-gradient(130deg,var(--color-surface-2),var(--color-surface));border:1px solid var(--color-border);box-shadow:inset 0 1px #dbe6e908;border-radius:3px}
+.player-art,.campaign-art{background:linear-gradient(135deg,#273840,#121e26)}.reference-campaign .campaign-copy{padding-right:20px}.campaign-copy p,.campaign-copy h3{white-space:normal}
+.content,.book-page .content{max-width:1440px;margin-inline:auto;padding-top:42px;gap:36px}.page-head{gap:16px;padding-bottom:24px}.page-head h1{font-size:clamp(34px,3.6vw,52px);line-height:1.12;margin:0}.page-head .lede{font-size:18px;line-height:1.7;max-width:70ch}.eyebrow{font-size:12px;letter-spacing:.17em;font-weight:400}
+.book-toc{gap:10px}.book-toc a,.catalog-groups a,.chronicle-meta span{border-radius:2px;background:linear-gradient(130deg,var(--color-surface-2),var(--color-surface));border:1px solid var(--color-border);color:var(--color-text-muted);font-size:14px}
+.lede-note,.master-callout,.mestre-block{background:linear-gradient(110deg,var(--color-surface-2),var(--color-surface));color:var(--color-text-muted);border:1px solid var(--color-border);border-radius:3px}
+.entry-card h3,.entry-card h4,.section-head h2,.section-title{font-weight:400}.entry-body,.master-block,.chronicle-section{font-size:17px;line-height:1.75}input,select,textarea{color:var(--color-text);background-color:var(--color-surface)}
+.reference-footer,.footer{background:var(--color-bg);border-color:var(--color-border)}.reference-footer>a,.reference-footer>a span{color:var(--color-text-muted)}
+.symbol-slot{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:50px;min-width:50px;height:44px;position:relative;color:var(--color-primary)}.symbol-slot img{width:100%;height:100%;object-fit:contain}.symbol-slot code{font:7px/1.1 monospace;overflow-wrap:anywhere;text-align:center;position:absolute;inset:0;display:grid;align-items:center}.symbol-slot.loaded code{display:none}
+@media(min-width:1250px){.reference-hero{min-height:400px}.reference-hero-copy{padding-top:64px}.reference-hero h1{font-size:64px}}
+@media(max-width:850px){.reference-hero{min-height:365px}.reference-hero-copy{padding-top:42px}.reference-hero h1{font-size:clamp(30px,5.8vw,48px)}.reference-header .primary-nav{background:var(--color-bg)}.reference-quick{height:auto}.reference-header .primary-nav a{padding:10px 0}.reference-header .primary-nav a[aria-current]:after{bottom:5px;right:auto;width:24px}.reference-hero-copy>p:not(.hero-footnote){font-size:16px;max-width:480px}.content,.book-page .content{padding-top:30px}.reference-campaign{min-height:285px;height:auto;padding-bottom:10px}.campaign-copy{margin-top:140px}}
+@media(max-width:480px){.reference-hero{min-height:480px}.reference-hero h1{font-size:clamp(27px,7.1vw,34px);letter-spacing:-.04em}.reference-hero-copy{padding:32px 20px 26px}.hero-art-slot .art-label{top:69%;bottom:5%}.reference-quick>a{gap:8px}.symbol-slot{width:34px;min-width:34px;height:38px}.symbol-slot code{font-size:6px}.page-head .lede{font-size:16px}.content{padding-inline:20px}.reference-header .primary-nav{position:absolute}.reference-heading h2{white-space:normal}}

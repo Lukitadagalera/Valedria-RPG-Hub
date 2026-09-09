@@ -14,3 +14,12 @@ Coloque cada imagem na pasta indicada, mantendo o nome e a extensão `.png`. O e
 - `assets/img/home/brasao-1.png` — Brasão ilustrativo 1 — 160 × 180 px, fundo transparente
 - `assets/img/home/brasao-2.png` — Brasão ilustrativo 2 — 160 × 180 px, fundo transparente
 - `assets/img/home/brasao-3.png` — Brasão ilustrativo 3 — 160 × 180 px, fundo transparente
+
+## Símbolos da referência
+
+Usar arte dourada com fundo transparente, 160 × 160 px.
+- `assets/img/home/simbolo-sistema.png`
+- `assets/img/home/simbolo-magia.png`
+- `assets/img/home/simbolo-bestiario.png`
+- `assets/img/home/simbolo-mapa.png`
+- `assets/img/home/marca-valedria.png` — Rosa dos ventos dourada da marca, 160 × 160 px, transparente.
