@@ -30,7 +30,7 @@
       ? urlMatch[1]
       : (cookieTheme === 'dark' || cookieTheme === 'light')
         ? cookieTheme
-        : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        : 'dark';
   } catch (e) {}
 
   root.setAttribute('data-theme', current);

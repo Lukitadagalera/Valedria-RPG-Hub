@@ -24,14 +24,14 @@ window.ITENS = [
     descricao: "Cantil de couro tratado que mantém líquidos na temperatura de enchimento por um dia inteiro.",
     efeito: "Sem bônus de atributo; conveniência de viagem.",
     origem: "Produzido por artesãos de Ostenfeld e vendido em quase qualquer mercado de estrada.",
-    img: "assets/img/itens/cantil-de-viagem-encantado.png"
+    img: "assets/img/itens/cantil-de-viagem-encantado.png.webp"
   },
   {
     nome: "Lanterna de Chama Fiel", grau: "Comum", tipo: "Utilidade",
     descricao: "Lanterna cuja chama nunca se apaga com vento comum e consome muito pouco óleo.",
     efeito: "Sem bônus de atributo; ilumina uma área curta indefinidamente enquanto houver uma gota de óleo.",
     origem: "Item padrão de guildas de exploração e caçadores de recompensa.",
-    img: "assets/img/itens/lanterna-de-chama-fiel.png"
+    img: "assets/img/itens/lanterna-de-chama-fiel.png.webp"
   },
   // ---------------- Aprendiz ----------------
   {
@@ -39,14 +39,14 @@ window.ITENS = [
     descricao: "Botas de couro leve tratadas com resina que absorve o som dos passos.",
     efeito: "Vantagem em testes de Furtividade ao se mover em ritmo normal.",
     origem: "Criadas por curtidores da Floresta Eterna, comercializadas via Bosque Alto.",
-    img: "assets/img/itens/botas-de-passo-silencioso.png"
+    img: "assets/img/itens/botas-de-passo-silencioso.png.webp"
   },
   {
     nome: "Amuleto do Fôlego Calmo", grau: "Aprendiz", tipo: "Acessório",
     descricao: "Pequeno amuleto de osso polido que ajuda o portador a recuperar o ritmo após esforço físico.",
     efeito: "Vantagem em um teste de recuperação de Fôlego de Aura por cena.",
     origem: "Talhado por veteranos de guilda como presente de iniciação.",
-    img: "assets/img/itens/amuleto-do-folego-calmo.png"
+    img: "assets/img/itens/amuleto-do-folego-calmo.png.webp"
   },
   // ---------------- Mago ----------------
   {
@@ -54,21 +54,21 @@ window.ITENS = [
     descricao: "Bracelete de bronze gravado com runas simples de reforço muscular.",
     efeito: "+1 de Força fixo enquanto equipado.",
     origem: "Forjado por ferreiros rúnicos de Montegris; comum entre soldados de nível 3 a 5.",
-    img: "assets/img/itens/bracelete-do-punho-firme.png"
+    img: "assets/img/itens/bracelete-do-punho-firme.png.webp"
   },
   {
     nome: "Anel do Olhar Atento", grau: "Mago", tipo: "Acessório",
     descricao: "Anel fino de prata com uma pedra que brilha suavemente perto de perigo iminente.",
     efeito: "+1 de Sabedoria fixo enquanto equipado.",
     origem: "Item de origem acadêmica, vendido pela Academia de Valédria a exploradores licenciados.",
-    img: "assets/img/itens/anel-do-olhar-atento.png"
+    img: "assets/img/itens/anel-do-olhar-atento.png.webp"
   },
   {
     nome: "Cinto do Passo Ligeiro", grau: "Mago", tipo: "Vestimenta",
     descricao: "Cinto tecido com fibra élfica que reage ao movimento do portador.",
     efeito: "+1 de Destreza fixo enquanto equipado.",
     origem: "Comercializado por Elfos Costeiros nos portos de comércio ocidentais.",
-    img: "assets/img/itens/cinto-do-passo-ligeiro.png"
+    img: "assets/img/itens/cinto-do-passo-ligeiro.png.webp"
   },
   // ---------------- Arquimago ----------------
   {
@@ -76,14 +76,14 @@ window.ITENS = [
     descricao: "Escudo maciço adornado com runas dos Clãs anões, capaz de absorver e devolver impacto.",
     efeito: "+2 de Constituição enquanto equipado; uma vez por cena, reflete metade do dano de um golpe físico recebido.",
     origem: "Forjado pelo Clã Ferro-Fundo como presente diplomático a aliados humanos.",
-    img: "assets/img/itens/escudo-do-eco-de-pedra.png"
+    img: "assets/img/itens/escudo-do-eco-de-pedra.png.webp"
   },
   {
     nome: "Cajado de Vidro Nebuloso", grau: "Arquimago", tipo: "Arma",
     descricao: "Cajado feito de um vidro vulcânico raro que retém névoa mágica em seu interior.",
     efeito: "+2 de Sabedoria enquanto equipado; uma vez por cena, reduz o custo de Mana da próxima magia lançada pela metade.",
     origem: "Criado por um arquimago independente da Academia de Valédria, hoje raro e cobiçado.",
-    img: "assets/img/itens/cajado-de-vidro-nebuloso.png"
+    img: "assets/img/itens/cajado-de-vidro-nebuloso.png.webp"
   },
   // ---------------- Imperador ----------------
   {
@@ -91,14 +91,14 @@ window.ITENS = [
     descricao: "Diadema antigo associado a um governante esquecido, dizem que ainda escuta juramentos quebrados.",
     efeito: "+3 de Carisma enquanto equipado; uma vez por sessão, força um teste de vontade em um interlocutor antes de uma negociação decisiva. Condição: só funciona plenamente para quem nunca quebrou um juramento formal.",
     origem: "Objetivo de um arco de campanha regional; seu paradeiro atual é motivo de disputa entre facções.",
-    img: "assets/img/itens/coroa-do-julgamento-silencioso.png"
+    img: "assets/img/itens/coroa-do-julgamento-silencioso.png.webp"
   },
   {
     nome: "Lâmina do Sangue Rúnico", grau: "Imperador", tipo: "Arma",
     descricao: "Espada longa cravejada de runas de sangue antigo, que pulsa quando próxima de ameaças regionais.",
     efeito: "+3 de Força enquanto equipada; inflige dano adicional equivalente a uma magia de grau Arquimago contra criaturas de ameaça Alta ou superior, uma vez por cena. Condição: exige que o portador tenha derramado seu próprio sangue para despertá-la a cada nova lua.",
     origem: "Recuperada de uma tumba selada nas Terras Demoníacas; centro de disputa entre caçadores de artefatos.",
-    img: "assets/img/itens/lamina-do-sangue-runico.png"
+    img: "assets/img/itens/lamina-do-sangue-runico.png.webp"
   },
   // ---------------- Deus / Lendário ----------------
   {
@@ -108,7 +108,7 @@ window.ITENS = [
     condicao_de_uso: "Só pode ser desembainhada por alguém que tenha perdido algo insubstituível.",
     maldicao: "Cada uso apaga uma memória importante e aleatória do portador, escolhida pelo Mestre.",
     origem: "Não possui criador conhecido; aparece na história de Valédria em momentos de virada decisiva.",
-    img: "assets/img/itens/lamina-sem-nome.png"
+    img: "assets/img/itens/lamina-sem-nome.png.webp"
   },
   {
     nome: "Cajado das Marés Eternas", grau: "Deus/Lendário", tipo: "Arma",
@@ -117,7 +117,7 @@ window.ITENS = [
     condicao_de_uso: "Só funciona a menos de um dia de viagem de um corpo de água natural.",
     maldicao: "Drena permanentemente 20% da Mana máxima do usuário após o uso, sem recuperação natural.",
     origem: "Forjado por uma Náiade da Fonte Antiga em troca de um favor jamais revelado.",
-    img: "assets/img/itens/cajado-das-mares-eternas.png"
+    img: "assets/img/itens/cajado-das-mares-eternas.png.webp"
   },
   {
     nome: "Anel do Rei Esquecido", grau: "Deus/Lendário", tipo: "Acessório",
@@ -126,7 +126,7 @@ window.ITENS = [
     condicao_de_uso: "Só pode ser usado dentro de território que já foi, em algum momento da história, parte de um reino humano.",
     maldicao: "Desaparece do dedo do usuário e reaparece em outro lugar do mundo após 100 dias, escolhendo sempre um novo portador.",
     origem: "Ligado a uma linhagem real extinta há gerações; sua posse já motivou guerras de sucessão silenciosas.",
-    img: "assets/img/itens/anel-do-rei-esquecido.png"
+    img: "assets/img/itens/anel-do-rei-esquecido.png.webp"
   },
   {
     nome: "Armadura do Último Guardião", grau: "Deus/Lendário", tipo: "Vestimenta",
@@ -135,7 +135,7 @@ window.ITENS = [
     condicao_de_uso: "Só pode ser vestida por alguém que tenha jurado proteger outra pessoa específica, e o juramento deve ser conhecido pelo Mestre.",
     maldicao: "Se a pessoa protegida morrer enquanto o juramento estiver ativo, a armadura se funde à pele do usuário e não pode mais ser removida.",
     origem: "Pertenceu a um guardião de um santuário destruído durante um cataclismo mágico esquecido pela história oficial.",
-    img: "assets/img/itens/armadura-do-ultimo-guardiao.png"
+    img: "assets/img/itens/armadura-do-ultimo-guardiao.png.webp"
   },
   {
     nome: "Flauta da Fênix Adormecida", grau: "Deus/Lendário", tipo: "Instrumento/Arma",
@@ -144,6 +144,6 @@ window.ITENS = [
     condicao_de_uso: "Só pode ser tocada em um momento de desespero genuíno, avaliado pelo Mestre — nunca como parte de um plano calculado.",
     maldicao: "Ao final do efeito, uma explosão residual de calor causa dano ao próprio usuário, equivalente a uma magia de Mago da Escola de Fogo.",
     origem: "Associada às lendas da Fênix Carmesim; nenhum registro confirma quem a esculpiu primeiro.",
-    img: "assets/img/itens/flauta-da-fenix-adormecida.png"
+    img: "assets/img/itens/flauta-da-fenix-adormecida.png.webp"
   }
 ];

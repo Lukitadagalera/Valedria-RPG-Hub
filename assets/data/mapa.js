@@ -1,6 +1,6 @@
 /* ============================================================
    MAPA CLICÁVEL DE VALÉDRIA — dados
-   Coordenadas percentuais (x,y) sobre assets/img/mapas/mapa-terras-humanas.png,
+   Coordenadas percentuais (x,y) sobre assets/img/mapas/mapa-terras-humanas.png.webp,
    ligadas às localidades já descritas no Livro I (Geografia).
    ============================================================ */
 window.MAPA_PONTOS = [
@@ -18,4 +18,4 @@ window.MAPA_PONTOS = [
   { nome: "Limiar de Cinzas", x: 78, y: 62, tipo: "Posto de fronteira", reino: null, dossie: null }
 ];
 
-window.MAPA_IMAGEM = "assets/img/mapas/mapa-terras-humanas.png";
+window.MAPA_IMAGEM = "assets/img/mapas/mapa-terras-humanas.png.webp";

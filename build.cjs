@@ -1,0 +1,1 @@
+const fs=require('node:fs');const path=require('node:path');fs.mkdirSync('dist',{recursive:true});for(const entry of fs.readdirSync('.')){if(entry==='assets'||/\.(html|css|js)$/.test(entry)){fs.cpSync(entry,path.join('dist',entry),{recursive:true});}}console.log('Static site built.');

@@ -12,7 +12,7 @@ window.FACCOES = [
     filiacao: "Um personagem pode se filiar como Escudeiro após demonstrar coragem em um ato público de proteção e ser recomendado por um Cavaleiro existente. A promoção a Cavaleiro pleno exige completar uma \"provação\" — missão perigosa designada pela Ordem.",
     gancho: "A Ordem está, sem saber, cada vez mais próxima de descobrir fragmentos da conspiração ligada aos desaparecimentos através de suas próprias investigações. Um cavaleiro-jogador pode se tornar o elo entre a Ordem e o grupo, ou criar tensão se a Ordem confiar demais na coroa.",
     figura: "Grão-Mestre Aldric Ferrovento — veterano de dezenas de campanhas contra monstros, cego de um olho por uma cicatriz de batalha antiga. Leal à ideia da coroa, não necessariamente ao Rei atual.",
-    img: "assets/img/faccoes/ordem-do-alvorecer.png"
+    img: "assets/img/faccoes/ordem-do-alvorecer.png.webp"
   },
   {
     nome: "Círculo da Chama Silenciosa",
@@ -26,7 +26,7 @@ window.FACCOES = [
     filiacao: "Ingressar exige convite — não há recrutamento aberto. Curiosidade genuína sobre a natureza do mundo, questionar a fé oficial abertamente, ou tropeçar em conhecimento protegido pode atrair a atenção de um Guardião da Chama, que testará o candidato antes de convidá-lo.",
     gancho: "O Círculo pode ser a única organização humana que já suspeita da existência de algo como O Salvador, embora sem saber o nome ou a forma exata — apenas fragmentos de textos sobre \"aquele que promete salvação através de sacrifício\".",
     figura: "Voz do Silêncio Yara Penumbra — ex-sacerdotisa do templo oficial que abandonou a fé institucional após encontrar um texto que a instituição tentou destruir. Carismática, reservada, desconfiada de qualquer autoridade formal.",
-    img: "assets/img/faccoes/circulo-da-chama-silenciosa.png"
+    img: "assets/img/faccoes/circulo-da-chama-silenciosa.png.webp"
   },
   {
     nome: "Liga dos Caminhos",
@@ -38,7 +38,7 @@ window.FACCOES = [
     filiacao: "Não existe cerimônia de filiação — um personagem se torna parte da Liga organicamente, fazendo negócios recorrentes, cumprindo a palavra dada e sendo apresentado por alguém já da rede, como Osmar Vantte em Ponte Alta.",
     gancho: "A Liga pode ter cruzado, sem saber o significado, com os mercenários que atacaram Amieiro — talvez tenha vendido informação para eles sem saber o propósito real, gerando um conflito moral se os jogadores descobrirem essa conexão indireta.",
     figura: "Nenhuma central — mas Osmar Vantte, em Ponte Alta, é um dos nós mais confiáveis da rede.",
-    img: "assets/img/faccoes/liga-dos-caminhos.png"
+    img: "assets/img/faccoes/liga-dos-caminhos.png.webp"
   }
 ];
 

@@ -44,7 +44,7 @@ window.VR = (function () {
           grupo: 'Academia e magia',
           nome: 'Auror, o Professor',
           papel: 'Professor da Academia de Valédria especializado em história arcana, teoria de linhagens e fenômenos mágicos raros. É conhecido por transformar relatos antigos e registros incompletos em hipóteses úteis para expedições, embora sua curiosidade acadêmica frequentemente o leve a investigar assuntos que outros magos prefeririam deixar esquecidos.',
-          img: 'assets/img/sociedade/auror-o-professor.png'
+          img: 'assets/img/sociedade/auror-o-professor.png.webp'
         });
       }
 
@@ -53,17 +53,17 @@ window.VR = (function () {
           grupo: 'Vilões e ameaças',
           nome: 'Klein, o Perseguidor',
           papel: 'Rastreador persistente conhecido por seguir alvos através de estradas, vilas e regiões selvagens por longos períodos. Trabalha por contratos e favores difíceis de recusar, reunindo pistas com paciência e aparecendo quando seus alvos acreditam que já despistaram qualquer perseguição.',
-          img: 'assets/img/sociedade/klein-o-perseguidor.png'
+          img: 'assets/img/sociedade/klein-o-perseguidor.png.webp'
         });
       }
     }
 
     if (window.ANOES && Array.isArray(window.ANOES.clas)) {
       var clanImages = {
-        'Clã Ferro-Fundo': 'assets/img/racas/cla-ferro-fundo.png',
-        'Clã Pedra-Funda': 'assets/img/racas/cla-pedra-funda.png',
-        'Clã Chama-Antiga': 'assets/img/racas/cla-chama-antiga.png',
-        'Clã Veio-Negro': 'assets/img/racas/cla-veio-negro.png'
+        'Clã Ferro-Fundo': 'assets/img/racas/cla-ferro-fundo.png.webp',
+        'Clã Pedra-Funda': 'assets/img/racas/cla-pedra-funda.png.webp',
+        'Clã Chama-Antiga': 'assets/img/racas/cla-chama-antiga.png.webp',
+        'Clã Veio-Negro': 'assets/img/racas/cla-veio-negro.png.webp'
       };
       window.ANOES.clas.forEach(function (clan) {
         if (clanImages[clan.nome]) clan.img = clanImages[clan.nome];
@@ -195,7 +195,7 @@ window.VR = (function () {
       '<div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">' +
       '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.4"/>' +
       '<path d="M21 16l-5.2-5.2a2 2 0 0 0-2.8 0L5 19"/></svg>' +
-      '<span>Imagem a inserir</span><code>' + esc(src) + '</code></div></div>'
+      '<span>Ilustração em preparação</span><code>' + esc(src) + '</code></div></div>'
     );
   }
 
@@ -223,7 +223,7 @@ window.VR = (function () {
     art.className = 'transformacao-linhagem-art';
     art.style.marginTop = 'var(--space-6)';
     art.innerHTML = figure(
-      'assets/img/racas/transformacao-de-linhagem.png',
+      'assets/img/racas/transformacao-de-linhagem.png.webp',
       'Transformação de Linhagem',
       'Representação da Transformação de Linhagem em Valédria',
       '16-9'
