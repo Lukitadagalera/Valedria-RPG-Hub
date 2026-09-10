@@ -94,6 +94,7 @@
       '<div class="music-panel" hidden>' +
         '<div class="music-panel__head"><div><span class="eyebrow">Trilha sonora</span><strong>Música de Valédria</strong></div>' +
           '<button class="music-close" type="button" aria-label="Fechar player">&times;</button></div>' +
+        '<div class="music-emblem" aria-hidden="true"><img src="assets/img/home/marca-valedria.webp" alt=""><span></span><span></span><span></span><span></span><span></span></div>' +
         '<div class="music-now">' +
           '<span class="music-now__title">Nenhuma música adicionada</span>' +
           '<span class="music-now__artist">Cadastre faixas em assets/data/musicas.js</span>' +
@@ -149,6 +150,7 @@
     // A reprodução automática passa por attemptPlay e respeita desiredPlaying.
     audio.autoplay = false;
     volume.value = Math.round(audio.volume * 100);
+    volume.style.setProperty('--fill', volume.value + '%');
 
     function persist() {
       saveState({
@@ -168,6 +170,7 @@
 
     function setPlayingUI(isPlaying) {
       toggle.classList.toggle('is-playing', isPlaying);
+      panel.classList.toggle('is-playing', isPlaying);
       toggle.removeAttribute('data-autoplay-blocked');
       toggle.setAttribute('aria-label', isPlaying ? 'Música tocando — abrir player' : 'Abrir player de música');
       play.setAttribute('aria-label', isPlaying ? 'Pausar' : 'Reproduzir');
@@ -186,6 +189,7 @@
       var total = audio.duration || 0;
       var now = audio.currentTime || 0;
       progress.value = total > 0 ? Math.round((now / total) * 1000) : 0;
+      progress.style.setProperty('--fill', Number(progress.value) / 10 + '%');
       currentTime.textContent = formatTime(now);
       duration.textContent = formatTime(total);
     }
@@ -358,6 +362,7 @@
 
     volume.addEventListener('input', function () {
       audio.volume = Number(volume.value) / 100;
+      volume.style.setProperty('--fill', volume.value + '%');
       persist();
     });
 
