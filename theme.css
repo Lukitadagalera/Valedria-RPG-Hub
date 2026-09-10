@@ -214,8 +214,11 @@ html:root[data-theme='light'] body .attr-grid .attr-box{background:#f5eedf!impor
 html:root[data-theme='light'] body .attr-grid input[type='number']{background:#fffdf8!important;color:#342f27!important;border-color:#cbbd9f!important}
 html:root[data-theme='light'] body #attr-points{background:linear-gradient(120deg,#f4ebda,#e9dbc0)!important;color:#342f27!important}
 html:root[data-theme='light'] body #attr-points strong{color:#342f27!important}
-html:root[data-theme='light'] :is(.sheet-form-card,.sheet-preview .card,.sheet-preview .mini-card){background:linear-gradient(135deg,#fffdf9,#f1e8d8);color:#342f27;border-color:#cbbd9f}
-.sheet-form-card,.sheet-preview .card,.sheet-preview .mini-card{border-radius:18px}
+html:root[data-theme='light'] :is(.sheet-form-card>.card,.sheet-preview .card,.sheet-preview .mini-card){background:linear-gradient(135deg,#fffdf9,#f1e8d8);color:#342f27;border-color:#cbbd9f}
+.sheet-form-card>.card,.sheet-preview .card,.sheet-preview .mini-card{border-radius:18px}
+.sheet-layout .sheet-form-card{background:transparent;border:0;box-shadow:none;border-radius:0}
+.sheet-layout .attr-points{border-radius:10px;margin-top:12px}
+.sheet-layout .sheet-actions .btn{border-radius:10px}
 .sheet-layout :is(.attr-box,.readonly-pill,.preview-attrs>*,.preview-list,.field input,.field select,.field textarea){border-radius:10px}
 html:root[data-theme='light'] .sheet-layout :is(.readonly-pill,.preview-list,.preview-attrs>*){background:#eee4d2;color:#443928;border-color:#cfbf9e}
 html:root[data-theme='light'] .sheet-layout :is(input,select,textarea){background:#fffdf8;color:#342f27;border-color:#cbbd9f}
