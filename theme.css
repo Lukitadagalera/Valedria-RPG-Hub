@@ -190,3 +190,13 @@ html:root[data-theme='light'] body::before{
   opacity:1;
   mix-blend-mode:normal;
 }
+
+/* Marfim e dourado: paisagem e heróis no tema claro. */
+html:root[data-theme='light'] .reference-player{background:radial-gradient(ellipse at 100% 100%,#d8c7a57a,transparent 72%),linear-gradient(125deg,#fffefa 0%,#f5efe2 48%,#e7dbc4 100%)}
+html:root[data-theme='light'] .reference-hero,html:root[data-theme='light'] .hero-art-slot{background:#f7f3eb}
+html:root[data-theme='light'] .hero-art-slot.art-ready:after{background:linear-gradient(90deg,#f7f3ebee 0%,#f7f3ebc9 27%,#f7f3eb30 60%,transparent 100%)}
+html:root[data-theme='light'] .reference-hero :is(h1,p,.eyebrow){color:#34342e}
+html:root[data-theme='light'] .reference-hero .eyebrow{color:#806735}
+html:root[data-theme='light'] .reference-hero .hero-footnote{color:#645b4b}
+html:root[data-theme='light'] .hero-side-note{color:#39362e;text-shadow:0 1px 5px #fff}
+html:root[data-theme='light'] .reference-hero .btn-secondary{background:#f8f3e8;color:#443b2c;border-color:#a68a50}

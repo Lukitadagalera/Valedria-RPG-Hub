@@ -239,3 +239,16 @@
     loadMusicPlayer();
   }
 })();
+
+/* A paisagem acompanha a preferência atual e as trocas de tema. */
+(function(){
+  const hero=document.querySelector('.hero-art-slot>img');
+  if(!hero)return;
+  const syncHero=()=>{
+    const light=document.documentElement.dataset.theme==='light';
+    const src=light?'assets/img/home/hero-valedria-claro.webp':'assets/img/home/hero-valedria.webp';
+    if(hero.getAttribute('src')!==src){hero.hidden=false;hero.src=src;}
+  };
+  syncHero();
+  new MutationObserver(syncHero).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
