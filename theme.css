@@ -182,11 +182,11 @@ html:root[data-theme='light'] .reference-player{background:radial-gradient(ellip
 @keyframes valedria-sound{from{transform:scaleY(.5)}to{transform:scaleY(1)}}
 @media(prefers-reduced-motion:reduce){.music-panel.is-playing .music-emblem span{animation:none}.footer-settings>summary{transition:none}}
 
-/* A mesma tapeçaria assume uma paleta clara sem carregar outra imagem. */
+/* Tapeçaria própria para o tema claro em todas as páginas. */
 html:root[data-theme='light'] body{background-color:#f3f0e8}
 html:root[data-theme='light'] body::before{
-  background:url('assets/img/decoracao/fundo-ornamental.webp') center top / cover no-repeat;
-  filter:invert(1) grayscale(1) sepia(.7);
-  opacity:.48;
-  mix-blend-mode:multiply;
+  background:url('assets/img/decoracao/fundo-ornamental-claro.webp') center top / cover no-repeat;
+  filter:none;
+  opacity:1;
+  mix-blend-mode:normal;
 }
