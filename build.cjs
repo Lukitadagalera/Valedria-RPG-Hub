@@ -11,7 +11,7 @@ function removePublishedPng(dir){
 }
 removePublishedPng(path.resolve('dist/assets/img'));
 for(const entry of fs.readdirSync('.')){
-  if(entry==='assets'||/\.(html|css|js)$/.test(entry)){
+  if(entry==='assets'||/\.(html|css|js|ico)$/.test(entry)){
     fs.cpSync(entry,path.join('dist',entry),{recursive:true,filter:src=>!(/\.png$/i.test(src)&&src.startsWith('assets'))});
   }
 }

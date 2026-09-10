@@ -200,3 +200,25 @@ html:root[data-theme='light'] .reference-hero .eyebrow{color:#806735}
 html:root[data-theme='light'] .reference-hero .hero-footnote{color:#645b4b}
 html:root[data-theme='light'] .hero-side-note{color:#39362e;text-shadow:0 1px 5px #fff}
 html:root[data-theme='light'] .reference-hero .btn-secondary{background:#f8f3e8;color:#443b2c;border-color:#a68a50}
+
+/* Paleta clara unificada: marfim, pergaminho e ouro. */
+html:root[data-theme='light']{
+ --color-bg:#f7f3ea;--color-surface:#faf7f0;--color-surface-2:#fffdf8;
+ --color-surface-offset:#eee5d5;--color-surface-offset-2:#e4d8c2;--color-surface-dynamic:#e4d8c2;
+ --color-text:#342f27;--color-text-muted:#625746;--color-text-faint:#716451;
+ --color-border:#cbbd9f;--color-divider:#d9ccb4;--color-primary-highlight:#eee3cd;
+}
+html:root[data-theme='light'] :is(.reference-header,.reference-footer){background:linear-gradient(120deg,#fffdf8,#f0e8d9);border-color:#d2c09b}
+html:root[data-theme='light'] .btn-secondary{background:linear-gradient(135deg,#faf4e7,#e7d8b9);color:#403523;border-color:#b39a61}
+html:root[data-theme='light'] body .attr-grid .attr-box{background:#f5eedf!important;color:#342f27!important}
+html:root[data-theme='light'] body .attr-grid input[type='number']{background:#fffdf8!important;color:#342f27!important;border-color:#cbbd9f!important}
+html:root[data-theme='light'] body #attr-points{background:linear-gradient(120deg,#f4ebda,#e9dbc0)!important;color:#342f27!important}
+html:root[data-theme='light'] body #attr-points strong{color:#342f27!important}
+html:root[data-theme='light'] :is(.sheet-form-card,.sheet-preview .card,.sheet-preview .mini-card){background:linear-gradient(135deg,#fffdf9,#f1e8d8);color:#342f27;border-color:#cbbd9f}
+.sheet-form-card,.sheet-preview .card,.sheet-preview .mini-card{border-radius:18px}
+.sheet-layout :is(.attr-box,.readonly-pill,.preview-attrs>*,.preview-list,.field input,.field select,.field textarea){border-radius:10px}
+html:root[data-theme='light'] .sheet-layout :is(.readonly-pill,.preview-list,.preview-attrs>*){background:#eee4d2;color:#443928;border-color:#cfbf9e}
+html:root[data-theme='light'] .sheet-layout :is(input,select,textarea){background:#fffdf8;color:#342f27;border-color:#cbbd9f}
+html:root[data-theme='light'] .reference-hero :is(h1,p){color:#29261f}
+html:root[data-theme='light'] .reference-hero .hero-side-note{color:#342b1d;background:#fff9e9ed;border:1px solid #c8ad75;border-radius:10px;padding:12px 14px;max-width:190px;font-weight:700;line-height:1.6;text-shadow:none;box-shadow:0 3px 12px #44351b15}
+html:root[data-theme='light'] .reference-hero .hero-footnote{color:#51432e;font-weight:600}
