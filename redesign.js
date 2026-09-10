@@ -13,3 +13,15 @@ document.addEventListener('DOMContentLoaded',function(){
  const hall=document.querySelector('#hall-entries');
  if(hall && window.VALEDRIA_HALL?.length){const examples=document.querySelector('.hall-illustrations');if(examples)examples.hidden=true;window.VALEDRIA_HALL.forEach(p=>{const card=document.createElement('article');card.className='hall-player';if(p.retrato){const img=document.createElement('img');img.src=p.retrato;img.alt=p.nome;img.loading='lazy';card.append(img);}const h=document.createElement('h2');h.textContent=p.nome;const meta=document.createElement('p');meta.textContent=[p.jogador,p.campanha].filter(Boolean).join(' · ');card.append(h,meta);const ul=document.createElement('ul');(p.feitos||[]).forEach(f=>{const li=document.createElement('li');li.textContent=f;ul.append(li);});card.append(ul);hall.append(card);});}
 });
+
+/* Fecha as ferramentas flutuantes sem interromper a leitura. */
+document.addEventListener('click', function(event) {
+  const settings = document.querySelector('.footer-settings');
+  if (settings && !settings.contains(event.target)) settings.open = false;
+});
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    const settings = document.querySelector('.footer-settings');
+    if (settings && settings.open) { settings.open = false; settings.querySelector('summary').focus(); }
+  }
+});

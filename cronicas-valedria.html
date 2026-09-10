@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://api.fontshare.com">
 <link href="https://api.fontshare.com/v2/css?f[]=boska@700,600&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="redesign.css"><link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="theme.css?v=11">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="redesign.css"><link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="theme.css?v=12">
 </head>
 <body>
 <a class="skip-link" href="#main">Saltar para o conteúdo</a>
@@ -29,16 +29,16 @@
 <section>
   <div id="cronicas-gate" class="mestre-gate chronicle-gate">
     <span class="eyebrow">Área do Mestre</span>
-    <h2>Conteúdo com spoilers</h2>
-    <p class="muted">As estruturas completas das campanhas revelam antagonistas, segredos e possíveis finais. Use a senha combinada com o Mestre para revelar os spoilers.</p>
-    <input type="password" id="cronicas-senha-input" placeholder="Senha do Mestre" autocomplete="off">
-    <p class="error-msg" id="cronicas-erro"></p>
-    <button class="btn btn-primary" id="cronicas-entrar">Desbloquear Crônicas</button>
+    <h2>Os bastidores da sua próxima história</h2>
+    <p class="muted">Esta área reúne os antagonistas, as pistas, as reviravoltas e os possíveis desfechos de cada crônica. Foi pensada para quem conduz a mesa: leia os bastidores, escolha o que combina com seu grupo e prepare as revelações no seu ritmo. Se você vai jogar, explore a apresentação da vila acima e preserve as surpresas da aventura.</p>
+    <form id="master-login" class="master-login"><label for="cronicas-usuario">Usuário do Mestre</label><input id="cronicas-usuario" name="username" autocomplete="username" required><label for="cronicas-senha-input">Senha</label><input type="password" id="cronicas-senha-input" name="password" autocomplete="current-password" required>
+    <p class="error-msg" id="cronicas-erro" role="status" aria-live="polite"></p>
+    <button type="submit" class="btn btn-primary" id="cronicas-entrar">Entrar na área do Mestre</button></form><p>Solicite ao organizador da mesa o usuário e a senha de acesso.</p>
   </div>
-  <div id="cronicas-conteudo" hidden></div>
+  <button class="btn btn-secondary" id="master-logout" hidden>Sair da área do Mestre</button><div id="cronicas-conteudo" hidden></div>
 </section>
 </main>
-<footer class="footer reference-footer"><a class="footer-brand" href="index.html"><svg class="footer-star" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1 20 12 31 16 20 20 16 31 12 20 1 16 12 12Z" fill="none" stroke="currentColor"/><path d="M16 6v20M6 16h20" stroke="currentColor"/></svg><span><strong>Valédria</strong><small>Códice do Mundo</small></span></a><p class="footer-quote">Cada escolha escreve uma lenda.</p><nav class="footer-socials" aria-label="Links externos"><a data-external="discord" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="discord" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<small>Em breve</small></span><a data-external="instagram" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="instagram" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<small>Em breve</small></span><a data-external="suporte" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="suporte" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<small>Em breve</small></span><a data-external="pacotes" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="pacotes" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<small>Em breve</small></span></nav><details class="footer-settings"><summary aria-label="Preferências"><span class="symbol-slot brand-symbol"><img src="assets/img/home/marca-valedria.png" alt="Símbolo de Valédria" onload="this.parentElement.classList.add('loaded')" onerror="this.hidden=true"><code>assets/img/home/marca-valedria.png</code></span></summary><div class="topbar-actions"><button class="icon-btn" data-theme-toggle aria-label="Alternar tema"></button></div></details></footer><span class="background-note">Arte de fundo a inserir: <code>assets/img/decoracao/fundo-ornamental.png</code></span>
+<footer class="footer reference-footer"><a class="footer-brand" href="index.html"><img class="footer-star" src="assets/img/home/marca-valedria.png" alt="" width="36" height="36"><span><strong>Valédria</strong><small>Códice do Mundo</small></span></a><p class="footer-quote">Cada escolha escreve uma lenda.</p><nav class="footer-socials" aria-label="Links externos"><a data-external="discord" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="discord" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<small>Em breve</small></span><a data-external="instagram" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="instagram" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<small>Em breve</small></span><a data-external="suporte" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="suporte" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<small>Em breve</small></span><a data-external="pacotes" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="pacotes" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<small>Em breve</small></span></nav><details class="footer-settings"><summary aria-label="Abrir controles de tema e música">☼ ♫ <span>Tema e música</span></summary><div class="topbar-actions"><button class="icon-btn" data-theme-toggle aria-label="Alternar tema"></button></div></details></footer>
 <script src="app.js"></script><script src="redesign.js" defer></script>
 <script src="assets/data/cronicas.js"></script>
 <script src="assets/render.js"></script>
@@ -70,21 +70,24 @@
     }).join(''));
   }
 
-  function tentar(){
+  function tentar(e){
+    if(e) e.preventDefault();
     var input = document.querySelector('#cronicas-senha-input');
     var erro = document.querySelector('#cronicas-erro');
-    if (input.value.trim().toLowerCase() === window.CRONICAS_SENHA) {
+    if (document.querySelector('#cronicas-usuario').value.trim().toLowerCase() === 'mestre' && input.value === window.CRONICAS_SENHA) {
       document.querySelector('#cronicas-gate').hidden = true;
       document.querySelector('#cronicas-conteudo').hidden = false;
       montarSegredos();
+      input.value = "";
+      document.querySelector("#master-logout").hidden = false;
     } else {
-      erro.textContent = 'Senha incorreta. Pergunte ao organizador da mesa.';
+      erro.textContent = 'Usuário ou senha incorretos. Confira os dados com o organizador da mesa.';
     }
   }
 
   montarPublico();
-  document.querySelector('#cronicas-entrar').addEventListener('click', tentar);
-  document.querySelector('#cronicas-senha-input').addEventListener('keydown', function(e){ if(e.key === 'Enter') tentar(); });
+  document.querySelector('#master-login').addEventListener('submit', tentar);
+  document.querySelector('#master-logout').addEventListener('click', function(){ document.querySelector('#cronicas-conteudo').replaceChildren(); document.querySelector('#cronicas-conteudo').hidden=true; this.hidden=true; document.querySelector('#cronicas-gate').hidden=false; document.querySelector('#cronicas-erro').textContent=''; document.querySelector('#cronicas-usuario').focus(); });
 })();
 </script>
 <script src="assets/data/conexoes.js"></script><script src="external-links.js"></script></body>

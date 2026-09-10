@@ -110,3 +110,27 @@ html:root[data-theme='light']{--color-surface-offset-2:#d1dce2;--color-surface-d
 /* Retratos do Hall: a obra inteira aparece sem ampliar ou cortar o personagem. */
 .reference-player .player-art{display:grid;place-items:center;background:linear-gradient(145deg,#172b38,#0c1822)}
 .reference-player .player-art>img{position:static;display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#0c1822}
+
+/* Refinamento dos quadros e controles permanentes de leitura. */
+.reference-footer{min-height:64px;height:auto;padding-block:12px;gap:18px}
+.reference-footer .footer-brand strong{font-size:22px}.footer-star{object-fit:contain;width:36px;height:36px}
+.footer-settings{position:fixed!important;right:16px;bottom:16px;z-index:300;margin:0!important}
+.footer-settings>summary{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--color-primary);border-radius:24px;background:var(--color-surface);color:var(--color-text);box-shadow:0 4px 18px #0004;font-weight:600;font-size:14px}
+.footer-settings .topbar-actions{bottom:54px;right:0;border-radius:14px;gap:12px}
+.footer-settings .music-panel{top:auto;bottom:58px;max-height:65dvh;overflow-y:auto}
+body{padding-bottom:74px}
+.chronicle-card,.chronicle-secret,.chronicle-gate,.lede-note,.master-callout,.master-block{border-radius:18px}
+.lede-note{margin-bottom:24px}.chronicles-banner{margin-bottom:24px}
+#cronicas-gate{width:100%;max-width:none;text-align:left;padding:32px;margin-inline:0}
+#cronicas-gate p{max-width:none;line-height:1.75}#cronicas-gate h2{margin-bottom:18px}
+.master-login{display:grid;grid-template-columns:1fr;gap:10px;max-width:560px;margin-block:24px}
+.master-login input{width:100%;padding:12px;border-radius:8px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);font:inherit}
+.master-login button{justify-self:start}#master-logout{margin-bottom:24px}
+.board-empty{width:100%;max-width:none!important;grid-column:1/-1;margin:0}.board-grid{width:100%}
+.reference-player{height:auto;min-height:300px;align-items:stretch}.reference-player .player-art{height:auto;min-height:300px;width:43%}
+.reference-player .player-art>img{height:100%;object-fit:cover;object-position:center top}
+.reference-player .player-copy{padding:22px 20px 130px;flex:1}.reference-player .player-copy h3{font-size:20px}.reference-player .player-copy p{font-size:15px;line-height:1.65}
+.reference-player .player-badge{width:102px;height:120px;right:20px;bottom:12px;background:transparent!important;border:0;box-shadow:none}
+.reference-player .player-badge>img{background:transparent!important;object-fit:contain}
+@media(max-width:700px){.reference-footer{padding-block:12px}.reference-player .player-copy{padding:18px 14px 125px}.reference-player .player-copy h3{font-size:18px}.reference-player .player-art{width:40%}.footer-settings{bottom:12px;right:12px}#cronicas-gate{padding:22px}.reference-player .player-badge{right:14px}}
+@media print{.footer-settings{display:none!important}body{padding-bottom:0}}
