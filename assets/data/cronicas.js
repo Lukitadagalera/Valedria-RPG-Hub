@@ -9,11 +9,13 @@ window.CRONICAS_VALEDRIA = [
   {
     id: "sombras-sobre-amieiro",
     titulo: "Crônica I — Sombras sobre Amieiro",
+    titulo_publico: "Crônica I — Caminhos de Amieiro",
+    foco_publico: "Vida na vila, encontros e primeiros passos",
     subtitulo: "O Salvador",
     status: "Campanha em desenvolvimento",
     niveis: "Arco humano sugerido: níveis 1 a 10",
     foco: "Mistério, conspiração, escolhas morais e expansão gradual do mundo",
-    sinopse_publica: "Uma campanha que começa em Amieiro com sinais de um ataque organizado e pode crescer até revelar forças muito maiores atuando por trás dos reinos. A crônica foi estruturada para servir como módulo adaptável: o Mestre pode remover, trocar ou reorganizar qualquer elemento sem alterar o restante de Valédria.",
+    sinopse_publica: "Amieiro, uma vila agrícola do interior de Valmeira, é o ponto de partida desta campanha. Entre campos, um riacho e a floresta próxima, os personagens conhecem os moradores, estabelecem vínculos e encontram seu lugar na vida da vila. O Mestre adapta o começo à história de cada grupo.",
     premissa_mestre: "Ataques e desaparecimentos de jovens com anomalias de mana formam a primeira pista de uma conspiração conduzida por agentes que acreditam estar protegendo Valédria de uma ameaça maior. O antagonismo central não é apenas quem está errado, mas quanto sacrifício alguém aceita impor aos outros em nome de um bem supostamente maior.",
     principios: [
       "Nenhuma revelação precisa acontecer em uma cena específica.",

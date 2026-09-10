@@ -25,7 +25,7 @@
     board.replaceChildren();
     const visible = campaigns.filter(item => document.getElementById('campaign-filter').value === 'todas' || item.jogadores < item.limite);
     document.getElementById('campaign-count').textContent = `${visible.length} ${visible.length === 1 ? 'mesa anunciada' : 'mesas anunciadas'}`;
-    if (!visible.length) board.append(el('p', 'Nenhuma mesa anunciada por aqui ainda. Prepare seu convite abaixo e encontre companhia na taverna do Discord.', 'board-empty'));
+    if (!visible.length) board.append(el('p', 'Nenhuma mesa anunciada por aqui ainda. Envie seu interesse abaixo para a administração ajudar a reunir seu grupo.', 'board-empty'));
     visible.forEach(item => {
       const card = el('article', '', 'board-card');
       const vacancies = item.limite - item.jogadores;
@@ -51,25 +51,4 @@
   renderCampaigns();
   renderPeople('mestres', 'gm-board', 'Nenhum mestre anunciado ainda. Tem uma história para conduzir? Apresente sua ideia e reúna uma mesa.');
   renderPeople('jogadores', 'player-board', 'Nenhum jogador anunciado ainda. Conte quando pode jogar e que aventuras gostaria de viver.');
-  const form = document.getElementById('notice-form');
-  const output = document.getElementById('notice-output');
-  const status = document.getElementById('notice-status');
-  form.addEventListener('submit', event => {
-    event.preventDefault();
-    const values = new FormData(form);
-    output.value = `Um lugar à mesa de Valédria!\n\nNome: ${String(values.get('nome')).trim()}\n${values.get('papel')}\nDisponibilidade: ${String(values.get('horario')).trim()}\n\n${String(values.get('descricao')).trim()}\n\nVamos conversar e combinar nossa próxima aventura?`;
-    document.getElementById('notice-result').hidden = false;
-    status.textContent = 'Convite preparado. Copie e compartilhe no Discord; ele não foi publicado no mural.';
-    output.focus();
-  });
-  document.getElementById('copy-notice').addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(output.value);
-      status.textContent = 'Convite copiado. Agora é só compartilhar no Discord.';
-    } catch {
-      output.focus();
-      output.select();
-      status.textContent = 'Selecione e copie o convite acima para compartilhar.';
-    }
-  });
 })();

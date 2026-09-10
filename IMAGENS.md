@@ -38,3 +38,6 @@ Usar arte dourada com fundo transparente, 160 × 160 px.
 
 ## Arte de fundo
 - `assets/img/decoracao/fundo-ornamental.png` — 2400 × 1800 px. Arabescos botânicos dourados delicados, inspirados em tapeçaria de castelo, concentrados nas laterais. Centro livre e fundo transparente. A arte fica discreta atrás do conteúdo, sem movimento para preservar a leitura.
+
+- `assets/img/home/jogador-4.png`: retrato do quarto herói, da raça demoníaca.
+- `assets/img/home/brasao-4.png`: brasão do quarto herói.
