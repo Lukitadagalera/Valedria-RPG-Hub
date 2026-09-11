@@ -225,3 +225,7 @@ html:root[data-theme='light'] .sheet-layout :is(input,select,textarea){backgroun
 html:root[data-theme='light'] .reference-hero :is(h1,p){color:#29261f}
 html:root[data-theme='light'] .reference-hero .hero-side-note{color:#342b1d;background:#fff9e9ed;border:1px solid #c8ad75;border-radius:10px;padding:12px 14px;max-width:190px;font-weight:700;line-height:1.6;text-shadow:none;box-shadow:0 3px 12px #44351b15}
 html:root[data-theme='light'] .reference-hero .hero-footnote{color:#51432e;font-weight:600}
+
+/* Acabamento claro consistente para os espaços de encontro. */
+html:root[data-theme='light'] :is(.board-empty,.board-card,.community-welcome,.community-steps,.destination-card){background:linear-gradient(135deg,#fffdf9,#f1e8d8);border-color:#cbbd9f}
+html:root[data-theme='light'] .reference-hero .hero-side-note{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;color:#241c10;text-shadow:0 1px 2px #fff,0 0 5px #fff,0 0 10px #fff;font-weight:700}
