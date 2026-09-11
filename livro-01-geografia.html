@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://api.fontshare.com">
 <link href="https://api.fontshare.com/v2/css?f[]=boska@700,600&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="redesign.css"><link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="theme.css?v=21">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="redesign.css"><link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="theme.css?v=22">
 
 <link rel="icon" href="favicon.ico" sizes="any"></head>
 <body class="book-page">
@@ -50,30 +50,30 @@
 <script src="assets/render.js"></script>
 <script>
 (function(){
+  function localidadeCard(c){
+    return '<article class="subcard locality-card">'+(c.img?VR.imgSlot(c.img,c.nome,'4/3'):'')+
+      '<h4>'+VR.esc(c.nome)+'</h4><p class="muted"><strong>Tipo:</strong> '+VR.esc(c.tipo)+'</p>'+
+      (c.populacao?'<p class="muted"><strong>População:</strong> '+VR.esc(c.populacao)+'</p>':'')+
+      '<p>'+VR.esc(c.descricao)+'</p></article>';
+  }
   var reinosHtml = window.REINOS.map(function(r){
-    var cidadesRows = r.cidades.map(function(c){
-      return [VR.esc(c.nome), VR.esc(c.tipo), VR.esc(c.populacao||'—'), VR.esc(c.descricao)];
-    });
-    var cidadesComImagem = r.cidades.filter(function(c){ return c.img; }).map(function(c){
-      return '<div class="mini-card">'+VR.imgSlot(c.img, c.nome, '4/3')+'<h4>'+VR.esc(c.nome)+'</h4></div>';
-    }).join('');
+    var cidades = r.cidades.map(localidadeCard).join('');
     return '<article class="entry-card">'+VR.imgSlot(r.img, r.nome, '16/9')+
       '<div class="entry-head"><h3>'+VR.esc(r.nome)+'</h3></div>'+
       '<div class="entry-meta">'+VR.chip(r.regiao,'outline')+'</div>'+
       '<div class="entry-body"><p>'+VR.esc(r.descricao)+'</p>'+
-      (cidadesComImagem ? '<div class="mini-grid" style="margin:var(--space-4) 0">'+cidadesComImagem+'</div>' : '')+
-      VR.table(['Localidade','Tipo','Populacao','Descricao'], cidadesRows)+
+      '<h3 class="section-title locality-heading">Cidades e Vilas</h3><div class="subcard-grid locality-grid">'+cidades+'</div>'+
       '</div></article>';
   }).join('');
   VR.mount('#reinos-mount', '<div class="entry-grid">'+reinosHtml+'</div>');
 
   var e = window.ENCRUZILHADA;
-  var eCidades = e.cidades.map(function(c){ return [VR.esc(c.nome), VR.esc(c.tipo), VR.esc(c.descricao)]; });
+  var eCidades = e.cidades.map(localidadeCard).join('');
   VR.mount('#encruzilhada-mount', '<article class="entry-card">'+VR.imgSlot(e.img, e.nome, '16/9')+
     '<div class="entry-head"><h3>'+VR.esc(e.nome)+'</h3></div>'+
     '<div class="entry-meta">'+VR.chip(e.regiao,'outline')+'</div>'+
     '<div class="entry-body"><p>'+VR.esc(e.descricao)+'</p>'+
-    VR.table(['Localidade','Tipo','Descricao'], eCidades)+
+    '<h3 class="section-title locality-heading">Localidades</h3><div class="subcard-grid locality-grid">'+eCidades+'</div>'+
     '</div></article>');
 
   var povosHtml = window.TERRAS_OUTROS_POVOS.map(function(p){
