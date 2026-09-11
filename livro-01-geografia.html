@@ -9,10 +9,10 @@
 <link rel="preconnect" href="https://api.fontshare.com">
 <link href="https://api.fontshare.com/v2/css?f[]=boska@700,600&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="redesign.css"><link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="theme.css?v=22">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="redesign.css"><link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="theme.css?v=23">
 
 <link rel="icon" href="favicon.ico" sizes="any"></head>
-<body class="book-page">
+<body class="book-page geography-page">
 <a class="skip-link" href="#main">Saltar para o conteúdo</a>
 <header class="site-header reference-header"><a class="wordmark" href="index.html"><span class="symbol-slot brand-symbol"><img src="assets/img/home/marca-valedria.webp" alt="Símbolo de Valédria" onload="this.parentElement.classList.add('loaded')" onerror="this.hidden=true"><code>assets/img/home/marca-valedria.webp</code></span><div>Valédria<small>Códice do Mundo</small></div></a><nav class="primary-nav" id="primary-nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="mundo.html">Mundo</a><a href="livros.html" aria-current="page">Livros</a><a href="cronicas-valedria.html">Crônicas</a><a href="campanhas.html">Campanhas</a><a href="comunidade.html">Comunidade</a><a href="hall-da-gloria.html">Hall da Glória</a></nav><a class="btn btn-primary header-sheet" href="ficha.html"><svg class="ref-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg>Ficha de personagem</a><button class="icon-btn mobile-menu" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">☰</button></header><main id="main" class="content"><div class="book-body">
 <a class="back-link" href="livros.html">← Todos os livros</a><div class="page-head">
@@ -31,7 +31,7 @@
 </section>
 <section>
   <div class="section-head"><div><div class="eyebrow">Além das fronteiras humanas</div><h2>As terras dos outros povos</h2></div></div>
-  <div class="mini-grid" id="outros-povos-mount"></div>
+  <div class="subcard-grid" id="outros-povos-mount"></div>
 </section>
 <section>
   <div class="section-head"><div><div class="eyebrow">Comércio</div><h2>Rotas comerciais</h2></div></div>
@@ -51,40 +51,42 @@
 <script>
 (function(){
   function localidadeCard(c){
-    return '<article class="subcard locality-card">'+(c.img?VR.imgSlot(c.img,c.nome,'4/3'):'')+
+    return '<div class="subcard">'+
       '<h4>'+VR.esc(c.nome)+'</h4><p class="muted"><strong>Tipo:</strong> '+VR.esc(c.tipo)+'</p>'+
       (c.populacao?'<p class="muted"><strong>População:</strong> '+VR.esc(c.populacao)+'</p>':'')+
-      '<p>'+VR.esc(c.descricao)+'</p></article>';
+      '<p>'+VR.esc(c.descricao)+'</p></div>';
   }
   var reinosHtml = window.REINOS.map(function(r){
     var cidades = r.cidades.map(localidadeCard).join('');
-    return '<article class="entry-card">'+VR.imgSlot(r.img, r.nome, '16/9')+
+    var galeria = r.cidades.filter(function(c){return c.img;}).map(function(c){return '<figure class="subcard">'+VR.imgSlot(c.img,c.nome,'4/3')+'<figcaption>'+VR.esc(c.nome)+'</figcaption></figure>';}).join('');
+    return '<article class="entry-card entry-card-wide">'+VR.imgSlot(r.img, r.nome, '16/9')+
       '<div class="entry-head"><h3>'+VR.esc(r.nome)+'</h3></div>'+
       '<div class="entry-meta">'+VR.chip(r.regiao,'outline')+'</div>'+
       '<div class="entry-body"><p>'+VR.esc(r.descricao)+'</p>'+
-      '<h3 class="section-title locality-heading">Cidades e Vilas</h3><div class="subcard-grid locality-grid">'+cidades+'</div>'+
+      '<h3 class="section-title locality-heading">Cidades e Vilas</h3><div class="subcard-grid">'+cidades+'</div>'+
+      (galeria?'<h3 class="section-title locality-heading">Paisagens das localidades</h3><div class="subcard-grid">'+galeria+'</div>':'')+
       '</div></article>';
   }).join('');
-  VR.mount('#reinos-mount', '<div class="entry-grid">'+reinosHtml+'</div>');
+  VR.mount('#reinos-mount', '<div class="entry-grid entry-grid-wide">'+reinosHtml+'</div>');
 
   var e = window.ENCRUZILHADA;
   var eCidades = e.cidades.map(localidadeCard).join('');
-  VR.mount('#encruzilhada-mount', '<article class="entry-card">'+VR.imgSlot(e.img, e.nome, '16/9')+
+  VR.mount('#encruzilhada-mount', '<article class="entry-card entry-card-wide">'+VR.imgSlot(e.img, e.nome, '16/9')+
     '<div class="entry-head"><h3>'+VR.esc(e.nome)+'</h3></div>'+
     '<div class="entry-meta">'+VR.chip(e.regiao,'outline')+'</div>'+
     '<div class="entry-body"><p>'+VR.esc(e.descricao)+'</p>'+
-    '<h3 class="section-title locality-heading">Localidades</h3><div class="subcard-grid locality-grid">'+eCidades+'</div>'+
+    '<h3 class="section-title locality-heading">Localidades</h3><div class="subcard-grid">'+eCidades+'</div>'+
     '</div></article>');
 
   var povosHtml = window.TERRAS_OUTROS_POVOS.map(function(p){
-    return '<div class="mini-card">'+'<h4>'+VR.esc(p.nome)+'</h4>'+
+    return '<div class="subcard">'+'<h4>'+VR.esc(p.nome)+'</h4>'+
       '<p class="muted" style="margin:0 0 .5rem">'+VR.esc(p.regiao)+'</p>'+
       '<p>'+VR.esc(p.descricao)+'</p></div>';
   }).join('');
   VR.mount('#outros-povos-mount', povosHtml);
 
-  var rotasRows = window.ROTAS_COMERCIAIS.map(function(r){ return [VR.esc(r.nome), VR.esc(r.trecho), VR.esc(r.descricao)]; });
-  VR.mount('#rotas-mount', VR.table(['Rota','Trecho','Descricao'], rotasRows));
+  var rotasRows = window.ROTAS_COMERCIAIS.map(function(r){ return '<div class="subcard"><h4>'+VR.esc(r.nome)+'</h4><p><strong>Trecho:</strong> '+VR.esc(r.trecho)+'</p><p>'+VR.esc(r.descricao)+'</p></div>'; }).join('');
+  VR.mount('#rotas-mount', '<div class="subcard-grid">'+rotasRows+'</div>');
 
   var territoriosHtml = window.TERRITORIOS.map(function(t){
     var cidades = t.cidades.map(function(c){
@@ -94,7 +96,7 @@
       return '<div class="subcard"><h4>'+VR.esc(g.nome)+'</h4><p>'+VR.esc(g.papel)+'</p></div>';
     }).join('')) : '';
     var rotasT = '<ul class="plain-list">' + t.rotas.map(function(r){return '<li>'+VR.esc(r)+'</li>';}).join('') + '</ul>';
-    var relacoes = VR.table(['Povo','Relação'], t.relacoes.map(function(r){return [VR.esc(r.com), VR.esc(r.texto)];}));
+    var relacoes = '<div class="subcard-grid">'+t.relacoes.map(function(r){return '<div class="subcard"><h4>'+VR.esc(r.com)+'</h4><p>'+VR.esc(r.texto)+'</p></div>';}).join('')+'</div>';
     return '<article class="entry-card entry-card-wide">'+VR.imgSlot(t.img, t.nome, '16/9')+
       '<div class="entry-head"><h3>'+VR.esc(t.nome)+'</h3></div>'+
       '<div class="entry-meta">'+VR.chip(t.regiao,'outline')+VR.chip('Capital: '+t.capital,'blue')+VR.chip(t.governo,'gold')+'</div>'+
