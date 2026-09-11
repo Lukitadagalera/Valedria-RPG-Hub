@@ -6,7 +6,7 @@
 .atlas-zoom button:disabled{opacity:.4;cursor:default}
 .atlas-help{font-size:14px;margin-bottom:14px}
 .atlas-viewport{width:100%;max-height:78vh;overflow:auto;border:1px solid #aa9158;border-radius:22px;background:#d9e1d5;overscroll-behavior:contain;scrollbar-color:#9a855c #e0dbc8}
-.atlas-viewport .mapa-wrap{border:0;border-radius:0;max-width:none;width:100%;min-width:680px;overflow:visible;isolation:isolate}
+.atlas-viewport .mapa-wrap{border:0;border-radius:0;max-width:none;width:100%;min-width:1000px;overflow:visible;isolation:isolate}
 .atlas-viewport .mapa-wrap img{width:100%;display:block;max-width:none}
 .atlas-viewport .mapa-ponto{display:grid;place-items:center;padding:0;width:28px;height:28px;min-width:0;min-height:0;border:1.5px solid #68532c;background:#fff7df;color:#312917;box-shadow:0 2px 6px #49351d38;font:700 11px/1 system-ui,sans-serif;z-index:1}
 .atlas-viewport .mapa-ponto:hover,.atlas-viewport .mapa-ponto:focus-visible{background:#6f5026;color:white;z-index:2;outline:3px solid #c4a868;outline-offset:3px}
@@ -35,3 +35,6 @@
 @media(max-width:800px){.atlas-results{grid-template-columns:repeat(2,minmax(0,1fr))}.atlas-viewport{max-height:65vh}}
 @media(max-width:500px){.atlas-results,#atlas-routes{grid-template-columns:1fr}.atlas-tools label{flex-basis:100%}.atlas-caption a{white-space:normal}}
 @media(prefers-reduced-motion:reduce){#painel.painel{transition:none}}
+
+/* Parchment marker colors match the approved engraved cartography. */
+.atlas-viewport .mapa-ponto{background:#e1c28d;color:#352313;border-color:#604020;box-shadow:0 1px 3px #24170960;width:24px;height:24px;font-size:10px}

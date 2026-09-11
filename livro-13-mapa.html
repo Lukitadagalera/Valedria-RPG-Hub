@@ -26,7 +26,7 @@
   .gerador-resultado{border:1px solid var(--color-border,#333);border-radius:8px;padding:var(--space-4,1rem);margin-top:var(--space-4,1rem)}
   .relacoes-table td, .relacoes-table th{vertical-align:top}
 </style>
-<link rel="icon" href="favicon.ico" sizes="any"><link rel="stylesheet" href="assets/atlas.css?v=25"></head>
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="stylesheet" href="assets/atlas.css?v=27"></head>
 <body class="book-page">
 <a class="skip-link" href="#main">Saltar para o conteúdo</a>
 <header class="site-header reference-header"><a class="wordmark" href="index.html"><span class="symbol-slot brand-symbol"><img src="assets/img/home/marca-valedria.webp" alt="Símbolo de Valédria" onload="this.parentElement.classList.add('loaded')" onerror="this.hidden=true"><code>assets/img/home/marca-valedria.webp</code></span><div>Valédria<small>Códice do Mundo</small></div></a><nav class="primary-nav" id="primary-nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="mundo.html">Mundo</a><a href="livros.html" aria-current="page">Livros</a><a href="cronicas-valedria.html">Crônicas</a><a href="campanhas.html">Campanhas</a><a href="comunidade.html">Comunidade</a><a href="hall-da-gloria.html">Hall da Glória</a></nav><a class="btn btn-primary header-sheet" href="ficha.html"><svg class="ref-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg>Ficha de personagem</a><button class="icon-btn mobile-menu" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">☰</button></header><main id="main" class="content"><div class="book-body">
@@ -42,7 +42,7 @@
   <div class="atlas-tools"><label>Buscar localidade<input id="atlas-search" type="search" placeholder="Nome, reino ou tipo de lugar"></label><label>Território<select id="atlas-region"><option value="">Todos os territórios</option></select></label><div class="atlas-zoom" role="group" aria-label="Ampliação do mapa"><button type="button" id="atlas-out" aria-label="Diminuir mapa">−</button><button type="button" id="atlas-fit">Visão geral</button><button type="button" id="atlas-in" aria-label="Ampliar mapa">+</button></div></div>
   <p class="muted atlas-help">No celular, amplie e deslize o mapa para os lados. A busca abaixo também abre todas as localidades.</p>
   <div class="atlas-viewport" id="atlas-viewport" tabindex="0" aria-label="Mapa de Valédria; use a rolagem para explorar"><div class="mapa-wrap" id="mapa-wrap"></div></div>
-  <div class="atlas-caption"><span>Cartografia narrativa, sem escala métrica. Linhas tracejadas: rotas; pontilhadas: túneis anões.</span><a href="assets/img/mapas/atlas-valedria-ilustrado.svg" download>Baixar mapa ilustrado ↗</a></div>
+  <div class="atlas-caption"><span>Cartografia narrativa, sem escala métrica. Linhas tracejadas: rotas; pontilhadas: túneis anões.</span><a href="assets/img/mapas/atlas-valedria-pergaminho.svg" download>Baixar mapa ilustrado ↗</a></div>
   <p id="atlas-count" role="status" aria-live="polite"></p><div id="atlas-results" class="atlas-results"></div>
   <details class="atlas-route-list"><summary>Consultar rotas e conexões</summary><div id="atlas-routes"></div></details>
 </section>
@@ -72,7 +72,7 @@
 </aside>
 
 <script src="app.js?v=18"></script><script src="redesign.js" defer></script>
-<script src="assets/data/mapa.js?v=26"></script>
+<script src="assets/data/mapa.js?v=27"></script>
 <script src="assets/data/dossies.js"></script>
 <script src="assets/data/aventuras.js"></script>
 <script src="assets/data/relacoes.js"></script>
@@ -150,6 +150,6 @@
   VR.mount('#relacoes-mount', VR.table(['Personagem/Facção A','Personagem/Facção B','Tipo de relação','Contexto'], relRows));
 })();
 </script>
-<script src="assets/atlas.js?v=25"></script>
+<script src="assets/atlas.js?v=27"></script>
 <script src="assets/data/conexoes.js"></script><script src="external-links.js"></script></body>
 </html>

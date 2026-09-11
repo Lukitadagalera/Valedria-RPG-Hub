@@ -1,5 +1,6 @@
-/* Atlas narrativo: posições relativas, não coordenadas métricas. */
-window.MAPA_IMAGEM = "assets/img/mapas/atlas-valedria-ilustrado.svg";
+/* Coordinates calibrated to the approved antique map (1536 × 1024). */
+window.MAPA_DIMENSOES = {largura:1536,altura:1024};
+window.MAPA_IMAGEM = "assets/img/mapas/atlas-valedria-pergaminho.svg";
 window.MAPA_PONTOS = [
   {
     "nome": "Amieiro",
@@ -11,8 +12,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-1",
     "numero": 1,
-    "x": 25,
-    "y": 72.66666666666667
+    "x": 58.59375,
+    "y": 61.328125,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Ponte Alta",
@@ -24,8 +30,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-2",
     "numero": 2,
-    "x": 37.22222222222222,
-    "y": 80
+    "x": 57.421875,
+    "y": 69.7265625,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Portovale",
@@ -36,8 +47,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-3",
     "numero": 3,
-    "x": 47.22222222222222,
-    "y": 91.33333333333333
+    "x": 53.7109375,
+    "y": 85.25390625,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Vaudessa",
@@ -48,8 +64,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-4",
     "numero": 4,
-    "x": 26.666666666666668,
-    "y": 80
+    "x": 49.34895833333333,
+    "y": 70.3125,
+    "rotulo": {
+      "dx": 24,
+      "dy": 3,
+      "anchor": "start"
+    }
   },
   {
     "nome": "Trigal",
@@ -60,8 +81,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-5",
     "numero": 5,
-    "x": 35.55555555555556,
-    "y": 86.66666666666667
+    "x": 45.44270833333333,
+    "y": 76.5625,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Bosque Alto",
@@ -72,8 +98,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-6",
     "numero": 6,
-    "x": 15.555555555555555,
-    "y": 66
+    "x": 30.338541666666668,
+    "y": 58.49609375,
+    "rotulo": {
+      "dx": -24,
+      "dy": -3,
+      "anchor": "end"
+    }
   },
   {
     "nome": "Ribamar",
@@ -84,8 +115,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-7",
     "numero": 7,
-    "x": 26.666666666666668,
-    "y": 94
+    "x": 35.80729166666667,
+    "y": 81.8359375,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Vila dos Arcos",
@@ -96,8 +132,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-8",
     "numero": 8,
-    "x": 49.44444444444444,
-    "y": 86
+    "x": 53.776041666666664,
+    "y": 78.61328125,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Salinas da Coroa",
@@ -108,8 +149,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-9",
     "numero": 9,
-    "x": 58.888888888888886,
-    "y": 92
+    "x": 62.565104166666664,
+    "y": 83.49609375,
+    "rotulo": {
+      "dx": 24,
+      "dy": 0,
+      "anchor": "start"
+    }
   },
   {
     "nome": "Junco Velho",
@@ -120,8 +166,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Valmeira",
     "id": "local-10",
     "numero": 10,
-    "x": 16.666666666666668,
-    "y": 75.33333333333333
+    "x": 67.05729166666666,
+    "y": 72.4609375,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Cárdenas Alta",
@@ -132,8 +183,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-11",
     "numero": 11,
-    "x": 47.22222222222222,
-    "y": 52
+    "x": 43.03385416666667,
+    "y": 57.91015625,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Academia de Valédria",
@@ -144,8 +200,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-12",
     "numero": 12,
-    "x": 31.11111111111111,
-    "y": 42.666666666666664
+    "x": 33.984375,
+    "y": 47.0703125,
+    "rotulo": {
+      "dx": -24,
+      "dy": -2,
+      "anchor": "end"
+    }
   },
   {
     "nome": "Poço Fundo",
@@ -156,8 +217,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-13",
     "numero": 13,
-    "x": 38.333333333333336,
-    "y": 43.333333333333336
+    "x": 39.58333333333333,
+    "y": 43.1640625,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Feira Nova",
@@ -168,8 +234,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-14",
     "numero": 14,
-    "x": 36.111111111111114,
-    "y": 61.333333333333336
+    "x": 36.00260416666667,
+    "y": 59.27734375,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Torre de Aldenor",
@@ -180,8 +251,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-15",
     "numero": 15,
-    "x": 56.111111111111114,
-    "y": 40.666666666666664
+    "x": 51.106770833333336,
+    "y": 44.04296875,
+    "rotulo": {
+      "dx": 24,
+      "dy": 34,
+      "anchor": "start"
+    }
   },
   {
     "nome": "Cruzeiro do Sul",
@@ -192,8 +268,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-16",
     "numero": 16,
-    "x": 45.55555555555556,
-    "y": 61.333333333333336
+    "x": 45.83333333333333,
+    "y": 64.84375,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Campo de Aço",
@@ -204,8 +285,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-17",
     "numero": 17,
-    "x": 46.666666666666664,
-    "y": 46
+    "x": 42.44791666666667,
+    "y": 51.07421875,
+    "rotulo": {
+      "dx": 24,
+      "dy": 3,
+      "anchor": "start"
+    }
   },
   {
     "nome": "Ponte da Rainha",
@@ -216,8 +302,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-18",
     "numero": 18,
-    "x": 56.111111111111114,
-    "y": 54.666666666666664
+    "x": 55.859375,
+    "y": 53.3203125,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Urze Baixa",
@@ -228,8 +319,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-19",
     "numero": 19,
-    "x": 58.333333333333336,
-    "y": 65.33333333333333
+    "x": 61.5234375,
+    "y": 65.72265625,
+    "rotulo": {
+      "dx": 24,
+      "dy": 3,
+      "anchor": "start"
+    }
   },
   {
     "nome": "Santa Vigília",
@@ -240,8 +336,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Cárdenas",
     "id": "local-20",
     "numero": 20,
-    "x": 65.55555555555556,
-    "y": 41.333333333333336
+    "x": 64.71354166666666,
+    "y": 49.51171875,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Montegris",
@@ -252,8 +353,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-21",
     "numero": 21,
-    "x": 48.888888888888886,
-    "y": 20
+    "x": 47.59114583333333,
+    "y": 33.3984375,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Pedrafria",
@@ -264,8 +370,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-22",
     "numero": 22,
-    "x": 37.77777777777778,
-    "y": 14
+    "x": 40.95052083333333,
+    "y": 30.17578125,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Vigília Branca",
@@ -276,8 +387,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-23",
     "numero": 23,
-    "x": 59.44444444444444,
-    "y": 11.333333333333334
+    "x": 63.28125,
+    "y": 28.02734375,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Baixapedra",
@@ -288,8 +404,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-24",
     "numero": 24,
-    "x": 48.888888888888886,
-    "y": 25.333333333333332
+    "x": 47.39583333333333,
+    "y": 39.0625,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Fornalha do Vale",
@@ -300,8 +421,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-25",
     "numero": 25,
-    "x": 58.888888888888886,
-    "y": 24
+    "x": 53.90625,
+    "y": 41.796875,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Cedro Alto",
@@ -312,8 +438,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-26",
     "numero": 26,
-    "x": 37.77777777777778,
-    "y": 26.666666666666668
+    "x": 34.50520833333333,
+    "y": 38.76953125,
+    "rotulo": {
+      "dx": -24,
+      "dy": 0,
+      "anchor": "end"
+    }
   },
   {
     "nome": "Lago do Sino",
@@ -324,8 +455,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-27",
     "numero": 27,
-    "x": 63.333333333333336,
-    "y": 18.666666666666668
+    "x": 58.919270833333336,
+    "y": 34.86328125,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Vale Curto",
@@ -336,8 +472,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-28",
     "numero": 28,
-    "x": 51.666666666666664,
-    "y": 34.666666666666664
+    "x": 44.07552083333333,
+    "y": 44.140625,
+    "rotulo": {
+      "dx": -24,
+      "dy": 24,
+      "anchor": "end"
+    }
   },
   {
     "nome": "Passo das Cabras",
@@ -348,8 +489,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-29",
     "numero": 29,
-    "x": 48.333333333333336,
-    "y": 11.333333333333334
+    "x": 35.41666666666667,
+    "y": 27.24609375,
+    "rotulo": {
+      "dx": -24,
+      "dy": 0,
+      "anchor": "end"
+    }
   },
   {
     "nome": "Águas de Ferro",
@@ -360,8 +506,13 @@ window.MAPA_PONTOS = [
     "reino": "Reino de Ostenfeld",
     "id": "local-30",
     "numero": 30,
-    "x": 28.88888888888889,
-    "y": 18.666666666666668
+    "x": 38.99739583333333,
+    "y": 34.375,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Encruzilhada",
@@ -370,8 +521,13 @@ window.MAPA_PONTOS = [
     "descricao": "Única grande cidade aberta oficialmente a todas as raças, governada por um conselho formado por representantes eleitos de cada comunidade residente — humanos, elfos, anões e demônios —, sem exército de nenhum reino, apenas uma guarda mista mantida pelo conselho. Conflitos armados dentro da cidade são considerados quebra grave do tratado de neutralidade.",
     "id": "local-31",
     "numero": 31,
-    "x": 68.88888888888889,
-    "y": 54.666666666666664
+    "x": 66.27604166666666,
+    "y": 54.6875,
+    "rotulo": {
+      "dx": 24,
+      "dy": 0,
+      "anchor": "start"
+    }
   },
   {
     "nome": "Ponte Rubra",
@@ -380,8 +536,13 @@ window.MAPA_PONTOS = [
     "reino": "Fronteiras e território neutro",
     "id": "local-32",
     "numero": 32,
-    "x": 75,
-    "y": 64.66666666666667
+    "x": 71.74479166666666,
+    "y": 58.203125,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Limiar de Cinzas",
@@ -390,8 +551,13 @@ window.MAPA_PONTOS = [
     "reino": "Fronteiras e território neutro",
     "id": "local-33",
     "numero": 33,
-    "x": 80.55555555555556,
-    "y": 72.66666666666667
+    "x": 75.1953125,
+    "y": 62.5,
+    "rotulo": {
+      "dx": 24,
+      "dy": 3,
+      "anchor": "start"
+    }
   },
   {
     "nome": "Silvanneth",
@@ -402,8 +568,13 @@ window.MAPA_PONTOS = [
     "figura": "Conselheira Aelindra — voz mais ouvida do Conselho das Folhas, cética sobre alianças com humanos.",
     "id": "local-34",
     "numero": 34,
-    "x": 16.11111111111111,
-    "y": 38
+    "x": 18.5546875,
+    "y": 35.64453125,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Eryndal",
@@ -414,8 +585,13 @@ window.MAPA_PONTOS = [
     "figura": "Batedor-Chefe Therion — jovem, pragmático, pode se tornar aliado se o grupo for honesto.",
     "id": "local-35",
     "numero": 35,
-    "x": 25,
-    "y": 54
+    "x": 29.622395833333332,
+    "y": 49.31640625,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Thal'Miryn",
@@ -426,8 +602,13 @@ window.MAPA_PONTOS = [
     "figura": "",
     "id": "local-36",
     "numero": 36,
-    "x": 15,
-    "y": 48
+    "x": 22.916666666666664,
+    "y": 40.4296875,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Durrak-Thol",
@@ -438,8 +619,13 @@ window.MAPA_PONTOS = [
     "figura": "Alto Ferreiro Bragdar Ironvein — líder do Clã Ironvein e porta-voz do Conselho, velho e desconfiado de estrangeiros.",
     "id": "local-37",
     "numero": 37,
-    "x": 14.444444444444445,
-    "y": 13.333333333333334
+    "x": 49.47916666666667,
+    "y": 20.01953125,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Kholdrynn",
@@ -450,8 +636,13 @@ window.MAPA_PONTOS = [
     "figura": "Matriarca Heldra do Clã Stonemarrow — resolve conflitos por reputação, não por cargo formal.",
     "id": "local-38",
     "numero": 38,
-    "x": 18.333333333333332,
-    "y": 23.333333333333332
+    "x": 42.96875,
+    "y": 26.171875,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Gryndak",
@@ -462,8 +653,13 @@ window.MAPA_PONTOS = [
     "figura": "Supervisora Gretta Ashenhand — sem afiliação de clã declarada, respeitada pelo trabalho.",
     "id": "local-39",
     "numero": 39,
-    "x": 7.777777777777778,
-    "y": 28
+    "x": 59.635416666666664,
+    "y": 24.0234375,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Vrak'Thon",
@@ -474,8 +670,13 @@ window.MAPA_PONTOS = [
     "figura": "Kal'Veth, o Consumidor — demônio de casta alta próximo de um Deus Demônio, governa pela força e pelo medo, mas calculista.",
     "id": "local-40",
     "numero": 40,
-    "x": 87.77777777777777,
-    "y": 44
+    "x": 82.6171875,
+    "y": 39.2578125,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Skral",
@@ -486,8 +687,13 @@ window.MAPA_PONTOS = [
     "figura": "Grix, o Velho — goblin sobrevivente mais antigo de Skral, intermediário informal com visitantes.",
     "id": "local-41",
     "numero": 41,
-    "x": 85,
-    "y": 60.666666666666664
+    "x": 80.20833333333334,
+    "y": 65.234375,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Sem'Kar",
@@ -498,8 +704,13 @@ window.MAPA_PONTOS = [
     "figura": "A Voz de Sem'Kar — entidade que fala em nome do local; ninguém que se aproximou o suficiente voltou para contar.",
     "id": "local-42",
     "numero": 42,
-    "x": 88.88888888888889,
-    "y": 80.66666666666667
+    "x": 76.82291666666666,
+    "y": 49.12109375,
+    "rotulo": {
+      "dx": 0,
+      "dy": 34,
+      "anchor": "middle"
+    }
   },
   {
     "nome": "Fauces do Norte",
@@ -508,8 +719,13 @@ window.MAPA_PONTOS = [
     "descricao": "Principal acesso às cidades subterrâneas. Um posto anão registra visitantes e cobra pedágio. Os trajetos sob a montanha são representados por linhas pontilhadas.",
     "id": "local-43",
     "numero": 43,
-    "x": 26.11111111111111,
-    "y": 10.666666666666666
+    "x": 54.6875,
+    "y": 29.296875,
+    "rotulo": {
+      "dx": 0,
+      "dy": -23,
+      "anchor": "middle"
+    }
   }
 ];
 window.MAPA_ROTAS = [
