@@ -239,6 +239,10 @@ html:root[data-theme='light'] .reference-hero .hero-side-note{background:transpa
 @media(max-width:600px){.book-body .locality-grid{grid-template-columns:minmax(0,1fr)}.locality-card{padding:16px}}
 
 /* Um único padrão de território e cartões em toda a Geografia. */
+.geography-page .entry-card{border-radius:22px}
+.geography-page .subcard{border-radius:16px}
+.geography-page .geography-travel-note{margin-bottom:20px}
+.geography-page .subcard p+p{margin-top:10px}
 .geography-page .entry-grid-wide{display:grid;grid-template-columns:minmax(0,1fr);gap:32px}
 .geography-page .subcard-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
 .geography-page .subcard-grid>.subcard{min-width:0;margin:0;padding:16px;overflow-wrap:break-word}
