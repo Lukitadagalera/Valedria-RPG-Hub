@@ -1,5 +1,5 @@
 /* Atlas narrativo: posições relativas, não coordenadas métricas. */
-window.MAPA_IMAGEM = "assets/img/mapas/atlas-valedria.svg";
+window.MAPA_IMAGEM = "assets/img/mapas/atlas-valedria-ilustrado.svg";
 window.MAPA_PONTOS = [
   {
     "nome": "Amieiro",
