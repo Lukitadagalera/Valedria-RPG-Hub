@@ -1,5 +1,5 @@
 /* Quiet botanical textures on content panels, independent of the curtain backdrop. */
-:root{--panel-floral:url('img/decoracao/painel-floral-escuro.webp');--panel-veil:linear-gradient(135deg,rgba(20,36,55,.7),rgba(16,29,47,.84) 55%,rgba(20,36,55,.7))}
-:root[data-theme='light']{--panel-floral:url('img/decoracao/painel-floral-claro.webp');--panel-veil:linear-gradient(135deg,rgba(255,252,245,.62),rgba(250,245,234,.8) 55%,rgba(244,235,218,.62))}
+:root{--panel-floral:url('img/decoracao/painel-floral-escuro.webp');--panel-veil:linear-gradient(135deg,rgba(20,36,55,.6),rgba(16,29,47,.76) 55%,rgba(20,36,55,.6))}
+:root[data-theme='light']{--panel-floral:url('img/decoracao/painel-floral-claro.webp');--panel-veil:linear-gradient(135deg,rgba(255,252,245,.5),rgba(250,245,234,.7) 55%,rgba(244,235,218,.5))}
 html:root[data-theme] body :is(.sheet-form-card>.card,.sheet-preview .card,main .entry-card,main .subcard,main .reference-player,main .board-card,main .board-empty,main .community-welcome,main .community-steps,main .destination-card,.catalog-option,.collection-card){background-image:var(--panel-veil),var(--panel-floral);background-size:100% 100%,640px 640px;background-position:center,center bottom;background-repeat:no-repeat,repeat}
 @media print{html:root[data-theme] body :is(.sheet-form-card>.card,.sheet-preview .card,main .entry-card,main .subcard,main .reference-player,main .board-card,main .board-empty,main .community-welcome,main .community-steps,main .destination-card,.catalog-option,.collection-card){background-image:none}}
