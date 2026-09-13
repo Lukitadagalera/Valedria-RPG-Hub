@@ -104,9 +104,9 @@
       document.querySelectorAll('a[href*=".html"]').forEach(function (a) {
         var href = a.getAttribute('href');
         if (!href || /^https?:\/\//.test(href)) return;
-        var base = href.split('?')[0].split('#')[0];
-        var hash = href.indexOf('#') > -1 ? href.slice(href.indexOf('#')) : '';
-        a.setAttribute('href', base + '?theme=' + theme + hash);
+        var url = new URL(href,location.href);
+        url.searchParams.set('theme',theme);
+        a.setAttribute('href',url.pathname.split('/').pop()+url.search+url.hash);
       });
     } catch (e) {}
   }
@@ -163,72 +163,13 @@
     ensureChroniclesNavigation();
     propagateTheme(current);
 
-    var vidaAtualInput = document.getElementById('f-vida-atual');
-    var vidaMaxDisplay = document.getElementById('vida-max-display');
-    var btnDano = document.getElementById('btn-vida-dano');
-    var btnCura = document.getElementById('btn-vida-cura');
-    var inputCon =
-      document.getElementById('attr-constituicao') ||
-      document.querySelector('input[data-attr="constituicao"]') ||
-      document.querySelector('input[name="constituicao"]');
 
-    if (!vidaAtualInput || !vidaMaxDisplay) return;
-
-    var CHAVE_VIDA_ATUAL = 'valedria-ficha-vida-atual';
-
-    function obterConstituicao() {
-      return inputCon ? (Number.parseInt(inputCon.value, 10) || 0) : 0;
-    }
-
-    function obterVidaMaxima() {
-      return 5 + obterConstituicao() * 2;
-    }
-
-    function salvarVidaAtual() {
-      var vidaMax = obterVidaMaxima();
-      var valor = Number.parseInt(vidaAtualInput.value, 10);
-      var vidaAtual = Number.isNaN(valor) ? vidaMax : Math.max(0, Math.min(valor, vidaMax));
-      vidaAtualInput.value = vidaAtual;
-      try { sessionStorage.setItem(CHAVE_VIDA_ATUAL, String(vidaAtual)); } catch (e) {}
-    }
-
-    function restaurarVidaAtual() {
-      var vidaMax = obterVidaMaxima();
-      var valorSalvo = null;
-      try { valorSalvo = sessionStorage.getItem(CHAVE_VIDA_ATUAL); } catch (e) {}
-      var vidaSalva = Number.parseInt(valorSalvo, 10);
-      vidaAtualInput.value = Number.isNaN(vidaSalva) ? vidaMax : Math.max(0, Math.min(vidaSalva, vidaMax));
-      vidaMaxDisplay.textContent = vidaMax;
-    }
-
-    function recalcularVida() {
-      vidaMaxDisplay.textContent = obterVidaMaxima();
-      salvarVidaAtual();
-    }
-
-    function alterarVida(delta) {
-      var vidaMax = obterVidaMaxima();
-      var valor = Number.parseInt(vidaAtualInput.value, 10);
-      var atual = Number.isNaN(valor) ? vidaMax : valor;
-      vidaAtualInput.value = Math.max(0, Math.min(atual + delta, vidaMax));
-      salvarVidaAtual();
-    }
-
-    if (btnDano) btnDano.addEventListener('click', function () { alterarVida(-1); });
-    if (btnCura) btnCura.addEventListener('click', function () { alterarVida(1); });
-    vidaAtualInput.addEventListener('input', salvarVidaAtual);
-    vidaAtualInput.addEventListener('change', salvarVidaAtual);
-    if (inputCon) {
-      inputCon.addEventListener('input', recalcularVida);
-      inputCon.addEventListener('change', recalcularVida);
-    }
-    restaurarVidaAtual();
   });
 
   function loadMusicPlayer() {
     if (document.querySelector('script[data-valedria-music-player]')) return;
     var script = document.createElement('script');
-    script.src = 'assets/music-player.js?v=15';
+    script.src = 'assets/music-player.js?v=16';
     script.setAttribute('data-valedria-music-player', '');
     document.head.appendChild(script);
   }
@@ -247,7 +188,7 @@
   const syncHero=()=>{
     const light=document.documentElement.dataset.theme==='light';
     const src=light?'assets/img/home/hero-valedria-claro.webp':'assets/img/home/hero-valedria.webp';
-    if(hero.getAttribute('src')!==src){hero.hidden=false;hero.src=src;}
+    if(hero.getAttribute('src')!==src){hero.hidden=false;var variant=window.VALEDRIA_IMAGES&&window.VALEDRIA_IMAGES[src];if(variant)hero.srcset=variant.srcset;else hero.removeAttribute('srcset');hero.src=src;}
   };
   syncHero();
   new MutationObserver(syncHero).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});

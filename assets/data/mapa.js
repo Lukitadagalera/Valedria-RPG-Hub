@@ -1,5 +1,8 @@
-/* Coordinates calibrated to the approved antique map (1536 × 1024). */
-window.MAPA_DIMENSOES = {largura:1536,altura:1024};
+/* Coordinates belong to the approved artwork. Descriptions are synchronized by build-content.cjs. */
+window.MAPA_DIMENSOES = {
+  "largura": 1536,
+  "altura": 1024
+};
 window.MAPA_IMAGEM = "assets/img/mapas/atlas-valedria-pergaminho.svg";
 window.MAPA_PONTOS = [
   {

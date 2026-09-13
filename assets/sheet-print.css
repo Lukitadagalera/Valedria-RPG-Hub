@@ -1,0 +1,18 @@
+#sheet-print{display:none}
+@media print{
+ @page{size:A4;margin:15mm}
+ html:root[data-theme] body{background:#fff!important;color:#171717!important}
+ body:has(#sheet-print)>:not(#sheet-print){display:none!important}
+ body:has(#sheet-print)::before,body:has(#sheet-print)::after{display:none!important}
+ #sheet-print{display:block!important;font:11pt/1.5 Georgia,serif;color:#171717;background:white}
+ #sheet-print *{color:inherit!important;box-shadow:none!important;text-shadow:none!important;max-height:none;overflow:visible;overflow-wrap:anywhere}
+ #sheet-print h1{font-size:25pt;margin:5mm 0 3mm}
+ #sheet-print h2{font-size:16pt;border-bottom:1px solid #b6a27a;margin:6mm 0 3mm;break-after:avoid}
+ #sheet-print h3{font-size:12pt;margin:3mm 0 1mm;break-after:avoid}
+ #sheet-print p{margin:1.5mm 0;orphans:3;widows:3}
+ .print-identity{display:flex;gap:7mm;align-items:start;break-inside:avoid}
+ .print-identity img{width:32mm;height:43mm;object-fit:cover;border-radius:3mm}
+ .print-attributes{display:flex;justify-content:space-between;gap:3mm;padding:3mm 0;border-block:1px solid #b6a27a;margin-top:5mm;break-inside:avoid}
+ .print-prose{white-space:pre-wrap}
+ .print-item{margin-bottom:4mm}
+}

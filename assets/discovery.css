@@ -1,0 +1,30 @@
+.site-search{display:grid;place-items:center;flex-shrink:0;width:40px;height:40px;border:1px solid var(--color-border);border-radius:50%;color:var(--color-primary)}
+.site-search svg{width:20px;height:20px}
+.site-search:hover,.site-search:focus-visible{background:var(--color-surface);outline:2px solid var(--color-primary);outline-offset:3px}
+.start-banner{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:30px;padding:24px;border-radius:18px}
+.start-banner h2{font-size:27px;line-height:1.25;margin:4px 0 8px}
+.start-banner p{font-size:16px;color:var(--color-text-muted)}
+.start-banner .btn{flex-shrink:0}
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.guide-grid .card{border-radius:18px;min-width:0}
+.guide-grid h2{font-size:28px;line-height:1.25;margin:10px 0 16px}
+.guide-grid p{margin-bottom:18px}
+.guide-number{font-size:14px;letter-spacing:.15em;color:var(--color-primary)}
+.guide-links{display:flex;flex-wrap:wrap;gap:14px}
+.guide-links a{min-height:44px;display:inline-flex;align-items:center;text-decoration:underline;text-underline-offset:4px}
+.codex-search{display:grid;gap:18px}
+.search-controls{display:grid;grid-template-columns:1fr 220px auto;gap:14px;align-items:end}
+.search-controls label{display:grid;gap:8px;min-width:0}
+.search-controls input,.search-controls select{width:100%;padding:14px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-surface);color:var(--color-text);font:inherit;min-height:48px}
+.search-results{display:grid;gap:18px}
+.search-result{padding:24px;border-radius:18px;overflow-wrap:anywhere}
+.search-result h2{font-size:25px;margin:8px 0}
+.search-result h2 a{text-decoration:underline;text-underline-offset:4px}
+.search-result p{font-size:16px;color:var(--color-text-muted)}
+.search-result .eyebrow{font-size:11px}
+.search-target{outline:2px solid var(--color-primary);outline-offset:5px;border-radius:3px;scroll-margin-top:130px}
+.book-page table{width:100%;overflow-wrap:anywhere}
+.book-page .table-wrap{min-width:0;max-width:100%;overflow-x:auto}
+@media(max-width:700px){.guide-grid{grid-template-columns:1fr}.search-controls{grid-template-columns:1fr}.start-banner{align-items:flex-start;flex-direction:column}.start-banner .btn{width:100%}}
+@media(max-width:1400px){.reference-header .primary-nav{gap:14px}.reference-header .primary-nav a{font-size:13px}}
+@media print{.site-search,.start-banner{display:none!important}}

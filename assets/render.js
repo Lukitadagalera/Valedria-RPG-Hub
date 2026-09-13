@@ -178,7 +178,7 @@ window.VR = (function () {
           '<path d="M11 8v6M8 11h6"></path></svg>';
         zoomButton.addEventListener('click', function () {
           if (img.classList.contains('is-broken')) return;
-          openLightbox(img.currentSrc || img.src, img.alt || '');
+          openLightbox(img.src, img.alt || '');
         });
         if (img.classList.contains('is-broken')) zoomButton.hidden = true;
         slot.appendChild(zoomButton);
@@ -189,9 +189,11 @@ window.VR = (function () {
   function imgSlot(src, alt, ratio) {
     if (!src) return '';
     ratio = resolveImageRatio(src, ratio || '4/3');
+    var responsive=window.VALEDRIA_IMAGES&&window.VALEDRIA_IMAGES[src];
+    var imageAttrs=responsive?' srcset="'+esc(responsive.srcset)+'" sizes="(max-width: 600px) 92vw, (max-width: 1000px) 46vw, 40vw" width="'+responsive.width+'" height="'+responsive.height+'"':'';
     return (
       '<div class="img-slot" style="--slot-ratio:' + esc(ratio) + '">' +
-      '<img src="' + esc(src) + '" alt="' + esc(alt || '') + '" onerror="this.classList.add(&quot;is-broken&quot;)">' +
+      '<img loading="lazy" decoding="async"'+imageAttrs+' src="' + esc(src) + '" alt="' + esc(alt || '') + '" onerror="this.classList.add(&quot;is-broken&quot;)">' +
       '<div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">' +
       '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.4"/>' +
       '<path d="M21 16l-5.2-5.2a2 2 0 0 0-2.8 0L5 19"/></svg>' +

@@ -127,3 +127,6 @@ window.GRIMORIO = [
     ]
   }
 ];
+
+// Derive displayed progression from the rules used by the character sheet.
+if(window.VALEDRIA_REGRAS)window.MANA_PROGRESSAO.forEach(function(row){[1,5,10].forEach(function(n){row["n"+n]=window.VALEDRIA_REGRAS.manaMax(n,row.potencial);});});

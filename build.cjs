@@ -1,3 +1,5 @@
+require('./build-content.cjs');
+require('./build-search.cjs');
 const fs=require('node:fs');const path=require('node:path');
 fs.mkdirSync('dist',{recursive:true});
 // Keep PNG masters in the source repository; publish only their WebP versions.

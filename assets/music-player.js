@@ -114,7 +114,7 @@
         '<input class="music-progress" type="range" min="0" max="1000" value="0" aria-label="Progresso da música">' +
         '<div class="music-time"><span class="music-current">0:00</span><span class="music-duration">0:00</span></div>' +
         '<label class="music-volume-row"><span>Volume</span><input class="music-volume" type="range" min="0" max="100" value="45" aria-label="Volume"></label>' +
-        '<audio class="music-audio" preload="auto" playsinline></audio>' +
+        '<audio class="music-audio" preload="none" playsinline></audio>' +
       '</div>';
 
     var themeButton = actions.querySelector('[data-theme-toggle]');
@@ -139,7 +139,8 @@
     var index = Number.isInteger(saved.index) ? saved.index : 0;
     if (index < 0 || index >= tracks.length) index = 0;
 
-    var desiredPlaying = saved.playing !== false;
+    var userStarted = saved.userStarted === true;
+    var desiredPlaying = saved.playing === true && userStarted;
     var loadingTrack = false;
     var unlockArmed = false;
     var lastPersistAt = 0;
@@ -157,7 +158,7 @@
         index: index,
         volume: audio.volume,
         time: audio.currentTime || 0,
-        playing: desiredPlaying
+        playing: desiredPlaying, userStarted: userStarted
       });
     }
 
@@ -277,7 +278,7 @@
         if (desiredPlaying) attemptPlay();
       });
 
-      audio.load();
+      if(desiredPlaying) attemptPlay();
     }
 
     if (!tracks.length) {
@@ -323,6 +324,7 @@
     });
 
     play.addEventListener('click', function () {
+      userStarted = true;
       if (audio.paused) {
         desiredPlaying = true;
         persist();
