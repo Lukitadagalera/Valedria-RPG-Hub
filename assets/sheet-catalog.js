@@ -33,7 +33,9 @@ window.SheetCatalog=function(options){
   $('#btn-add-pericia').onclick=function(){open('pericias');};$('#btn-add-item').onclick=function(){open('itens');};$('#btn-add-artefato').onclick=function(){open('artefatos');};
   function render(){
     ['pericias','itens','artefatos'].forEach(function(kind){
-      var container=$('#'+kind+'-editor');container.replaceChildren();
+      var container=kind==='pericias'?$('#pericias-editor'):$('#pv-'+kind);
+      if(kind!=='pericias')$('#'+kind+'-editor').replaceChildren();
+      container.replaceChildren();
       if(!state[kind].length){var empty=document.createElement('p');empty.className='collection-empty';empty.textContent=kind==='pericias'?'Escolha as habilidades que seu personagem domina.':kind==='itens'?'Prepare sua mochila com itens do catálogo.':'Registre aqui as relíquias da sua jornada.';container.appendChild(empty);}
       state[kind].forEach(function(c,i){
         var row=document.createElement('article');row.className='collection-card';
@@ -43,24 +45,26 @@ window.SheetCatalog=function(options){
         if(kind==='artefatos')row.insertAdjacentHTML('beforeend',restrictions(c));container.appendChild(row);
       });
     });
-    $('#f-foto-preview').hidden=!state.foto;$('#portrait-empty').hidden=!!state.foto;$('#foto-remover').hidden=!state.foto;
+    $('#f-foto-preview').hidden=!state.foto;$('#portrait-empty').hidden=!!state.foto;$('#foto-remover').hidden=!state.foto;$('#foto-ajustar').hidden=!state.foto;
     if(state.foto)$('#f-foto-preview').src=state.foto;else $('#f-foto-preview').removeAttribute('src');
   }
   function safePhoto(value){return typeof value==='string'&&value.length<1500000&&/^data:image\/(webp|png|jpeg);base64,[a-zA-Z0-9+/=]+$/.test(value)?value:'';}
+  var crop=window.PortraitCrop(function(result){Object.assign(state,result);$('#foto-status').textContent='Retrato atualizado.';render();options.onChange();});
+  $('#foto-ajustar').onclick=function(){crop.open(state.fotoOriginal||state.foto,state.fotoRecorte).catch(function(){$('#foto-status').textContent='Não foi possível abrir o retrato.';});};
   $('#foto-escolher').onclick=function(){$('#f-foto').click();};
   $('#f-foto').addEventListener('change',async function(e){
     var file=e.target.files[0],version=++photoVersion;e.target.value='';if(!file)return;
     if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>10*1024*1024){$('#foto-status').textContent='Escolha uma imagem PNG, JPG ou WebP com até 10 MB.';return;}
     $('#foto-status').textContent='Preparando retrato…';
     var url=URL.createObjectURL(file);
-    try{var image=new Image();image.src=url;await image.decode();var scale=Math.min(1,640/Math.max(image.width,image.height));var canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(image.width*scale));canvas.height=Math.max(1,Math.round(image.height*scale));canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height);if(version!==photoVersion)return;state.foto=canvas.toDataURL('image/webp',.85);$('#foto-status').textContent='Retrato pronto. Ele acompanha a ficha exportada.';render();options.onChange();}catch(error){$('#foto-status').textContent='Não foi possível abrir essa imagem. Escolha outro arquivo.';}finally{URL.revokeObjectURL(url);}
+    try{var image=new Image();image.src=url;await image.decode();var scale=Math.min(1,1280/Math.max(image.width,image.height));var canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(image.width*scale));canvas.height=Math.max(1,Math.round(image.height*scale));canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height);if(version!==photoVersion)return;await crop.open(canvas.toDataURL('image/webp',.88));$('#foto-status').textContent='Ajuste o enquadramento e aplique o recorte.';}catch(error){$('#foto-status').textContent='Não foi possível abrir essa imagem. Escolha outro arquivo.';}finally{URL.revokeObjectURL(url);}
   });
-  $('#foto-remover').onclick=function(){photoVersion++;state.foto='';$('#foto-status').textContent='Retrato removido.';render();options.onChange();};
+  $('#foto-remover').onclick=function(){photoVersion++;crop.cancel();state.foto='';state.fotoOriginal='';state.fotoRecorte=null;$('#foto-status').textContent='Retrato removido.';render();options.onChange();};
   render();
   return {
     get:function(){return JSON.parse(JSON.stringify(state));},
     set:function(s){
-      photoVersion++;state={itens:[],pericias:[],artefatos:[],foto:safePhoto(s.foto)};
+      photoVersion++;crop.cancel();state={itens:[],pericias:[],artefatos:[],foto:safePhoto(s.foto),fotoOriginal:safePhoto(s.fotoOriginal),fotoRecorte:s.fotoRecorte||null};
       (s.pericias||[]).forEach(function(c){var official=catalog.pericias.find(function(x){return x.nome===c.nome;});state.pericias.push(Object.assign({},c,official||{}));});
       (s.artefatos||[]).forEach(function(c){state.artefatos.push(Object.assign({},c));});
       (s.itens||[]).forEach(function(c){var magic=catalog.artefatos.find(function(x){return x.nome===c.nome;});var basic=catalog.itens.find(function(x){return x.nome===c.nome;});if(!s.versao&&(magic||c.efeito)){state.artefatos.push(Object.assign({},magic||{},c));}else state.itens.push(Object.assign({},basic||{},c,{quantidade:Math.max(1,Math.min(999,parseInt(c.quantidade,10)||1))}));});
