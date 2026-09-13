@@ -7,7 +7,7 @@ window.RITMOS_VIAGEM = [
 window.ROTAS_VIAGEM = [
   { rota: "Amieiro → Floresta → Cavernas", pe: "Meio dia", cavalo: "Não aplicável (terreno fechado)", barco: "—" },
   { rota: "Amieiro → Ponte Alta", pe: "3 dias", cavalo: "1,5 dia", barco: "1 dia (trecho fluvial parcial)" },
-  { rota: "Ponte Alta → cidade grande seguinte", pe: "4-5 dias", cavalo: "2-3 dias", barco: "2 dias (Rio Prateado, se a rota permitir)" },
+  { rota: "Ponte Alta → Portovale", pe: "4-5 dias", cavalo: "2-3 dias", barco: "2 dias (rota fluvial de Valmeira, em condições favoráveis)" },
   { rota: "Terras Humanas → Eryndal (fronteira élfica)", pe: "5 dias", cavalo: "2,5 dias", barco: "Não aplicável" },
   { rota: "Eryndal → Silvanneth (interior élfico)", pe: "2 dias (apenas com guia élfico)", cavalo: "Não aplicável", barco: "—" },
   { rota: "Terras Humanas → Fauces do Norte (fronteira anã)", pe: "6 dias", cavalo: "3 dias", barco: "Não aplicável" },

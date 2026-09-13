@@ -2,7 +2,27 @@ window.PERICIAS = [
   {
     "nome": "Atletismo",
     "atributo": "Força",
-    "descricao": "Correr, saltar, escalar, nadar contra a corrente, arrombar portas."
+    "descricao": "Correr, saltar, escalar e nadar contra a corrente."
+  },
+  {
+    "nome": "Arrombamento",
+    "atributo": "Força",
+    "descricao": "Romper portas, grades e obstáculos pela força; fechaduras discretas usam Ladinagem."
+  },
+  {
+    "nome": "Potência Física",
+    "atributo": "Força",
+    "descricao": "Erguer, empurrar, arrastar e sustentar cargas pesadas."
+  },
+  {
+    "nome": "Agarrar e Imobilizar",
+    "atributo": "Força",
+    "descricao": "Segurar um oponente e impedir seus movimentos; escapar por contorção usa Acrobacia."
+  },
+  {
+    "nome": "Remo",
+    "atributo": "Força",
+    "descricao": "Impulsionar uma embarcação a remo e vencer correntes; condução e manobras usam Montaria e Veículos."
   },
   {
     "nome": "Acrobacia",
@@ -17,7 +37,7 @@ window.PERICIAS = [
   {
     "nome": "Ladinagem",
     "atributo": "Destreza",
-    "descricao": "Abrir fechaduras, batalhar bolsos, esconder pequenos objetos no corpo."
+    "descricao": "Abrir fechaduras, furtar bolsos, esconder pequenos objetos no corpo."
   },
   {
     "nome": "Iniciativa",

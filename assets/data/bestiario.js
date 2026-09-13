@@ -223,11 +223,10 @@ window.BESTIARIO = [
     img: "assets/img/monstros/verme-de-granito.png.webp"
   },
   {
-    nome: "Devorador de Areia", categoria: "Deserto e cinzas", ameaca: "Moderada", nivel: "3-5",
-    atributos: { forca: 3, destreza: 4, constituicao: 3, sabedoria: 2, carisma: 1 },
-    defesa: 13, vida: 60,
+    nome: "Devorador de Areia", categoria: "Lendário", ameaca: "Lendária", nivel: "Lendário",
+    atributos: null, defesa: "Desconhecida", vida: "Desconhecida",
     local: "Mar de Areia e Ruínas Ardentes, nas Terras Demoníacas",
-    descricao: "Massa de areia animada por energia residual das Ruínas Ardentes, que assume forma vagamente humanoide para emboscar viajantes. Dissolve-se em uma nuvem de poeira quando destruído, apenas para se reformar horas depois se a energia da ruína próxima permanecer instável.",
+    descricao: "Entidade lendária do Mar de Areia, formada por uma massa colossal de areia animada pela energia residual das Ruínas Ardentes. Sua presença altera dunas e rotas inteiras, fazendo viajantes desaparecerem em tempestades súbitas. Mesmo quando sua forma é desfeita, histórias antigas afirmam que ela pode se recompor enquanto a energia das ruínas permanecer ativa.",
     img: "assets/img/monstros/devorador-de-areia.png.webp"
   },
   {

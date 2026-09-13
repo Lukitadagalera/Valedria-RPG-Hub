@@ -77,14 +77,6 @@ window.VR = (function () {
 
       if (devoradorIndex !== -1) {
         var devorador = window.BESTIARIO.splice(devoradorIndex, 1)[0];
-        devorador.categoria = 'Lendário';
-        devorador.ameaca = 'Lendária';
-        devorador.nivel = 'Lendário';
-        devorador.atributos = null;
-        devorador.defesa = 'Desconhecida';
-        devorador.vida = 'Desconhecida';
-        devorador.local = 'Mar de Areia e Ruínas Ardentes, nas Terras Demoníacas';
-        devorador.descricao = 'Entidade lendária do Mar de Areia, formada por uma massa colossal de areia animada pela energia residual das Ruínas Ardentes. Sua presença altera dunas e rotas inteiras, fazendo viajantes desaparecerem em tempestades súbitas. Mesmo quando sua forma é desfeita, histórias antigas afirmam que ela pode se recompor enquanto a energia das ruínas permanecer ativa.';
         window.BESTIARIO.push(devorador);
       }
     }

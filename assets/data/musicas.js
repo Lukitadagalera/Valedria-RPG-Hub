@@ -1,18 +1,19 @@
-/* ============================================================
-   PLAYLIST DO CÓDICE DE VALÉDRIA
-
-   1. Envie os arquivos de áudio para assets/audio/
-   2. Adicione cada faixa abaixo.
-
-   Formatos recomendados: MP3, OGG ou M4A compatível com navegador.
-
-   Exemplo:
-   { titulo: "Tema de Valédria", artista: "Trilha oficial", arquivo: "assets/audio/tema-valedria.mp3" }
-   ============================================================ */
+/* Only add tracks with documented permission and attribution. */
 window.VALEDRIA_MUSICAS = [
   {
-    titulo: "Frieren Beyond Journey's End OST",
-    artista: "Frieren: Beyond Journey's End",
-    arquivo: "assets/audio/Frieren Beyond Journey's End OST.mp3"
+    "titulo": "Fantasia Fantasia",
+    "artista": "Kevin MacLeod (incompetech.com)",
+    "arquivo": "assets/audio/fantasia-fantasia.mp3",
+    "fonte": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1800006",
+    "licenca": "CC BY 4.0",
+    "licencaUrl": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  {
+    "titulo": "Dewdrop Fantasy",
+    "artista": "Kevin MacLeod (incompetech.com)",
+    "arquivo": "assets/audio/dewdrop-fantasy.mp3",
+    "fonte": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700001",
+    "licenca": "CC BY 4.0",
+    "licencaUrl": "https://creativecommons.org/licenses/by/4.0/"
   }
 ];

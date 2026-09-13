@@ -1,4 +1,4 @@
-window.ITENS_BASICOS_MOEDA = "1 Coroa (C) = 10 Escudos (E). A Coroa é aceita em todo território humano e nos pontos de comércio permitidos nas fronteiras não-humanas (Eryndal, Kholdrynn, Skral). Elfos e anões preferencialmente negociam por troca direta fora desses pontos oficiais.";
+window.ITENS_BASICOS_MOEDA = "1 Coroa (C) = 10 Escudos (E) = 5 Ouro (O) = 50 Prata (P) = 500 Cobre (Cb). Os preços são referências de compra; disponibilidade, região e negociação podem alterá-los. Dano e proteção em palavras são descrições qualitativas: o mestre define o dado da arma e a Defesa antes da sessão, conforme o Sistema; não são bônus numéricos. A Coroa é aceita em todo território humano e nos pontos de comércio permitidos nas fronteiras não-humanas (Eryndal, Kholdrynn, Skral). Elfos e anões preferencialmente negociam por troca direta fora desses pontos oficiais.";
 
 window.ITENS_BASICOS = [
   { categoria: "Mochilas e Bolsas", nome: "Mochila de couro", descricao: "Capacidade padrão de carga, resistente à chuva leve", preco: "3 C" },

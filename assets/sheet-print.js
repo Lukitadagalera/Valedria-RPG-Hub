@@ -11,7 +11,7 @@ window.SheetPrint = function(state, reserves) {
   add(identity,'p',[state.raca,state.subraca,state.papel,'Nível '+state.nivel].filter(Boolean).join(' · '));
   if(state.jogador)add(identity,'p','Jogador: '+state.jogador);
   add(identity,'p','Vida: '+state.vidaAtual+' / '+reserves.vida);
-  if(state.caminho==='Magia')add(identity,'p','Mana: '+state.manaAtual+' / '+reserves.mana+' · '+state.manaPotencial);
+  add(identity,'p','Mana: '+state.manaAtual+' / '+reserves.mana+' · '+(state.caminho==='Magia'?state.manaPotencial:state.caminho==='Aura'?'Latente; Aura usa Fôlego':'Reserva; escolha Magia para conjurar'));
   if(state.caminho==='Aura')add(identity,'p','Fôlego: '+(reserves.aura==null?'Reservado — narrado pelo mestre':state.auraAtual+' / '+reserves.aura)+' · '+state.auraGrau);
   const attrs=add(root,'section','','print-attributes');
   Object.entries({forca:'Força',destreza:'Destreza',constituicao:'Constituição',sabedoria:'Sabedoria',carisma:'Carisma'}).forEach(([key,name])=>add(attrs,'p',name+': '+state.atributos[key]));

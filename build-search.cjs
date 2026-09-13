@@ -1,7 +1,7 @@
 const fs=require('node:fs'),vm=require('node:vm');
 const books=[
  ['livro-01-geografia.html','Geografia',['geografia','territorios']],['livro-02-sociedade.html','Sociedade',['sociedade']],
- ['livro-03-economia.html','Economia',['economia','itens_basicos']],['livro-04-sistema.html','Sistema',['pericias']],
+ ['livro-03-economia.html','Economia',['itens_basicos','economia']],['livro-04-sistema.html','Sistema',['pericias']],
  ['livro-05-racas.html','Raças',['racas']],['livro-06-magia.html','Magia',['magia']],['livro-07-aura.html','Aura',['aura']],
  ['livro-08-artefatos.html','Artefatos',['itens']],['livro-09-bestiario.html','Bestiário',['bestiario']],
  ['livro-10-faccoes.html','Facções',['faccoes','guilda']],['livro-11-exploracao.html','Exploração',['exploracao']],

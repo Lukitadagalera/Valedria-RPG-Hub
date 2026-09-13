@@ -4,9 +4,7 @@
    As faixas ficam cadastradas em assets/data/musicas.js.
 
    Comportamento:
-   - tenta iniciar a trilha automaticamente;
-   - se o navegador bloquear autoplay com som, inicia na primeira
-     interação do usuário com a página;
+   - inicia apenas após escolha explícita de reprodução;
    - preserva faixa, posição, volume e intenção de reprodução;
    - ao navegar entre páginas, retoma a faixa do ponto salvo;
    - não pausa apenas porque a aba ficou em segundo plano.
@@ -62,7 +60,7 @@
     }
 
     var script = document.createElement('script');
-    script.src = 'assets/data/musicas.js';
+    script.src = 'assets/data/musicas.js?v=2';
     script.onload = function () {
       playlistLoaded = true;
       done(Array.isArray(window.VALEDRIA_MUSICAS) ? window.VALEDRIA_MUSICAS : []);
@@ -257,7 +255,10 @@
 
       audio.src = track.arquivo;
       title.textContent = track.titulo;
-      artist.textContent = track.artista || 'Valédria';
+      artist.textContent = (track.artista || 'Valédria')+' · ';
+      var credit=document.createElement('a');credit.href=track.fonte;credit.textContent=track.titulo;artist.appendChild(credit);
+      artist.appendChild(document.createTextNode(' · Sem alterações · '));
+      var license=document.createElement('a');license.href=track.licencaUrl;license.textContent=track.licenca;artist.appendChild(license);
       select.value = String(index);
       progress.value = 0;
       currentTime.textContent = '0:00';

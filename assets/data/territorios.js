@@ -1,7 +1,7 @@
 window.TERRITORIOS = [
   {
     nome: "Terras Élficas — O Véu Verde",
-    regiao: "Norte de Valédria",
+    regiao: "Oeste de Valédria",
     capital: "Silvanneth",
     governo: "Conselho das Folhas",
     bioma: "Floresta densa em três camadas: Borda Pálida, Coração Verde e Raízes Antigas",
@@ -23,27 +23,27 @@ window.TERRITORIOS = [
   },
   {
     nome: "Terras Anãs — O Ventre de Pedra",
-    regiao: "Oeste de Valédria",
+    regiao: "Norte de Valédria",
     capital: "Durrak-Thol",
     governo: "Grande Conselho de Clãs",
     bioma: "Montanhas e cavernas em três níveis: Fauces, Salões Médios e Abismo Interior",
     acesso: "Fauces do Norte",
-    visao: "Três cadeias de montanhas onde os anões constroem para baixo — cidades no interior da montanha, conectadas por túneis, pontes suspensas e elevadores de contrapeso. Sem governo unificado: organizados em clãs em negociação perpétua, com a honra e a palavra dada tendo peso quase sagrado.",
+    visao: "Três cadeias de montanhas onde os anões constroem para baixo — cidades no interior da montanha, conectadas por túneis, pontes suspensas e elevadores de contrapeso. As casas locais são famílias políticas; os quatro clãs de criação de personagem continuam sendo Ferro-Fundo, Pedra-Funda, Chama-Antiga e Veio-Negro (Livro V). Uma casa não concede outro bônus racial. Sem governo unificado: organizados em clãs em negociação perpétua, com a honra e a palavra dada tendo peso quase sagrado.",
     cidades: [
-      { nome: "Durrak-Thol — O Coração da Pedra", papel: "Capital política, sede do Grande Conselho de Clãs, escavada no maior pico, sete níveis concêntricos. Pontos de interesse: Grande Forja, Câmara do Grande Conselho, Mercado do Nível Três, Tabernas de Pedra.", figura: "Alto Ferreiro Bragdar Ironvein — líder do Clã Ironvein e porta-voz do Conselho, velho e desconfiado de estrangeiros." },
-      { nome: "Kholdrynn — A Cidade das Pontes", papel: "Centro comercial em uma ravina com 23 pontes que conectam clãs, humanos e elfos em território neutro. Pontos de interesse: Ponte Alta do Acordo, Empório das Pedras, Forja Aberta.", figura: "Matriarca Heldra do Clã Stonemarrow — resolve conflitos por reputação, não por cargo formal." },
+      { nome: "Durrak-Thol — O Coração da Pedra", papel: "Capital política, sede do Grande Conselho de Clãs, escavada no maior pico, sete níveis concêntricos. Pontos de interesse: Grande Forja, Câmara do Grande Conselho, Mercado do Nível Três, Tabernas de Pedra.", figura: "Alto Ferreiro Bragdar Ironvein — líder da Casa Ironvein e porta-voz do Conselho, velho e desconfiado de estrangeiros." },
+      { nome: "Kholdrynn — A Cidade das Pontes", papel: "Centro comercial em uma ravina com 23 pontes que conectam clãs, humanos e elfos em território neutro. Pontos de interesse: Ponte Alta do Acordo, Empório das Pedras, Forja Aberta.", figura: "Matriarca Heldra da Casa Stonemarrow — resolve conflitos por reputação, não por cargo formal." },
       { nome: "Gryndak — A Cidade Mineira", papel: "No Abismo Interior, cidade de trabalhadores sem ornamentação, temperatura quase insuportável para não-anões. Pontos de interesse: Minas do Fogo Interno, Posto do Abismo, Sala do Eco.", figura: "Supervisora Gretta Ashenhand — sem afiliação de clã declarada, respeitada pelo trabalho." }
     ],
     grupos: [
-      { nome: "Clã Ironvein", papel: "O maior e mais influente, especialistas em metalurgia de guerra, controlam a Grande Forja, conservadores e desconfiados de estrangeiros." },
-      { nome: "Clã Stonemarrow", papel: "Especialistas em arquitetura e engenharia de pedra, mais abertos ao diálogo por necessidade comercial." },
-      { nome: "Clã Ashdeep", papel: "Trabalhadores do Abismo, menor em número, enorme importância econômica, frequentemente ignorados." },
-      { nome: "Clã Crystalborn", papel: "Cultivam os Cristais-Sol que iluminam toda a cidade, poder de negociação desproporcional ao tamanho." },
-      { nome: "Clã Goldenbeard", papel: "Comerciantes natos, os anões mais vistos fora das montanhas, vistos com desprezo e gratidão pelos outros clãs." }
+      { nome: "Casa Ironvein", papel: "A maior e mais influente das casas, com especialistas em metalurgia de guerra, controlam a Grande Forja, conservadores e desconfiados de estrangeiros." },
+      { nome: "Casa Stonemarrow", papel: "Especialistas em arquitetura e engenharia de pedra, mais abertos ao diálogo por necessidade comercial." },
+      { nome: "Casa Ashdeep", papel: "Trabalhadores do Abismo, menor em número, enorme importância econômica, frequentemente ignorados." },
+      { nome: "Casa Crystalborn", papel: "Cultivam os Cristais-Sol que iluminam toda a cidade, poder de negociação desproporcional ao tamanho." },
+      { nome: "Casa Goldenbeard", papel: "Comerciantes natos, os anões mais vistos fora das montanhas, vistos com desprezo e gratidão pelos outros clãs." }
     ],
-    rotas: ["Rota das Fauces do Norte — principal entrada, posto anão registra visitantes e cobra pedágio", "Passagem do Vento Cortante — alternativa pelo sul, menos vigiada e mais perigosa", "Túnel do Clã Goldenbeard — rota semi-secreta para comércio rápido com o oeste humano, fora dos mapas oficiais"],
+    rotas: ["Rota das Fauces do Norte — principal entrada, posto anão registra visitantes e cobra pedágio", "Passagem do Vento Cortante — alternativa pelo sul, menos vigiada e mais perigosa", "Túnel da Casa Goldenbeard — rota semi-secreta para comércio rápido com o oeste humano, fora dos mapas oficiais"],
     relacoes: [
-      { com: "Humanos", texto: "Comercial e pragmática, sem afeto particular, apenas negócio. O Clã Goldenbeard tem a relação mais próxima." },
+      { com: "Humanos", texto: "Comercial e pragmática, sem afeto particular, apenas negócio. A Casa Goldenbeard tem a relação mais próxima." },
       { com: "Elfos", texto: "Rivalidade histórica por madeira e fronteira, desconfiança mútua constante, sem conflito armado recente." },
       { com: "Demônios", texto: "Historicamente hostil, memória de conflitos antigos guardada como cicatriz cultural pelos mais velhos." }
     ],
