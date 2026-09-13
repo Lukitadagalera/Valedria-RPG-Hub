@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="redesign.css"><link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="theme.css?v=24">
 
-<link rel="icon" href="favicon.ico" sizes="any"></head>
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="stylesheet" href="assets/sheet-catalog.css?v=1"><link rel="stylesheet" href="assets/navigation-motion.css?v=1"></head>
 <body>
 <a class="skip-link" href="#main">Saltar para o conteúdo</a>
 <header class="site-header reference-header"><a class="wordmark" href="index.html"><span class="symbol-slot brand-symbol"><img src="assets/img/home/marca-valedria.webp" alt="Símbolo de Valédria" onload="this.parentElement.classList.add('loaded')" onerror="this.hidden=true"><code>assets/img/home/marca-valedria.webp</code></span><div>Valédria<small>Códice do Mundo</small></div></a><nav class="primary-nav" id="primary-nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="mundo.html">Mundo</a><a href="livros.html">Livros</a><a href="cronicas-valedria.html">Crônicas</a><a href="campanhas.html">Campanhas</a><a href="comunidade.html">Comunidade</a><a href="hall-da-gloria.html">Hall da Glória</a></nav><a class="btn btn-primary header-sheet" href="ficha.html"><svg class="ref-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg>Ficha de personagem</a><button class="icon-btn mobile-menu" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">☰</button></header><main id="main" class="content">
@@ -23,7 +23,7 @@
 <div class="sheet-layout">
   <form class="sheet-form-card" id="ficha-form" autocomplete="off">
 
-<div class="card">
+<div class="card portrait-card"><div class="portrait-frame"><img id="f-foto-preview" alt="Retrato do personagem" hidden><span id="portrait-empty" aria-hidden="true">♙</span></div><div><span class="eyebrow">Seu aventureiro</span><h2 class="section-title">Retrato do personagem</h2><p class="field-hint">Escolha uma imagem para dar um rosto à sua história.</p><button type="button" class="btn btn-primary no-print" id="foto-escolher">Escolher foto</button><input type="file" id="f-foto" accept="image/png,image/jpeg,image/webp" class="photo-file no-print" hidden><button type="button" class="btn btn-ghost no-print" id="foto-remover">Remover foto</button><p id="foto-status" class="field-hint" role="status">PNG, JPG ou WebP, até 10 MB.</p></div></div><div class="card">
   <h2 class="section-title">Identidade</h2>
   <div class="field-grid">
     <div class="field"><label for="f-nome">Nome do personagem</label><input type="text" id="f-nome" placeholder="Ex: Aelric Corvo-Negro"></div>
@@ -111,18 +111,20 @@
 
     <div class="card">
       <h2 class="section-title">Perícias treinadas</h2>
-      <datalist id="pericias-lista"><option value="Atletismo"><option value="Acrobacia"><option value="Furtividade"><option value="Ladinagem"><option value="Iniciativa"><option value="Montaria e Veículos"><option value="Percepção"><option value="Investigação"><option value="Memória"><option value="Medicina"><option value="Sobrevivência"><option value="Leitura de Ambiente"><option value="Persuasão"><option value="Intimidação"><option value="Enganação"><option value="Intuição"><option value="Comando"></datalist>
+      <p class="field-hint">Selecione as perícias treinadas. O atributo de cada uma é definido pelo Sistema.</p>
       <div class="list-editor" id="pericias-editor"></div>
       <button type="button" class="btn btn-secondary btn-sm no-print" id="btn-add-pericia">+ Adicionar perícia</button>
     </div>
 
     <div class="card">
       <h2 class="section-title">Itens e equipamento</h2>
-      <datalist id="itens-lista"></datalist>
+      <p class="field-hint">Equipamentos comuns do catálogo, com categoria, descrição e preço. 1 Coroa (C) = 10 Escudos (E).</p>
       <div class="list-editor" id="itens-editor"></div>
       <button type="button" class="btn btn-secondary btn-sm no-print" id="btn-add-item">+ Adicionar item</button>
     </div>
 
+    <div class="card"><h2 class="section-title">Artefatos mágicos</h2><p class="field-hint">Relíquias e itens encantados, com grau e efeito.</p><div class="list-editor" id="artefatos-editor"></div><button type="button" class="btn btn-secondary btn-sm no-print" id="btn-add-artefato">+ Escolher artefato</button></div>
+    <div class="card"><h2 class="section-title">Aparência e personalidade</h2><div class="field"><label for="f-fisico">Descrição física</label><textarea id="f-fisico" placeholder="Altura, traços, cabelos, cicatrizes, vestimentas…"></textarea></div><div class="field"><label for="f-personalidade">Personalidade</label><textarea id="f-personalidade" placeholder="Temperamento, valores, hábitos, medos e ambições…"></textarea></div></div>
     <div class="card">
       <h2 class="section-title">História e notas</h2>
       <div class="field"><label for="f-historia">História pessoal, motivações e ligações</label><textarea id="f-historia" placeholder="De onde vem seu personagem, o que ele busca, com quem se importa…"></textarea></div>
@@ -143,7 +145,7 @@
 
   <aside class="sheet-preview">
     <div class="card">
-      <div class="preview-name" id="pv-nome">Personagem sem nome</div>
+      <img id="pv-foto" class="preview-portrait" alt="Retrato do personagem" hidden><div class="preview-name" id="pv-nome">Personagem sem nome</div>
       <div class="preview-meta" id="pv-meta"><span>Raça &mdash;</span><span>Nível &mdash;</span><span>Papel &mdash;</span></div>
       <div class="preview-attrs" id="pv-attrs"></div>
       <div class="preview-power" id="pv-power" hidden></div>
@@ -156,13 +158,13 @@
       <h2 class="section-title">Itens</h2>
       <div class="preview-list" id="pv-itens"><div class="row"><span>Nenhum item adicionado</span></div></div>
     </div>
-  </aside>
+<div class="card"><h2 class="section-title">Artefatos</h2><div class="preview-list" id="pv-artefatos"></div></div><div class="card"><h2 class="section-title">Aparência e personalidade</h2><p id="pv-fisico"></p><p id="pv-personalidade"></p></div>  </aside>
 </div>
 
 </main>
 <footer class="footer reference-footer"><a class="footer-brand" href="index.html"><img class="footer-star" src="assets/img/home/marca-valedria.webp" alt="" width="36" height="36"><span><strong>Valédria</strong><small>Códice do Mundo</small></span></a><p class="footer-quote">Cada escolha escreve uma lenda.</p><nav class="footer-socials" aria-label="Links externos"><a data-external="discord" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="discord" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<small>Em breve</small></span><a data-external="instagram" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="instagram" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<small>Em breve</small></span><a data-external="suporte" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="suporte" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<small>Em breve</small></span><a data-external="pacotes" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="pacotes" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<small>Em breve</small></span></nav><details class="footer-settings"><summary aria-label="Abrir controles de tema e música"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 3v18M12 3v18M19 3v18"/><path d="M2 8h6M9 16h6M16 7h6" stroke-width="4"/></svg></summary><div class="topbar-actions"><button class="icon-btn" data-theme-toggle aria-label="Alternar tema"></button></div></details></footer>
 <script src="app.js?v=18"></script><script src="redesign.js" defer></script>
-<script src="assets/data/itens.js"></script>
+<script src="assets/data/itens.js"></script><script src="assets/data/itens_basicos.js"></script><script src="assets/data/pericias.js"></script><script src="assets/sheet-catalog.js?v=1"></script>
 <script>
 
 (function(){
@@ -195,7 +197,8 @@
   function els(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
   function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
-  /* Persistência local da ficha via cookies: salvamos automaticamente
+  /* Leitura legada via cookies; novas fichas e fotos usam localStorage.
+     Persistência local da ficha via cookies: salvamos automaticamente
      enquanto o jogador edita, e recarregamos ao abrir a página de novo no
      mesmo navegador. Como um cookie sozinho tem limite de ~4KB, quebramos
      o JSON em pedaços (chunks) numerados. Isso fica preso a este
@@ -240,17 +243,13 @@
   }
   function saveFichaToBrowser(){
     try {
-      var json = encodeURIComponent(JSON.stringify(getState()));
-      var chunks = [];
-      for (var i = 0; i < json.length; i += SAVE_CHUNK) chunks.push(json.slice(i, i + SAVE_CHUNK));
-      var prevN = parseInt(getCookie(SAVE_PREFIX + 'n') || '0', 10);
-      for (var p = 0; p < prevN; p++) deleteCookie(SAVE_PREFIX + p);
-      chunks.forEach(function(c, idx){ setCookie(SAVE_PREFIX + idx, c, 365); });
-      setCookie(SAVE_PREFIX + 'n', String(chunks.length), 365);
-      markSaveStatus(true);
-    } catch (e) { markSaveStatus(false); }
+      localStorage.setItem('valedria-ficha-v2', JSON.stringify(getState()));
+      clearFichaCookies();
+      markSaveStatus(true); return true;
+    } catch (e) { markSaveStatus(false); return false; }
   }
   function loadFichaFromBrowser(){
+    try {var saved=localStorage.getItem('valedria-ficha-v2');if(saved)return JSON.parse(saved);} catch(e) {}
     try {
       var n = parseInt(getCookie(SAVE_PREFIX + 'n') || '0', 10);
       if (!n) return null;
@@ -352,7 +351,7 @@
     updatePreview();
   }
 
-  ['#f-nome', '#f-jogador', '#f-papel', '#f-historia', '#f-notas'].forEach(function(sel){
+  ['#f-nome', '#f-jogador', '#f-papel', '#f-historia', '#f-notas', '#f-fisico', '#f-personalidade'].forEach(function(sel){
     var field = el(sel);
     if (field) { field.addEventListener('input', updatePreview); field.addEventListener('change', updatePreview); }
   });
@@ -426,65 +425,8 @@
     inp.addEventListener('change', function(){ clampAttr(inp); updateAttrPoints(); updatePreview(); });
   });
 
-  function makeRow(container, fields, values){
-    values = values || {};
-    var row = document.createElement('div');
-    row.className = 'list-row';
-    row.innerHTML = fields.map(function(f){
-      if (f.type === 'select') {
-        return '<select data-field="'+f.key+'">' + f.options.map(function(o){
-          return '<option'+(o===values[f.key]?' selected':'')+'>'+esc(o)+'</option>';
-        }).join('') + '</select>';
-      }
-      var v = values[f.key] != null ? esc(values[f.key]) : '';
-      var list = f.list ? ' list="'+f.list+'"' : '';
-      return '<input type="text" data-field="'+f.key+'" placeholder="'+esc(f.placeholder||'')+'"'+list+' value="'+v+'">';
-    }).join('') + '<button type="button" class="btn btn-ghost btn-sm remove-row no-print" aria-label="Remover">&times;</button>';
-    row.querySelector('.remove-row').addEventListener('click', function(){ row.remove(); updatePreview(); });
-    els('input, select', row).forEach(function(inputEl){ inputEl.addEventListener('input', updatePreview); inputEl.addEventListener('change', updatePreview); });
-    container.appendChild(row);
-    return row;
-  }
-
-  function itemFields(){
-    return [
-      { key: 'nome', placeholder: 'Nome do item (escolha da lista ou digite)', list: 'itens-lista' },
-      { key: 'descricao', placeholder: 'Descrição' },
-      { key: 'efeito', placeholder: 'Efeito' }
-    ];
-  }
-  function wireItemAutofill(row){
-    var nomeInp = el('[data-field="nome"]', row);
-    if (!nomeInp) return;
-    function tryAutofill(){
-      var it = ITENS_MAP[nomeInp.value];
-      if (!it) return;
-      var descInp = el('[data-field="descricao"]', row);
-      var efInp = el('[data-field="efeito"]', row);
-      if (descInp) descInp.value = it.descricao || '';
-      if (efInp) efInp.value = it.efeito || '';
-      updatePreview();
-    }
-    nomeInp.addEventListener('input', tryAutofill);
-    nomeInp.addEventListener('change', tryAutofill);
-  }
-
-  var itensEditor = el('#itens-editor');
-  el('#btn-add-item').addEventListener('click', function(){
-    var row = makeRow(itensEditor, itemFields());
-    wireItemAutofill(row);
-    updatePreview();
-  });
-
-  var periciasEditor = el('#pericias-editor');
-  el('#btn-add-pericia').addEventListener('click', function(){
-    makeRow(periciasEditor, [
-      { key: 'nome', placeholder: 'Nome da perícia', list: 'pericias-lista' },
-      { key: 'atributo', type: 'select', options: ['Força','Destreza','Constituição','Sabedoria','Carisma'] }
-    ]);
-    updatePreview();
-  });
-
+  var itensEditor=el('#itens-editor'),periciasEditor=el('#pericias-editor');
+  var collection=window.SheetCatalog({onChange:updatePreview});
   function getState(){
     var nivelAtual = currentNivel();
     var attrs = {};
@@ -503,28 +445,22 @@
     var auraAtualV = parseInt(auraAtualInput.value, 10);
     if (isNaN(auraAtualV)) auraAtualV = auraMax(auraGrau);
     auraAtualV = Math.max(0, Math.min(auraMax(auraGrau), auraAtualV));
-    var itens = els('.list-row', itensEditor).map(function(row){
-      return {
-        nome: el('[data-field="nome"]', row).value,
-        descricao: el('[data-field="descricao"]', row).value,
-        efeito: el('[data-field="efeito"]', row).value
-      };
-    }).filter(function(i){ return i.nome; });
-    var pericias = els('.list-row', periciasEditor).map(function(row){
-      return { nome: el('[data-field="nome"]', row).value, atributo: el('[data-field="atributo"]', row).value };
-    }).filter(function(p){ return p.nome; });
+    var extra=collection.get();
+    var itens=extra.itens,pericias=extra.pericias;
     return {
       nome: el('#f-nome').value, jogador: el('#f-jogador').value,
       raca: racaSel.value, subraca: subracaSel.value, papel: el('#f-papel').value,
       nivel: el('#f-nivel').value, caminho: caminhoSel.value,
       manaPotencial: manaPotencial, manaAtual: manaAtualV,
       auraGrau: auraGrau, auraAtual: auraAtualV,
-      atributos: attrs, pericias: pericias, itens: itens,
+      versao: 2, atributos: attrs, pericias: pericias, itens: itens, artefatos: extra.artefatos, foto: extra.foto, fisico: el('#f-fisico').value, personalidade: el('#f-personalidade').value,
       historia: el('#f-historia').value, notas: el('#f-notas').value
     };
   }
 
   function setState(s){
+    if(!s||typeof s!=='object'||Array.isArray(s))throw Error('Ficha inválida');
+    ['itens','artefatos','pericias'].forEach(function(k){if(s[k]!=null&&(!Array.isArray(s[k])||s[k].some(function(x){return !x||typeof x.nome!=='string';})))throw Error('Lista inválida');});
     el('#f-nome').value = s.nome || '';
     el('#f-jogador').value = s.jogador || '';
     racaSel.value = s.raca || '';
@@ -541,16 +477,9 @@
     auraAtualInput.value = (s.auraAtual != null) ? s.auraAtual : auraMax(auraGrauSel.value);
     clampAura();
     attrInputs.forEach(function(inp){ inp.value = (s.atributos && s.atributos[inp.dataset.attr]) || 1; clampAttr(inp); });
-    itensEditor.innerHTML = '';
-    (s.itens || []).forEach(function(it){
-      var row = makeRow(itensEditor, itemFields(), it);
-      wireItemAutofill(row);
-    });
-    periciasEditor.innerHTML = '';
-    (s.pericias || []).forEach(function(p){ makeRow(periciasEditor, [
-      { key: 'nome', placeholder: 'Nome da perícia', list: 'pericias-lista' },
-      { key: 'atributo', type: 'select', options: ['Força','Destreza','Constituição','Sabedoria','Carisma'] }
-    ], p); });
+    collection.set(s);
+    el('#f-fisico').value=s.fisico||'';
+    el('#f-personalidade').value=s.personalidade||'';
     el('#f-historia').value = s.historia || '';
     el('#f-notas').value = s.notas || '';
     updateAttrPoints();
@@ -558,7 +487,12 @@
   }
 
   function updatePreview(){
+    if(!collection)return;
     var s = getState();
+    el('#pv-fisico').textContent=s.fisico||'Descrição física ainda não preenchida.';
+    el('#pv-personalidade').textContent=s.personalidade||'Personalidade ainda não preenchida.';
+    el('#pv-foto').hidden=!s.foto;if(s.foto)el('#pv-foto').src=s.foto;else el('#pv-foto').removeAttribute('src');
+    el('#pv-artefatos').innerHTML=s.artefatos.length?s.artefatos.map(function(a){return '<div class="row"><strong>'+esc(a.nome)+'</strong><span>'+esc((a.efeito||a.descricao||'')+(a.condicao_de_uso?' Condição de uso: '+a.condicao_de_uso:'')+(a.maldicao?' Maldição: '+a.maldicao:''))+'</span></div>';}).join(''):'<div class="row">Nenhum artefato adicionado</div>';
     el('#pv-nome').textContent = s.nome || 'Personagem sem nome';
     var meta = [];
     meta.push(s.raca ? (s.raca + (s.subraca ? ' · ' + s.subraca : '')) : 'Raça —');
@@ -583,7 +517,7 @@
       pvPower.innerHTML = '';
     }
     el('#pv-itens').innerHTML = s.itens.length ? s.itens.map(function(it){
-      return '<div class="row"><span>'+esc(it.nome)+'</span><span>'+esc(it.descricao||it.efeito||'')+'</span></div>';
+      return '<div class="row"><span>'+esc(it.nome)+'</span><span>'+esc((it.categoria?it.categoria+' · ':'')+(it.preco?it.preco+' · ':'')+(it.quantidade||1)+' un. — '+(it.descricao||it.efeito||''))+'</span></div>';
     }).join('') : '<div class="row"><span>Nenhum item adicionado</span></div>';
     el('#pv-pericias').innerHTML = s.pericias.length ? s.pericias.map(function(p){
       return '<div class="row"><span>'+esc(p.nome)+'</span><span>'+esc(p.atributo||'')+'</span></div>';
@@ -593,10 +527,10 @@
 
   el('#btn-salvar').addEventListener('click', function(){
     if (saveTimer) clearTimeout(saveTimer);
-    saveFichaToBrowser();
+    var savedOk=saveFichaToBrowser();
     var btn = el('#btn-salvar');
     var original = btn.textContent;
-    btn.textContent = 'Salvo!';
+    btn.textContent = savedOk ? 'Salvo!' : 'Não foi possível salvar';
     btn.disabled = true;
     setTimeout(function(){ btn.textContent = original; btn.disabled = false; }, 1200);
   });
@@ -629,8 +563,8 @@
   el('#btn-limpar').addEventListener('click', function(){
     if (confirm('Limpar toda a ficha atual? Esta ação não pode ser desfeita (inclusive a cópia salva neste navegador).')) {
       el('#ficha-form').reset();
-      itensEditor.innerHTML = '';
-      periciasEditor.innerHTML = '';
+      collection.set({});
+      try{localStorage.removeItem('valedria-ficha-v2');}catch(e){}
       attrInputs.forEach(function(inp){ inp.value = 1; });
       subracaSel.innerHTML = '<option value="">Selecione a raça primeiro</option>'; subracaSel.disabled = true;
       manaPotencialSel.value = 'Comum'; manaAtualInput.value = 50;
@@ -645,10 +579,10 @@
   updatePoderVisibility();
   clampMana();
   clampAura();
+  window.addEventListener('pagehide',function(){if(collection)saveFichaToBrowser();});
   var fichaSalva = loadFichaFromBrowser();
   if (fichaSalva) {
-    setState(fichaSalva);
-    markSaveStatus(true);
+    try{setState(fichaSalva);}catch(e){markSaveStatus(false);}
   } else {
     updateAttrPoints();
     updatePreview();

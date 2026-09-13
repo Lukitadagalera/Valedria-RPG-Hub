@@ -1,0 +1,7 @@
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:valedria-exit .16s ease-out both}
+::view-transition-new(root){animation:valedria-enter .24s ease-out both}
+@keyframes valedria-exit{to{opacity:0;transform:translateY(-4px)}}
+@keyframes valedria-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:no-preference){main{animation:valedria-enter .24s ease-out both}}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}::view-transition-old(root),::view-transition-new(root){animation:none}}
