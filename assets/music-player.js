@@ -369,6 +369,12 @@
       persist();
     });
 
+    document.addEventListener('valedria:narration-play', function () {
+      desiredPlaying = false;
+      audio.pause();
+      persist();
+    });
+
     audio.addEventListener('play', function () {
       if (!desiredPlaying) {
         audio.pause();

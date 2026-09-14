@@ -169,7 +169,7 @@
   function loadMusicPlayer() {
     if (document.querySelector('script[data-valedria-music-player]')) return;
     var script = document.createElement('script');
-    script.src = 'assets/music-player.js?v=20';
+    script.src = 'assets/music-player.js?v=21';
     script.setAttribute('data-valedria-music-player', '');
     document.head.appendChild(script);
   }
