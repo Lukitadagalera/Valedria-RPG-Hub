@@ -6,6 +6,25 @@
 .hero-audio:focus-visible{outline:2px solid var(--color-primary);outline-offset:4px}
 .reference-player .hero-audio-error{margin:8px 0;font-size:13px}
 .hero-audio-error a{text-decoration:underline}
+.hall-illustrations .player-copy{display:flex;flex-direction:column;padding:22px!important}
+.hero-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:auto;padding-top:20px}
+.hero-footer .hero-narration{margin:0;flex:1;min-width:0;max-width:240px}
+.hall-illustrations .hero-footer .player-badge{position:relative!important;inset:auto!important;width:60px;height:76px;min-width:60px;flex:0 0 60px;margin:0}
+.hero-narration.is-enhanced .hero-audio{display:none}
+.hero-player{display:grid;grid-template-columns:36px minmax(0,1fr) 30px;grid-template-rows:18px 18px;align-items:center;gap:3px 10px;padding:10px;border:1px solid #b69a5d70;border-radius:14px;background:#122233e8;color:#dfcb9d}
+.hero-toggle{grid-row:1/3;display:grid;place-items:center;width:36px;height:36px;min-height:36px;padding:0;border:1px solid #d6bd81;border-radius:50%;background:linear-gradient(140deg,#e1cb92,#baa16a);color:#192330;cursor:pointer;transition:filter .15s}
+.hero-toggle:hover{filter:brightness(1.1)}
+.hero-toggle svg{width:18px;height:18px;fill:currentColor;pointer-events:none}
+.hero-pause-icon,.is-playing .hero-play-icon{display:none}.is-playing .hero-pause-icon{display:block}
+.hero-player-title{grid-column:2/4;font-size:12px;font-weight:600;line-height:18px;white-space:nowrap}
+.hero-time{font:10px/18px Georgia,serif;text-align:right;font-variant-numeric:tabular-nums}
+.hero-seek{appearance:none;-webkit-appearance:none;width:100%;min-width:0;height:4px;margin:0;padding:0;border:0;border-radius:8px;background:linear-gradient(to right,#c5a465 var(--progress,0%),#b69a5d40 var(--progress,0%));cursor:pointer}
+.hero-seek::-webkit-slider-thumb{appearance:none;width:10px;height:10px;border-radius:50%;background:#d8bd7d;border:0}
+.hero-seek::-moz-range-thumb{width:10px;height:10px;border-radius:50%;background:#d8bd7d;border:0}
+.hero-seek:disabled{opacity:.5;cursor:default}
+.hero-player :focus-visible{outline:2px solid var(--color-primary);outline-offset:5px}
+[data-theme='light'] .hero-player{background:#f2e8d3e8;border-color:#bca06a80;color:#70562c}
+@media(prefers-reduced-motion:reduce){.hero-toggle{transition:none}}
 @media(max-width:1050px){.hall-illustrations{grid-template-columns:1fr}}
 @media(max-width:600px){
  .hall-illustrations .reference-player{flex-direction:column}
