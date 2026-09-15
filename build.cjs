@@ -2,6 +2,11 @@ require('./build-content.cjs');
 require('./build-search.cjs');
 const fs=require('node:fs');const path=require('node:path');
 fs.mkdirSync('dist',{recursive:true});
+// Retired public copies must not survive incremental builds of the membership migration.
+for(const name of ['mestre.js','cronicas.js']){
+  const retired=path.resolve('dist/assets/data',name);
+  if(fs.existsSync(retired))fs.unlinkSync(retired);
+}
 // Keep PNG masters in the source repository; publish only their WebP versions.
 function removePublishedPng(dir){
   if(!fs.existsSync(dir))return;

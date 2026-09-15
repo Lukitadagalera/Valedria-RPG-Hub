@@ -1,1 +1,6 @@
 dist/
+.env
+.env.*
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
