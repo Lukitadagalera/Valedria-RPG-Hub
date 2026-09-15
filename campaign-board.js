@@ -29,10 +29,12 @@
     visible.forEach(item => {
       const card = el('article', '', 'board-card');
       const vacancies = item.limite - item.jogadores;
+      if(item.status) card.append(el('span',item.status,'eyebrow'));
       card.append(el('h3', item.nome), el('p', `Mestre: ${item.mestre || 'A informar'}`),
         el('p', `${item.jogadores} / ${item.limite} jogadores · ${vacancies ? `${vacancies} ${vacancies === 1 ? 'vaga' : 'vagas'}` : 'Mesa completa'}`),
         el('p', `Quando: ${item.horario || 'A combinar'}`), el('p', item.descricao));
       contact(card, item.discord);
+      if(Array.isArray(item.participantes)&&item.participantes.length)card.append(el('p','Jogadores: '+item.participantes.join(', ')));
       board.append(card);
     });
   }
