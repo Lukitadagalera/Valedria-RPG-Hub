@@ -169,7 +169,7 @@
   function loadMusicPlayer() {
     if (!document.querySelector('script[data-valedria-interactions]')) {
       var interactions = document.createElement('script');
-      interactions.src = 'assets/interface-sounds.js?v=1';
+      interactions.src = 'assets/interface-sounds.js?v=2';
       interactions.setAttribute('data-valedria-interactions', '');
       document.head.appendChild(interactions);
     }
