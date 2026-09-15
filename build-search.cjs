@@ -5,7 +5,7 @@ const books=[
  ['livro-05-racas.html','Raças',['racas']],['livro-06-magia.html','Magia',['magia']],['livro-07-aura.html','Aura',['aura']],
  ['livro-08-artefatos.html','Artefatos',['itens']],['livro-09-bestiario.html','Bestiário',['bestiario']],
  ['livro-10-faccoes.html','Facções',['faccoes','guilda']],['livro-11-exploracao.html','Exploração',['exploracao']],
- ['livro-12-mestre.html','Livro do Mestre',[]],['livro-13-mapa.html','Mapa e Aventuras',['mapa']],
+ ['area-mestre.html','Área do Mestre',[]],['livro-13-mapa.html','Mapa e Aventuras',['mapa']],
  ['comece-aqui.html','Primeiros passos',[]],['ficha.html','Ficha de personagem',[]],['mundo.html','Mundo',[]]
 ];
 const clean=s=>String(s).replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,'').replace(/<[^>]+>/g,' ').replace(/&(?:nbsp|mdash|ndash);/g,' ').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/\s+/g,' ').trim();

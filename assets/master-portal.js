@@ -3,16 +3,19 @@
  'use strict';
  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let apiBase='', csrf='', account=null, library=null, favorites=[], mode='login', busy=false, generation=0, lastIdea='';
+ let apiBase='', csrf='', account=null, library=null, favorites=[], mode='login', busy=false, generation=0, lastIdea='', ready=Promise.resolve();
  const configured=window.VALEDRIA_MASTER_CONFIG?.apiBase;
  if(configured){const u=new URL(configured,location.href);if(u.protocol==='https:' || (u.origin===location.origin && ['localhost','127.0.0.1'].includes(u.hostname)))apiBase=u.href.replace(/\/$/,'');}
- const message=(text)=>{$('#mp-auth-message').textContent=text;};
+ const message=(text)=>{const target=account?$('#member-message'):$('#mp-auth-message');target.textContent=text;if(text){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});target.scrollIntoView({block:'nearest'});}};
  async function api(path,body){
   if(!apiBase)throw new Error('As contas ainda estão em preparação. Nenhum dado foi enviado.');
-  const response=await fetch(apiBase+path,{method:body===undefined?'GET':'POST',credentials:'include',cache:'no-store',headers:{Accept:'application/json',...(body!==undefined?{'Content-Type':'application/json','X-CSRF-Token':csrf}:{})},...(body!==undefined?{body:JSON.stringify(body)}:{})});
+  let response;
+  try{response=await fetch(apiBase+path,{method:body===undefined?'GET':'POST',signal:AbortSignal.timeout(15000),credentials:'include',cache:'no-store',headers:{Accept:'application/json',...(body!==undefined?{'Content-Type':'application/json','X-CSRF-Token':csrf}:{})},...(body!==undefined?{body:JSON.stringify(body)}:{})});}
+  catch{throw new Error('Não foi possível conectar ao acesso do Mestre. Confira se a versão de teste está aberta neste computador e tente novamente.');}
   if(response.status===401){clearMember();throw new Error('Sua sessão terminou. Entre novamente.');}
   if(response.status===403 && path==='/library'){clearPrivate();$('#mp-locked').hidden=false;throw new Error('Seu acesso ao acervo não está ativo.');}
-  if(!response.ok)throw new Error(response.status===429?'Muitas tentativas. Aguarde alguns minutos e tente novamente.':'Não foi possível concluir. Confira seus dados ou tente novamente em instantes.');
+  if(!response.ok)throw new Error(response.status===429?'Muitas tentativas. Aguarde alguns minutos e tente novamente.':path==='/login'&&response.status===400?'E-mail ou senha incorretos, ou e-mail ainda não confirmado. Confira e tente novamente.':'Não foi possível concluir. Confira seus dados ou tente novamente em instantes.');
+  if(response.status!==204&&!response.headers.get('content-type')?.includes('application/json'))throw new Error('Este endereço não está conectado ao acesso do Mestre. Abra a versão de teste pelo link indicado.');
   return response.status===204?{}:response.json();
  }
  function storageKey(kind){return 'valedria-master:'+account.id+':'+kind;}
@@ -43,16 +46,17 @@
  if(verifyToken)history.replaceState(null,'',location.pathname+location.search);
  if(resetToken){history.replaceState(null,'',location.pathname+location.search);setMode('reset');}
  $('#mp-auth-form').addEventListener('submit',async e=>{
-  e.preventDefault();if(busy)return;busy=true;$('#mp-submit').disabled=true;message('');
+  e.preventDefault();if(busy)return;busy=true;$('#mp-submit').disabled=true;$('#mp-submit').textContent='Aguarde…';message('');
   try{
+   await ready;
    if(!apiBase)throw new Error('As contas ainda estão em preparação. Nenhum dado foi enviado.');
    if(!csrf){const session=await api('/session');csrf=session.csrfToken||'';}
    const body={email:$('#mp-email').value.trim(),password:$('#mp-password').value,remember:$('#mp-remember').checked};
    if(mode==='recover'){await api('/password-reset',{email:body.email});message('Se houver uma conta com esse e-mail, você receberá as instruções de recuperação.');}
    else if(mode==='register'){await api('/register',{email:body.email,password:body.password});message('Confira seu e-mail para os próximos passos. A assinatura não é ativada ao criar a conta.');}
    else if(mode==='reset'){await api('/password-update',{token:resetToken,password:body.password});resetToken=null;csrf='';setMode('login');message('Senha atualizada. Entre com sua nova senha.');}
-   else{await api('/login',body);await refresh();}
-  }catch(error){message(error.message);}finally{busy=false;$('#mp-submit').disabled=false;$('#mp-password').value='';}
+   else{await api('/login',body);await refresh();$('#mp-password').value='';$('#member-title').setAttribute('tabindex','-1');$('#member-title').focus();$('#mp-member').scrollIntoView({block:'start'});}
+  }catch(error){message(error.message);}finally{busy=false;$('#mp-submit').disabled=false;$('#mp-submit').textContent=screens[mode][2];}
  });
  $('#mp-logout').addEventListener('click',async()=>{try{await api('/logout',{});clearMember();setMode('login');message('Você saiu da conta.');}catch(e){$('#member-message').textContent='Não foi possível encerrar a sessão no servidor. Tente sair novamente.';}});
  $('#mp-check-access').addEventListener('click',()=>refresh().catch(e=>$('#member-message').textContent=e.message));
@@ -77,8 +81,13 @@
  $('#notes-import').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>1000000)throw Error();const data=JSON.parse(await file.text());if(data.format!=='valedria-master-notes'||data.version!==1||!data.notes||Object.keys(fields).some(k=>typeof data.notes[k]!=='string'||data.notes[k].length>20000))throw Error();if(!confirm('Substituir as anotações atuais pelo caderno importado? Exporte uma cópia antes, se quiser mantê-las.'))return;Object.keys(fields).forEach(k=>$('#session-notes [name="'+k+'"]').value=data.notes[k]);saveNotes();}catch{$('#notes-status').textContent='Arquivo inválido. Escolha um caderno exportado por esta área.';}finally{e.target.value='';}});
  if(apiBase){
   $('#launch-notice').hidden=true;
-  const initialize=resetToken||verifyToken?api('/session').then(s=>{csrf=s.csrfToken||'';}):refresh();
-  initialize.then(async()=>{if(verifyToken){await api('/verify-email',{token:verifyToken});message('E-mail confirmado. Entre com sua senha.');}}).catch(e=>{if(account)$('#member-message').textContent=e.message;else message(e.message);});
+  ready=(resetToken||verifyToken?api('/session').then(s=>{csrf=s.csrfToken||'';}):refresh()).catch(e=>message(e.message));
+  ready.then(async()=>{if(verifyToken){await api('/verify-email',{token:verifyToken});message('E-mail confirmado. Entre com sua senha.');}}).catch(e=>message(e.message));
+ }else{
+  $('#mp-auth-form').hidden=true;$('.mp-account-links').hidden=true;
+  $('#auth-intro').textContent='O login desta apresentação pública ainda não está ativado. Para revisar o conteúdo agora, abra a versão de teste neste computador.';
+  $('#launch-notice').textContent='A conta de teste funciona no endereço local, com o serviço de teste em execução.';
+  $('#mp-local-test').hidden=false;
  }
  // Revalidate after returning to the page. Never persist the private library offline.
  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&account)refresh().catch(e=>$('#member-message').textContent=e.message);});
