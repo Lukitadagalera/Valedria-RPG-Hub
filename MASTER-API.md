@@ -8,6 +8,18 @@ O serviço em `server/index.cjs` implementa contas, confirmação de e-mail, sen
 
 ## Conteúdo privado
 
+### Planos e oficina
+
+O campo `entitlements.plan` aceita `contador`, `mestre` e `deus`, com herança de recursos. O servidor filtra a biblioteca por `minPlan` e valida o plano em todas as rotas da oficina.
+
+- Contador: seis kits de sessão, mapas separados, pistas, fichas de interpretação e livro bônus.
+- Mestre: acrescenta a campanha de seis sessões A Rota das Lanternas, campanhas salvas, sessões, NPCs, missões, inventário, iniciativa e painel de revelações.
+- Deus: acrescenta editor de cenas conectadas, atlas pessoal com rotas e revelações, cinco modelos editáveis e exportação/importação.
+
+Mantenha `studio.json` e `bonus-valedria.pdf` na mesma pasta privada de `library.json`. Documentos ficam no SQLite por usuário e tipo; versões concorrentes retornam 409 para evitar sobrescrita. `/api/table/:token` retorna somente campos públicos dos registros revelados e pode ser revogado pelo dono. O token dá acesso de leitura à mesa; não contém o acervo nem notas privadas.
+
+Conceda acesso com `node server/access.cjs grant EMAIL YYYY-MM-DD PLANO`. Contas locais de demonstração e suas senhas ficam fora do repositório. O teste de autenticação é `node server/security.test.cjs`.
+
 O acervo está em `work/master-vault/library.json`, FORA deste repositório, no diretório de trabalho local. Preserve e faça backup desse arquivo junto dos originais. Inclui os 18 capítulos, pilares, tabelas, preparação, crônica completa, seis aventuras e materiais extras. Copie-o para armazenamento privado do servidor, jamais para `assets`, `dist`, GitHub ou bucket público.
 
 Os antigos arquivos públicos `assets/data/mestre.js` e `assets/data/cronicas.js` foram retirados da versão atual. Seu conteúdo antigo continua recuperável no histórico público do Git: esta mudança não torna retroativamente secreto aquilo que já foi publicado. A senha antiga do navegador foi descartada.

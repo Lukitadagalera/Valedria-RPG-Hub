@@ -20,7 +20,7 @@
  }
  function storageKey(kind){return 'valedria-master:'+account.id+':'+kind;}
  function readLocal(kind,fallback){try{return JSON.parse(localStorage.getItem(storageKey(kind)))??fallback;}catch{return fallback;}}
- function clearPrivate(){generation++;library=null;lastIdea='';favorites=[];$('#mp-workspace').hidden=true;$('#library-cards').replaceChildren();$('#reader-content').replaceChildren();$('#reader-title').textContent='';$('#reader-summary').textContent='';$('#session-notes').replaceChildren();$('#tool-result').replaceChildren();$('#mp-reader').close();}
+ function clearPrivate(){generation++;window.ValedriaStudio?.clear();library=null;lastIdea='';favorites=[];$('#mp-workspace').hidden=true;$('#library-cards').replaceChildren();$('#reader-content').replaceChildren();$('#reader-title').textContent='';$('#reader-summary').textContent='';$('#session-notes').replaceChildren();$('#tool-result').replaceChildren();$('#mp-reader').close();}
  function clearMember(){clearPrivate();account=null;csrf='';$('#member-account').textContent='';$('#mp-member').hidden=true;$('#mp-public').hidden=false;}
  async function refresh(){
   const session=await api('/session');csrf=session.csrfToken||'';
@@ -35,7 +35,8 @@
   if(!Array.isArray(result.items)||!result.generators)throw new Error('A biblioteca está indisponível. Tente novamente em instantes.');
   library=result;const saved=readLocal('favorites',[]);favorites=Array.isArray(saved)?saved.filter(x=>typeof x==='string'):[];
   $('#library-category').innerHTML='<option value="">Todo o acervo</option>'+[...new Set(library.items.map(i=>i.category))].map(c=>'<option>'+esc(c)+'</option>').join('');
-  $('#mp-workspace').hidden=false;$('#member-message').textContent='Acesso ativo · Seu acervo está pronto.';renderLibrary();loadNotes();
+  $('#mp-workspace').hidden=false;$('#member-message').textContent='Acesso ativo · '+(session.entitlement.label||'Seu acervo está pronto.');renderLibrary();loadNotes();
+  await window.ValedriaStudio?.open({api,user:account,plan:session.entitlement.plan||'contador'});
  }
  const screens={login:['Entrar na Área do Mestre','Acesse sua conta para abrir a biblioteca e preparar sua próxima sessão.','Entrar na minha área'],register:['Crie sua conta','Comece pelo seu e-mail. Criar uma conta não ativa nem cobra uma assinatura.','Criar minha conta'],recover:['Recuperar minha senha','Informe seu e-mail para receber as instruções de recuperação.','Enviar instruções'],reset:['Escolha uma nova senha','Use pelo menos 12 caracteres e uma senha exclusiva para esta conta.','Salvar nova senha']};
  function setMode(next){mode=next;const [title,intro,submit]=screens[next];$('#auth-title').textContent=title;$('#auth-intro').textContent=intro;$('#mp-submit').textContent=submit;$('#password-field').hidden=next==='recover';$('#mp-password').disabled=next==='recover';$('#mp-password').minLength=next==='register'||next==='reset'?12:1;$('#mp-password').autocomplete=next==='login'?'current-password':'new-password';$('#mp-password').value='';$('#mp-password').type='password';$('#mp-show').textContent='Mostrar';$('#mp-show').setAttribute('aria-pressed','false');$('#mp-email').disabled=next==='reset';$('#login-options').hidden=next!=='login';$$('[data-auth="register"]').forEach(e=>e.hidden=next!=='login');$$('[data-auth="login"]').forEach(e=>e.hidden=next==='login');message('');}
@@ -60,8 +61,8 @@
  });
  $('#mp-logout').addEventListener('click',async()=>{try{await api('/logout',{});clearMember();setMode('login');message('Você saiu da conta.');}catch(e){$('#member-message').textContent='Não foi possível encerrar a sessão no servidor. Tente sair novamente.';}});
  $('#mp-check-access').addEventListener('click',()=>refresh().catch(e=>$('#member-message').textContent=e.message));
- function panel(name){['library','tools','notes'].forEach(n=>$('#panel-'+n).hidden=n!==name);$$('[data-panel]').forEach(b=>{if(b.dataset.panel===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});}
- $$('[data-panel]').forEach(b=>b.addEventListener('click',()=>panel(b.dataset.panel)));
+ function panel(name){$$('#mp-workspace > section').forEach(s=>s.hidden=s.id!=='panel-'+name);$$('[data-panel]').forEach(b=>{if(b.dataset.panel===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});}
+ $('.mp-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-panel]');if(b)panel(b.dataset.panel);});
  function renderLibrary(){if(!library)return;const term=$('#library-search').value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();const cat=$('#library-category').value;
   const items=library.items.filter(i=>(!cat||i.category===cat)&&(!$('#library-favorites').checked||favorites.includes(i.id))&&JSON.stringify([i.title,i.summary,i.tags]).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(term));
   $('#library-count').textContent=items.length+' materiais';$('#library-cards').innerHTML=items.map(i=>'<article class="mp-panel"><span class="eyebrow">'+esc(i.category)+'</span><h3>'+esc(i.title)+'</h3><p>'+esc(i.summary)+'</p><div class="mp-card-actions"><button class="btn btn-secondary" data-read="'+esc(i.id)+'">Abrir leitura →</button><button class="mp-favorite" data-favorite="'+esc(i.id)+'" aria-label="'+(favorites.includes(i.id)?'Remover dos':'Adicionar aos')+' favoritos: '+esc(i.title)+'" aria-pressed="'+favorites.includes(i.id)+'">'+(favorites.includes(i.id)?'★':'☆')+'</button></div></article>').join('')||'<p class="mp-empty">Nenhum material encontrado. Experimente outro assunto ou categoria.</p>';

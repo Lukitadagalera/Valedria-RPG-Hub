@@ -21,7 +21,7 @@ server.listen(4181,'127.0.0.1',async()=>{
   assert.equal((await call('/verify-email',{token:verify})).status,400);
   const login=await call('/login',{email,password,remember:true});assert.equal(login.status,200);assert.match(login.headers.get('set-cookie'),/HttpOnly/);assert.match(login.headers.get('set-cookie'),/Max-Age=2592000/);
   let session=await call('/session');assert.equal(session.body.entitlement.status,'inactive');assert.equal((await call('/library')).status,403);
-  const db=new DatabaseSync(dbPath);db.prepare('INSERT INTO entitlements VALUES(?,?,?)').run(session.body.user.id,Date.now()+600000,'test');
+  const db=new DatabaseSync(dbPath);db.prepare('INSERT INTO entitlements(user_id,expires,source) VALUES(?,?,?)').run(session.body.user.id,Date.now()+600000,'test');
   assert.equal((await call('/session')).body.entitlement.status,'active');const lib=await call('/library');assert.equal(lib.status,200);assert.equal(lib.body.items.filter(x=>x.id.startsWith('livro-')).length,18);assert.equal(lib.headers.get('cache-control'),'no-store');
   const oldCookie=cookie;
   assert.equal((await call('/password-reset',{email})).status,202);

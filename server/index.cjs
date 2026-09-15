@@ -4,6 +4,7 @@ const {DatabaseSync}=require('node:sqlite');
 const {randomBytes,createHash,scrypt,timingSafeEqual}=require('node:crypto');
 const {promisify}=require('node:util');
 const {isIP}=require('node:net');
+const studio=require('./studio.cjs');
 const derive=promisify(scrypt),token=()=>randomBytes(32).toString('hex'),digest=v=>createHash('sha256').update(v).digest('hex');
 const repository=path.resolve(__dirname,'..');
 function outsideRepository(file){const relative=path.relative(repository,path.resolve(file));if(!relative.startsWith('..'+path.sep)&&!path.isAbsolute(relative))throw Error('Private files must live outside the public repository.');}
@@ -18,6 +19,7 @@ function createServer(config){
  CREATE TABLE IF NOT EXISTS links(hash TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),kind TEXT NOT NULL,expires INTEGER NOT NULL);
  CREATE TABLE IF NOT EXISTS entitlements(user_id TEXT PRIMARY KEY REFERENCES users(id),expires INTEGER NOT NULL,source TEXT NOT NULL);
  CREATE TABLE IF NOT EXISTS audit(at INTEGER NOT NULL,event TEXT NOT NULL,user_id TEXT);`);
+ studio.setup(db);
  const cookieName=development?'valedria_session':'__Host-valedria_session',limits=new Map();
  const now=()=>Date.now();
  function audit(event,id){db.prepare('INSERT INTO audit VALUES(?,?,?)').run(now(),event,id||null);}
@@ -25,7 +27,7 @@ function createServer(config){
  function session(req){const raw=(req.headers.cookie||'').split(';').map(x=>x.trim()).find(x=>x.startsWith(cookieName+'='))?.slice(cookieName.length+1);return raw&&/^[a-f0-9]{64}$/.test(raw)?db.prepare('SELECT * FROM sessions WHERE hash=? AND expires>?').get(digest(raw),now()):null;}
  function setSession(res,user,remember=false){const raw=token(),csrf=token(),seconds=user?(remember?30*86400:8*3600):1800;db.prepare('INSERT INTO sessions VALUES(?,?,?,?)').run(digest(raw),user||null,csrf,now()+seconds*1000);res.setHeader('Set-Cookie',`${cookieName}=${raw}; Path=/; HttpOnly; SameSite=Strict${development?'':'; Secure'}${user&&remember?'; Max-Age='+seconds:''}`);return csrf;}
  function reply(res,status,data){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify(data));}
- async function body(req){let data='';for await(const chunk of req){data+=chunk;if(Buffer.byteLength(data)>8192)throw Object.assign(Error(),{status:413});}try{return JSON.parse(data||'{}');}catch{throw Object.assign(Error(),{status:400});}}
+ async function body(req){let data='';const limit=req.url.startsWith('/api/studio/')?1500000:8192;for await(const chunk of req){data+=chunk;if(Buffer.byteLength(data)>limit)throw Object.assign(Error(),{status:413});}try{return JSON.parse(data||'{}');}catch{throw Object.assign(Error(),{status:400});}}
  const email=v=>typeof v==='string'&&v.length<=254&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?v.trim().toLowerCase():null;
  async function hashPassword(value){const salt=token();return salt+':'+(await derive(value,salt,64,{N:32768,maxmem:67108864})).toString('hex');}
  async function passwordMatches(value,stored){const [salt,hex]=stored.split(':'),actual=await derive(value,salt,64,{N:32768,maxmem:67108864});return timingSafeEqual(actual,Buffer.from(hex,'hex'));}
@@ -60,18 +62,21 @@ function createServer(config){
    if(req.method==='GET'&&url.pathname==='/api/session'){
     db.prepare('DELETE FROM sessions WHERE expires<?').run(now());db.prepare('DELETE FROM links WHERE expires<?').run(now());
     const csrf=s?.csrf||setSession(res,null),user=s?.user_id?db.prepare('SELECT id,email FROM users WHERE id=?').get(s.user_id):null;
-    const entitlement=user?db.prepare('SELECT expires FROM entitlements WHERE user_id=? AND expires>?').get(user.id,now()):null;
-    return reply(res,200,{user:user||null,csrfToken:csrf,entitlement:{status:entitlement?'active':'inactive'}});
+    const entitlement=studio.entitlement(db,user?.id);
+    return reply(res,200,{user:user||null,csrfToken:csrf,entitlement:{status:entitlement?'active':'inactive',plan:entitlement?.plan||null,label:studio.labels[entitlement?.plan]||''}});
    }
    if(req.method==='GET'&&url.pathname==='/api/library'){
     if(!s?.user_id)return reply(res,401,{error:'authentication_required'});
     if(!db.prepare('SELECT 1 FROM entitlements WHERE user_id=? AND expires>?').get(s.user_id,now()))return reply(res,403,{error:'access_required'});
-    return reply(res,200,JSON.parse(fs.readFileSync(config.libraryPath,'utf8')));
+    const e=studio.entitlement(db,s.user_id),library=JSON.parse(fs.readFileSync(config.libraryPath,'utf8'));library.items=library.items.filter(i=>(studio.levels[i.minPlan||'contador']||99)<=studio.levels[e.plan]);
+    return reply(res,200,library);
    }
+   if(req.method==='GET'&&studio.handle({req,res,url,db,user:s?.user_id,config,reply}))return;
    if(req.method!=='POST')return reply(res,404,{error:'not_found'});
    if(!s||req.headers['x-csrf-token']!==s.csrf||req.headers.origin!==origin.origin)throw Object.assign(Error(),{status:403});
    if(!req.headers['content-type']?.startsWith('application/json'))throw Object.assign(Error(),{status:415});
    const data=await body(req);if(!data||typeof data!=='object'||Array.isArray(data))throw Object.assign(Error(),{status:400});
+   if(studio.handle({req,res,url,data,db,user:s?.user_id,config,reply}))return;
    const address=email(data.email);
    if(['/api/login','/api/register','/api/password-reset'].includes(url.pathname)){
     rate('auth:'+ip,30);if(!address)throw Object.assign(Error(),{status:400});rate('email:'+digest(address),15);
