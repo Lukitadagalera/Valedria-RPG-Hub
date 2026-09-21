@@ -1,42 +1,137 @@
-/* ============================================================
-   ECONOMIA DE VALÉDRIA — dados
-   Sistema monetário, custo de vida e regras de comércio.
-   ============================================================ */
 window.MOEDAS = [
-  { moeda: "Cobre (Cb)", metal: "Cobre", valor: "1 Cobre", uso: "Compras miúdas: pão, cerveja, taxas de estrada" },
-  { moeda: "Prata (P)", metal: "Prata", valor: "1 Prata = 10 Cobre", uso: "Hospedagem, refeições, ferramentas, serviços comuns" },
-  { moeda: "Ouro (O)", metal: "Ouro", valor: "1 Ouro = 10 Prata = 100 Cobre", uso: "Armas, armaduras, montarias, negócios de mercador" },
-  { moeda: "Escudo (E)", metal: "Prata (emissão de conta)", valor: "1 Escudo = 5 Prata = 50 Cobre", uso: "Preços do catálogo: 10 Escudos (E) = 1 Coroa (C)." },
-  { moeda: "Coroa (C)", metal: "Ouro (emissão real)", valor: "1 Coroa = 10 Escudos = 5 Ouro = 50 Prata = 500 Cobre", uso: "Transações grandes, impostos reais e pagamentos de nobreza. Cada reino (Valmeira, Cárdenas, Ostenfeld) emite sua própria Coroa, de mesmo valor entre si mas com brasão distinto." }
+  {
+    "moeda": "Coroa (C)",
+    "metal": "Liga de cobre e níquel, com selo real",
+    "valor": "1 C é a unidade mínima de pagamento",
+    "uso": "Moeda de circulação comum: alimentação, salários, equipamentos, impostos e grandes contratos. Valmeira, Cárdenas e Ostenfeld cunham exemplares com brasões próprios e igual valor. A realeza garante a emissão; qualquer pessoa pode usar coroas."
+  }
 ];
 
 window.CUSTO_DE_VIDA = [
-  { item: "Refeição simples", custo: "2 a 4 Cobre" },
-  { item: "Cerveja ou vinho comum", custo: "1 a 2 Cobre" },
-  { item: "Diária em estalagem (simples)", custo: "3 C" },
-  { item: "Diária em estalagem (privada)", custo: "8 C" },
-  { item: "Cavalo de trabalho", custo: "40 C" },
-  { item: "Cavalo de guerra", custo: "150 C" },
-  { item: "Espada longa", custo: "15 C" },
-  { item: "Gibão de couro", custo: "10 C" },
-  { item: "Armadura de placas (básica)", custo: "80 C" },
-  { item: "Passagem em barcaça fluvial", custo: "2 a 4 Prata por trecho" },
-  { item: "Taxa de pedágio em ponte ou cidade murada", custo: "1 Cobre a 1 Prata" }
+  {
+    "item": "Pão de vila (unidade)",
+    "custo": "1 C"
+  },
+  {
+    "item": "Vela comum (unidade)",
+    "custo": "1 C"
+  },
+  {
+    "item": "Refeição simples",
+    "custo": "4 C"
+  },
+  {
+    "item": "Cerveja comum (caneca)",
+    "custo": "2 C"
+  },
+  {
+    "item": "Ração de viagem (1 dia)",
+    "custo": "5 C"
+  },
+  {
+    "item": "Diária em estalagem (simples)",
+    "custo": "10 C"
+  },
+  {
+    "item": "Diária em estalagem (privada)",
+    "custo": "30 C"
+  },
+  {
+    "item": "Pedágio a pé",
+    "custo": "1 C"
+  },
+  {
+    "item": "Passagem em barcaça fluvial",
+    "custo": "15 a 30 C por trecho"
+  },
+  {
+    "item": "Espada longa",
+    "custo": "150 C"
+  },
+  {
+    "item": "Gibão de couro",
+    "custo": "120 C"
+  },
+  {
+    "item": "Cota de malha",
+    "custo": "800 C"
+  },
+  {
+    "item": "Armadura de placas (básica)",
+    "custo": "2.500 C"
+  },
+  {
+    "item": "Cavalo de trabalho",
+    "custo": "600 C"
+  },
+  {
+    "item": "Cavalo de montaria",
+    "custo": "1.200 C"
+  },
+  {
+    "item": "Cavalo de guerra",
+    "custo": "3.500 C"
+  },
+  {
+    "item": "Barco pequeno (uso fluvial)",
+    "custo": "4.000 C"
+  }
 ];
 
 window.COMERCIO_POR_REGIAO = [
-  { regiao: "Valmeira", exporta: "Peixe salgado, sal, vinho, tecidos e produtos de porto trazidos por navios estrangeiros." },
-  { regiao: "Cárdenas", exporta: "Grãos, gado e ferramentas agrícolas; atua como intermediária comercial entre o sul e o norte." },
-  { regiao: "Ostenfeld", exporta: "Minério bruto, metais trabalhados e produtos de técnica anã, como ferramentas e ligas metálicas raras." },
-  { regiao: "Academia de Valédria", exporta: "Pergaminhos, componentes mágicos e itens ligados às escolas de magia, vendidos a preços elevados e sujeitos a autorização dos anciãos." },
-  { regiao: "Encruzilhada", exporta: "Único ponto onde madeira élfica, artefatos anões de clãs fechados e itens de origem demoníaca circulam livremente entre comerciantes de todas as raças." }
+  {
+    "regiao": "Valmeira",
+    "exporta": "Peixe salgado, sal, vinho, tecidos e produtos de porto trazidos por navios estrangeiros."
+  },
+  {
+    "regiao": "Cárdenas",
+    "exporta": "Grãos, gado e ferramentas agrícolas; atua como intermediária comercial entre o sul e o norte."
+  },
+  {
+    "regiao": "Ostenfeld",
+    "exporta": "Minério bruto, metais trabalhados e produtos de técnica anã, como ferramentas e ligas metálicas raras."
+  },
+  {
+    "regiao": "Academia de Valédria",
+    "exporta": "Pergaminhos, componentes mágicos e itens ligados às escolas de magia, vendidos a preços elevados e sujeitos a autorização dos anciãos."
+  },
+  {
+    "regiao": "Encruzilhada",
+    "exporta": "Único ponto onde madeira élfica, artefatos anões de clãs fechados e itens de origem demoníaca circulam livremente entre comerciantes de todas as raças."
+  }
 ];
 
 window.REGRAS_COMERCIO = [
-  { titulo: "Moeda fora dos reinos humanos", texto: "Anões, elfos e demônios não usam necessariamente o mesmo sistema. Em Montegris e Pedrafria, comerciantes anões preferem pagamento em barras de metal bruto ou trocam bens por bens, aceitando moeda humana com pequeno desconto. Em Encruzilhada, o conselho fixa taxas de câmbio mensais entre a moeda humana e os meios de troca élficos e demoníacos." },
-  { titulo: "Impostos e guildas", texto: "Cada reino cobra impostos próprios sobre mercadorias que cruzam suas fronteiras internas, pagos em postos de pedágio (Ponte Alta, Ponte Rubra, muralhas de Portovale e Cárdenas Alta). Mercadores organizados em guildas locais recebem descontos ou isenções parciais." },
-  { titulo: "Contrabando", texto: "Existe principalmente em rotas menos vigiadas entre Valmeira e Cárdenas, tolerado silenciosamente em vilas pequenas como Trigal e Poço Fundo. Em Encruzilhada, o conselho multirracial pune contrabando com dureza, pois a cidade depende da confiança comercial de todas as raças." }
+  {
+    "titulo": "Uma moeda em todos os mercados",
+    "texto": "Todos os preços, salários e contratos são expressos em coroas. Não há conversão entre cobre, prata, ouro e escudos: esses nomes podem identificar materiais ou patentes, mas não unidades monetárias. Nos mercados autorizados de Eryndal, Kholdrynn e Skral, a Coroa tem a mesma unidade de conta dos reinos humanos. Comunidades fechadas ainda podem exigir troca direta ou favores; bens oferecidos em troca são avaliados em coroas."
+  },
+  {
+    "titulo": "Impostos e guildas",
+    "texto": "Cada reino cobra impostos próprios sobre mercadorias que cruzam suas fronteiras internas, pagos em postos de pedágio (Ponte Alta, Ponte Rubra, muralhas de Portovale e Cárdenas Alta). Mercadores organizados em guildas locais recebem descontos ou isenções parciais."
+  },
+  {
+    "titulo": "Contrabando",
+    "texto": "Existe principalmente em rotas menos vigiadas entre Valmeira e Cárdenas, tolerado silenciosamente em vilas pequenas como Trigal e Poço Fundo. Em Encruzilhada, o conselho multirracial pune contrabando com dureza, pois a cidade depende da confiança comercial de todas as raças."
+  },
+  {
+    "titulo": "O selo da realeza",
+    "texto": "A importância real da Coroa está na autoridade que garante seu valor e pune falsificadores. A moeda comum é feita de liga resistente, sem depender do peso do ouro. A nobreza movimenta milhares ou dezenas de milhares de coroas; uma coroa isolada é dinheiro cotidiano. Joias e peças cerimoniais de ouro são bens avaliados separadamente."
+  },
+  {
+    "titulo": "Salários e poder de compra",
+    "texto": "Referências por dia de trabalho: ajudante rural ou carregador, 12 a 20 C; artesão treinado, 30 a 60 C; especialista, 80 a 150 C. Considere apenas dias efetivamente trabalhados. Uma refeição simples custa 4 C; hospedagem compartilhada com uma refeição custa 10 C. Famílias que produzem parte do alimento gastam menos dinheiro, mas ainda pagam ferramentas, impostos e manutenção."
+  },
+  {
+    "titulo": "Patrimônio e grandes compras",
+    "texto": "Referências de compra, sujeitas à localização e ao estado do bem: casa simples em vila, 12.000 a 25.000 C; oficina equipada, 30.000 a 60.000 C; residência urbana, 50.000 a 120.000 C; navio mercante, 150.000 a 400.000 C. Incluem apenas o bem descrito: pessoal, tributos, estoque e manutenção são despesas adicionais."
+  },
+  {
+    "titulo": "Pagamentos e arredondamento",
+    "texto": "Use apenas coroas inteiras. Para compras em lote, impostos e descontos, calcule sobre o total e arredonde uma única vez ao inteiro mais próximo, com metade arredondada para cima; cobranças positivas têm mínimo de 1 C. Água de fonte pública e favores gratuitos continuam sem custo. Grandes contratos podem ser liquidados por ordens de pagamento de uma casa de comércio, sempre denominadas em coroas."
+  },
+  {
+    "titulo": "Referência para aventuras e histórias",
+    "texto": "Uma coroa resolve uma compra pequena; dezenas cobrem despesas de viagem; centenas compram equipamento e remuneram missões; milhares representam montarias de guerra, embarcações e reservas importantes. Esta escala substitui as antigas tabelas de conversão. Ao adaptar uma história ou campanha antiga, reavalie cada compra, dívida e recompensa pelo bem ou trabalho envolvido, sem trocar apenas o nome da moeda."
+  }
 ];
-
-// Prices for overlapping entries always follow the equipment catalog.
-window.CUSTO_DE_VIDA.forEach(function(row){var item=(window.ITENS_BASICOS||[]).find(function(x){return x.nome===row.item;});if(item)row.custo=item.preco;});

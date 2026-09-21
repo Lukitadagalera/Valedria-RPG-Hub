@@ -41,7 +41,7 @@ window.SheetCatalog=function(options){
         var row=document.createElement('article');row.className='collection-card';
         row.innerHTML='<div class="collection-heading"><h3>'+esc(c.nome)+'</h3><button type="button" class="collection-remove no-print" aria-label="Remover '+esc(c.nome)+'">×</button></div>'+(kind==='pericias'?'<p class="collection-badge">'+esc(c.atributo||'Perícia importada sem atributo')+'</p><p>'+esc(c.descricao||'Registro preservado da ficha anterior.')+'</p>':kind==='itens'?'<div class="collection-meta"><span>'+esc(c.categoria||'Item importado')+'</span><strong>'+esc(c.preco||'Preço não informado')+'</strong></div><p>'+esc(c.descricao)+'</p>':'<p class="collection-badge">'+esc([c.grau,c.tipo].filter(Boolean).join(' · ')||'Artefato importado')+'</p><p>'+esc(c.descricao)+'</p><p class="catalog-effect"><strong>Efeito</strong> '+esc(c.efeito||'Efeito não registrado')+'</p>');
         row.querySelector('button').onclick=function(){state[kind].splice(i,1);render();options.onChange();};
-        if(kind==='itens'){var label=document.createElement('label');label.className='quantity-field';label.textContent='Quantidade';var input=document.createElement('input');input.type='number';input.min='1';input.max='999';input.value=c.quantidade||1;input.onchange=function(){c.quantidade=Math.max(1,Math.min(999,parseInt(input.value,10)||1));input.value=c.quantidade;options.onChange();};label.appendChild(input);row.appendChild(label);}
+        if(kind==='itens'){var label=document.createElement('label');label.className='quantity-field';label.textContent='Quantidade';var input=document.createElement('input');input.type='number';input.min='1';input.max='999';input.value=c.quantidade||1;input.oninput=function(){var value=Number(input.value);if(Number.isInteger(value)&&value>=1&&value<=999){c.quantidade=value;options.onChange();}};input.onchange=function(){c.quantidade=Math.max(1,Math.min(999,parseInt(input.value,10)||1));input.value=c.quantidade;options.onChange();};label.appendChild(input);row.appendChild(label);}
         if(kind==='artefatos')row.insertAdjacentHTML('beforeend',restrictions(c));container.appendChild(row);
       });
     });
@@ -67,7 +67,7 @@ window.SheetCatalog=function(options){
       photoVersion++;crop.cancel();state={itens:[],pericias:[],artefatos:[],foto:safePhoto(s.foto),fotoOriginal:safePhoto(s.fotoOriginal),fotoRecorte:s.fotoRecorte||null};
       (s.pericias||[]).forEach(function(c){var official=catalog.pericias.find(function(x){return x.nome===c.nome;});state.pericias.push(Object.assign({},c,official||{}));});
       (s.artefatos||[]).forEach(function(c){state.artefatos.push(Object.assign({},c));});
-      (s.itens||[]).forEach(function(c){var magic=catalog.artefatos.find(function(x){return x.nome===c.nome;});var basic=catalog.itens.find(function(x){return x.nome===c.nome;});if(!s.versao&&(magic||c.efeito)){state.artefatos.push(Object.assign({},magic||{},c));}else state.itens.push(Object.assign({},basic||{},c,{quantidade:Math.max(1,Math.min(999,parseInt(c.quantidade,10)||1))}));});
+      (s.itens||[]).forEach(function(c){var magic=catalog.artefatos.find(function(x){return x.nome===c.nome;});var basic=catalog.itens.find(function(x){return x.nome===c.nome;});if(!s.versao&&(magic||c.efeito)){state.artefatos.push(Object.assign({},magic||{},c));}else state.itens.push(Object.assign({},basic||{},c,basic?{preco:basic.preco}:{},{quantidade:Math.max(1,Math.min(999,parseInt(c.quantidade,10)||1))}));});
       render();
     }
   };

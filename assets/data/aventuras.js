@@ -23,10 +23,26 @@ window.GERADOR_COMPLICACOES = [
 ];
 
 window.GERADOR_RECOMPENSAS = [
-  { nivel: "Iniciante", faixa: "8 a 12 Prata", pagoPor: "Figura local (chefe de vila, sacerdote, comerciante)" },
-  { nivel: "Regional", faixa: "1 a 3 Ouro", pagoPor: "Guilda de Aventureiros ou nobreza menor" },
-  { nivel: "Intermediário", faixa: "2 a 3 Ouro + benefício não-monetário", pagoPor: "Academia, guarda municipal ou guilda de mercadores" },
-  { nivel: "Avançado", faixa: "1 ou mais Coroas reais", pagoPor: "Coroa, Conselho de Encruzilhada ou Alto Ferreiro/Matriarca" }
+  {
+    "nivel": "Iniciante",
+    "faixa": "80 a 200 C por aventureiro",
+    "pagoPor": "Figura local (chefe de vila, sacerdote, comerciante)"
+  },
+  {
+    "nivel": "Regional",
+    "faixa": "250 a 500 C por aventureiro",
+    "pagoPor": "Guilda de Aventureiros ou nobreza menor"
+  },
+  {
+    "nivel": "Intermediário",
+    "faixa": "500 a 1.500 C por aventureiro + benefício não monetário",
+    "pagoPor": "Academia, guarda municipal ou guilda de mercadores"
+  },
+  {
+    "nivel": "Avançado",
+    "faixa": "2.000 a 5.000 C por aventureiro",
+    "pagoPor": "Coroa, Conselho de Encruzilhada ou Alto Ferreiro/Matriarca"
+  }
 ];
 
 /* Nível padrão de cada região, usado para travar a faixa de recompensa
