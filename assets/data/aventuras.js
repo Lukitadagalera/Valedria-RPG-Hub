@@ -23,10 +23,10 @@ window.GERADOR_COMPLICACOES = [
 ];
 
 window.GERADOR_RECOMPENSAS = [
-  { nivel: "Iniciante", faixa: "8 a 12 Prata", pagoPor: "Figura local (chefe de vila, sacerdote, comerciante)" },
-  { nivel: "Regional", faixa: "1 a 3 Ouro", pagoPor: "Guilda de Aventureiros ou nobreza menor" },
-  { nivel: "Intermediário", faixa: "2 a 3 Ouro + benefício não-monetário", pagoPor: "Academia, guarda municipal ou guilda de mercadores" },
-  { nivel: "Avançado", faixa: "1 ou mais Coroas reais", pagoPor: "Coroa, Conselho de Encruzilhada ou Alto Ferreiro/Matriarca" }
+  { nivel: "Iniciante", faixa: "0,080–0,120 C por aventureiro (bruto)", pagoPor: "Figura local (chefe de vila, sacerdote, comerciante)" },
+  { nivel: "Regional", faixa: "0,200–0,600 C para o grupo (bruto)", pagoPor: "Guilda de Aventureiros ou nobreza menor" },
+  { nivel: "Intermediário", faixa: "0,400–0,600 C para o grupo (bruto) + benefício não monetário", pagoPor: "Academia, guarda municipal ou guilda de mercadores" },
+  { nivel: "Avançado", faixa: "1,000 C ou mais para o grupo (bruto; contrato extraordinário, pagamento em frações ou peça real autorizada)", pagoPor: "Coroa, Conselho de Encruzilhada ou Alto Ferreiro/Matriarca" }
 ];
 
 /* Nível padrão de cada região, usado para travar a faixa de recompensa
@@ -42,3 +42,4 @@ window.GERADOR_NIVEL_POR_REGIAO = {
   "Vigília Branca": "Intermediário",
   "Encruzilhada": "Intermediário a Avançado"
 };
+

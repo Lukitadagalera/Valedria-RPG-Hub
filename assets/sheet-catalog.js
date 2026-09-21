@@ -67,8 +67,9 @@ window.SheetCatalog=function(options){
       photoVersion++;crop.cancel();state={itens:[],pericias:[],artefatos:[],foto:safePhoto(s.foto),fotoOriginal:safePhoto(s.fotoOriginal),fotoRecorte:s.fotoRecorte||null};
       (s.pericias||[]).forEach(function(c){var official=catalog.pericias.find(function(x){return x.nome===c.nome;});state.pericias.push(Object.assign({},c,official||{}));});
       (s.artefatos||[]).forEach(function(c){state.artefatos.push(Object.assign({},c));});
-      (s.itens||[]).forEach(function(c){var magic=catalog.artefatos.find(function(x){return x.nome===c.nome;});var basic=catalog.itens.find(function(x){return x.nome===c.nome;});if(!s.versao&&(magic||c.efeito)){state.artefatos.push(Object.assign({},magic||{},c));}else state.itens.push(Object.assign({},basic||{},c,{quantidade:Math.max(1,Math.min(999,parseInt(c.quantidade,10)||1))}));});
+      (s.itens||[]).forEach(function(c){var magic=catalog.artefatos.find(function(x){return x.nome===c.nome;});var basic=catalog.itens.find(function(x){return x.nome===c.nome;});if(!s.versao&&(magic||c.efeito)){state.artefatos.push(Object.assign({},magic||{},c));}else state.itens.push(Object.assign({},basic||{},c,basic?{preco:basic.preco}:{},{quantidade:Math.max(1,Math.min(999,parseInt(c.quantidade,10)||1))}));});
       render();
     }
   };
 };
+

@@ -1,29 +1,86 @@
-/* ============================================================
-   ECONOMIA DE VALÉDRIA — dados
-   Sistema monetário, custo de vida e regras de comércio.
-   ============================================================ */
+/* Economia de Valédria — unidade única: Coroa (C). */
 window.MOEDAS = [
-  { moeda: "Cobre (Cb)", metal: "Cobre", valor: "1 Cobre", uso: "Compras miúdas: pão, cerveja, taxas de estrada" },
-  { moeda: "Prata (P)", metal: "Prata", valor: "1 Prata = 10 Cobre", uso: "Hospedagem, refeições, ferramentas, serviços comuns" },
-  { moeda: "Ouro (O)", metal: "Ouro", valor: "1 Ouro = 10 Prata = 100 Cobre", uso: "Armas, armaduras, montarias, negócios de mercador" },
-  { moeda: "Escudo (E)", metal: "Prata (emissão de conta)", valor: "1 Escudo = 5 Prata = 50 Cobre", uso: "Preços do catálogo: 10 Escudos (E) = 1 Coroa (C)." },
-  { moeda: "Coroa (C)", metal: "Ouro (emissão real)", valor: "1 Coroa = 10 Escudos = 5 Ouro = 50 Prata = 500 Cobre", uso: "Transações grandes, impostos reais e pagamentos de nobreza. Cada reino (Valmeira, Cárdenas, Ostenfeld) emite sua própria Coroa, de mesmo valor entre si mas com brasão distinto." }
+  {
+    "moeda": "Coroa inteira (C)",
+    "metal": "Ouro, emissão real",
+    "valor": "1,000 C",
+    "uso": "Peça de circulação reservada às tesourarias reais, tributos e pagamentos autorizados pela realeza. Não é troco de feira."
+  },
+  {
+    "moeda": "Frações de coroa",
+    "metal": "Ligas de cobre ou prata, com valor nominal marcado",
+    "valor": "0,001; 0,005; 0,010; 0,050; 0,100 e 0,500 C",
+    "uso": "Salários, mantimentos, hospedagem e comércio cotidiano. São denominações da Coroa, sem nomes de moedas separados."
+  }
 ];
 
+window.SALARIOS = [
+  {
+    "oficio": "Trabalhador comum",
+    "diaria": "0,010 C",
+    "mensal": "0,260 C"
+  },
+  {
+    "oficio": "Artesão qualificado",
+    "diaria": "0,020 C",
+    "mensal": "0,520 C"
+  },
+  {
+    "oficio": "Especialista contratado",
+    "diaria": "0,040 C",
+    "mensal": "1,040 C"
+  }
+];
 window.CUSTO_DE_VIDA = [
-  { item: "Refeição simples", custo: "2 a 4 Cobre" },
-  { item: "Cerveja ou vinho comum", custo: "1 a 2 Cobre" },
-  { item: "Diária em estalagem (simples)", custo: "3 C" },
-  { item: "Diária em estalagem (privada)", custo: "8 C" },
-  { item: "Cavalo de trabalho", custo: "40 C" },
-  { item: "Cavalo de guerra", custo: "150 C" },
-  { item: "Espada longa", custo: "15 C" },
-  { item: "Gibão de couro", custo: "10 C" },
-  { item: "Armadura de placas (básica)", custo: "80 C" },
-  { item: "Passagem em barcaça fluvial", custo: "2 a 4 Prata por trecho" },
-  { item: "Taxa de pedágio em ponte ou cidade murada", custo: "1 Cobre a 1 Prata" }
+  {
+    "item": "Moradia e alimentação modestas (adulto, mês)",
+    "custo": "0,180–0,240 C; vida residente, sem dependentes"
+  },
+  {
+    "item": "Refeição simples",
+    "custo": ""
+  },
+  {
+    "item": "Ração de viagem (1 dia)",
+    "custo": ""
+  },
+  {
+    "item": "Diária em estalagem (simples)",
+    "custo": ""
+  },
+  {
+    "item": "Diária em estalagem (privada)",
+    "custo": ""
+  },
+  {
+    "item": "Cavalo de trabalho",
+    "custo": ""
+  },
+  {
+    "item": "Cavalo de guerra",
+    "custo": ""
+  },
+  {
+    "item": "Espada longa",
+    "custo": ""
+  },
+  {
+    "item": "Gibão de couro",
+    "custo": ""
+  },
+  {
+    "item": "Armadura de placas (básica)",
+    "custo": ""
+  },
+  {
+    "item": "Passagem em barcaça fluvial",
+    "custo": ""
+  },
+  {
+    "item": "Pedágio de ponte (pedestre)",
+    "custo": ""
+  }
 ];
-
 window.COMERCIO_POR_REGIAO = [
   { regiao: "Valmeira", exporta: "Peixe salgado, sal, vinho, tecidos e produtos de porto trazidos por navios estrangeiros." },
   { regiao: "Cárdenas", exporta: "Grãos, gado e ferramentas agrícolas; atua como intermediária comercial entre o sul e o norte." },
@@ -33,10 +90,39 @@ window.COMERCIO_POR_REGIAO = [
 ];
 
 window.REGRAS_COMERCIO = [
-  { titulo: "Moeda fora dos reinos humanos", texto: "Anões, elfos e demônios não usam necessariamente o mesmo sistema. Em Montegris e Pedrafria, comerciantes anões preferem pagamento em barras de metal bruto ou trocam bens por bens, aceitando moeda humana com pequeno desconto. Em Encruzilhada, o conselho fixa taxas de câmbio mensais entre a moeda humana e os meios de troca élficos e demoníacos." },
-  { titulo: "Impostos e guildas", texto: "Cada reino cobra impostos próprios sobre mercadorias que cruzam suas fronteiras internas, pagos em postos de pedágio (Ponte Alta, Ponte Rubra, muralhas de Portovale e Cárdenas Alta). Mercadores organizados em guildas locais recebem descontos ou isenções parciais." },
-  { titulo: "Contrabando", texto: "Existe principalmente em rotas menos vigiadas entre Valmeira e Cárdenas, tolerado silenciosamente em vilas pequenas como Trigal e Poço Fundo. Em Encruzilhada, o conselho multirracial pune contrabando com dureza, pois a cidade depende da confiança comercial de todas as raças." }
+  {
+    "titulo": "Uma unidade, diferentes denominações",
+    "texto": "Todo preço, salário, dívida e recompensa é expresso em Coroa (C). A menor fração é 0,001 C. Mil peças desse valor somam 1 C; cem peças de 0,010 C também. As frações são cunhadas com valor nominal: ninguém corta uma coroa de ouro para pagar pão. Cobre, prata e ouro designam materiais, não moedas paralelas. As antigas tabelas de Escudos deixam de valer; preços foram reequilibrados item a item."
+  },
+  {
+    "titulo": "O peso de uma coroa inteira",
+    "texto": "Valmeira, Cárdenas e Ostenfeld emitem coroas de igual valor, identificadas por seus brasões. A peça inteira de ouro é moeda da realeza: passa pelas tesourarias e por grandes pagamentos com origem registrada. Um plebeu pode receber o valor de uma coroa em frações; receber a peça real é excepcional e exige uma origem na história. Comerciantes comuns não são obrigados a aceitá-la nem dispõem de troco. Casas de câmbio autorizadas verificam a peça e registram sua troca por frações; eventual taxa deve ser informada antes."
+  },
+  {
+    "titulo": "Salário não é dinheiro disponível",
+    "texto": "Uma diária de trabalho comum vale 0,010 C. Assim, 1 C representa 100 diárias brutas, quase quatro meses com 26 dias pagos; 4 C representam 400 diárias. Alimentação, moradia, dependentes e dias sem trabalho reduzem a poupança. Uma dívida de várias coroas pode comprometer uma família por anos. Oferecer uma coroa por um recado seria extraordinário e precisaria de justificativa."
+  },
+  {
+    "titulo": "Comércio entre povos",
+    "texto": "Todos os valores publicados, inclusive em Eryndal, Kholdrynn, Skral e Encruzilhada, usam coroas. Fora dos mercados autorizados, povos podem preferir escambo; avaliam-se ambos os bens em C e negocia-se a diferença, sem criar outra moeda. Metal bruto é mercadoria avaliada por peso e qualidade. O conselho de Encruzilhada regula avaliação, procedência e tributos."
+  },
+  {
+    "titulo": "Preço, escassez e revenda",
+    "texto": "O catálogo representa compra em mercado abastecido. Qualidade, fabricação especializada, importação e falta de estoque justificam diferenças informadas pelo mestre; uma vila pode cobrar até 50% a mais por escassez. Revenda não equivale ao preço de compra: depende de conservação, procura e margem do comprador. Some a compra antes de arredondar ao múltiplo mais próximo de 0,001 C; empate arredonda para cima."
+  },
+  {
+    "titulo": "Impostos e guildas",
+    "texto": "Cada reino cobra tributos em coroas ou suas frações nos postos de pedágio. Pedágio de pedestre não inclui carroça, montaria nem tributo sobre carga. Guildas podem obter isenções. Recompensas indicam se o valor é individual ou do grupo; a taxa de 10% da Guilda é descontada antes da divisão."
+  },
+  {
+    "titulo": "Artefatos e pagamentos extraordinários",
+    "texto": "O catálogo básico cobre equipamentos sem magia. Artefatos não recebem um preço comum por comparação com armas de ferro: sua negociação depende de raridade, efeito, procedência e autorização. Uma avaliação de várias coroas precisa de comprador capaz de pagar, explicação de origem e consequência econômica para quem recebe."
+  },
+  {
+    "titulo": "Contrabando",
+    "texto": "Rotas menos vigiadas entre Valmeira e Cárdenas concentram comércio não declarado. Em Encruzilhada, o conselho pune esse comércio para preservar a confiança entre os povos. A unificação da moeda não elimina alfândegas, fiscalização ou restrições sobre mercadorias."
+  }
 ];
 
-// Prices for overlapping entries always follow the equipment catalog.
-window.CUSTO_DE_VIDA.forEach(function(row){var item=(window.ITENS_BASICOS||[]).find(function(x){return x.nome===row.item;});if(item)row.custo=item.preco;});
+// Shared catalog is loaded first: overlapping prices have one source.
+window.CUSTO_DE_VIDA.forEach(function(row){var item=window.ITENS_BASICOS.find(function(x){return x.nome===row.item;});if(item)row.custo=item.preco;});
