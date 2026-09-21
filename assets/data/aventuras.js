@@ -1,9 +1,3 @@
-/* ============================================================
-   GERADOR DE AVENTURAS REGIONAIS — dados
-   Tabelas combinatórias usadas para sortear ganchos de missão
-   novos por região, respeitando a escala de nível e moeda já
-   estabelecida no Livro X (Guilda).
-   ============================================================ */
 window.GERADOR_PROBLEMAS = [
   "Desaparecimento de morador ou viajante",
   "Sabotagem comercial ou disputa entre mercadores",
@@ -25,28 +19,26 @@ window.GERADOR_COMPLICACOES = [
 window.GERADOR_RECOMPENSAS = [
   {
     "nivel": "Iniciante",
-    "faixa": "80 a 200 C por aventureiro",
+    "faixa": "80 CC a 2 CP por aventureiro",
     "pagoPor": "Figura local (chefe de vila, sacerdote, comerciante)"
   },
   {
     "nivel": "Regional",
-    "faixa": "250 a 500 C por aventureiro",
+    "faixa": "2 CP e 50 CC a 5 CP por aventureiro",
     "pagoPor": "Guilda de Aventureiros ou nobreza menor"
   },
   {
     "nivel": "Intermediário",
-    "faixa": "500 a 1.500 C por aventureiro + benefício não monetário",
+    "faixa": "5 CP a 15 CP por aventureiro + benefício não monetário",
     "pagoPor": "Academia, guarda municipal ou guilda de mercadores"
   },
   {
     "nivel": "Avançado",
-    "faixa": "2.000 a 5.000 C por aventureiro",
+    "faixa": "20 CP a 50 CP por aventureiro",
     "pagoPor": "Coroa, Conselho de Encruzilhada ou Alto Ferreiro/Matriarca"
   }
 ];
 
-/* Nível padrão de cada região, usado para travar a faixa de recompensa
-   sorteada — mantém coerência com o quadro fixo de missões da Guilda. */
 window.GERADOR_NIVEL_POR_REGIAO = {
   "Amieiro": "Iniciante",
   "Ponte Alta": "Iniciante a Intermediário",

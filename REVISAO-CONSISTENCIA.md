@@ -1,8 +1,10 @@
 # Revisão de consistência — 21/09/2026
 
 Correções aplicadas:
-- Coroa (C) é a única unidade monetária. A emissão é real e a circulação é comum; cobre, prata, ouro e escudos deixam de ser moedas. Patentes e materiais conservam seus nomes.
-- Catálogo revisado item a item: pão e vela a 1 C, espada longa a 150 C, placas a 2.500 C e cavalo de guerra a 3.500 C. Água pública permanece gratuita. Salários, patrimônio, 18 missões e gerador de aventuras seguem a nova escala.
+- Cada reino humano cunha Coroas de cobre (CC), prata (CP) e ouro (CO). 100 CC = 1 CP; 100 CP = 1 CO. Não há moedas fracionadas. Escudos não são moeda; patentes da guilda conservam seus nomes.
+- Catálogo: pão e vela a 1 CC, espada longa a 1 CP e 50 CC, placas a 25 CP e cavalo de guerra a 35 CP. Água pública permanece gratuita. Salários, patrimônio, 18 missões e gerador de aventuras seguem a mesma escala, com totais e taxas calculados em cobre.
+- Elfos praticam partilha sustentável; anões mantêm seu ouro branco exclusivo dentro das montanhas; demônios negociam por escambo de bens e serviços. Preços humanos não impõem conversão às outras culturas.
+- A compra de título permite a ascensão plebeia somente à nobreza menor, nunca à alta nobreza ou realeza, independentemente da fortuna.
 - Fichas existentes atualizam preços de referência de itens oficiais ao carregar, preservando quantidade e dados personalizados. Não há conversão automática de preços de itens personalizados nem de saldos antigos.
 - Hospedagem, montarias, armas e armaduras repetidas seguem o preço do catálogo de equipamentos.
 - Terras élficas a oeste, anãs ao norte e demoníacas a leste, conforme Geografia e mapa aprovado. Coordenadas preservadas.

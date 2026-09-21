@@ -16,7 +16,7 @@ window.CASTAS_HUMANAS = [
     img: "assets/img/racas/casta-artesaos.png.webp"
   },
   {
-    nome: "Nobreza menor", descricao: "Famílias com terras, títulos locais ou cargos administrativos herdados, como prefeitos hereditários, capitães de guarda regional e pequenos senhores de vale. Vivem em casas-fortes ou manoirs modestos, próximos ao centro administrativo de uma cidade. Sua fé costuma ser mais formal, com capelas privadas e clérigos contratados.",
+    nome: "Nobreza menor", descricao: "Famílias com títulos menores comprados e reconhecidos pelo reino, terras ou cargos administrativos herdados, como prefeitos hereditários, capitães de guarda regional e pequenos senhores de vale. Vivem em casas-fortes ou manoirs modestos, próximos ao centro administrativo de uma cidade. Sua fé costuma ser mais formal, com capelas privadas e clérigos contratados.",
     profissoes: "Administração, justiça local e comando militar.",
     img: "assets/img/racas/casta-nobreza-menor.png.webp"
   },
@@ -29,7 +29,7 @@ window.CASTAS_HUMANAS = [
 
 window.HUMANOS = {
   intro: "Humanos não possuem sub-raças. Toda a diversidade humana em Valédria nasce de região, cultura, ofício e posição social, não de biologia. Todos os personagens jogadores começam humanos, vindos de uma mesma cidade do interior, embora possam vir a conhecer ou se relacionar com outras castas sociais ao longo da campanha.",
-  mobilidade: "Passar de uma casta a outra é raro, mas não impossível: um mercador excepcionalmente rico pode comprar um título menor, e um nobre menor pode cair à pobreza após desgraça política. Personagens jogadores tipicamente começam como plebeus, o que reforça o tom de \"partir de pouco e crescer muito\" já estabelecido para a campanha.",
+  mobilidade: "Plebeus podem ascender pelo ofício e pelo comércio. Para ingressar na nobreza, precisam comprar um título de nobreza menor reconhecido pelo reino. Nenhuma fortuna permite comprar a condição de alta nobreza ou realeza; a ascensão por riqueza termina na nobreza menor.",
   img: "assets/img/racas/humanos.png.webp"
 };
 

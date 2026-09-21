@@ -1,5 +1,11 @@
 /* A character dossier: persistent summary, focused sections and native controls. */
-.sheet-refined.sheet-layout{display:block;max-width:1240px;margin-inline:auto;width:100%}
+.sheet-refined.sheet-layout{display:block;max-width:none;margin-inline:0;width:100%;box-sizing:border-box}
+.sheet-help-button{display:inline-grid;place-items:center;vertical-align:middle;width:28px;height:28px;margin:0 0 8px 8px;border:1px solid var(--color-primary);border-radius:50%;background:var(--color-surface);color:var(--color-text);font:bold 16px/1 Georgia,serif;cursor:pointer}
+.sheet-help-button[aria-expanded=true]{background:var(--color-primary-highlight)}
+.sheet-refined .field>label:has(+.sheet-help-button){display:inline-block;width:auto;max-width:calc(100% - 44px);vertical-align:middle}
+.sheet-refined .sheet-help-text{font:14px/1.6 Georgia,serif;color:var(--color-text);background:var(--color-surface);border-left:3px solid var(--color-primary);border-radius:6px;padding:12px;margin:8px 0 16px;overflow-wrap:anywhere}
+.sheet-help-text[hidden]{display:none!important}
+@media print{.sheet-help-button,.sheet-help-text{display:none!important}}
 .sheet-refined .sheet-form-card{gap:0;padding:0;border:1px solid var(--color-border);border-radius:24px;background:var(--color-surface);overflow:hidden;box-shadow:0 18px 50px #0002}
 .sheet-refined .sheet-form-card>.sheet-dossier{margin:0;border:0;border-bottom:1px solid var(--color-border);border-radius:0;padding:28px 34px}
 .sheet-dossier .preview-name{font-size:clamp(28px,3vw,40px);line-height:1.2;margin-top:10px}.sheet-dossier .preview-meta{margin-block:8px 14px}.sheet-dossier .preview-life{display:inline-block;padding:8px 14px;border:1px solid var(--color-border);border-radius:10px;font-weight:600}.sheet-dossier .preview-attrs{gap:10px;margin-top:14px;max-width:700px}.sheet-dossier .preview-attrs>*{padding:9px}.sheet-dossier .preview-power{margin-top:12px}
@@ -25,3 +31,5 @@
 @media(max-width:640px){.sheet-refined .sheet-identity,.sheet-refined .sheet-collections{grid-template-columns:1fr}.sheet-refined .sheet-dossier{padding:24px 18px!important}.sheet-refined .preview-attrs{grid-template-columns:repeat(3,minmax(0,1fr))}.sheet-tabs{padding:10px;display:grid;grid-template-columns:1fr 1fr}.sheet-tabs button{white-space:normal;font-size:13px}.sheet-refined .sheet-guidance{padding:14px 18px}.sheet-refined .sheet-tab-panel{padding:4px 10px 18px}.sheet-refined .attr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sheet-refined #pericias-editor{grid-template-columns:1fr}.sheet-refined .sheet-toolbar{padding:18px 14px}.sheet-toolbar .btn{flex:1 1 42%}.sheet-refined .portrait-frame{max-width:340px}.sheet-refined .sheet-form-card{border-radius:16px}}
 @media(prefers-reduced-motion:reduce){.sheet-refined .sheet-tab-panel{animation:none}}
 @media print{.sheet-tabs,.sheet-guidance,.sheet-choices,.attribute-stepper button{display:none!important}.sheet-refined .sheet-tab-panel[hidden]{display:block!important}}
+
+.sheet-help-label{display:flex;align-items:center;gap:8px;margin-bottom:8px}.sheet-help-label label{margin:0!important;min-width:0}.sheet-help-label .sheet-help-button{margin:0;flex-shrink:0}.sheet-refined .field .sheet-help-label label{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--color-text-muted)}
