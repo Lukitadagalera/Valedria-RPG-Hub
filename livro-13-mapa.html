@@ -26,7 +26,7 @@
   .gerador-resultado{border:1px solid var(--color-border,#333);border-radius:8px;padding:var(--space-4,1rem);margin-top:var(--space-4,1rem)}
   .relacoes-table td, .relacoes-table th{vertical-align:top}
 </style>
-<link rel="icon" href="favicon.ico" sizes="any"><link rel="stylesheet" href="assets/atlas.css?v=30"><link rel="stylesheet" href="assets/navigation-motion.css?v=2"><link rel="stylesheet" href="assets/panel-textures.css?v=4"><link rel="stylesheet" href="assets/discovery.css?v=1"><script src="assets/data/responsive-images.js?v=1"></script></head>
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="stylesheet" href="assets/atlas.css?v=30"><link rel="stylesheet" href="assets/navigation-motion.css?v=2"><link rel="stylesheet" href="assets/panel-textures.css?v=5"><link rel="stylesheet" href="assets/discovery.css?v=1"><script src="assets/data/responsive-images.js?v=1"></script></head>
 <body class="book-page">
 <a class="skip-link" href="#main">Saltar para o conteúdo</a>
 <header class="site-header reference-header"><a class="wordmark" href="index.html"><span class="symbol-slot brand-symbol"><img src="assets/img/home/marca-valedria.webp" alt="Símbolo de Valédria" onload="this.parentElement.classList.add('loaded')" onerror="this.hidden=true" srcset="assets/img/home/marca-valedria-480.webp 480w, assets/img/home/marca-valedria-960.webp 960w, assets/img/home/marca-valedria.webp 1254w" sizes="50px" width="1254" height="1254"><code>assets/img/home/marca-valedria.webp</code></span><div>Valédria<small>Códice do Mundo</small></div></a><nav class="primary-nav" id="primary-nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="mundo.html">Mundo</a><a href="livros.html" aria-current="page">Livros</a><a href="campanhas.html">Campanhas</a><a href="comunidade.html">Comunidade</a><a href="hall-da-gloria.html">Hall da Glória</a><a href="area-mestre.html">Área do Mestre</a></nav><a class="site-search" href="buscar.html" aria-label="Buscar no códice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></a><a class="btn btn-primary header-sheet" href="ficha.html"><svg class="ref-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg>Ficha de personagem</a><button class="icon-btn mobile-menu" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">☰</button></header><main id="main" class="content"><div class="book-body">
@@ -103,27 +103,27 @@
 
   function dossieHtml(nomeDossie){
     var d = window.DOSSIES_CIDADES.filter(function(x){ return x.nome === nomeDossie; })[0];
-    if(!d) return '<p>Dossiê ainda não disponível para esta localidade.</p>';
+    if(!d) return '<p class="reading-note">Dossiê ainda não disponível para esta localidade.</p>';
     var locais = '<ul>'+d.locaisInternos.map(function(l){return '<li>'+VR.esc(l)+'</li>';}).join('')+'</ul>';
     var npcs = d.npcs.length ? '<ul>'+d.npcs.map(function(n){return '<li>'+VR.esc(n)+'</li>';}).join('')+'</ul>' : '<p class="muted">Nenhum NPC nomeado ainda.</p>';
     var missoes = d.missoesGuilda.length ? '<ul>'+d.missoesGuilda.map(function(m){return '<li>'+VR.esc(m)+'</li>';}).join('')+'</ul>' : '<p class="muted">Nenhuma missão fixa registrada.</p>';
     var faccoes = d.faccoesPresentes.length ? d.faccoesPresentes.map(function(f){return VR.chip(f,'outline');}).join('') : '<span class="muted">Nenhuma facção com presença marcada.</span>';
     return '<h3>'+VR.esc(d.nome)+'</h3>'+
       '<p class="entry-meta">'+VR.chip(d.tipo,'outline')+(d.reino?VR.chip(d.reino,'blue'):'')+'</p>'+
-      '<p>'+VR.esc(d.geografia)+'</p>'+
+      '<p class="reading-note">'+VR.esc(d.geografia)+'</p>'+
       '<p class="muted"><strong>População:</strong> '+VR.esc(d.populacao)+'</p>'+
       '<h4>Locais internos</h4>'+locais+
       '<h4>NPCs</h4>'+npcs+
       '<h4>Missões da Guilda</h4>'+missoes+
-      '<h4>Facções presentes</h4><p>'+faccoes+'</p>'+
-      '<h4>Gancho atual</h4><p>'+VR.esc(d.ganchoPublico)+'</p>';
+      '<h4>Facções presentes</h4><p class="reading-note">'+faccoes+'</p>'+
+      '<h4>Gancho atual</h4><p class="reading-note">'+VR.esc(d.ganchoPublico)+'</p>';
   }
 
   window.abrirAtlasLocal = function(p){
-    var html='<h2 id="atlas-place-title">'+VR.esc(p.titulo||p.nome)+'</h2><p>'+VR.esc(p.reino)+' · '+VR.esc(p.tipo)+'</p>'+(p.localizacao?'<p><strong>Localização:</strong> '+VR.esc(p.localizacao)+'</p>':'')+(p.populacao?'<p><strong>População:</strong> '+VR.esc(p.populacao)+'</p>':'')+'<p>'+VR.esc(p.descricao)+'</p>'+(p.figura?'<p><strong>Figura local:</strong> '+VR.esc(p.figura)+'</p>':'');
+    var html='<h2 id="atlas-place-title">'+VR.esc(p.titulo||p.nome)+'</h2><p class="reading-note">'+VR.esc(p.reino)+' · '+VR.esc(p.tipo)+'</p>'+(p.localizacao?'<p class="reading-note"><strong>Localização:</strong> '+VR.esc(p.localizacao)+'</p>':'')+(p.populacao?'<p class="reading-note"><strong>População:</strong> '+VR.esc(p.populacao)+'</p>':'')+'<p class="reading-note">'+VR.esc(p.descricao)+'</p>'+(p.figura?'<p class="reading-note"><strong>Figura local:</strong> '+VR.esc(p.figura)+'</p>':'');
     var d=window.DOSSIES_CIDADES.find(function(d){return d.nome===p.nome;});
     if(d)html+='<details><summary>Ver dossiê de aventuras</summary>'+dossieHtml(d.nome)+'</details>';
-    html+='<p><a href="livro-01-geografia.html?encontrar='+encodeURIComponent(p.titulo||p.nome)+'">Consultar na Geografia →</a></p>';
+    html+='<p class="reading-note"><a href="livro-01-geografia.html?encontrar='+encodeURIComponent(p.titulo||p.nome)+'">Consultar na Geografia →</a></p>';
     abrirPainelHtml(html);
   };
 
@@ -140,9 +140,9 @@
     var out = document.getElementById('gerador-resultado');
     out.style.display = 'block';
     out.innerHTML = '<p class="entry-meta">'+VR.chip(regiao,'outline')+VR.chip(nivel,'gold')+'</p>'+
-      '<p><strong>Problema:</strong> '+VR.esc(problema)+'</p>'+
-      '<p><strong>Complicação:</strong> '+VR.esc(complicacao)+'</p>'+
-      '<p><strong>Recompensa:</strong> '+VR.esc(rec.faixa)+' &mdash; pago por '+VR.esc(rec.pagoPor)+'</p>';
+      '<p class="reading-note"><strong>Problema:</strong> '+VR.esc(problema)+'</p>'+
+      '<p class="reading-note"><strong>Complicação:</strong> '+VR.esc(complicacao)+'</p>'+
+      '<p class="reading-note"><strong>Recompensa:</strong> '+VR.esc(rec.faixa)+' &mdash; pago por '+VR.esc(rec.pagoPor)+'</p>';
   });
 
   var relRows = window.RELACOES_NPCS.map(function(r){

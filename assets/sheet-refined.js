@@ -12,7 +12,7 @@
  form.prepend(header);
  var tabs=document.createElement('div');tabs.className='sheet-tabs no-print';tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Seções da ficha');
  header.after(tabs);
- var names=['Personagem','Atributos e poder','Perícias e equipamento','História e notas'];
+ var names=['Personagem','Atributos','Perícias e equipamento','História e notas'];
  var panels=names.map(function(name,i){
   var button=document.createElement('button');button.type='button';button.id='sheet-tab-'+i;button.setAttribute('role','tab');button.setAttribute('aria-controls','sheet-panel-'+i);button.textContent=name;tabs.append(button);
   var panel=document.createElement('section');panel.id='sheet-panel-'+i;panel.className='sheet-tab-panel';panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby',button.id);panel.tabIndex=0;form.insertBefore(panel,cards[0]);
@@ -20,9 +20,11 @@
   button.addEventListener('keydown',function(e){var next;if(e.key==='ArrowRight')next=(i+1)%names.length;if(e.key==='ArrowLeft')next=(i+names.length-1)%names.length;if(e.key==='Home')next=0;if(e.key==='End')next=names.length-1;if(next!=null){e.preventDefault();activate(next,true);}});
   return panel;
  });
- function activate(index,focus){panels.forEach(function(p,i){p.hidden=i!==index;var b=tabs.children[i];b.setAttribute('aria-selected',String(i===index));b.tabIndex=i===index?0:-1;});if(hint)hint.textContent=['Comece pela identidade. Depois distribua os atributos e escolha suas perícias e equipamentos.','Distribua seus pontos e acompanhe a reserva de poder durante a sessão.','Prepare suas habilidades e sua mochila. Cada escolha fica reunida aqui.','Registre quem seu personagem é e o que acontece ao longo da jornada.'][index];if(focus)tabs.children[index].focus();}
+ function activate(index,focus){panels.forEach(function(p,i){p.hidden=i!==index;var b=tabs.children[i];b.setAttribute('aria-selected',String(i===index));b.tabIndex=i===index?0:-1;});if(hint)hint.textContent=['Comece pela identidade. Depois distribua os atributos e escolha suas perícias e equipamentos.','Distribua seus pontos entre os cinco atributos do personagem.','Prepare suas habilidades e sua mochila. Cada escolha fica reunida aqui.','Registre quem seu personagem é e o que acontece ao longo da jornada.'][index];if(focus)tabs.children[index].focus();}
  panels[0].classList.add('sheet-identity');panels[0].append(cards[0],cards[1]);
- panels[1].append(cards[3],cards[2]);
+ panels[1].append(cards[3]);
+ var portraitColumn=document.createElement('div');portraitColumn.className='sheet-portraits';cards[0].before(portraitColumn);var mountCard=document.getElementById('mount-portrait');mountCard.classList.add('card');portraitColumn.append(cards[0],mountCard);
+ var powerField=document.getElementById('f-caminho').closest('.field');powerField.after(cards[2]);cards[2].classList.add('sheet-power-options');
  panels[2].classList.add('sheet-collections');
  // Keep a single editable inventory and the existing remove/quantity controls.
  [4,5,6].forEach(function(index){panels[2].append(cards[index]);});
@@ -36,21 +38,6 @@
  var intro=document.querySelector('.page-head');intro.querySelector('h1').textContent='Ficha de personagem';
  intro.querySelector('.lede').textContent='Seu aventureiro, suas escolhas, sua história. Prepare a ficha e acompanhe a jornada em Valédria.';
  var hint=document.createElement('p');hint.className='sheet-guidance';hint.textContent='Comece pela identidade. Depois distribua os atributos e escolha suas perícias e equipamentos.';tabs.after(hint);
- // Native selects remain the authoritative controls and keyboard alternative.
- function choiceCards(id,explanations){
-  var select=document.getElementById(id),group=document.createElement('div');group.className='sheet-choices';group.setAttribute('role','group');group.setAttribute('aria-label',select.labels[0].textContent);
-  Object.keys(explanations).forEach(function(value){var b=document.createElement('button');b.type='button';var strong=document.createElement('strong');strong.textContent=value||'Sem caminho';var small=document.createElement('span');small.textContent=explanations[value];b.append(strong,small);b.addEventListener('click',function(){select.value=value;select.dispatchEvent(new Event('change',{bubbles:true}));sync();});group.append(b);b.dataset.value=value;});
-  function sync(){Array.from(group.children).forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.value===select.value));});}
-  select.after(group);select.addEventListener('change',sync);sync();
-  // Import/reset can update values without a DOM mutation: refresh after the existing handlers.
-  document.addEventListener('change',function(){queueMicrotask(sync);});
-  document.getElementById('btn-limpar').addEventListener('click',sync);
-  return sync;
- }
- var syncRace=choiceCards('f-raca',{'Humano':'Reinos e tradições humanas','Elfo':'Heranças dos povos élficos','Anão':'Clãs e tradições ancestrais','Demônio':'Castas e linhagens demoníacas'});
- var syncPower=choiceCards('f-caminho',{'':'Sem Magia ou Aura','Magia':'Acompanhe sua reserva de Mana','Aura':'Acompanhe seu Fôlego marcial'});
- // Observe an existing rendered summary to refresh choices after asynchronous JSON imports.
- new MutationObserver(function(){syncRace();syncPower();}).observe(header,{childList:true,subtree:true,characterData:true});
  Array.from(document.querySelectorAll('[data-attr]')).forEach(function(input){
   var control=document.createElement('div');control.className='attribute-stepper';input.before(control);
   [-1,1].forEach(function(delta){var b=document.createElement('button');b.type='button';b.textContent=delta<0?'−':'+';b.setAttribute('aria-label',(delta<0?'Diminuir ':'Aumentar ')+input.labels[0].textContent);b.addEventListener('click',function(){input.value=Math.max(1,(Number(input.value)||1)+delta);input.dispatchEvent(new Event('change',{bubbles:true}));});control.append(b);});
@@ -85,9 +72,9 @@
  'f-historia':'Conte de onde veio, o que busca e quais pessoas ou acontecimentos marcaram sua vida. Combine os vínculos com o mestre.',
  'f-notas':'Guarde pistas, dívidas, promessas e acontecimentos da mesa. Estas notas entram na ficha exportada: revise-as antes de compartilhar.'
  };
- var helpIndex=0;
- function explain(target,text,container,name){if(!target||!container)return;var b=document.createElement('button'),p=document.createElement('p');b.type='button';b.className='sheet-help-button no-print';b.textContent='?';b.setAttribute('aria-label','Como preencher: '+name);b.setAttribute('aria-expanded','false');p.id='sheet-help-'+(++helpIndex);p.className='sheet-help-text';p.textContent=text;p.hidden=true;b.setAttribute('aria-controls',p.id);b.addEventListener('click',function(){p.hidden=!p.hidden;b.setAttribute('aria-expanded',String(!p.hidden));});target.after(b);if(target.tagName==='LABEL'){var row=document.createElement('div');row.className='sheet-help-label';target.before(row);row.append(target,b);}container.append(p);}
+ var helpDialog=document.createElement('dialog');helpDialog.className='sheet-help-dialog';helpDialog.setAttribute('aria-labelledby','sheet-help-title');helpDialog.innerHTML='<button type="button" class="sheet-help-close" aria-label="Fechar explicação">×</button><h2 id="sheet-help-title"></h2><p></p>';document.body.append(helpDialog);helpDialog.querySelector('button').onclick=function(){helpDialog.close();};helpDialog.addEventListener('click',function(e){if(e.target===helpDialog){var r=helpDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)helpDialog.close();}});
+ function explain(target,text,container,name){if(!target||!container)return;var b=document.createElement('button');b.type='button';b.className='sheet-help-button no-print';b.textContent='?';b.setAttribute('aria-label','Como preencher: '+name);b.setAttribute('aria-haspopup','dialog');b.addEventListener('click',function(){helpDialog.querySelector('h2').textContent=name;helpDialog.querySelector('p').textContent=text;helpDialog.showModal();});target.after(b);if(target.tagName==='LABEL'){var row=document.createElement('div');row.className='sheet-help-label';target.before(row);row.append(target,b);}}
  Object.keys(help).forEach(function(id){var input=document.getElementById(id);if(!input)return;var field=input.closest('.field,.attr-box'),label=field&&field.querySelector('label');if(label)explain(label,help[id],field,label.textContent);});
- [[cards[0],'Escolha uma foto do personagem. No recorte, ajuste o zoom e o enquadramento antes de aplicar. Você pode reajustar ou remover depois.'],[cards[4],'Abra o catálogo, busque uma perícia e adicione. Comece com duas; adicionais exigem o mestre. O atributo é fixo. Use o botão de remover para desfazer uma escolha.'],[cards[5],'Adicione equipamentos pelo catálogo. Ajuste Quantidade no cartão ou remova o item. CC significa cobre; CP, prata; CO, ouro. 100 CC = 1 CP e 100 CP = 1 CO. Adicionar registra a posse, mas não desconta dinheiro automaticamente.'],[cards[6],'Escolha somente artefatos obtidos e autorizados pelo mestre. Leia efeito, condição e eventual maldição. O botão de remover retira o registro da ficha.']].forEach(function(pair){var title=pair[0].querySelector('h2');explain(title,pair[1],pair[0],title.textContent);});
- explain(actions,'Salvar guarda a ficha neste navegador. Baixar ficha cria uma cópia para backup; Carregar ficha restaura uma cópia e substitui os dados atuais. Imprimir / PDF abre a versão para impressão. Limpar tudo apaga a ficha local após confirmação.',form,'salvar, carregar e imprimir');
+ [[mountCard,'Escolha uma imagem da sua montaria, ajuste o recorte e confirme. Ela fica salva com a ficha e acompanha o arquivo exportado. A imagem não concede uma montaria: combine a posse e suas regras com o mestre.'],[cards[0],'Escolha uma foto do personagem. No recorte, ajuste o zoom e o enquadramento antes de aplicar. Você pode reajustar ou remover depois.'],[cards[4],'Abra o catálogo, busque uma perícia e adicione. Comece com duas; adicionais exigem o mestre. O atributo é fixo. Use o botão de remover para desfazer uma escolha.'],[cards[5],'Adicione equipamentos pelo catálogo. Ajuste Quantidade no cartão ou remova o item. CC significa cobre; CP, prata; CO, ouro. 100 CC = 1 CP e 100 CP = 1 CO. Adicionar registra a posse, mas não desconta dinheiro automaticamente.'],[cards[6],'Escolha somente artefatos obtidos e autorizados pelo mestre. Leia efeito, condição e eventual maldição. O botão de remover retira o registro da ficha.']].forEach(function(pair){var title=pair[0].querySelector('h2');explain(title,pair[1],pair[0],title.textContent);});
+ explain(actions.querySelector('#btn-salvar'),'Salvar guarda a ficha neste navegador. Baixar ficha cria uma cópia para backup; Carregar ficha restaura uma cópia e substitui os dados atuais. Imprimir / PDF abre a versão para impressão. Limpar tudo apaga a ficha local após confirmação.',form,'salvar, carregar e imprimir');
 })();

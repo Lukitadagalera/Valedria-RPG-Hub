@@ -14,3 +14,11 @@ html:root[data-theme] body :is(main .card:not(.sheet-form-card),main .mini-card,
 /* Attribute surfaces have legacy theme backgrounds with !important. Keep the same texture here. */
 html:root[data-theme] body .sheet-layout :is(.attr-box,.attr-points){background-image:var(--panel-veil),var(--panel-floral)!important;background-size:100% 100%,640px 640px;background-position:center,center bottom;background-repeat:no-repeat,repeat}
 @media print{html:root[data-theme] body .sheet-layout :is(.attr-box,.attr-points){background-image:none!important}}
+
+/* Readable prose and captions over the illustrated curtains. */
+html:root[data-theme] body main :is(.reading-note,.hall-subtitle,.hero-side-note){background-color:var(--color-surface);background-image:var(--panel-veil),var(--panel-floral);background-size:100% 100%,640px 640px;color:var(--color-text);border:1px solid var(--color-border);border-radius:18px;padding:18px 22px;box-sizing:border-box;text-shadow:none}
+html:root[data-theme] body main .hall-subtitle p{margin:0;color:var(--color-text)}
+html:root[data-theme] body .hero-side-note{padding:16px 20px!important;color:var(--color-text)!important;text-shadow:none!important}
+html:root[data-theme] body .mp-faq{width:100%;max-width:none;box-sizing:border-box}
+.mp-faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}.mp-faq-intro{max-width:75ch;margin:16px 0 24px;color:var(--color-text-muted)}
+@media(max-width:700px){.mp-faq-grid{grid-template-columns:1fr}}

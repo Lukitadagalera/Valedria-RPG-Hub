@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="redesign.css"><link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="theme.css?v=21">
 
-<link rel="icon" href="favicon.ico" sizes="any"><link rel="stylesheet" href="assets/navigation-motion.css?v=2"><link rel="stylesheet" href="assets/panel-textures.css?v=4"><link rel="stylesheet" href="assets/discovery.css?v=1"><script src="assets/data/responsive-images.js?v=1"></script></head>
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="stylesheet" href="assets/navigation-motion.css?v=2"><link rel="stylesheet" href="assets/panel-textures.css?v=5"><link rel="stylesheet" href="assets/discovery.css?v=1"><script src="assets/data/responsive-images.js?v=1"></script></head>
 <body class="book-page">
 <a class="skip-link" href="#main">Saltar para o conteúdo</a>
 <header class="site-header reference-header"><a class="wordmark" href="index.html"><span class="symbol-slot brand-symbol"><img src="assets/img/home/marca-valedria.webp" alt="Símbolo de Valédria" onload="this.parentElement.classList.add('loaded')" onerror="this.hidden=true" srcset="assets/img/home/marca-valedria-480.webp 480w, assets/img/home/marca-valedria-960.webp 960w, assets/img/home/marca-valedria.webp 1254w" sizes="50px" width="1254" height="1254"><code>assets/img/home/marca-valedria.webp</code></span><div>Valédria<small>Códice do Mundo</small></div></a><nav class="primary-nav" id="primary-nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="mundo.html">Mundo</a><a href="livros.html" aria-current="page">Livros</a><a href="campanhas.html">Campanhas</a><a href="comunidade.html">Comunidade</a><a href="hall-da-gloria.html">Hall da Glória</a><a href="area-mestre.html">Área do Mestre</a></nav><a class="site-search" href="buscar.html" aria-label="Buscar no códice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></a><a class="btn btn-primary header-sheet" href="ficha.html"><svg class="ref-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg>Ficha de personagem</a><button class="icon-btn mobile-menu" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">☰</button></header><main id="main" class="content"><div class="book-body">
@@ -31,7 +31,7 @@
     <div class="col-media" id="humanos-img"></div>
   </div>
   <h3 class="section-title" style="margin-top:var(--space-6)">Castas humanas</h3>
-  <div class="entry-grid" id="castas-mount"></div><article class="card" style="margin-top:24px"><h3>Ascensão social e compra de títulos</h3><p>Um plebeu pode prosperar como artesão ou mercador e comprar um título de nobreza menor quando a autoridade do reino o disponibiliza e reconhece. A carta deve registrar direitos, deveres, impostos e eventual hereditariedade; terras não estão automaticamente incluídas. O preço depende do título e do reino e é uma negociação alta em ouro. Dinheiro não compra alta nobreza nem realeza: não importa a fortuna acumulada, a ascensão por compra termina na nobreza menor.</p><p>Prosperar não muda automaticamente a casta: sem a compra e o reconhecimento do título, a pessoa continua plebeia, ainda que muito rica. Um nobre menor também pode perder patrimônio e influência.</p></article>
+  <div class="entry-grid" id="castas-mount"></div><article class="card" style="margin-top:24px"><h3>Ascensão social e compra de títulos</h3><p class="reading-note">Um plebeu pode prosperar como artesão ou mercador e comprar um título de nobreza menor quando a autoridade do reino o disponibiliza e reconhece. A carta deve registrar direitos, deveres, impostos e eventual hereditariedade; terras não estão automaticamente incluídas. O preço depende do título e do reino e é uma negociação alta em ouro. Dinheiro não compra alta nobreza nem realeza: não importa a fortuna acumulada, a ascensão por compra termina na nobreza menor.</p><p class="reading-note">Prosperar não muda automaticamente a casta: sem a compra e o reconhecimento do título, a pessoa continua plebeia, ainda que muito rica. Um nobre menor também pode perder patrimônio e influência.</p></article>
 </section>
 <section>
   <div class="section-head"><div><div class="eyebrow">Floresta Eterna</div><h2>Elfos</h2></div></div>
@@ -74,15 +74,15 @@
   VR.mount('#castas-mount', window.CASTAS_HUMANAS.map(function(c){
     return '<article class="entry-card">'+VR.imgSlot(c.img, c.nome, '4/3')+
       '<div class="entry-head"><h3>'+VR.esc(c.nome)+'</h3></div>'+
-      '<div class="entry-body"><p>'+VR.esc(c.descricao)+'</p><p><strong>Profissões comuns:</strong> '+VR.esc(c.profissoes)+'</p></div></article>';
+      '<div class="entry-body"><p class="reading-note">'+VR.esc(c.descricao)+'</p><p class="reading-note"><strong>Profissões comuns:</strong> '+VR.esc(c.profissoes)+'</p></div></article>';
   }).join(''));
 
   VR.mount('#elfos-mount', window.ELFOS.map(function(e){
     return '<article class="entry-card">'+VR.imgSlot(e.img, e.nome, '4/3')+
       '<div class="entry-head"><h3>'+VR.esc(e.nome)+'</h3></div>'+
-      '<div class="entry-body"><p>'+VR.esc(e.descricao)+'</p>'+
-      '<p><strong>Profissões comuns:</strong> '+VR.esc(e.profissoes)+'</p>'+
-      '<p><strong>Característica:</strong> '+VR.esc(e.caracteristica)+'</p></div></article>';
+      '<div class="entry-body"><p class="reading-note">'+VR.esc(e.descricao)+'</p>'+
+      '<p class="reading-note"><strong>Profissões comuns:</strong> '+VR.esc(e.profissoes)+'</p>'+
+      '<p class="reading-note"><strong>Característica:</strong> '+VR.esc(e.caracteristica)+'</p></div></article>';
   }).join(''));
 
   var a = window.ANOES;
@@ -93,7 +93,7 @@
   VR.mount('#claes-mount', a.clas.map(function(c){
     return '<article class="entry-card">'+VR.imgSlot(c.img, c.nome, '4/3')+
       '<div class="entry-head"><h3>'+VR.esc(c.nome)+'</h3></div>'+
-      '<div class="entry-body"><p>'+VR.esc(c.descricao)+'</p></div></article>';
+      '<div class="entry-body"><p class="reading-note">'+VR.esc(c.descricao)+'</p></div></article>';
   }).join(''));
 
   var d = window.DEMONIOS;
@@ -101,9 +101,9 @@
   VR.mount('#demonios-mount', d.subracas.map(function(s){
     return '<article class="entry-card">'+VR.imgSlot(s.img, s.nome, '4/3')+
       '<div class="entry-head"><h3>'+VR.esc(s.nome)+'</h3></div>'+
-      '<div class="entry-body"><p>'+VR.esc(s.descricao)+'</p>'+
-      '<p><strong>Profissões comuns:</strong> '+VR.esc(s.profissoes)+'</p>'+
-      '<p><strong>Característica:</strong> '+VR.esc(s.caracteristica)+'</p></div></article>';
+      '<div class="entry-body"><p class="reading-note">'+VR.esc(s.descricao)+'</p>'+
+      '<p class="reading-note"><strong>Profissões comuns:</strong> '+VR.esc(s.profissoes)+'</p>'+
+      '<p class="reading-note"><strong>Característica:</strong> '+VR.esc(s.caracteristica)+'</p></div></article>';
   }).join(''));
 
   VR.el('#transformacao-texto').textContent = window.TRANSFORMACAO_DE_LINHAGEM;
