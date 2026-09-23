@@ -187,7 +187,7 @@ html:root[data-theme='light'] body{background-color:#f3f0e8}
 html:root[data-theme='light'] body::before{
   background:url('../img/decoracao/fundo-ornamental-claro.webp') center top / cover no-repeat;
   filter:none;
-  opacity:1;
+  opacity:.32;
   mix-blend-mode:normal;
 }
 

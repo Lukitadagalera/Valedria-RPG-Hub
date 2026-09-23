@@ -1,4 +1,10 @@
 /* Quiet botanical textures on content panels, independent of the curtain backdrop. */
+/* One consistent reading surface across all books, including generated prose. */
+html:root[data-theme] body .book-body :is(.book-reading-panel,section>p,section>ul,section>ol){background-color:var(--color-surface);background-image:var(--panel-veil),var(--panel-floral);background-size:100% 100%,640px 640px;border:1px solid var(--color-border);border-radius:18px;padding:24px;margin-bottom:24px;box-sizing:border-box}
+html:root[data-theme] body .book-body .book-reading-panel>.section-head{background:none;border:0;box-shadow:none;border-radius:0;padding:0;margin:0 0 22px}
+html:root[data-theme] body .book-body :is(.book-reading-panel,.entry-card,.card,.subcard) .reading-note,html:root[data-theme] body .book-body .book-reading-panel>p,html:root[data-theme] body .book-body .book-reading-panel>.card{background:none;border:0;box-shadow:none;border-radius:0;padding:0}
+.book-reading-panel .col-text p+p{margin-top:16px}.book-reading-panel>.two-col{margin:0}.book-reading-panel>p{max-width:none}.book-reading-panel>:last-child{margin-bottom:0!important}
+@media(max-width:640px){html:root[data-theme] body .book-body :is(.book-reading-panel,section>p,section>ul,section>ol){padding:18px}}
 /* Reading surfaces protect exposed headings and prose from the curtain artwork. */
 html:root[data-theme] body main :is(.page-head,.section-head,.reference-heading,.editorial-head,.hall-heading,.mp-section-head,.back-link,.mp-breadcrumb){background-color:var(--color-surface);background-image:var(--panel-veil),var(--panel-floral);background-size:100% 100%,640px 640px;border:1px solid var(--color-border);border-radius:16px;padding:20px 24px;box-shadow:0 4px 16px #0000000a}
 html:root[data-theme] body main .mp-section{background-color:var(--color-surface);background-image:var(--panel-veil),var(--panel-floral);background-size:100% 100%,640px 640px;border:1px solid var(--color-border);border-radius:22px;padding:28px}

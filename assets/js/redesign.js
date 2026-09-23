@@ -1,5 +1,13 @@
 /* Navegação e leitura: complementa as ferramentas originais. */
 document.addEventListener('DOMContentLoaded',function(){
+ // Keep book introductions and their headings on a single reading surface.
+ document.querySelectorAll('.book-body section > .section-head').forEach(head=>{
+  const blocks=[];let next=head.nextElementSibling;
+  while(next&&(next.matches('p,.two-col')||next.matches('.card')&&next.children.length===1&&next.firstElementChild.matches('p'))){blocks.push(next);next=next.nextElementSibling;}
+  if(!blocks.length)return;
+  const panel=document.createElement('div');panel.className='book-reading-panel';head.before(panel);panel.append(head,...blocks);
+ });
+ document.querySelectorAll('.book-body .two-col').forEach(block=>{if(!block.closest('.book-reading-panel,.card,.entry-card'))block.classList.add('book-reading-panel');});
  const menu=document.querySelector('[data-menu-toggle]');
  const close=()=>{document.body.classList.remove('nav-open');menu?.setAttribute('aria-expanded','false');};
  menu?.addEventListener('click',()=>menu.setAttribute('aria-expanded',String(document.body.classList.contains('nav-open'))));
