@@ -36,5 +36,9 @@ html:root[data-theme] body .mp-faq{width:100%;max-width:none;box-sizing:border-b
 @media(max-width:700px){.mp-faq-grid{grid-template-columns:1fr}}
 
 html:root[data-theme] body.reference-home main .reference-hero .hero-side-note{background:#132333ed!important;background-image:none!important;color:#f8ecd1!important;border:1px solid #b89b5f!important;border-radius:14px!important;padding:14px 18px!important;text-shadow:none!important;font-weight:700;line-height:1.6;box-shadow:0 4px 18px #0003}
-html:root[data-theme='light'] body.reference-home main .reference-hero .hero-side-note{background:#fff!important;color:var(--color-primary)!important;border-color:var(--color-primary)!important;box-shadow:0 4px 18px #78643e18}
+html:root[data-theme='light'] body.reference-home main .reference-hero .hero-side-note{background:rgba(255,255,255,.78)!important;color:var(--color-primary)!important;border-color:var(--color-primary)!important;box-shadow:0 4px 18px #78643e18}
 html:root[data-theme='light'] body.reference-home main .reference-hero .hero-side-note span{background:var(--color-primary)}
+
+/* Preserve degree names and readable gold badges in either theme. */
+.book-body .chip:not(.chip-outline){white-space:nowrap;word-break:normal;overflow-wrap:normal;flex-shrink:0}
+html:root[data-theme="light"] .chip-gold{background:#e8dcb8;color:#493b20}

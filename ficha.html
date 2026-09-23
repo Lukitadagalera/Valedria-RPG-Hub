@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/redesign.css"><link rel="stylesheet" href="assets/css/reference.css"><link rel="stylesheet" href="assets/css/theme.css?v=22">
 
-<link rel="icon" href="favicon.ico" sizes="any"><link rel="stylesheet" href="assets/sheet-catalog.css?v=21"><link rel="stylesheet" href="assets/navigation-motion.css?v=2"><link rel="stylesheet" href="assets/panel-textures.css?v=8"><link rel="stylesheet" href="assets/sheet-print.css?v=1"><link rel="stylesheet" href="assets/discovery.css?v=1"><script src="assets/data/responsive-images.js?v=1"></script><link rel="stylesheet" href="assets/sheet-refined.css?v=4"></head>
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="stylesheet" href="assets/sheet-catalog.css?v=21"><link rel="stylesheet" href="assets/navigation-motion.css?v=2"><link rel="stylesheet" href="assets/panel-textures.css?v=10"><link rel="stylesheet" href="assets/sheet-print.css?v=1"><link rel="stylesheet" href="assets/discovery.css?v=1"><script src="assets/data/responsive-images.js?v=1"></script><link rel="stylesheet" href="assets/sheet-refined.css?v=5"></head>
 <body>
 <a class="skip-link" href="#main">Saltar para o conteúdo</a>
 <header class="site-header reference-header"><a class="wordmark" href="index.html"><span class="symbol-slot brand-symbol"><img src="assets/img/home/marca-valedria.webp" alt="Símbolo de Valédria" onload="this.parentElement.classList.add('loaded')" onerror="this.hidden=true" srcset="assets/img/home/marca-valedria-480.webp 480w, assets/img/home/marca-valedria-960.webp 960w, assets/img/home/marca-valedria.webp 1254w" sizes="50px" width="1254" height="1254"><code>assets/img/home/marca-valedria.webp</code></span><div>Valédria<small>Códice do Mundo</small></div></a><nav class="primary-nav" id="primary-nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="mundo.html">Mundo</a><a href="livros.html">Livros</a><a href="campanhas.html">Campanhas</a><a href="comunidade.html">Comunidade</a><a href="hall-da-gloria.html">Hall da Glória</a><a href="area-mestre.html">Área do Mestre</a></nav><a class="site-search" href="buscar.html" aria-label="Buscar no códice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></a><a class="btn btn-primary header-sheet" href="ficha.html"><svg class="ref-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg>Ficha de personagem</a><button class="icon-btn mobile-menu" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">☰</button></header><main id="main" class="content">
@@ -61,10 +61,11 @@
     </div>
 
     <!-- LINHA 5: VIDA MÁXIMA (OCUPANDO LARGURA TOTAL PARA HARMONIZAR) -->
-    <div class="field" style="grid-column: span 2;">
+    <div class="field">
       <label>Vida máxima</label>
       <div class="readonly-pill" id="vida-max-display" style="text-align: center;">5</div>
     </div>
+    <div class="field resource-restore"><button type="button" class="btn btn-secondary btn-sm no-print" id="btn-vida-restaurar">Restaurar Vida ao máximo</button></div>
   </div>
   <p class="field-hint">Magia e Aura são mutuamente exclusivas. O personagem não é limitado a uma escola ou caminho específico &mdash; magias e técnicas específicas serão aprendidas em jogo (ex.: por um grimório) e controladas pelo mestre. Veja o Livro IV para as regras completas.</p>
 </div>
@@ -84,7 +85,7 @@
         </div>
         <div class="field"><label for="f-mana-atual">Mana atual</label><input type="number" id="f-mana-atual" min="0" value="50"></div>
         <div class="field"><label>Mana máxima neste nível</label><div class="readonly-pill" id="mana-max-display">50</div></div>
-        <div class="field"><button type="button" class="btn btn-secondary btn-sm no-print" id="btn-mana-restaurar">Restaurar Mana ao máximo</button></div>
+        <div class="field resource-restore"><button type="button" class="btn btn-secondary btn-sm no-print" id="btn-mana-restaurar">Restaurar Mana ao máximo</button></div>
       </div>
       <p class="field-hint" id="mana-hint" hidden>Todo conjurador começa com 50 de Mana no nível 1; o Potencial define o quanto essa reserva cresce a cada nível (veja o Livro VI). Use "Mana atual" para acompanhar o gasto durante a sessão.</p>
       <div class="field-grid" id="aura-block" hidden>
@@ -102,7 +103,7 @@
 
         <div class="field"><label for="f-aura-atual">Fôlego de Aura atual</label><input type="number" id="f-aura-atual" min="0" value="3"></div>
         <div class="field"><label>Fôlego máximo por cena</label><div class="readonly-pill" id="aura-max-display">3</div></div>
-        <div class="field"><button type="button" class="btn btn-secondary btn-sm no-print" id="btn-aura-restaurar">Restaurar Fôlego ao máximo</button></div>
+        <div class="field resource-restore"><button type="button" class="btn btn-secondary btn-sm no-print" id="btn-aura-restaurar">Restaurar Fôlego ao máximo</button></div>
       </div>
       <p class="field-hint" id="aura-hint" hidden>O Fôlego de Aura é uma reserva por cena (3 a 8 pontos, conforme o grau marcial), restaurada com um breve descanso &mdash; veja o Livro VII. Nos graus Imperador e Deus a técnica é reservada e narrada pelo mestre, sem consumo do pool comum.</p>
     </div>
@@ -367,6 +368,10 @@
     vidaInput.max = max;
     el('#vida-max-display').textContent = String(max);
   }
+  el('#btn-vida-restaurar').addEventListener('click', function(){
+    vidaInput.value = vidaMax();
+    clampVida(); updatePreview();
+  });
   vidaInput.addEventListener('input', updatePreview);
   vidaInput.addEventListener('change', function(){clampVida();updatePreview();});
   function currentNivel(){

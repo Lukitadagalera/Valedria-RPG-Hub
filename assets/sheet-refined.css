@@ -51,3 +51,7 @@ html:root[data-theme] .sheet-refined .btn,html:root[data-theme] .catalog-option 
 @media(max-width:640px){.sheet-refined .sheet-identity>.portrait-card{position:static}.sheet-dossier>.preview-attrs{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.sheet-dossier .preview-attrs .mini-card{padding:10px 2px}.sheet-dossier .preview-attrs span{font-size:10px}.sheet-refined .sheet-dossier{gap:12px 8px}.sheet-collections>.card>.field-hint{min-height:0}}
 
 .sheet-dossier :is(.preview-life strong,.preview-power strong){font-size:26px}.sheet-dossier :is(.preview-life span,.preview-power span){font-size:15px}
+
+.sheet-refined .field.resource-restore{justify-content:flex-end}
+.sheet-refined .resource-restore>.btn{min-height:48px;width:100%;margin:0}
+.sheet-refined .resource-restore:has(>#btn-vida-restaurar){grid-column:1/-1}

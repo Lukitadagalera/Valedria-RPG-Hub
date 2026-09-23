@@ -87,7 +87,7 @@
  }else{
   $('#mp-auth-form').hidden=true;$('.mp-account-links').hidden=true;
   $('#auth-intro').textContent='O login desta apresentação pública ainda não está ativado. Para revisar o conteúdo agora, abra a versão de teste neste computador.';
-  $('#launch-notice').textContent='A conta de teste funciona no endereço local, com o serviço de teste em execução.';
+  $('#launch-notice').textContent='Para iniciar ou reabrir o teste, execute Iniciar-teste-do-Mestre.cmd na pasta do projeto neste computador. Ele liga o serviço e abre a Área do Mestre. O botão abaixo só funciona enquanto esse serviço estiver ligado.';
   $('#mp-local-test').hidden=false;
  }
  // Revalidate after returning to the page. Never persist the private library offline.
