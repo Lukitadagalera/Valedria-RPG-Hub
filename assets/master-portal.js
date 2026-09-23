@@ -42,6 +42,10 @@
   if(source){
    const card=document.createElement('article');card.className='mp-panel mp-plan';
    const artwork=source.querySelector('img').cloneNode(true);artwork.loading='eager';
+   const banner='assets/img/assinaturas/'+['contador','mestre','deus'][planIndex]+'-panorama';
+   artwork.src=banner+'.webp';artwork.srcset=banner+'-960.webp 960w, '+banner+'.webp 2172w';
+   artwork.sizes='(max-width:760px) calc(100vw - 32px), (max-width:1440px) calc(100vw - 56px), 1384px';
+   artwork.width=2172;artwork.height=724;
    const copy=document.createElement('div');copy.className='mp-plan-copy';
    const status=document.createElement('span');status.className='mp-tag';status.textContent='Acesso ativo';
    const title=document.createElement('h2');title.textContent=source.querySelector('h3').textContent;
