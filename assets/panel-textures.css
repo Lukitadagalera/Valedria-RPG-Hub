@@ -1,4 +1,10 @@
 /* Quiet botanical textures on content panels, independent of the curtain backdrop. */
+/* Let the portrait of the Three Faces follow the full height of its reading column. */
+@media(min-width:1101px){
+  #religiao-img{align-self:stretch;position:relative;min-height:0}
+  #religiao-img>.figure{position:absolute;inset:0;margin:0;aspect-ratio:auto}
+  #religiao-img .img-slot{height:100%;aspect-ratio:auto}
+}
 /* One consistent reading surface across all books, including generated prose. */
 html:root[data-theme] body .book-body :is(.book-reading-panel,section>p,section>ul,section>ol){background-color:var(--color-surface);background-image:var(--panel-veil),var(--panel-floral);background-size:100% 100%,640px 640px;border:1px solid var(--color-border);border-radius:18px;padding:24px;margin-bottom:24px;box-sizing:border-box}
 html:root[data-theme] body .book-body .book-reading-panel>.section-head{background:none;border:0;box-shadow:none;border-radius:0;padding:0;margin:0 0 22px}
