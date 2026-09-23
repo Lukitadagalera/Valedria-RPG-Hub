@@ -60,7 +60,7 @@
     }
 
     var script = document.createElement('script');
-    script.src = 'assets/data/musicas.js?v=2';
+    script.src = 'assets/data/musicas.js?v=3';
     script.onload = function () {
       playlistLoaded = true;
       done(Array.isArray(window.VALEDRIA_MUSICAS) ? window.VALEDRIA_MUSICAS : []);
@@ -134,7 +134,9 @@
     var volume = wrap.querySelector('.music-volume');
 
     var saved = getSavedState();
-    var index = Number.isInteger(saved.index) ? saved.index : 0;
+    var index = saved.track ? tracks.findIndex(function(track){return track.arquivo===saved.track;}) : 0;
+    // Before track identities were saved, index 1 was Dewdrop Fantasy.
+    if (!saved.track && saved.index !== 1) saved.time = 0;
     if (index < 0 || index >= tracks.length) index = 0;
 
     var userStarted = saved.userStarted === true;
@@ -154,6 +156,7 @@
     function persist() {
       saveState({
         index: index,
+        track: tracks[index].arquivo,
         volume: audio.volume,
         time: audio.currentTime || 0,
         playing: desiredPlaying, userStarted: userStarted

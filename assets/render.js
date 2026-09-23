@@ -44,7 +44,7 @@ window.VR = (function () {
           grupo: 'Academia e magia',
           nome: 'Auror, o Professor',
           papel: 'Professor da Academia de Valédria especializado em história arcana, teoria de linhagens e fenômenos mágicos raros. É conhecido por transformar relatos antigos e registros incompletos em hipóteses úteis para expedições, embora sua curiosidade acadêmica frequentemente o leve a investigar assuntos que outros magos prefeririam deixar esquecidos.',
-          img: 'assets/img/sociedade/auror-o-professor.png.webp'
+          img: 'assets/img/sociedade/auror-o-professor.webp'
         });
       }
 
@@ -53,17 +53,17 @@ window.VR = (function () {
           grupo: 'Vilões e ameaças',
           nome: 'Klein, o Perseguidor',
           papel: 'Rastreador persistente conhecido por seguir alvos através de estradas, vilas e regiões selvagens por longos períodos. Trabalha por contratos e favores difíceis de recusar, reunindo pistas com paciência e aparecendo quando seus alvos acreditam que já despistaram qualquer perseguição.',
-          img: 'assets/img/sociedade/klein-o-perseguidor.png.webp'
+          img: 'assets/img/sociedade/klein-o-perseguidor.webp'
         });
       }
     }
 
     if (window.ANOES && Array.isArray(window.ANOES.clas)) {
       var clanImages = {
-        'Clã Ferro-Fundo': 'assets/img/racas/cla-ferro-fundo.png.webp',
-        'Clã Pedra-Funda': 'assets/img/racas/cla-pedra-funda.png.webp',
-        'Clã Chama-Antiga': 'assets/img/racas/cla-chama-antiga.png.webp',
-        'Clã Veio-Negro': 'assets/img/racas/cla-veio-negro.png.webp'
+        'Clã Ferro-Fundo': 'assets/img/racas/cla-ferro-fundo.webp',
+        'Clã Pedra-Funda': 'assets/img/racas/cla-pedra-funda.webp',
+        'Clã Chama-Antiga': 'assets/img/racas/cla-chama-antiga.webp',
+        'Clã Veio-Negro': 'assets/img/racas/cla-veio-negro.webp'
       };
       window.ANOES.clas.forEach(function (clan) {
         if (clanImages[clan.nome]) clan.img = clanImages[clan.nome];
@@ -217,7 +217,7 @@ window.VR = (function () {
     art.className = 'transformacao-linhagem-art';
     art.style.marginTop = 'var(--space-6)';
     art.innerHTML = figure(
-      'assets/img/racas/transformacao-de-linhagem.png.webp',
+      'assets/img/racas/transformacao-de-linhagem.webp',
       'Transformação de Linhagem',
       'Representação da Transformação de Linhagem em Valédria',
       '16-9'

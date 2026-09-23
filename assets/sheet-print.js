@@ -5,7 +5,6 @@ window.SheetPrint = function(state, reserves) {
   const add = (parent, tag, text, className) => {const el=document.createElement(tag);el.textContent=text;if(className)el.className=className;parent.append(el);return el;};
   const header=add(root,'header','', 'print-identity');
   if(state.foto){const img=document.createElement('img');img.src=state.foto;img.alt='Retrato de '+state.nome;header.append(img);}
-  if(state.montaria&&state.montaria.foto){const mount=document.createElement('img');mount.src=state.montaria.foto;mount.alt='Montaria';header.append(mount);}
   const identity=add(header,'div','');
   add(identity,'p','VALÉDRIA · FICHA DE PERSONAGEM');
   add(identity,'h1',state.nome||'Personagem sem nome');

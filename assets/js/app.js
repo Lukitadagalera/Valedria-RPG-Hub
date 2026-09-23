@@ -1,4 +1,4 @@
-/* app.js — comportamento compartilhado do Códice de Valédria
+/* assets/js/app.js — comportamento compartilhado do Códice de Valédria
    Tema claro/escuro, menu mobile, vida da ficha, navegação extra, placeholders e carregamento do player. */
 (function () {
   var root = document.documentElement;
@@ -175,7 +175,7 @@
     }
     if (document.querySelector('script[data-valedria-music-player]')) return;
     var script = document.createElement('script');
-    script.src = 'assets/music-player.js?v=21';
+    script.src = 'assets/music-player.js?v=22';
     script.setAttribute('data-valedria-music-player', '');
     document.head.appendChild(script);
   }
