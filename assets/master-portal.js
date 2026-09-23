@@ -20,7 +20,7 @@
  }
  function storageKey(kind){return 'valedria-master:'+account.id+':'+kind;}
  function readLocal(kind,fallback){try{return JSON.parse(localStorage.getItem(storageKey(kind)))??fallback;}catch{return fallback;}}
- function clearPrivate(){generation++;window.ValedriaStudio?.clear();library=null;lastIdea='';favorites=[];$('#mp-workspace').hidden=true;$('#library-cards').replaceChildren();$('#reader-content').replaceChildren();$('#reader-title').textContent='';$('#reader-summary').textContent='';$('#session-notes').replaceChildren();$('#tool-result').replaceChildren();$('#mp-reader').close();}
+ function clearPrivate(){generation++;$('#member-plan').hidden=true;$('#member-plan').replaceChildren();window.ValedriaStudio?.clear();library=null;lastIdea='';favorites=[];$('#mp-workspace').hidden=true;$('#library-cards').replaceChildren();$('#reader-content').replaceChildren();$('#reader-title').textContent='';$('#reader-summary').textContent='';$('#session-notes').replaceChildren();$('#tool-result').replaceChildren();$('#mp-reader').close();}
  function clearMember(){clearPrivate();account=null;csrf='';$('#member-account').textContent='';$('#mp-member').hidden=true;$('#mp-public').hidden=false;}
  async function refresh(){
   const session=await api('/session');csrf=session.csrfToken||'';
@@ -35,7 +35,19 @@
   if(!Array.isArray(result.items)||!result.generators)throw new Error('A biblioteca está indisponível. Tente novamente em instantes.');
   library=result;const saved=readLocal('favorites',[]);favorites=Array.isArray(saved)?saved.filter(x=>typeof x==='string'):[];
   $('#library-category').innerHTML='<option value="">Todo o acervo</option>'+[...new Set(library.items.map(i=>i.category))].map(c=>'<option>'+esc(c)+'</option>').join('');
-  $('#mp-workspace').hidden=false;$('#member-message').textContent='Acesso ativo · '+(session.entitlement.label||'Seu acervo está pronto.');renderLibrary();loadNotes();
+  $('#mp-workspace').hidden=false;$('#member-message').textContent='';
+  const planIndex={contador:0,mestre:1,deus:2}[session.entitlement.plan||'contador'];
+  const source=$$('#assinaturas .mp-plan')[planIndex];
+  const planMount=$('#member-plan');planMount.replaceChildren();planMount.hidden=!source;
+  if(source){
+   const card=document.createElement('article');card.className='mp-panel mp-plan';
+   const artwork=source.querySelector('img').cloneNode(true);artwork.loading='eager';
+   const copy=document.createElement('div');copy.className='mp-plan-copy';
+   const status=document.createElement('span');status.className='mp-tag';status.textContent='Acesso ativo';
+   const title=document.createElement('h2');title.textContent=source.querySelector('h3').textContent;
+   copy.append(status,title);card.append(artwork,copy);planMount.append(card);
+  }
+  renderLibrary();loadNotes();
   await window.ValedriaStudio?.open({api,user:account,plan:session.entitlement.plan||'contador'});
  }
  const screens={login:['Entrar na Área do Mestre','Acesse sua conta para abrir a biblioteca e preparar sua próxima sessão.','Entrar na minha área'],register:['Crie sua conta','Comece pelo seu e-mail. Criar uma conta não ativa nem cobra uma assinatura.','Criar minha conta'],recover:['Recuperar minha senha','Informe seu e-mail para receber as instruções de recuperação.','Enviar instruções'],reset:['Escolha uma nova senha','Use pelo menos 12 caracteres e uma senha exclusiva para esta conta.','Salvar nova senha']};
