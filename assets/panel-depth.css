@@ -15,3 +15,6 @@ html:root[data-theme] body main :is(.myth-section,.board-form){padding:24px;bord
 html:root[data-theme] body :is(.sheet-catalog-dialog,.catalog-option,.collection-card){background-color:var(--card-inner)!important;background-image:var(--card-inner-wash),var(--panel-floral)!important;background-size:100% 100%,640px 640px;border-color:var(--card-edge)!important}
 }
 @media screen{html:root[data-theme] body main .myth-section>p{background:none;padding:0;border-radius:0}}
+@media screen{
+:root[data-theme='light']{--panel-floral:url('img/decoracao/painel-floral-dourado.webp');--panel-veil:linear-gradient(135deg,#fffaf020,#fffaf038);--card-fill:#ded0a8;--card-wash:linear-gradient(135deg,#fffaf015,#fffaf030);--card-inner:#d8c99e;--card-inner-wash:linear-gradient(135deg,#d3bd8110,#fffaf018);--card-edge:#baa97a}
+}
