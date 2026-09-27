@@ -16,5 +16,5 @@ html:root[data-theme] body :is(.sheet-catalog-dialog,.catalog-option,.collection
 }
 @media screen{html:root[data-theme] body main .myth-section>p{background:none;padding:0;border-radius:0}}
 @media screen{
-:root[data-theme='light']{--panel-floral:url('img/decoracao/painel-floral-dourado.webp');--panel-veil:linear-gradient(135deg,#fffaf020,#fffaf038);--card-fill:#ded0a8;--card-wash:linear-gradient(135deg,#fffaf015,#fffaf030);--card-inner:#d8c99e;--card-inner-wash:linear-gradient(135deg,#d3bd8110,#fffaf018);--card-edge:#baa97a}
+:root[data-theme='light']{--panel-floral:url('img/decoracao/painel-floral-dourado.webp');--panel-veil:linear-gradient(135deg,#faf7efbf,#faf7efc7);--card-fill:#f2ecdd;--card-wash:linear-gradient(135deg,#faf7efbf,#faf7efc7);--card-inner:#eee7d6;--card-inner-wash:linear-gradient(135deg,#faf7efb5,#faf7efbf);--card-edge:#d2c7ab}
 }
