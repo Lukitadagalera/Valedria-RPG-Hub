@@ -43,4 +43,4 @@ html:root[data-theme='light'] body.reference-home main .reference-hero .hero-sid
 .book-body .chip:not(.chip-outline){white-space:nowrap;word-break:normal;overflow-wrap:normal;flex-shrink:0}
 html:root[data-theme="light"] .chip-gold{background:#e8dcb8;color:#493b20}
 /* Paragraphs inside decorated panels share their parent's floral surface. */
-html:root[data-theme='light'] body main :is(.community-welcome,.community-steps,.card,.mp-section,.myth-section,.book-reading-panel,.master-callout,.mestre-block,.campaign-feature,.hall-invitation,.chronicle-card,.board-card,.destination-card,.world-kingdom)>p:not(.lede-note,.reading-note){background:none;border:0;box-shadow:none;border-radius:0;padding:0}
+html:root[data-theme] body main :is(.community-welcome,.community-steps,.card,.mp-section,.myth-section,.book-reading-panel,.master-callout,.mestre-block,.campaign-feature,.hall-invitation,.chronicle-card,.board-card,.destination-card,.world-kingdom)>p:not(.lede-note,.reading-note){background:none;border:0;box-shadow:none;border-radius:0;padding:0}

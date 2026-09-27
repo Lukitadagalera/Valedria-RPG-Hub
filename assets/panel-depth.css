@@ -20,3 +20,24 @@ html:root[data-theme] body :is(.sheet-catalog-dialog,.catalog-option,.collection
 :root[data-theme='light']{--panel-floral:url('img/decoracao/painel-floral-energia.svg');--panel-veil:linear-gradient(135deg,#fffaf008,#fffaf015);--card-fill:#f7f3e8;--card-wash:linear-gradient(135deg,#fffaf008,#fffaf015);--card-inner:#f2eddf;--card-inner-wash:linear-gradient(135deg,#e7d9b510,#fffaf010);--card-edge:#d2c7ab}
 }
 @media(prefers-reduced-motion:reduce){:root[data-theme='light']{--panel-floral:url('img/decoracao/painel-floral-claro.webp')}}
+/* Moonlit silver accents are exclusive to the dark theme. */
+@media screen{
+html:root[data-theme='dark']{--color-primary:#c3ced8;--color-primary-hover:#edf4fa;--color-primary-active:#a1b1bf;--color-gold:#c3ced8;--color-gold-highlight:#293b4b;--color-primary-highlight:#293b4b;--color-warning:#c3ced8;--panel-floral:url('img/decoracao/painel-floral-prata.svg');--panel-veil:linear-gradient(135deg,#17283810,#17283830);--card-wash:linear-gradient(135deg,#17283810,#17283830);--card-inner-wash:linear-gradient(135deg,#29425420,#17283820);--card-edge:#667b8c}
+html:root[data-theme='dark'] body :is(.btn-primary,.header-sheet,.music-play){background:linear-gradient(115deg,#d9e2e9,#aebfcd 48%,#d7e2eb)!important;border-color:#bacbd8!important;color:#14212c!important;box-shadow:inset 0 1px #ffffff70}
+html:root[data-theme='dark'] body :is(.btn-secondary,.reference-player,.reference-campaign,.art-slot,.figure,.portrait-frame){border-color:#91a5b7!important}
+html:root[data-theme='dark'] body :is(.small-rule,.reference-heading>span,.primary-nav a[aria-current]:after){background:linear-gradient(90deg,#91a5b755,#d2dee9,#91a5b755)!important}
+html:root[data-theme='dark'] body.reference-home main .reference-hero .hero-side-note{color:#e3ecf4!important;border-color:#98afc1!important}
+html:root[data-theme='dark'] body :is(.eyebrow,.wordmark,.reference-hero .eyebrow,.portrait-heading,.portrait-frame>span){color:var(--color-primary)}
+html:root[data-theme='dark'] body :is(.brand-symbol img,.footer-star,.player-badge img){filter:grayscale(1) brightness(1.2)}
+html:root[data-theme='dark'] body::before{filter:grayscale(1)}
+html:root[data-theme='dark'] .site-header{border-bottom-color:#91a5b755}
+html:root[data-theme='dark'] body main [role='tab'][aria-selected='true']{color:#e3ecf4!important;border-color:#91a5b7!important;background:#293e4f!important}
+}
+@media(prefers-reduced-motion:reduce){html:root[data-theme='dark']{--panel-floral:url('img/decoracao/painel-floral-prata-estatico.svg')}}
+@media screen{
+html:root[data-theme='dark'] .hero-player{border-color:#91a5b770;color:#d0dce7}
+html:root[data-theme='dark'] .hero-toggle{border-color:#bacbd8;background:linear-gradient(140deg,#e1e9f0,#9eafbe)}
+html:root[data-theme='dark'] .hero-seek{background:linear-gradient(to right,#bacbd8 var(--progress,0%),#91a5b740 var(--progress,0%))}
+html:root[data-theme='dark'] .hero-seek::-webkit-slider-thumb{background:#cbd9e4}
+html:root[data-theme='dark'] .hero-seek::-moz-range-thumb{background:#cbd9e4}
+}
