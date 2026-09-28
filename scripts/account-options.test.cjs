@@ -1,0 +1,7 @@
+const {DatabaseSync}=require('node:sqlite'),assert=require('node:assert/strict'),account=require('../server/account.cjs');
+const db=new DatabaseSync(':memory:');db.exec("CREATE TABLE users(id TEXT PRIMARY KEY);INSERT INTO users VALUES('a'),('b');");account.setup(db);account.setup(db);
+const call=(user,path,data)=>{let result;account.handle({req:{method:data?'POST':'GET'},res:{},url:{pathname:'/api/account/'+path},data,db,user,reply:(_,status,body)=>result={status,body}});return result;};
+const prefs={bio:'Minha jornada',experience:'Estou começando',playStyle:'Como jogador',availability:'Sábados'};
+assert.equal(call('a','preferences',prefs).status,200);assert.deepEqual(call('a','preferences').body,prefs);assert.deepEqual(call('b','preferences').body,{});assert.equal(call(null,'preferences').status,401);assert.equal(call('a','preferences',{...prefs,bio:'x'.repeat(501)}).status,400);
+const ticket=call('a','tickets',{subject:'Teste',message:'Preciso de ajuda'}).body.id;
+assert.equal(call('b','ticket-status',{id:ticket,status:'closed'}).status,404);assert.equal(call('a','ticket-status',{id:ticket,status:'closed'}).status,200);assert.equal(call('a','reply',{id:ticket,message:'Resposta'}).status,400);assert.equal(call('a','ticket-status',{id:ticket,status:'open'}).status,200);assert.equal(call('a','reply',{id:ticket,message:'Resposta'}).status,201);assert.equal(call('a','ticket-status',{id:ticket,status:'bad'}).status,400);db.close();console.log('PASS: preferences persistence, validation, isolation, ticket ownership, close and reopen.');
