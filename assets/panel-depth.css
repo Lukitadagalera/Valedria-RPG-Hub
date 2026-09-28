@@ -41,3 +41,14 @@ html:root[data-theme='dark'] .hero-seek{background:linear-gradient(to right,#bac
 html:root[data-theme='dark'] .hero-seek::-webkit-slider-thumb{background:#cbd9e4}
 html:root[data-theme='dark'] .hero-seek::-moz-range-thumb{background:#cbd9e4}
 }
+
+/* Only a few visible botanical layers move; static mask, no animated SVG filters. */
+@media screen and (prefers-reduced-motion:no-preference){
+.botanical-host{position:relative}
+.botanical-light{position:absolute;inset:0;border-radius:inherit;pointer-events:none;overflow:hidden;contain:paint;z-index:0}
+.botanical-light::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 10%,#d9edff 46%,#fff 52%,transparent 82%);mask:url('img/decoracao/ramos-luz.svg') center bottom/640px 640px repeat;opacity:0;animation:botanical-breath 9s ease-in-out infinite;animation-play-state:paused}
+[data-theme='light'] .botanical-light::before{background:linear-gradient(115deg,transparent 10%,#d7b665 46%,#fff6c7 52%,transparent 82%)}
+.botanical-light.is-awake::before{animation-play-state:running;will-change:transform,opacity}
+@keyframes botanical-breath{0%,100%{opacity:0;transform:translate(0,0)}40%{opacity:.27;transform:translate(2px,-2px)}65%{opacity:.12;transform:translate(-1px,1px)}}
+}
+@media print,(prefers-reduced-motion:reduce){.botanical-light{display:none!important}}
