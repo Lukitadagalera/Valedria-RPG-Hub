@@ -46,8 +46,10 @@ window.SheetCatalog=function(options){
       });
     });
     $('#f-foto-preview').hidden=!state.foto;$('#portrait-empty').hidden=!!state.foto;$('#foto-remover').hidden=!state.foto;$('#foto-ajustar').hidden=!state.foto;
+    $('#f-foto-preview').style.objectFit=state.fotoRecorte?.version===2?'cover':'contain';
     if(state.foto)$('#f-foto-preview').src=state.foto;else $('#f-foto-preview').removeAttribute('src');
     $('#f-montaria-preview').hidden=!state.montaria;$('#mount-empty').hidden=!!state.montaria;$('#montaria-remover').hidden=!state.montaria;$('#montaria-ajustar').hidden=!state.montaria;
+    $('#f-montaria-preview').style.objectFit=state.montariaRecorte?.version===2?'cover':'contain';
     if(state.montaria)$('#f-montaria-preview').src=state.montaria;else $('#f-montaria-preview').removeAttribute('src');
   }
   function safePhoto(value){return typeof value==='string'&&value.length<1500000&&/^data:image\/(webp|png|jpeg);base64,[a-zA-Z0-9+/=]+$/.test(value)?value:'';}
