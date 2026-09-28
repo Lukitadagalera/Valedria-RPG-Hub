@@ -5,13 +5,15 @@ const {randomBytes,createHash,scrypt,timingSafeEqual}=require('node:crypto');
 const {promisify}=require('node:util');
 const {isIP}=require('node:net');
 const studio=require('./studio.cjs');
+const account=require('./account.cjs');
+const content=require('./content.cjs');
 const derive=promisify(scrypt),token=()=>randomBytes(32).toString('hex'),digest=v=>createHash('sha256').update(v).digest('hex');
 const repository=path.resolve(__dirname,'..');
 function outsideRepository(file){const relative=path.relative(repository,path.resolve(file));if(!relative.startsWith('..'+path.sep)&&!path.isAbsolute(relative))throw Error('Private files must live outside the public repository.');}
 function createServer(config){
  const origin=new URL(config.origin);const development=['127.0.0.1','localhost'].includes(origin.hostname);
  if(origin.protocol!=='https:'&&!development)throw Error('HTTPS site origin required.');
- outsideRepository(config.dbPath);outsideRepository(config.libraryPath);
+ outsideRepository(config.dbPath);outsideRepository(config.libraryPath);if(config.contentDir)outsideRepository(config.contentDir);
  if(config.mailEndpoint&&new URL(config.mailEndpoint).protocol!=='https:')throw Error('HTTPS mail adapter required.');
  const db=new DatabaseSync(config.dbPath);db.exec(`PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;
  CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,email TEXT UNIQUE NOT NULL,password TEXT NOT NULL,verified INTEGER NOT NULL DEFAULT 0);
@@ -19,7 +21,7 @@ function createServer(config){
  CREATE TABLE IF NOT EXISTS links(hash TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),kind TEXT NOT NULL,expires INTEGER NOT NULL);
  CREATE TABLE IF NOT EXISTS entitlements(user_id TEXT PRIMARY KEY REFERENCES users(id),expires INTEGER NOT NULL,source TEXT NOT NULL);
  CREATE TABLE IF NOT EXISTS audit(at INTEGER NOT NULL,event TEXT NOT NULL,user_id TEXT);`);
- studio.setup(db);
+ studio.setup(db);account.setup(db);
  const cookieName=development?'valedria_session':'__Host-valedria_session',limits=new Map();
  const now=()=>Date.now();
  function audit(event,id){db.prepare('INSERT INTO audit VALUES(?,?,?)').run(now(),event,id||null);}
@@ -45,6 +47,7 @@ function createServer(config){
   try{
    const url=new URL(req.url,'http://localhost');
    if(!url.pathname.startsWith('/api/')){
+    if(content.serve({req,res,url,config,db,user:session(req)?.user_id}))return;
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);return res.end();}
     const dir=path.resolve(config.publicDir),file=path.resolve(dir,'.'+decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname));
     if(!file.startsWith(dir+path.sep)||!fs.existsSync(file)||!fs.statSync(file).isFile()){res.writeHead(404);return res.end();}
@@ -71,12 +74,16 @@ function createServer(config){
     const e=studio.entitlement(db,s.user_id),library=JSON.parse(fs.readFileSync(config.libraryPath,'utf8'));library.items=library.items.filter(i=>(studio.levels[i.minPlan||'contador']||99)<=studio.levels[e.plan]);
     return reply(res,200,library);
    }
+   if(req.method==='GET'&&account.handle({req,res,url,db,user:s?.user_id,reply}))return;
    if(req.method==='GET'&&studio.handle({req,res,url,db,user:s?.user_id,config,reply}))return;
    if(req.method!=='POST')return reply(res,404,{error:'not_found'});
    if(!s||req.headers['x-csrf-token']!==s.csrf||req.headers.origin!==origin.origin)throw Object.assign(Error(),{status:403});
    if(!req.headers['content-type']?.startsWith('application/json'))throw Object.assign(Error(),{status:415});
    const data=await body(req);if(!data||typeof data!=='object'||Array.isArray(data))throw Object.assign(Error(),{status:400});
    if(studio.handle({req,res,url,data,db,user:s?.user_id,config,reply}))return;
+   if(account.handle({req,res,url,data,db,user:s?.user_id,reply}))return;
+   if(url.pathname==='/api/security/sessions'){if(!s.user_id)return reply(res,401,{error:'authentication_required'});db.prepare('DELETE FROM sessions WHERE user_id=? AND hash<>?').run(s.user_id,s.hash);return reply(res,200,{ok:true});}
+   if(url.pathname==='/api/security/password'){if(!s.user_id)return reply(res,401,{error:'authentication_required'});rate('password:'+s.user_id,5);if(!passwordValid(data.password)||typeof data.currentPassword!=='string'||data.currentPassword.length>128)return reply(res,400,{error:'invalid_password'});const u=db.prepare('SELECT password FROM users WHERE id=?').get(s.user_id);if(!await passwordMatches(data.currentPassword,u.password))return reply(res,400,{error:'invalid_password'});const hashed=await hashPassword(data.password);db.prepare('UPDATE users SET password=? WHERE id=?').run(hashed,s.user_id);db.prepare('DELETE FROM sessions WHERE user_id=?').run(s.user_id);setSession(res,s.user_id);audit('password_changed',s.user_id);return reply(res,200,{ok:true});}
    const address=email(data.email);
    if(['/api/login','/api/register','/api/password-reset'].includes(url.pathname)){
     rate('auth:'+ip,30);if(!address)throw Object.assign(Error(),{status:400});rate('email:'+digest(address),15);
@@ -124,7 +131,7 @@ function createServer(config){
 }
 if(require.main===module){
  const required=['MASTER_ORIGIN','MASTER_DB','MASTER_LIBRARY'];for(const key of required)if(!process.env[key])throw Error('Missing '+key);
- const server=createServer({origin:process.env.MASTER_ORIGIN,dbPath:process.env.MASTER_DB,libraryPath:process.env.MASTER_LIBRARY,publicDir:path.join(repository,'dist'),mailEndpoint:process.env.MASTER_MAIL_ENDPOINT,mailToken:process.env.MASTER_MAIL_TOKEN,trustProxy:process.env.MASTER_TRUST_PROXY==='true'});
+ const server=createServer({origin:process.env.MASTER_ORIGIN,dbPath:process.env.MASTER_DB,libraryPath:process.env.MASTER_LIBRARY,publicDir:path.join(repository,'dist'),contentDir:process.env.MASTER_CONTENT,mailEndpoint:process.env.MASTER_MAIL_ENDPOINT,mailToken:process.env.MASTER_MAIL_TOKEN,trustProxy:process.env.MASTER_TRUST_PROXY==='true'});
  server.listen(Number(process.env.PORT||4180),'127.0.0.1',()=>console.log('Master service ready on loopback; HTTPS reverse proxy required.'));
 }
 module.exports={createServer};

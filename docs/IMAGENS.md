@@ -18,10 +18,10 @@ Coloque cada imagem na pasta indicada, mantendo o nome e a extensÃ£o `.png`. O e
 ## SÃ­mbolos da referÃªncia
 
 Usar arte dourada com fundo transparente, 160 Ã— 160 px.
-- `assets/img/home/simbolo-sistema.png`
-- `assets/img/home/simbolo-magia.png`
-- `assets/img/home/simbolo-bestiario.png`
-- `assets/img/home/simbolo-mapa.png`
+- `assets/img/home/simbolo-sistema.webp`
+- `assets/img/home/simbolo-magia.webp`
+- `assets/img/home/simbolo-bestiario.webp`
+- `assets/img/home/simbolo-mapa.webp`
 - `assets/img/home/marca-valedria.webp` â€” Rosa dos ventos dourada da marca, 160 Ã— 160 px, transparente.
 
 
@@ -41,3 +41,7 @@ Usar arte dourada com fundo transparente, 160 Ã— 160 px.
 
 - `assets/img/home/jogador-4.webp`: retrato do quarto herÃ³i, da raÃ§a demonÃ­aca.
 - `assets/img/home/brasao-4.webp`: brasÃ£o do quarto herÃ³i.
+
+## Exportação de alta qualidade
+
+Os tamanhos acima são referências de composição, não limites para os arquivos mestres. Preserve os originais fora do repositório. O script `scripts/restore-image-quality.py`, executado a partir da raiz com Pillow, recupera esses originais de `../originais-png` ou `../image-originals`, limita o lado maior a 2560 px sem ampliar e exporta WebP com qualidade 92. Variantes de 480, 960, 1440 e 1920 px usam qualidade 90. HTML e manifesto responsivo selecionam a resolução adequada à tela. Evite recomprimir um WebP já reduzido; isso não recupera detalhes perdidos.
