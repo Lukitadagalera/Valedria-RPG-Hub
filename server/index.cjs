@@ -37,7 +37,7 @@ function createServer(config){
  async function sendLink(user,kind){
   if(!config.mailEndpoint||!config.mailToken)throw Object.assign(Error(),{status:503});
   const raw=token();db.prepare('DELETE FROM links WHERE user_id=? AND kind=?').run(user.id,kind);db.prepare('INSERT INTO links VALUES(?,?,?,?)').run(digest(raw),user.id,kind,now()+(kind==='reset'?30:1440)*60000);
-  const link=new URL('/area-mestre.html',origin);link.hash=(kind==='reset'?'reset_token':'verify_token')+'='+raw;
+  const link=new URL('/conta.html',origin);link.hash=(kind==='reset'?'reset_token':'verify_token')+'='+raw;
   // Adapter must send transactional email; do not log recipient, token or URL.
   const response=await fetch(config.mailEndpoint,{method:'POST',signal:AbortSignal.timeout(15000),headers:{'Content-Type':'application/json',Authorization:'Bearer '+config.mailToken},body:JSON.stringify({template:kind==='reset'?'password-reset':'verify-email',to:user.email,url:link.href})});
   if(!response.ok){db.prepare('DELETE FROM links WHERE hash=?').run(digest(raw));throw Object.assign(Error(),{status:503});}

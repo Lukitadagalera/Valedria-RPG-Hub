@@ -1,9 +1,9 @@
 /* Printable character record; text is inserted as text, never as markup. */
 window.SheetPrint=function(state,reserves){
- document.getElementById('sheet-print')?.remove();const root=document.createElement('article');root.id='sheet-print';
+ document.getElementById('sheet-print')?.remove();const root=document.createElement('article');root.id='sheet-print';root.printPayload={state:{...state,fotoOriginal:undefined,montariaOriginal:undefined},reserves};
  const add=(p,t,txt,c)=>{const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(c)e.className=c;p.append(e);return e;};
- const page=title=>{const s=add(root,'section','','print-page');const head=add(s,'header','','print-brand');add(head,'span','✧');add(head,'div','VALÉDRIA · CÓDICE DO MUNDO');add(head,'small',title);return s;};
- const block=(p,title,txt,lines=0)=>{const s=add(p,'section','','print-section');add(s,'h2',title);if(txt)add(s,'p',txt,'print-prose');else{const l=add(s,'div','','print-lines');l.style.minHeight=(lines||24)+'mm';l.setAttribute('aria-label','Espaço para preencher à mão');}return s;};
+ const page=title=>{const s=add(root,'section','','print-page');const deco=add(s,'img',null,'print-decoration');deco.src=new URL('assets/img/decoracao/painel-floral-claro.webp',location.href).href;deco.alt='';const head=add(s,'header','','print-brand');add(head,'span','✧');add(head,'div','VALÉDRIA · CÓDICE DO MUNDO');add(head,'small',title);return s;};
+ const block=(p,title,txt,lines=0)=>{const s=add(p,'section','','print-section');add(s,'h2',title);if(txt)add(s,'p',txt,'print-prose');else{const l=add(s,'div','','print-lines');l.style.minHeight=(lines||24)+'mm';for(let i=0;i<Math.floor((lines||24)/7);i++)add(l,'div','','print-rule');l.setAttribute('aria-label','Espaço para preencher à mão');}return s;};
  const a=page('Registro de aventureiro');const head=add(a,'section','','print-identity');const identity=add(head,'div','');add(identity,'small','PERSONAGEM');add(identity,'h1',state.nome||' ',state.nome?'':'print-name-blank');add(identity,'p','Jogador: '+(state.jogador||'____________________________'));add(identity,'p',[state.raca||'Raça: __________',state.subraca,state.papel||'Papel: __________','Nível '+state.nivel].filter(Boolean).join(' · '));
  const portrait=add(head,'div','','print-portrait');if(state.foto){const im=add(portrait,'img');im.src=state.foto;im.alt='Retrato';}else add(portrait,'span','Retrato do personagem');
  const attrs=add(a,'section','','print-attributes');Object.entries({forca:'Força',destreza:'Destreza',constituicao:'Constituição',sabedoria:'Sabedoria',carisma:'Carisma'}).forEach(([key,label])=>{const box=add(attrs,'div','');add(box,'strong',String(state.atributos[key]));add(box,'span',label);});
@@ -15,4 +15,10 @@ window.SheetPrint=function(state,reserves){
  const b=page('História e diário de jornada');add(b,'h1',state.nome||'Diário do aventureiro');
  if(state.montaria){const m=block(b,'Montaria');m.lastChild.remove();const im=add(m,'img',null,'print-mount');im.src=state.montaria;im.alt='Montaria';}
  block(b,'Personalidade',state.personalidade,30);block(b,'História e motivações',state.historia,60);block(b,'Notas de mesa',state.notas,55);add(b,'footer','VALÉDRIA · Continue sua jornada.','print-footer');document.body.append(root);return root;
+};
+
+// Printing has its own page, outside the scrolling dialog and site styles.
+window.PrintCharacterDocument=function(root){
+ try{sessionStorage.setItem('valedria-print-document',JSON.stringify(root.printPayload));location.href='ficha-impressao.html';}
+ catch{alert('Não foi possível preparar a impressão. Exporte a ficha para guardar uma cópia e tente com imagens menores.');}
 };

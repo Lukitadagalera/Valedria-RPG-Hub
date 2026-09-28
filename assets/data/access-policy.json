@@ -57,8 +57,8 @@
     },
     {
       "file": "livro-08-itens.html",
-      "title": "Este livro ganhou um novo endereço",
-      "rank": 1,
+      "title": "Artefatos",
+      "rank": 2,
       "summary": "Conheça este capítulo do Códice e as possibilidades que ele traz para sua mesa."
     },
     {
@@ -75,7 +75,7 @@
     },
     {
       "file": "livro-10-guilda.html",
-      "title": "Este livro ganhou um novo endereço",
+      "title": "Facções",
       "rank": 3,
       "summary": "Conheça este capítulo do Códice e as possibilidades que ele traz para sua mesa."
     },
@@ -87,19 +87,19 @@
     },
     {
       "file": "livro-11-faccoes-jogaveis.html",
-      "title": "Este livro ganhou um novo endereço",
-      "rank": 4,
+      "title": "Facções",
+      "rank": 3,
       "summary": "Conheça este capítulo do Códice e as possibilidades que ele traz para sua mesa."
     },
     {
       "file": "livro-12-itens-basicos.html",
-      "title": "Este livro ganhou um novo endereço",
-      "rank": 1,
+      "title": "Economia",
+      "rank": 3,
       "summary": "Conheça este capítulo do Códice e as possibilidades que ele traz para sua mesa."
     },
     {
       "file": "livro-12-mestre.html",
-      "title": "O guia está na Área do Mestre",
+      "title": "Guia do Mestre",
       "rank": 4,
       "summary": "Conheça este capítulo do Códice e as possibilidades que ele traz para sua mesa."
     },

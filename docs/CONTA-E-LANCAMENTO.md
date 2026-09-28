@@ -8,8 +8,16 @@
 - Cinco níveis: visitante, cadastro gratuito, Contador de Histórias, Mestre das Aventuras, Deus das Lendas.
 - Matriz inicial revisável em assets/data/access-policy.json. É uma proposta de distribuição por capítulos, ainda não uma curadoria final de cada personagem/localidade.
 
-## Publicação atual
-O GitHub Pages continua sendo uma demonstração pública. A página de conta informa que o cadastro está em preparação e não envia nem armazena dados pessoais. Nenhuma cobrança é processada. Os capítulos completos da demonstração continuam públicos enquanto não for ativada a distribuição protegida. Ocultar textos por CSS/JavaScript não seria proteção comercial.
+## Publicação atual e demonstração
+O GitHub Pages executa uma demonstração local explícita. Nenhum dado é enviado a um servidor, nenhum e-mail é entregue e nenhuma cobrança é feita. Minha conta é o único login. O menu Área do Mestre só aparece para perfis com um plano ativo.
+
+Perfis: usuario@valedria.local (gratuito), contador@valedria.local, mestre@valedria.local e deus@valedria.local. Senha inicial: Valedria@Teste2026! São contas fictícias públicas, sem acesso a serviços reais; não reutilize essa senha em produção.
+
+Os botões de perfil entram diretamente para facilitar revisão. Também é possível cadastrar dados fictícios, confirmar pela caixa de e-mails de teste, recuperar e alterar a senha, editar perfil, abrir atendimento, simular resposta e encerramento, trocar plano e simular cancelamento/expiração. Biblioteca, ferramentas, caderno, kit de exemplo e documentos funcionam no navegador. O painel dos jogadores funciona somente nesse mesmo navegador. Os dados de cada perfil ficam separados por ID, mas não há proteção real contra inspeção do armazenamento local. Não use conteúdo confidencial na demonstração.
+
+A prévia de bloqueios indica o plano necessário. A distribuição inicial é por capítulo; a curadoria de personagens e localidades pode ser refinada na matriz. O código e as amostras continuam públicos. O servidor real mantém a validação e os arquivos privados.
+
+Para testar localmente a demonstração, abra conta.html?demo=1. A escolha vale para a aba. A versão comercial define VALEDRIA_ACCESS_ACTIVE antes de carregar a sessão e desativa a simulação, mesmo que a aba tenha sido usada para testes.
 
 ## Para ativar o acesso protegido
 1. Contratar hospedagem Node 24+ com HTTPS, disco persistente e backup do SQLite. Servidor e site precisam estar na mesma origem.
@@ -29,5 +37,10 @@ node server/studio.test.cjs
 node server/content.test.cjs
 
 ## Impressão e imagens
-A ficha oferece prévia antes de imprimir, duas seções de páginas em A4, retratos, recursos e espaços de escrita. Para PDF use o destino Salvar como PDF do navegador; desative os cabeçalhos/rodapés do navegador para não incluir URL e data. Conteúdo extenso pode ocupar páginas extras.
+A ficha oferece prévia e um documento de impressão independente, sem herdar a rolagem do diálogo. O modelo vazio ocupa duas páginas A4, com fundo branco, ramos cinza, retratos em tons de cinza, recursos e espaços de escrita. Para PDF use o destino Salvar como PDF do navegador; desative os cabeçalhos/rodapés do navegador para não incluir URL e data. Conteúdo extenso pode ocupar páginas extras.
 As imagens foram reprocessadas dos originais externos: WebP 92 nos arquivos maiores, 90 nas variantes, até 2560px, e seleção responsiva 480/960/1440/1920. Não são ampliadas artificialmente. Os originais não entram no site publicado.
+
+## Desempenho e resolução
+Os filtros SVG animados de deslocamento/turbulência foram removidos dos fundos repetidos. Os ramos são texturas estáticas reutilizáveis; o realce e a elevação no hover permanecem. A seleção responsiva considera a largura e a altura do recorte em object-fit: cover, com margem de resolução no desktop, e só atualiza imagens próximas da área visível. A nitidez máxima continua limitada à resolução dos originais; não há ampliação artificial.
+
+Testes de demonstração: node scripts/demo.test.cjs. Serviços de produção: testes security, studio e content em server/.

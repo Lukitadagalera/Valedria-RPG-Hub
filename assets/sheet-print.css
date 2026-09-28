@@ -1,30 +1,30 @@
 #sheet-print{display:none}
 #sheet-print,#sheet-print *{box-sizing:border-box}
-#sheet-print{font:10pt/1.45 Georgia,serif;color:#342f25;background:white}
-#sheet-print .print-page{padding:7mm;border:1px solid #cdbb8d;border-radius:4mm;background:linear-gradient(#fffdf7ba,#fffdf7ba),url('img/decoracao/painel-floral-claro.webp') center/180mm;min-height:268mm;margin:0;position:relative}
+#sheet-print{font:10pt/1.45 Georgia,serif;color:#555;background:white}
+#sheet-print .print-page{padding:7mm;border:1px solid #ccc;border-radius:4mm;background:white;min-height:268mm;margin:0;position:relative}
 #sheet-print .print-page+ .print-page{margin-top:8mm}
-#sheet-print .print-brand{display:flex;align-items:center;gap:3mm;border-bottom:1px solid #b29b60;padding-bottom:2mm;margin-bottom:3mm;color:#78643e;letter-spacing:.1em;font-size:8pt}
+#sheet-print .print-brand{display:flex;align-items:center;gap:3mm;border-bottom:1px solid #ccc;padding-bottom:2mm;margin-bottom:3mm;color:#555;letter-spacing:.1em;font-size:8pt}
 #sheet-print .print-brand>span{font-size:24pt}#sheet-print .print-brand>small{margin-left:auto;letter-spacing:0}
-#sheet-print h1{font:26pt/1.1 Georgia,serif;margin:2mm 0 4mm;color:#342f25}
-#sheet-print h2{font:bold 13pt/1.2 Georgia,serif;border-bottom:1px solid #d6c9a9;padding-bottom:2mm;margin:0 0 3mm;color:#67542e;break-after:avoid}
+#sheet-print h1{font:26pt/1.1 Georgia,serif;margin:2mm 0 4mm;color:#555}
+#sheet-print h2{font:bold 13pt/1.2 Georgia,serif;border-bottom:1px solid #ccc;padding-bottom:2mm;margin:0 0 3mm;color:#555;break-after:avoid}
 #sheet-print h3{font:bold 10pt/1.3 Georgia,serif;margin:1mm 0;break-after:avoid}
 #sheet-print p{margin:1.5mm 0;orphans:3;widows:3}
 #sheet-print .print-identity{display:grid;grid-template-columns:minmax(0,1fr) 30mm;gap:6mm;align-items:center;margin-bottom:5mm;break-inside:avoid}
-#sheet-print .print-portrait{height:36mm;border:1px solid #baa675;border-radius:3mm;display:grid;place-items:center;overflow:hidden;background:#fbf8f0;text-align:center;font-size:9pt;color:#78643e}
+#sheet-print .print-portrait{height:36mm;border:1px solid #ccc;border-radius:3mm;display:grid;place-items:center;overflow:hidden;background:#fff;text-align:center;font-size:9pt;color:#555}
 #sheet-print .print-portrait img{width:100%;height:100%;object-fit:contain}
 #sheet-print .print-attributes{display:grid;grid-template-columns:repeat(5,1fr);gap:3mm;break-inside:avoid}
-#sheet-print .print-attributes>div,#sheet-print .print-resources>div{border:1px solid #cdbb8d;border-radius:3mm;text-align:center;padding:3mm;background:#fffdf7e6;display:grid;gap:1mm}
+#sheet-print .print-attributes>div,#sheet-print .print-resources>div{border:1px solid #ccc;border-radius:3mm;text-align:center;padding:3mm;background:#fff;display:grid;gap:1mm}
 #sheet-print .print-attributes strong{font-size:20pt}#sheet-print .print-attributes span{font-size:9pt}
 #sheet-print .print-resources{display:grid;grid-template-columns:repeat(2,1fr);gap:3mm;margin-top:4mm;break-inside:avoid}
 #sheet-print .print-resources:has(>div:nth-child(3)){grid-template-columns:repeat(3,1fr)}
 #sheet-print .print-resources strong{font-size:19pt}#sheet-print .print-resources small{text-transform:uppercase;letter-spacing:.12em}#sheet-print .print-caption{font-size:8pt;margin:3mm 0 5mm}
-#sheet-print .print-section{margin-top:3mm;padding:3mm;border:1px solid #ded3b7;border-radius:3mm;background:#fffdf7ed;box-decoration-break:clone}
-#sheet-print .print-lines{background:repeating-linear-gradient(transparent 0,transparent 7mm,#ddd1b5 7mm,#ddd1b5 7.2mm)}
-#sheet-print .print-prose{white-space:pre-wrap;overflow-wrap:anywhere}#sheet-print .print-item{break-inside:avoid;margin-bottom:3mm}#sheet-print .print-mount{display:block;max-height:40mm;max-width:100%;margin:auto;object-fit:contain}#sheet-print .print-footer{text-align:center;font-size:8pt;color:#78643e;margin-top:3mm}
+#sheet-print .print-section{margin-top:3mm;padding:3mm;border:1px solid #ccc;border-radius:3mm;background:#fff;box-decoration-break:clone}
+#sheet-print .print-lines{background:repeating-linear-gradient(transparent 0,transparent 7mm,#ccc 7mm,#ccc 7.2mm)}
+#sheet-print .print-prose{white-space:pre-wrap;overflow-wrap:anywhere}#sheet-print .print-item{break-inside:avoid;margin-bottom:3mm}#sheet-print .print-mount{display:block;max-height:40mm;max-width:100%;margin:auto;object-fit:contain}#sheet-print .print-footer{text-align:center;font-size:8pt;color:#555;margin-top:3mm}
 .print-preview-toolbar{display:flex;justify-content:center;gap:16px;padding:20px}.sheet-print-preview{max-width:none!important;width:min(230mm,100vw);padding:12px;border:1px solid var(--color-border);border-radius:16px;background:var(--color-surface);max-height:94vh}.sheet-print-preview::backdrop{background:#000a}.sheet-print-preview #sheet-print{display:block;width:190mm;max-width:100%;margin:auto}
 @media print{
  @page{size:A4;margin:10mm}
- html:root[data-theme] body{background:#fff!important;color:#342f25!important}
+ html:root[data-theme] body{background:#fff!important;color:#555!important}
  body:has(#sheet-print)>:not(#sheet-print):not(.sheet-print-preview){display:none!important}
  body:has(#sheet-print)::before,body:has(#sheet-print)::after{display:none!important}
  #sheet-print{display:block!important;width:auto!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
@@ -33,4 +33,14 @@
  .sheet-print-preview{position:static!important;display:block!important;max-height:none!important;width:auto!important;max-width:none!important;padding:0!important;border:0!important;overflow:visible!important;background:white!important}.sheet-print-preview::backdrop,.print-preview-toolbar{display:none!important}
 }
 
-#sheet-print .print-identity>div{min-width:0}#sheet-print h1{overflow-wrap:anywhere}#sheet-print h1.print-name-blank{height:12mm;border-bottom:1px solid #baa675}#sheet-print .print-brand>span{line-height:1} .sheet-print-preview{margin:auto!important;inset:0;overflow:auto}
+#sheet-print .print-identity>div{min-width:0}#sheet-print h1{overflow-wrap:anywhere}#sheet-print h1.print-name-blank{height:12mm;border-bottom:1px solid #ccc}#sheet-print .print-brand>span{line-height:1} .sheet-print-preview{margin:auto!important;inset:0;overflow:auto}
+
+#sheet-print .print-decoration{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.10;pointer-events:none;z-index:0}
+#sheet-print .print-page>:not(.print-decoration){position:relative;z-index:1}
+#sheet-print .print-page,#sheet-print .print-section,#sheet-print .print-portrait,#sheet-print .print-attributes>div,#sheet-print .print-resources>div{background:white;color:#222}
+#sheet-print .print-lines{background:repeating-linear-gradient(transparent 0,transparent 7mm,#ccc 7mm,#ccc 7.2mm)}
+@media print{html,body{height:auto!important;overflow:visible!important;margin:0!important;padding:0!important}#sheet-print{margin:0!important}#sheet-print .print-page{overflow:visible!important}.print-preview-toolbar{display:none!important}}
+
+#sheet-print .print-lines{background:none}#sheet-print .print-rule{height:7mm;border-bottom:1px solid #ccc}
+
+#sheet-print .print-portrait img,#sheet-print .print-mount{filter:grayscale(1)}

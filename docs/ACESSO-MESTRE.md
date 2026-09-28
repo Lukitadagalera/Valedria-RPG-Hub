@@ -1,5 +1,5 @@
-# Acesso às Crônicas
+# Acesso unificado
 
-O formulário da Área do Mestre usa o usuário `mestre` e a senha de spoilers já definida em `assets/data/cronicas.js`. O botão Sair apaga o conteúdo renderizado; recarregar a página exige entrar novamente.
+Minha conta é o único ponto de entrada. A Área do Mestre usa a mesma sessão e exige uma assinatura ativa; não possui outro formulário de login.
 
-Este é um bloqueio de spoilers no navegador, não autenticação segura. Os dados e a senha continuam disponíveis nos arquivos públicos do GitHub Pages. Para contas privadas, é necessário configurar um serviço de autenticação e servir o conteúdo do Mestre por um endpoint que valide a sessão no servidor. Não reutilize senhas pessoais neste formulário.
+Para os perfis fictícios no GitHub, fluxos simulados e ativação do servidor real, consulte [CONTA-E-LANCAMENTO.md](CONTA-E-LANCAMENTO.md). Não existe mais a senha pública de spoilers descrita nas versões antigas deste documento.

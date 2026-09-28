@@ -1,23 +1,11 @@
-/* Membership is validated by the API; the public site never unlocks content locally. */
+/* One account session: production API or explicitly labelled local demonstration. */
 (() => {
  'use strict';
  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let apiBase='', csrf='', account=null, library=null, favorites=[], mode='login', busy=false, generation=0, lastIdea='', ready=Promise.resolve();
- const configured=window.VALEDRIA_MASTER_CONFIG?.apiBase;
- if(configured){const u=new URL(configured,location.href);if(u.protocol==='https:' || (u.origin===location.origin && ['localhost','127.0.0.1'].includes(u.hostname)))apiBase=u.href.replace(/\/$/,'');}
+ let csrf='', account=null, library=null, favorites=[], generation=0, lastIdea='', ready=Promise.resolve();
  const message=(text)=>{const target=account?$('#member-message'):$('#mp-auth-message');target.textContent=text;if(text){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});target.scrollIntoView({block:'nearest'});}};
- async function api(path,body){
-  if(!apiBase)throw new Error('As contas ainda estão em preparação. Nenhum dado foi enviado.');
-  let response;
-  try{response=await fetch(apiBase+path,{method:body===undefined?'GET':'POST',signal:AbortSignal.timeout(15000),credentials:'include',cache:'no-store',headers:{Accept:'application/json',...(body!==undefined?{'Content-Type':'application/json','X-CSRF-Token':csrf}:{})},...(body!==undefined?{body:JSON.stringify(body)}:{})});}
-  catch{throw new Error('Não foi possível conectar ao acesso do Mestre. Confira se a versão de teste está aberta neste computador e tente novamente.');}
-  if(response.status===401){clearMember();throw new Error('Sua sessão terminou. Entre novamente.');}
-  if(response.status===403 && path==='/library'){clearPrivate();$('#mp-locked').hidden=false;throw new Error('Seu acesso ao acervo não está ativo.');}
-  if(!response.ok)throw new Error(response.status===429?'Muitas tentativas. Aguarde alguns minutos e tente novamente.':path==='/login'&&response.status===400?'E-mail ou senha incorretos, ou e-mail ainda não confirmado. Confira e tente novamente.':'Não foi possível concluir. Confira seus dados ou tente novamente em instantes.');
-  if(response.status!==204&&!response.headers.get('content-type')?.includes('application/json'))throw new Error('Este endereço não está conectado ao acesso do Mestre. Abra a versão de teste pelo link indicado.');
-  return response.status===204?{}:response.json();
- }
+ async function api(path,body){return window.ValedriaSession.request(path,body);}
  function storageKey(kind){return 'valedria-master:'+account.id+':'+kind;}
  function readLocal(kind,fallback){try{return JSON.parse(localStorage.getItem(storageKey(kind)))??fallback;}catch{return fallback;}}
  function clearPrivate(){generation++;$('#member-plan').hidden=true;$('#member-plan').replaceChildren();window.ValedriaStudio?.clear();library=null;lastIdea='';favorites=[];$('#mp-workspace').hidden=true;$('#library-cards').replaceChildren();$('#reader-content').replaceChildren();$('#reader-title').textContent='';$('#reader-summary').textContent='';$('#session-notes').replaceChildren();$('#tool-result').replaceChildren();$('#mp-reader').close();}
@@ -26,9 +14,9 @@
   const session=await api('/session');csrf=session.csrfToken||'';
   if(!session.user){clearMember();csrf=session.csrfToken||'';return;}
   if(account && account.id!==session.user.id)clearPrivate();
-  account=session.user;$('#mp-public').hidden=true;$('#mp-member').hidden=false;$('#member-account').textContent=account.email||'Sua conta';
+  account=session.user;$('#mp-public').hidden=true;$('#mp-member').hidden=false;$('#member-account').textContent=(account.email||'Sua conta')+(window.ValedriaSession.demo?' · Demonstração salva neste navegador':'');
   const active=session.entitlement?.status==='active';$('#mp-locked').hidden=active;
-  if(!active){clearPrivate();return;}
+  if(!active){clearPrivate();location.replace('conta.html#assinatura');return;}
   const current=++generation;
   $('#member-message').textContent='Abrindo sua biblioteca…';
   const result=await api('/library');if(current!==generation)return;
@@ -54,28 +42,8 @@
   renderLibrary();loadNotes();
   await window.ValedriaStudio?.open({api,user:account,plan:session.entitlement.plan||'contador'});
  }
- const screens={login:['Entrar na Área do Mestre','Acesse sua conta para abrir a biblioteca e preparar sua próxima sessão.','Entrar na minha área'],register:['Crie sua conta','Comece pelo seu e-mail. Criar uma conta não ativa nem cobra uma assinatura.','Criar minha conta'],recover:['Recuperar minha senha','Informe seu e-mail para receber as instruções de recuperação.','Enviar instruções'],reset:['Escolha uma nova senha','Use pelo menos 12 caracteres e uma senha exclusiva para esta conta.','Salvar nova senha']};
- function setMode(next){mode=next;const [title,intro,submit]=screens[next];$('#auth-title').textContent=title;$('#auth-intro').textContent=intro;$('#mp-submit').textContent=submit;$('#password-field').hidden=next==='recover';$('#mp-password').disabled=next==='recover';$('#mp-password').minLength=next==='register'||next==='reset'?12:1;$('#mp-password').autocomplete=next==='login'?'current-password':'new-password';$('#mp-password').value='';$('#mp-password').type='password';$('#mp-show').textContent='Mostrar';$('#mp-show').setAttribute('aria-pressed','false');$('#mp-email').disabled=next==='reset';$('#login-options').hidden=next!=='login';$$('[data-auth="register"]').forEach(e=>e.hidden=next!=='login');$$('[data-auth="login"]').forEach(e=>e.hidden=next==='login');message('');}
- $$('[data-auth]').forEach(b=>b.addEventListener('click',()=>{if(!busy)setMode(b.dataset.auth);}));
- $('#mp-show').addEventListener('click',e=>{const show=$('#mp-password').type==='password';$('#mp-password').type=show?'text':'password';e.currentTarget.textContent=show?'Ocultar':'Mostrar';e.currentTarget.setAttribute('aria-label',show?'Ocultar senha':'Mostrar senha');e.currentTarget.setAttribute('aria-pressed',String(show));});
- let resetToken=new URLSearchParams(location.hash.slice(1)).get('reset_token');
- const verifyToken=new URLSearchParams(location.hash.slice(1)).get('verify_token');
- if(verifyToken)history.replaceState(null,'',location.pathname+location.search);
- if(resetToken){history.replaceState(null,'',location.pathname+location.search);setMode('reset');}
- $('#mp-auth-form').addEventListener('submit',async e=>{
-  e.preventDefault();if(busy)return;busy=true;$('#mp-submit').disabled=true;$('#mp-submit').textContent='Aguarde…';message('');
-  try{
-   await ready;
-   if(!apiBase)throw new Error('As contas ainda estão em preparação. Nenhum dado foi enviado.');
-   if(!csrf){const session=await api('/session');csrf=session.csrfToken||'';}
-   const body={email:$('#mp-email').value.trim(),password:$('#mp-password').value,remember:$('#mp-remember').checked};
-   if(mode==='recover'){await api('/password-reset',{email:body.email});message('Se houver uma conta com esse e-mail, você receberá as instruções de recuperação.');}
-   else if(mode==='register'){await api('/register',{email:body.email,password:body.password});message('Confira seu e-mail para os próximos passos. A assinatura não é ativada ao criar a conta.');}
-   else if(mode==='reset'){await api('/password-update',{token:resetToken,password:body.password});resetToken=null;csrf='';setMode('login');message('Senha atualizada. Entre com sua nova senha.');}
-   else{await api('/login',body);await refresh();$('#mp-password').value='';$('#member-title').setAttribute('tabindex','-1');$('#member-title').focus();$('#mp-member').scrollIntoView({block:'start'});}
-  }catch(error){message(error.message);}finally{busy=false;$('#mp-submit').disabled=false;$('#mp-submit').textContent=screens[mode][2];}
- });
- $('#mp-logout').addEventListener('click',async()=>{try{await api('/logout',{});clearMember();setMode('login');message('Você saiu da conta.');}catch(e){$('#member-message').textContent='Não foi possível encerrar a sessão no servidor. Tente sair novamente.';}});
+ const authToken=new URLSearchParams(location.hash.slice(1));if(authToken.has('verify_token')||authToken.has('reset_token'))location.replace('conta.html'+location.hash);
+ $('#mp-logout').addEventListener('click',async()=>{try{await api('/logout',{});clearMember();location.href='conta.html';}catch(e){$('#member-message').textContent='Não foi possível encerrar a sessão no servidor. Tente sair novamente.';}});
  $('#mp-check-access').addEventListener('click',()=>refresh().catch(e=>$('#member-message').textContent=e.message));
  function panel(name){$$('#mp-workspace > section').forEach(s=>s.hidden=s.id!=='panel-'+name);$$('[data-panel]').forEach(b=>{if(b.dataset.panel===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});}
  $('.mp-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-panel]');if(b)panel(b.dataset.panel);});
@@ -96,16 +64,7 @@
  $('#tool-to-notes').addEventListener('click',()=>{const el=$('#session-notes [name="ideias"]');if((el.value+'\n\n'+lastIdea).length>20000){$('#member-message').textContent='O campo de ideias está cheio. Exporte o caderno antes de reorganizá-lo.';return;}el.value+=(el.value?'\n\n':'')+lastIdea;saveNotes();panel('notes');el.focus();});
  $('#notes-export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({format:'valedria-master-notes',version:1,notes:saveNotes()},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='valedria-caderno-do-mestre.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
  $('#notes-import').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>1000000)throw Error();const data=JSON.parse(await file.text());if(data.format!=='valedria-master-notes'||data.version!==1||!data.notes||Object.keys(fields).some(k=>typeof data.notes[k]!=='string'||data.notes[k].length>20000))throw Error();if(!confirm('Substituir as anotações atuais pelo caderno importado? Exporte uma cópia antes, se quiser mantê-las.'))return;Object.keys(fields).forEach(k=>$('#session-notes [name="'+k+'"]').value=data.notes[k]);saveNotes();}catch{$('#notes-status').textContent='Arquivo inválido. Escolha um caderno exportado por esta área.';}finally{e.target.value='';}});
- if(apiBase){
-  $('#launch-notice').hidden=true;
-  ready=(resetToken||verifyToken?api('/session').then(s=>{csrf=s.csrfToken||'';}):refresh()).catch(e=>message(e.message));
-  ready.then(async()=>{if(verifyToken){await api('/verify-email',{token:verifyToken});message('E-mail confirmado. Entre com sua senha.');}}).catch(e=>message(e.message));
- }else{
-  $('#mp-auth-form').hidden=true;$('.mp-account-links').hidden=true;
-  $('#auth-intro').textContent='O login desta apresentação pública ainda não está ativado. Para revisar o conteúdo agora, abra a versão de teste neste computador.';
-  $('#launch-notice').textContent='Para iniciar ou reabrir o teste, execute Iniciar-teste-do-Mestre.cmd na pasta do projeto neste computador. Ele liga o serviço e abre a Área do Mestre. O botão abaixo só funciona enquanto esse serviço estiver ligado.';
-  $('#mp-local-test').hidden=false;
- }
+ ready=refresh().catch(e=>message(e.message));
  // Revalidate after returning to the page. Never persist the private library offline.
  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&account)refresh().catch(e=>$('#member-message').textContent=e.message);});
 })();
