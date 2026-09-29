@@ -13,7 +13,7 @@
     const found=candidates.find(el=>slug(el.textContent)===normalized)||candidates.find(el=>slug(el.textContent).startsWith(normalized+'-'));
     if(found){found.classList.add('search-target');found.setAttribute('tabindex','-1');requestAnimationFrame(()=>{found.scrollIntoView({block:'center'});found.focus({preventScroll:true});});}
   } else if(location.hash){
-    const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    let id=location.hash.slice(1);try{id=decodeURIComponent(id);}catch{}const target=document.getElementById(id);
     if(target)requestAnimationFrame(()=>target.scrollIntoView());
   }
 })();

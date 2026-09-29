@@ -1,7 +1,7 @@
 const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/strict');
 const storage=()=>{const map=new Map();return {getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};};
 const context={window:{dispatchEvent(){},addEventListener(){}},document:{addEventListener(){},querySelectorAll(){return[];}},location:{hostname:'lukitadagalera.github.io',search:''},sessionStorage:storage(),localStorage:storage(),crypto:require('node:crypto').webcrypto,TextEncoder,URLSearchParams,Event,fetch:async url=>({json:async()=>JSON.parse(fs.readFileSync(url,'utf8'))})};
-vm.runInNewContext(fs.readFileSync('assets/session.js','utf8'),context);
+vm.runInNewContext(fs.readFileSync('assets/js/session.js','utf8'),context);
 (async()=>{const api=context.window.ValedriaSession.request;
 assert.equal((await api('/session')).user,null);
 await api('/login',{email:'usuario@valedria.local',password:'Valedria@Teste2026!'});

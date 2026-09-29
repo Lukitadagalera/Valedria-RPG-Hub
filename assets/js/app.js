@@ -169,13 +169,13 @@
   function loadMusicPlayer() {
     if (!document.querySelector('script[data-valedria-interactions]')) {
       var interactions = document.createElement('script');
-      interactions.src = 'assets/interface-sounds.js?v=2';
+      interactions.src = 'assets/js/interface-sounds.js?v=2';
       interactions.setAttribute('data-valedria-interactions', '');
       document.head.appendChild(interactions);
     }
     if (document.querySelector('script[data-valedria-music-player]')) return;
     var script = document.createElement('script');
-    script.src = 'assets/music-player.js?v=22';
+    script.src = 'assets/js/music-player.js?v=22';
     script.setAttribute('data-valedria-music-player', '');
     document.head.appendChild(script);
   }

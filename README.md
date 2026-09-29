@@ -2,17 +2,29 @@
 
 ## Organização
 
-- Páginas HTML na raiz: endereços públicos existentes, mantidos para preservar links e favoritos.
-- `assets/css/`: estilos globais; estilos específicos de recursos continuam em `assets/`.
-- `assets/js/`: scripts globais e de páginas; módulos específicos ficam em `assets/`.
-- `assets/data/`: conteúdo estruturado e índice de busca.
-- `assets/img/`: imagens WebP por assunto; personagens secundários em `npcs/`.
-- `assets/audio/`: músicas licenciadas e relatos dos heróis.
-- `docs/`: documentação, integrações e licenças.
-- `scripts/`: geração de conteúdo e busca.
-- `server/`: serviço de acesso do Mestre.
-- `dist/`: saída local da compilação, não versionada.
+- HTML na raiz: entradas públicas e redirecionamentos antigos. Preservados para não quebrar favoritos, busca e links publicados.
+- `assets/css/`: todos os estilos globais e de funcionalidades.
+- `assets/js/`: comportamentos do site, ficha, conta, navegação, imagens e áudio.
+- `assets/data/`: fontes de conteúdo, regras compartilhadas, matriz de acesso e índices gerados.
+- `assets/demo/`: amostras públicas da demonstração.
+- `assets/img/`: imagens e variantes WebP separadas por assunto.
+- `assets/audio/`: trilhas e relatos, carregados sob demanda.
+- `scripts/`: compilação, validações, índices e utilitários de manutenção.
+- `tests/`: testes da demonstração, conta, recorte, animação e consistência das regras.
+- `server/`: API privada e testes de integração colocados junto aos módulos que exercitam.
+- `docs/`: decisões, licenças, integrações e relatórios de revisão.
+- `dist/`: saída gerada e ignorada pelo Git. Nunca editar diretamente.
 
-## Conferir alterações
+## Verificar e executar
 
-Execute `npm run build`. Para uma prévia, sirva a pasta raiz ou a pasta `dist/` com um servidor HTTP. O GitHub Pages publica a raiz da branch `main`; preserve os caminhos públicos e revise links ao mover arquivos.
+Requer Node 24 ou posterior para os testes com SQLite.
+
+- `npm run build`: atualiza as fontes derivadas e gera `dist`.
+- `npm test`: executa verificações de referências, sintaxe, regras e os testes de funcionalidades e servidor.
+- `node scripts/verify-commercial.cjs`: verifica a separação de arquivos privados em uma pasta temporária e restaura a compilação pública ao terminar. Não executar simultaneamente com outro build.
+- `python -m http.server 4184 --bind 127.0.0.1 --directory dist`: prévia local.
+- Abra `http://127.0.0.1:4184/conta.html?demo=1` para testar sem serviços externos.
+
+O GitHub Pages publica a raiz da branch `main`. A demonstração não recebe pagamentos nem envia e-mails reais. Consulte [cadastro e lançamento](docs/CONTA-E-LANCAMENTO.md) antes de ativar a operação comercial.
+
+[Auditoria geral — 29/09/2026](docs/AUDITORIA-2026-09-29.md).

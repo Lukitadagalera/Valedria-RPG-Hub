@@ -1,1 +1,10 @@
-{"name": "valedria-codice", "private": true, "scripts": {"build": "node build.cjs", "dev": "python -m http.server 4173 --bind 127.0.0.1"}}
+{
+  "name": "valedria-codice",
+  "private": true,
+  "scripts": {
+    "build": "node build.cjs",
+    "dev": "python -m http.server 4173 --bind 127.0.0.1",
+    "test": "node scripts/test.cjs",
+    "check": "node scripts/check-assets.cjs && node scripts/audit-site.cjs"
+  }
+}

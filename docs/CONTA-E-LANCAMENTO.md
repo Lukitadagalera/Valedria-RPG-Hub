@@ -41,6 +41,6 @@ A ficha oferece prévia e um documento de impressão independente, sem herdar a 
 As imagens foram reprocessadas dos originais externos: WebP 92 nos arquivos maiores, 90 nas variantes, até 2560px, e seleção responsiva 480/960/1440/1920. Não são ampliadas artificialmente. Os originais não entram no site publicado.
 
 ## Desempenho e resolução
-Os filtros SVG animados de deslocamento/turbulência foram removidos dos fundos repetidos. Os ramos são texturas estáticas reutilizáveis; o realce e a elevação no hover permanecem. A seleção responsiva considera a largura e a altura do recorte em object-fit: cover, com margem de resolução no desktop, e só atualiza imagens próximas da área visível. A nitidez máxima continua limitada à resolução dos originais; não há ampliação artificial.
+Os filtros SVG animados de deslocamento/turbulência foram removidos dos fundos repetidos. A textura de base é estática. Uma camada de luz e balanço usa transformações e opacidade somente no quadro sob o mouse, pausa ao sair e respeita a preferência de movimento reduzido. Não há animação geral de todos os quadros. A seleção responsiva considera a largura e a altura do recorte em object-fit: cover, com margem de resolução no desktop, e só atualiza imagens próximas da área visível. A nitidez máxima continua limitada à resolução dos originais; não há ampliação artificial.
 
-Testes de demonstração: node scripts/demo.test.cjs. Serviços de produção: testes security, studio e content em server/.
+Testes de demonstração: node tests/demo.test.cjs. Serviços de produção: testes security, studio e content em server/.
