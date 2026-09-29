@@ -6,15 +6,15 @@
    do uso repetido da técnica, e sim do reconhecimento de grau:
    cada grau (Aprendiz, Guerreiro, Mestre, Grande Mestre, Imperador,
    Deus) libera exatamente +1 de atributo, somando no máximo +6 ao
-   longo de toda a vida de um Caminho. Existem 4 Caminhos: Força,
+   longo da vida do personagem, no Caminho principal. Existem 4 Caminhos: Força,
    Velocidade, Morte e Técnica — alguns dividem o bônus entre dois
    ou três atributos em vez de concentrá-lo em um só.
    ============================================================ */
 window.AURA_REGRAS = {
   folego_por_cena: "3 a 8 pontos, dependendo do grau marcial",
-  recuperacao: "Um breve descanso restaura o Fôlego de Aura entre cenas",
+  recuperacao: "10 minutos de descanso seguro entre cenas (veja Vida, queda e descanso no Livro IV)",
   atributo_por_grau: "+1 de atributo por grau alcançado, nunca por uso repetido da técnica",
-  teto_por_caminho: "+6 no total, ao longo de toda a vida de um Caminho",
+  teto_por_caminho: "+6 no total por personagem, no Caminho principal; outro Caminho não duplica pontos",
   graus: ["Aprendiz", "Guerreiro", "Mestre", "Grande Mestre", "Imperador", "Deus"]
 };
 

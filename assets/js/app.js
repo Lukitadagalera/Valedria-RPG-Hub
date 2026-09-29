@@ -175,7 +175,7 @@
     }
     if (document.querySelector('script[data-valedria-music-player]')) return;
     var script = document.createElement('script');
-    script.src = 'assets/js/music-player.js?v=22';
+    script.src = 'assets/js/music-player.js?v=23';
     script.setAttribute('data-valedria-music-player', '');
     document.head.appendChild(script);
   }

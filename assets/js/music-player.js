@@ -60,7 +60,7 @@
     }
 
     var script = document.createElement('script');
-    script.src = 'assets/data/musicas.js?v=3';
+    script.src = 'assets/data/musicas.js?v=4';
     script.onload = function () {
       playlistLoaded = true;
       done(Array.isArray(window.VALEDRIA_MUSICAS) ? window.VALEDRIA_MUSICAS : []);
