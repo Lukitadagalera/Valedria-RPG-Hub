@@ -44,7 +44,7 @@ html:root[data-theme='dark'] .hero-seek::-moz-range-thumb{background:#cbd9e4}
 
 /* A fixed botanical mask clips a compositor-driven travelling light. */
 @media screen and (prefers-reduced-motion:no-preference){
-.botanical-host{position:relative}
+.botanical-positioned{position:relative}
 .botanical-light{--branch-light:#e8f5ff;position:absolute;inset:0;border-radius:inherit;pointer-events:none;overflow:hidden;contain:paint;z-index:0}
 [data-theme='light'] .botanical-light{--branch-light:#f4d885}
 .botanical-branches{position:absolute;inset:0;overflow:hidden;mask:url('img/decoracao/ramos-luz.svg') center bottom/640px 640px repeat;transform-origin:50% 100%;animation:botanical-wind 12s ease-in-out infinite;animation-play-state:paused}
