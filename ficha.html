@@ -69,6 +69,9 @@
       <label>Vida máxima</label>
       <div class="readonly-pill" id="vida-max-display" style="text-align: center;">5</div>
     </div>
+    <div class="field"><label for="f-armadura">Armadura equipada</label><select id="f-armadura"><option value="nenhuma">Sem armadura (+0)</option><option value="leve">Leve / couro (+1)</option><option value="media">Média / malha (+2)</option><option value="pesada">Pesada / placas (+3)</option></select></div>
+    <div class="field"><label for="f-escudo">Escudo equipado</label><select id="f-escudo"><option value="nao">Não</option><option value="sim">Sim (+1; ocupa uma mão)</option></select></div>
+    <div class="field"><label>Defesa total</label><output class="readonly-pill" id="defesa-display">10</output><p class="field-hint" id="defesa-hint"></p></div>
     <div class="field resource-restore"><button type="button" class="btn btn-secondary btn-sm no-print" id="btn-vida-restaurar">Restaurar Vida ao máximo</button></div>
   </div>
   <p class="field-hint">Magia e Aura são mutuamente exclusivas. O personagem não é limitado a uma escola ou caminho específico &mdash; magias e técnicas específicas serão aprendidas em jogo (ex.: por um grimório) e controladas pelo mestre. Veja o Livro IV para as regras completas.</p>
@@ -93,6 +96,7 @@
       </div>
       <p class="field-hint" id="mana-hint" hidden>Todo conjurador começa com 50 de Mana no nível 1; o Potencial define o quanto essa reserva cresce a cada nível (veja o Livro VI). Use "Mana atual" para acompanhar o gasto durante a sessão.</p>
       <div class="field-grid" id="aura-block" hidden>
+        <div class="field"><label for="f-aura-caminho">Caminho principal de Aura</label><select id="f-aura-caminho"><option value="">Selecione o Caminho</option><option>Força</option><option>Velocidade</option><option>Morte</option><option>Técnica</option></select></div>
         <div class="field">
           <label for="f-aura-grau">Grau marcial</label>
           <select id="f-aura-grau">
@@ -116,7 +120,7 @@
       <h2 class="section-title">Atributos</h2>
       <p class="field-hint" id="attr-hint">Compra por pontos: todo personagem começa com 15 pontos para distribuir entre os 5 atributos, com mínimo de 1 em cada e ganha mais 5 pontos a cada nível acima do 1.</p>
       <div class="attr-grid"><div class="attr-box"><label for="attr-forca">Força</label><input type="number" id="attr-forca" min="1" value="1" data-attr="forca"></div><div class="attr-box"><label for="attr-destreza">Destreza</label><input type="number" id="attr-destreza" min="1" value="1" data-attr="destreza"></div><div class="attr-box"><label for="attr-constituicao">Constituição</label><input type="number" id="attr-constituicao" min="1" value="1" data-attr="constituicao"></div><div class="attr-box"><label for="attr-sabedoria">Sabedoria</label><input type="number" id="attr-sabedoria" min="1" value="1" data-attr="sabedoria"></div><div class="attr-box"><label for="attr-carisma">Carisma</label><input type="number" id="attr-carisma" min="1" value="1" data-attr="carisma"></div></div>
-      <div class="attr-points" id="attr-points"><span>Pontos usados:</span> <strong id="attr-points-value">0 / 15</strong></div>
+      <p class="field-hint" id="aura-bonus-display" role="status"></p><div class="attr-points" id="attr-points"><span>Pontos usados:</span> <strong id="attr-points-value">0 / 15</strong></div>
     </div>
 
     <div class="card">
@@ -174,7 +178,7 @@
 </main>
 <footer class="footer reference-footer"><a class="footer-brand" href="index.html"><img class="footer-star" src="assets/img/home/marca-valedria.webp" alt="" srcset="assets/img/home/marca-valedria-480.webp 480w, assets/img/home/marca-valedria-960.webp 960w, assets/img/home/marca-valedria.webp 1254w" sizes="56px" width="1254" height="1254"><span><strong>Valédria</strong><small>Códice do Mundo</small></span></a><p class="footer-quote">Cada escolha escreve uma lenda.</p><nav class="footer-socials" aria-label="Links externos"><a data-external="discord" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="discord" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<small>Em breve</small></span><a data-external="instagram" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="instagram" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<small>Em breve</small></span><a data-external="suporte" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="suporte" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<small>Em breve</small></span><a data-external="pacotes" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="pacotes" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<small>Em breve</small></span></nav><details class="footer-settings"><summary aria-label="Abrir controles de tema e música"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 3v18M12 3v18M19 3v18"/><path d="M2 8h6M9 16h6M16 7h6" stroke-width="4"/></svg></summary><div class="topbar-actions"><button class="icon-btn" data-theme-toggle aria-label="Alternar tema"></button></div></details></footer>
 <script src="assets/js/app.js?v=24"></script><script src="assets/js/redesign.js?v=2" defer></script>
-<script src="assets/data/regras.js"></script><script src="assets/data/itens.js"></script><script src="assets/data/itens_basicos.js?v=20260921-metais"></script><script src="assets/data/pericias.js?v=20"></script><script src="assets/js/portrait-crop.js?v=3"></script><script src="assets/js/sheet-catalog.js?v=20260928"></script><script src="assets/js/sheet-print.js?v=23"></script>
+<script src="assets/data/regras.js?v=2"></script><script src="assets/data/itens.js"></script><script src="assets/data/itens_basicos.js?v=20260921-metais"></script><script src="assets/data/pericias.js?v=20"></script><script src="assets/js/portrait-crop.js?v=3"></script><script src="assets/js/sheet-catalog.js?v=20260928"></script><script src="assets/js/sheet-print.js?v=24"></script>
 <script>
 
 (function(){
@@ -365,7 +369,12 @@
 
   var nivelInput = el('#f-nivel');
   var vidaInput = el('#f-vida-atual');
-  function vidaMax(){ return RULES.vidaMax(el('#attr-constituicao').value); }
+  function derived(){
+    var attrs={};els('[data-attr]').forEach(function(inp){attrs[inp.dataset.attr]=Math.max(1,Math.min(attrMax(),parseInt(inp.value,10)||1));});
+    return RULES.derivados({atributos:attrs,caminho:caminhoSel.value,auraGrau:auraGrauSel.value,auraCaminho:el('#f-aura-caminho').value,armadura:el('#f-armadura').value,escudo:el('#f-escudo').value});
+  }
+  function vidaMax(){ return derived().vida; }
+  ['#f-aura-caminho','#f-armadura','#f-escudo'].forEach(function(sel){el(sel).addEventListener('change',updatePreview);});
   function clampVida(){
     var max = vidaMax(), current = parseInt(vidaInput.value, 10);
     vidaInput.value = Number.isFinite(current) ? Math.max(0, Math.min(max,current)) : max;
@@ -475,17 +484,18 @@
       raca: racaSel.value, subraca: subracaSel.value, papel: el('#f-papel').value,
       nivel: currentNivel(), vidaAtual: Math.max(0,Math.min(vidaMax(),parseInt(vidaInput.value,10)||0)), caminho: caminhoSel.value,
       manaPotencial: manaPotencial, manaAtual: manaAtualV,
-      auraGrau: auraGrau, auraAtual: auraAtualV,
-      versao: 4, atributos: attrs, pericias: pericias, itens: itens, artefatos: extra.artefatos, foto: extra.foto, fotoOriginal: extra.fotoOriginal, fotoRecorte: extra.fotoRecorte, montaria: extra.montaria, montariaOriginal: extra.montariaOriginal, montariaRecorte: extra.montariaRecorte, personalidade: el('#f-personalidade').value,
+      auraGrau: auraGrau, auraAtual: auraAtualV, auraCaminho: el('#f-aura-caminho').value, armadura: el('#f-armadura').value, escudo: el('#f-escudo').value,
+      versao: 5, atributos: attrs, pericias: pericias, itens: itens, artefatos: extra.artefatos, foto: extra.foto, fotoOriginal: extra.fotoOriginal, fotoRecorte: extra.fotoRecorte, montaria: extra.montaria, montariaOriginal: extra.montariaOriginal, montariaRecorte: extra.montariaRecorte, personalidade: el('#f-personalidade').value,
       historia: el('#f-historia').value, notas: el('#f-notas').value
     };
   }
 
   function validateState(s){
     if(!s||typeof s!=='object'||Array.isArray(s)||(!('nome' in s)&&!('atributos' in s)))throw Error('Ficha inválida');
-    if(s.versao!=null&&(!Number.isInteger(s.versao)||s.versao>4||s.versao<1))throw Error('Versão não suportada');
+    if(s.versao!=null&&(!Number.isInteger(s.versao)||s.versao>5||s.versao<1))throw Error('Versão não suportada');
     ['nome','jogador','raca','subraca','papel','caminho','manaPotencial','auraGrau','personalidade','historia','notas'].forEach(function(k){if(s[k]!=null&&(typeof s[k]!=='string'||s[k].length>100000))throw Error('Texto inválido');});
     ['nivel','vidaAtual','manaAtual','auraAtual'].forEach(function(k){if(s[k]!=null&&(!Number.isFinite(Number(s[k]))||Number(s[k])<0))throw Error('Número inválido');});
+    for(const [key,values] of Object.entries({auraCaminho:['','Força','Velocidade','Morte','Técnica'],armadura:['nenhuma','leve','media','pesada'],escudo:['nao','sim']})){if(s[key]!=null&&!values.includes(s[key]))throw Error('Opção inválida: '+key);}
     if(s.atributos!=null){if(typeof s.atributos!=='object'||Array.isArray(s.atributos))throw Error('Atributos inválidos');Object.keys(ATTR_LABELS).forEach(function(k){if(s.atributos[k]!=null&&!Number.isFinite(Number(s.atributos[k])))throw Error('Atributo inválido');});}
     ['itens','artefatos','pericias'].forEach(function(k){if(s[k]!=null&&(!Array.isArray(s[k])||s[k].length>500||s[k].some(function(x){return !x||typeof x.nome!=='string'||x.nome.length>300;})))throw Error('Lista inválida');});
     return s;
@@ -507,6 +517,9 @@
     manaPotencialSel.value = s.manaPotencial || 'Comum';
     manaAtualInput.value = (s.manaAtual != null) ? s.manaAtual : manaMax(parseInt(s.nivel, 10) || 1, manaPotencialSel.value);
     clampMana();
+    el('#f-aura-caminho').value=s.auraCaminho||'';
+    el('#f-armadura').value=s.armadura||'nenhuma';
+    el('#f-escudo').value=s.escudo||'nao';
     auraGrauSel.value = s.auraGrau || 'Aprendiz';
     auraAtualInput.value = (s.auraAtual != null) ? s.auraAtual : auraMax(auraGrauSel.value);
     clampAura();
@@ -527,7 +540,10 @@
   function updatePreview(){
     if(!collection||applyingState)return;
     clampVida();
-    var s = getState();
+    var s = getState(), d = derived();
+    el('#defesa-display').textContent=d.defesa;
+    el('#defesa-hint').textContent='10 + '+Math.floor(d.atributos.destreza/2)+' de Destreza + proteção equipada.'+(s.armadura==='pesada'?' Armadura pesada: desvantagem em Furtividade.':'');
+    el('#aura-bonus-display').textContent=s.caminho==='Aura'?(s.auraCaminho?'Bônus de Aura (não gastam pontos): '+Object.keys(d.bonus).filter(function(k){return d.bonus[k];}).map(function(k){return ATTR_LABELS[k]+' +'+d.bonus[k];}).join(' · ')+'. Os campos acima são a base; o resumo mostra os totais.':'Selecione seu Caminho principal de Aura para calcular os bônus do grau.'):'Os campos de atributos são os pontos base. Bônus de Aura só se aplicam ao escolher esse caminho.';
     el('#pv-nome').textContent = s.nome || 'Personagem sem nome';
     var meta = [];
     meta.push(s.raca ? (s.raca + (s.subraca ? ' · ' + s.subraca : '')) : 'Raça —');
@@ -536,9 +552,9 @@
     if (s.caminho) meta.push(s.caminho);
     el('#pv-meta').innerHTML = meta.map(function(m){ return '<span>'+esc(m)+'</span>'; }).join('');
     el('#pv-attrs').innerHTML = Object.keys(ATTR_LABELS).map(function(k){
-      return '<div class="mini-card"><strong>'+(s.atributos[k]||1)+'</strong><span>'+esc(ATTR_LABELS[k])+'</span></div>';
+      return '<div class="mini-card"><strong>'+d.atributos[k]+'</strong><span>'+esc(ATTR_LABELS[k])+'</span></div>';
     }).join('');
-    el('#pv-vida').innerHTML = '<strong>'+s.vidaAtual+' / '+vidaMax()+'</strong><span>Vida</span>';
+    el('#pv-vida').innerHTML = '<strong>'+s.vidaAtual+' / '+vidaMax()+'</strong><span>Vida · Defesa '+d.defesa+'</span>';
     var pvPower = el('#pv-power');
     if (s.caminho !== 'Aura') {
       pvPower.hidden = false;
@@ -593,10 +609,10 @@
     ev.target.value = '';
   });
 
-  window.addEventListener('beforeprint',function(){const preview=document.querySelector('.sheet-print-preview[open]');if(preview){document.body.append(preview.querySelector('#sheet-print'));preview.close();window.scrollTo(0,0);return;}window.SheetPrint(getState(),{vida:vidaMax(),mana:manaMax(currentNivel(),manaPotencialSel.value),aura:AURA_FOLEGO_POR_GRAU[auraGrauSel.value]});});
+  window.addEventListener('beforeprint',function(){const preview=document.querySelector('.sheet-print-preview[open]');if(preview){document.body.append(preview.querySelector('#sheet-print'));preview.close();window.scrollTo(0,0);return;}window.SheetPrint(getState(),{vida:vidaMax(),mana:manaMax(currentNivel(),manaPotencialSel.value),aura:AURA_FOLEGO_POR_GRAU[auraGrauSel.value],atributos:derived().atributos,defesa:derived().defesa});});
   el('#btn-imprimir').addEventListener('click',function(){
     document.querySelector('.sheet-print-preview')?.remove();
-    const doc=window.SheetPrint(getState(),{vida:vidaMax(),mana:manaMax(currentNivel(),manaPotencialSel.value),aura:AURA_FOLEGO_POR_GRAU[auraGrauSel.value]});
+    const doc=window.SheetPrint(getState(),{vida:vidaMax(),mana:manaMax(currentNivel(),manaPotencialSel.value),aura:AURA_FOLEGO_POR_GRAU[auraGrauSel.value],atributos:derived().atributos,defesa:derived().defesa});
     const dialog=document.createElement('dialog');dialog.className='sheet-print-preview';dialog.setAttribute('aria-label','Prévia da ficha para impressão');
     const toolbar=document.createElement('div');toolbar.className='print-preview-toolbar';const print=document.createElement('button');print.className='btn btn-primary';print.textContent='Imprimir / Salvar como PDF';print.onclick=()=>window.PrintCharacterDocument(doc);const close=document.createElement('button');close.className='btn btn-secondary';close.textContent='Voltar à ficha';close.onclick=()=>dialog.close();toolbar.append(print,close);dialog.append(toolbar,doc);document.body.append(dialog);dialog.addEventListener('close',()=>dialog.remove());dialog.showModal();
   });

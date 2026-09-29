@@ -12,9 +12,9 @@ Implementadas no Livro IV e referenciadas em Magia, Aura e Bestiário.
 - Condições com duração e formas de recuperação; regras específicas prevalecem.
 - Avanço por marcos; bônus de Aura separados dos pontos por nível, sem duplicação entre Caminhos.
 
-Os números são uma primeira versão para teste em mesa, não uma alegação de equilíbrio validado em campanhas. A ficha ainda não automatiza Defesa, armadura e bônus de Aura; o livro explica o registro manual, inclusive a diferença de Vida calculada. Não foram alteradas as fichas salvas dos usuários.
+Os números são uma primeira versão para teste em mesa, não uma alegação de equilíbrio validado em campanhas. A ficha agora automatiza Defesa, proteção equipada e bônus de Aura, incluindo Vida e impressão. Atributos salvos continuam sendo os pontos base; o Caminho e o grau geram os bônus sem consumir pontos. Fichas antigas começam sem proteção equipada e sem Caminho principal presumido: basta selecionar as opções. Não foram alteradas as fichas salvas dos usuários.
 
-A auditoria anterior é histórica: as lacunas de regras listadas nela foram tratadas aqui. A automação da ficha e o teste de equilíbrio continuam pendentes.
+A auditoria anterior é histórica: as lacunas de regras listadas nela foram tratadas aqui. O teste de equilíbrio em mesa continua pendente.
 
 ## Música
 
