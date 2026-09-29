@@ -50,8 +50,9 @@
     </div>
     <div class="field">
       <label for="f-papel">Papel</label>
-      <select id="f-papel" style="width: 100%;"><option value="">Selecione</option><option>Guardião</option><option>Aventureiro</option><option>Especialista</option></select>
+      <select id="f-papel" style="width: 100%;"><option value="">Selecione</option><option>Guardião</option><option>Aventureiro</option><option>Especialista</option><option>Diplomata</option><option>Inspirador</option></select>
     </div>
+    <div class="field" id="sheet-role-info"><p id="sheet-role-benefit"></p><label><input type="checkbox" id="f-papel-usado"> Vantagem de papel já utilizada nesta cena</label><button type="button" class="btn btn-secondary btn-sm" id="btn-papel-nova-cena">Nova cena: liberar vantagem de papel</button><a href="livro-04-sistema.html#role-quiz">Descobrir meu papel no teste</a><div id="sheet-role-pending"></div></div>
     <div class="field"><label for="f-nivel">Nível</label><input type="number" id="f-nivel" min="1" max="10" value="1"></div>
 
     <!-- LINHA 4: CAMINHO DE PODER E VIDA ATUAL -->
@@ -178,7 +179,7 @@
 </main>
 <footer class="footer reference-footer"><a class="footer-brand" href="index.html"><img class="footer-star" src="assets/img/home/marca-valedria.webp" alt="" srcset="assets/img/home/marca-valedria-480.webp 480w, assets/img/home/marca-valedria-960.webp 960w, assets/img/home/marca-valedria.webp 1254w" sizes="56px" width="1254" height="1254"><span><strong>Valédria</strong><small>Códice do Mundo</small></span></a><p class="footer-quote">Cada escolha escreve uma lenda.</p><nav class="footer-socials" aria-label="Links externos"><a data-external="discord" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="discord" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-2 10-2 14 0l2 12-5 2-1-3H9l-1 3-5-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord<small>Em breve</small></span><a data-external="instagram" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="instagram" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".5"/></svg>Instagram<small>Em breve</small></span><a data-external="suporte" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="suporte" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v6h4v-6Zm16 0h2v6h-4v-6Zm0 6c0 3-3 4-7 4"/></svg>Suporte<small>Em breve</small></span><a data-external="pacotes" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<span class="sr-only"> (abre em outra aba)</span></a><span data-external-pending="pacotes" title="Link oficial em preparação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 7 9-4 9 4v10l-9 4-9-4Zm0 0 9 5 9-5M12 12v9M8 5l9 5"/></svg>Pacotes<small>Em breve</small></span></nav><details class="footer-settings"><summary aria-label="Abrir controles de tema e música"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 3v18M12 3v18M19 3v18"/><path d="M2 8h6M9 16h6M16 7h6" stroke-width="4"/></svg></summary><div class="topbar-actions"><button class="icon-btn" data-theme-toggle aria-label="Alternar tema"></button></div></details></footer>
 <script src="assets/js/app.js?v=24"></script><script src="assets/js/redesign.js?v=2" defer></script>
-<script src="assets/data/regras.js?v=2"></script><script src="assets/data/itens.js"></script><script src="assets/data/itens_basicos.js?v=20260921-metais"></script><script src="assets/data/pericias.js?v=20"></script><script src="assets/js/portrait-crop.js?v=3"></script><script src="assets/js/sheet-catalog.js?v=20260928"></script><script src="assets/js/sheet-print.js?v=24"></script>
+<script src="assets/data/papeis.js?v=1"></script><script src="assets/data/regras.js?v=2"></script><script src="assets/data/itens.js"></script><script src="assets/data/itens_basicos.js?v=20260921-metais"></script><script src="assets/data/pericias.js?v=20"></script><script src="assets/js/portrait-crop.js?v=3"></script><script src="assets/js/sheet-catalog.js?v=20260928"></script><script src="assets/js/sheet-print.js?v=25"></script>
 <script>
 
 (function(){
@@ -459,6 +460,9 @@
   var itensEditor=el('#itens-editor'),periciasEditor=el('#pericias-editor');
   var collection=window.SheetCatalog({onChange:updatePreview});
 
+  var roleRecord = null;
+  el('#f-papel-usado').addEventListener('change',updatePreview);
+  el('#btn-papel-nova-cena').addEventListener('click',function(){el('#f-papel-usado').checked=false;updatePreview();});
   function getState(){
     var nivelAtual = currentNivel();
     var attrs = {};
@@ -485,23 +489,28 @@
       nivel: currentNivel(), vidaAtual: Math.max(0,Math.min(vidaMax(),parseInt(vidaInput.value,10)||0)), caminho: caminhoSel.value,
       manaPotencial: manaPotencial, manaAtual: manaAtualV,
       auraGrau: auraGrau, auraAtual: auraAtualV, auraCaminho: el('#f-aura-caminho').value, armadura: el('#f-armadura').value, escudo: el('#f-escudo').value,
-      versao: 5, atributos: attrs, pericias: pericias, itens: itens, artefatos: extra.artefatos, foto: extra.foto, fotoOriginal: extra.fotoOriginal, fotoRecorte: extra.fotoRecorte, montaria: extra.montaria, montariaOriginal: extra.montariaOriginal, montariaRecorte: extra.montariaRecorte, personalidade: el('#f-personalidade').value,
+      versao: 6, papelTeste: roleRecord, papelUsado: el('#f-papel-usado').checked, atributos: attrs, pericias: pericias, itens: itens, artefatos: extra.artefatos, foto: extra.foto, fotoOriginal: extra.fotoOriginal, fotoRecorte: extra.fotoRecorte, montaria: extra.montaria, montariaOriginal: extra.montariaOriginal, montariaRecorte: extra.montariaRecorte, personalidade: el('#f-personalidade').value,
       historia: el('#f-historia').value, notas: el('#f-notas').value
     };
   }
 
   function validateState(s){
     if(!s||typeof s!=='object'||Array.isArray(s)||(!('nome' in s)&&!('atributos' in s)))throw Error('Ficha inválida');
-    if(s.versao!=null&&(!Number.isInteger(s.versao)||s.versao>5||s.versao<1))throw Error('Versão não suportada');
+    if(s.versao!=null&&(!Number.isInteger(s.versao)||s.versao>6||s.versao<1))throw Error('Versão não suportada');
     ['nome','jogador','raca','subraca','papel','caminho','manaPotencial','auraGrau','personalidade','historia','notas'].forEach(function(k){if(s[k]!=null&&(typeof s[k]!=='string'||s[k].length>100000))throw Error('Texto inválido');});
     ['nivel','vidaAtual','manaAtual','auraAtual'].forEach(function(k){if(s[k]!=null&&(!Number.isFinite(Number(s[k]))||Number(s[k])<0))throw Error('Número inválido');});
     for(const [key,values] of Object.entries({auraCaminho:['','Força','Velocidade','Morte','Técnica'],armadura:['nenhuma','leve','media','pesada'],escudo:['nao','sim']})){if(s[key]!=null&&!values.includes(s[key]))throw Error('Opção inválida: '+key);}
+    if(s.papelTeste!=null && (typeof s.papelTeste!=='object'||Array.isArray(s.papelTeste)||!window.VALEDRIA_PAPEIS.some(function(r){return r.nome===s.papelTeste.papel;})||typeof s.papelTeste.campanha!=='string'||typeof s.papelTeste.personagem!=='string'))throw Error('Registro de papel inválido');
     if(s.atributos!=null){if(typeof s.atributos!=='object'||Array.isArray(s.atributos))throw Error('Atributos inválidos');Object.keys(ATTR_LABELS).forEach(function(k){if(s.atributos[k]!=null&&!Number.isFinite(Number(s.atributos[k])))throw Error('Atributo inválido');});}
     ['itens','artefatos','pericias'].forEach(function(k){if(s[k]!=null&&(!Array.isArray(s[k])||s[k].length>500||s[k].some(function(x){return !x||typeof x.nome!=='string'||x.nome.length>300;})))throw Error('Lista inválida');});
     return s;
   }
   function setState(s){
     validateState(s);
+    el('#f-papel-usado').checked=s.papelUsado===true;
+    roleRecord = s.papelTeste && typeof s.papelTeste==='object' && s.papelTeste.papel===s.papel ? s.papelTeste : null;
+    if(roleRecord){try{var records=JSON.parse(localStorage.getItem('valedria-role-tests-v1')||'{}'),rid=JSON.stringify([roleRecord.campanha.toLocaleLowerCase('pt-BR'),roleRecord.personagem.toLocaleLowerCase('pt-BR')]);if(!records[rid]||String(records[rid].data)<String(roleRecord.data)){records[rid]=roleRecord;localStorage.setItem('valedria-role-tests-v1',JSON.stringify(records));}}catch(e){}}
+
     applyingState = true;
     if(saveTimer)clearTimeout(saveTimer);
     try {
@@ -541,6 +550,10 @@
     if(!collection||applyingState)return;
     clampVida();
     var s = getState(), d = derived();
+    if(roleRecord && roleRecord.papel!==s.papel)roleRecord=null;
+    el('#f-papel').disabled=!!roleRecord;
+    var role=window.VALEDRIA_PAPEIS.find(function(r){return r.nome===s.papel;});
+    el('#sheet-role-benefit').textContent=role?'Vantagem de '+role.nome+' (uma vez por cena, antes da rolagem e com validação do mestre): '+role.vantagem:'Escolha seu papel ou descubra-o no teste do Livro IV.';
     el('#defesa-display').textContent=d.defesa;
     el('#defesa-hint').textContent='10 + '+Math.floor(d.atributos.destreza/2)+' de Destreza + proteção equipada.'+(s.armadura==='pesada'?' Armadura pesada: desvantagem em Furtividade.':'');
     el('#aura-bonus-display').textContent=s.caminho==='Aura'?(s.auraCaminho?'Bônus de Aura (não gastam pontos): '+Object.keys(d.bonus).filter(function(k){return d.bonus[k];}).map(function(k){return ATTR_LABELS[k]+' +'+d.bonus[k];}).join(' · ')+'. Os campos acima são a base; o resumo mostra os totais.':'Selecione seu Caminho principal de Aura para calcular os bônus do grau.'):'Os campos de atributos são os pontos base. Bônus de Aura só se aplicam ao escolher esse caminho.';
@@ -609,6 +622,13 @@
     ev.target.value = '';
   });
 
+  try{
+    var pendingRole=JSON.parse(sessionStorage.getItem('valedria-role-pending')||'null');
+    if(pendingRole && window.VALEDRIA_PAPEIS.some(function(r){return r.nome===pendingRole.papel;})){
+      var notice=document.createElement('p');notice.textContent='Resultado de '+pendingRole.personagem+' na campanha '+pendingRole.campanha+': '+pendingRole.papel+'. Aplicar nesta ficha?';el('#sheet-role-pending').append(notice);
+      var applyRole=document.createElement('button');applyRole.type='button';applyRole.className='btn btn-secondary';applyRole.textContent='Aplicar resultado nesta ficha';applyRole.onclick=function(){roleRecord=pendingRole;el('#f-papel').value=pendingRole.papel;if(!el('#f-nome').value)el('#f-nome').value=pendingRole.personagem;sessionStorage.removeItem('valedria-role-pending');el('#sheet-role-pending').replaceChildren();updatePreview();};el('#sheet-role-pending').append(applyRole);
+    }
+  }catch(e){}
   window.addEventListener('beforeprint',function(){const preview=document.querySelector('.sheet-print-preview[open]');if(preview){document.body.append(preview.querySelector('#sheet-print'));preview.close();window.scrollTo(0,0);return;}window.SheetPrint(getState(),{vida:vidaMax(),mana:manaMax(currentNivel(),manaPotencialSel.value),aura:AURA_FOLEGO_POR_GRAU[auraGrauSel.value],atributos:derived().atributos,defesa:derived().defesa});});
   el('#btn-imprimir').addEventListener('click',function(){
     document.querySelector('.sheet-print-preview')?.remove();
