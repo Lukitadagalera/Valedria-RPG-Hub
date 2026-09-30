@@ -1,0 +1,3 @@
+html body #notice-form{max-width:none;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;box-sizing:border-box}#notice-form label{min-width:0}#notice-form input:not([type=checkbox]),#notice-form select,#notice-form textarea{width:100%;box-sizing:border-box}#notice-form label:has(textarea),#notice-form .request-consent,#request-status{grid-column:1/-1}#notice-form .request-consent{display:flex;gap:12px;align-items:start}#notice-form input[type=checkbox]{width:18px;height:18px;flex:0 0 18px}#campaign-board,#gm-board,#player-board{gap:24px}.board-card .btn{margin-top:18px}@media(max-width:700px){html body #notice-form{grid-template-columns:1fr}}
+
+html body #notice-form[hidden]{display:none!important}

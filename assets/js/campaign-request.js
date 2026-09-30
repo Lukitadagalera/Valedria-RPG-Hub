@@ -9,21 +9,24 @@
     if (endpoint.protocol !== 'https:') endpoint = null;
   } catch { endpoint = null; }
   if (!endpoint) {
-    button.disabled = true;
-    status.textContent = 'O recebimento de solicitações está em preparação. Assim que o canal da administração estiver disponível, você poderá enviar seu pedido por aqui.';
+    button.disabled = false;
+    button.textContent='Registrar interesse (teste)';
+    status.textContent = 'Modo de teste: seu pedido será salvo somente neste navegador. Nenhuma mensagem será enviada à administração.';
   }
   let sending = false;
   let submitted = false;
   let requestId;
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (!endpoint || sending || submitted || !form.reportValidity()) return;
+    if (sending || !form.reportValidity()) return;
+    if(!endpoint){try{const values=Object.fromEntries(new FormData(form));const key='valedria-campaign-requests-v1';const saved=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(saved))throw Error('invalid');const duplicate=saved.some(x=>x.email===values.email&&x.mesa===values.mesa&&x.papel===values.papel);if(!duplicate)saved.push({...values,id:crypto.randomUUID(),created:Date.now()});localStorage.setItem(key,JSON.stringify(saved));success.querySelector('h3').textContent=duplicate?'Interesse já registrado neste navegador':'Interesse registrado neste navegador';success.querySelector('p').textContent='Pedido de teste para '+(form.elements.mesa.selectedOptions[0].textContent)+'. A participação ainda depende da confirmação do mestre. Nenhuma vaga foi ocupada e nenhum e-mail foi enviado.';form.hidden=true;success.hidden=false;success.focus();}catch{status.textContent='Não foi possível salvar neste navegador. Seus dados continuam no formulário.';}return;}
+    if(submitted)return;
     sending = true;
     button.disabled = true;
     status.textContent = 'Enviando sua solicitação…';
     const values = new FormData(form);
     const payload = {};
-    for (const name of ['nome', 'email', 'discord', 'papel', 'horario', 'descricao']) payload[name] = String(values.get(name) || '').trim();
+    for (const name of ['nome', 'email', 'discord', 'papel', 'horario', 'descricao', 'mesa']) payload[name] = String(values.get(name) || '').trim();
     // A mesma tentativa mantém sua chave em caso de timeout para evitar e-mails duplicados.
     requestId ||= crypto.randomUUID();
     payload.requestId = requestId;

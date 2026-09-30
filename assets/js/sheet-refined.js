@@ -39,7 +39,7 @@
  var hint=document.createElement('p');hint.className='sheet-guidance';hint.textContent='Comece pela identidade. Depois distribua os atributos e escolha suas perícias e equipamentos.';tabs.after(hint);
  Array.from(document.querySelectorAll('[data-attr]')).forEach(function(input){
   var control=document.createElement('div');control.className='attribute-stepper';input.before(control);
-  [-1,1].forEach(function(delta){var b=document.createElement('button');b.type='button';b.textContent=delta<0?'−':'+';b.setAttribute('aria-label',(delta<0?'Diminuir ':'Aumentar ')+input.labels[0].textContent);b.addEventListener('click',function(){input.value=Math.max(1,(Number(input.value)||1)+delta);input.dispatchEvent(new Event('change',{bubbles:true}));});control.append(b);});
+  [-1,1].forEach(function(delta){var b=document.createElement('button');b.type='button';b.dataset.step=delta;b.textContent=delta<0?'−':'+';b.setAttribute('aria-label',(delta<0?'Diminuir ':'Aumentar ')+input.labels[0].textContent);b.addEventListener('click',function(){input.value=Math.max(1,Math.min(Number(input.max)||Infinity,(Number(input.value)||1)+delta));input.dispatchEvent(new Event('change',{bubbles:true}));});control.append(b);});
   control.insertBefore(input,control.lastChild);
  });
  document.getElementById('attr-points').setAttribute('aria-live','polite');

@@ -10,3 +10,5 @@
 
 /* Space between content groups, comparison cards and their actions. */
 .account-page{gap:32px}.account-menu{gap:26px}.account-page .account-plans{gap:24px;margin:22px 0 32px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.account-plans .mini-card{padding:24px}.account-plans h3{margin-bottom:12px}.account-screen>.account-actions{gap:16px;margin-block:28px}.account-subpanel{margin-block:32px}.account-subpanel>.account-actions{margin-top:20px}.account-screen>h3{margin-top:32px}.account-screen>details{margin-block:24px}.account-screen>details+p{margin-top:28px}.account-screen>p+.btn{margin-top:16px}@media(max-width:600px){.account-page .account-plans{grid-template-columns:1fr;gap:20px}.account-menu{gap:20px}}
+
+.account-plans{grid-template-columns:repeat(4,minmax(0,1fr))}@media(max-width:1000px){.account-plans{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.account-plans{grid-template-columns:1fr}}

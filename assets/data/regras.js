@@ -4,6 +4,11 @@ window.VALEDRIA_REGRAS={
   manaCrescimento:{Estagnada:0,Comum:.10,Elevado:.20,Superior:.50,'Anomalia de Mana':1},
   folegoPorGrau:{Aprendiz:3,Guerreiro:4,Mestre:5,'Grande Mestre':8,Imperador:null,Deus:null},
   manaMax(nivel,potencial){const taxa=this.manaCrescimento[potencial]??this.manaCrescimento.Comum;return Math.round(this.manaBase*Math.pow(1+taxa,Math.max(0,Math.min(this.nivelMaximo,Number(nivel)||1)-1)));},
+  limitarAtributos(atributos,nivel){
+    const keys=['forca','destreza','constituicao','sabedoria','carisma'];
+    let rest=this.pontosIniciais+this.pontosPorNivel*(Math.max(1,Math.min(10,Math.floor(Number(nivel)||1)))-1)-keys.length;
+    const out={};for(const k of keys){const extra=Math.min(rest,Math.max(0,Math.floor(Number(atributos?.[k])||1)-1));out[k]=1+extra;rest-=extra;}return out;
+  },
   auraBonus(caminho,grau){
     const bonus={forca:0,destreza:0,constituicao:0,sabedoria:0,carisma:0};
     const ordem={Força:['forca'],Velocidade:['destreza'],Morte:['forca','constituicao'],Técnica:['destreza','sabedoria','carisma']}[caminho];

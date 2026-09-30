@@ -15,7 +15,7 @@ window.SheetPrint=function(state,reserves){
  for(const [key,title]of [['itens','Itens e equipamentos'],['artefatos','Artefatos mágicos']]){const b=block(a,title,null,state[key].length?0:20);if(state[key].length){b.lastChild.remove();for(const x of state[key]){const r=add(b,'div','','print-item');add(r,'h3',x.nome+(key==='itens'?' × '+(x.quantidade||1):''));add(r,'p',[x.categoria,x.grau,x.preco,x.descricao,x.efeito,x.condicao_de_uso,x.maldicao].filter(Boolean).join(' · '));}}}
  add(a,'footer','VALÉDRIA · Seus feitos escrevem sua história.','print-footer');
  const b=page('História e diário de jornada');add(b,'h1',state.nome||'Diário do aventureiro');
- if(state.montaria){const m=block(b,'Montaria');m.lastChild.remove();const im=add(m,'img',null,'print-mount');im.src=state.montaria;im.alt='Montaria';}
+ if(state.montaria){const m=block(b,'Montaria');m.lastChild.remove();const im=add(m,'img',null,'print-mount');im.src=state.montaria;im.alt='Montaria';const spec=(window.VALEDRIA_MONTARIAS||[]).find(x=>x.id===state.montariaId);if(spec)add(m,'p',spec.nome+' · Movimento '+spec.movimento+' m · Vida '+spec.vida+' · Defesa '+spec.defesa+'. '+spec.beneficio);}
  block(b,'Personalidade',state.personalidade,30);block(b,'História e motivações',state.historia,60);block(b,'Notas de mesa',state.notas,55);add(b,'footer','VALÉDRIA · Continue sua jornada.','print-footer');document.body.append(root);return root;
 };
 

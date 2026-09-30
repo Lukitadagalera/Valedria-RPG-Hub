@@ -33,6 +33,7 @@
       card.append(el('h3', item.nome), el('p', `Mestre: ${item.mestre || 'A informar'}`),
         el('p', `${item.jogadores} / ${item.limite} jogadores · ${vacancies ? `${vacancies} ${vacancies === 1 ? 'vaga' : 'vagas'}` : 'Mesa completa'}`),
         el('p', `Quando: ${item.horario || 'A combinar'}`), el('p', item.descricao));
+      if(vacancies){const join=el('button','Quero participar','btn btn-primary');join.type='button';join.addEventListener('click',()=>{const form=document.getElementById('notice-form');form.hidden=false;document.getElementById('request-success').hidden=true;form.elements.mesa.value=item.id||item.nome;form.elements.papel.value='Quero jogar';form.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});form.elements.nome.focus({preventScroll:true});});card.append(join);}
       contact(card, item.discord);
       if(Array.isArray(item.participantes)&&item.participantes.length)card.append(el('p','Jogadores: '+item.participantes.join(', ')));
       board.append(card);
@@ -50,6 +51,7 @@
     });
   }
   document.getElementById('campaign-filter').addEventListener('change', renderCampaigns);
+  const tables=document.getElementById('request-table');campaigns.filter(c=>c.jogadores<c.limite).forEach(c=>{const option=el('option',c.nome);option.value=c.id||c.nome;tables.append(option);});
   renderCampaigns();
   renderPeople('mestres', 'gm-board', 'Nenhum mestre anunciado ainda. Tem uma história para conduzir? Apresente sua ideia e reúna uma mesa.');
   renderPeople('jogadores', 'player-board', 'Nenhum jogador anunciado ainda. Conte quando pode jogar e que aventuras gostaria de viver.');
