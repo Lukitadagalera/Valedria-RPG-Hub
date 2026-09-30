@@ -165,7 +165,8 @@
           "text": "Quem ajudar a devolver a carga terá abrigo, alimento e trabalho de reparo garantidos na chegada. — Alina",
           "when": "No acordo com Dário ou no epílogo."
         }
-      ]
+      ],
+      "minPlan": "contador"
     },
     {
       "id": "sino-pedra",
@@ -332,7 +333,8 @@
           "text": "1. Feche a entrada. 2. Abra o alívio. 3. Troque a válvula. Ordem aos guardiões: Manutenção, pressão segura, abrir passagem.",
           "when": "Cena 3, mesa do arquivo."
         }
-      ]
+      ],
+      "minPlan": "mestre"
     },
     {
       "id": "agua-cinzas",
@@ -505,7 +507,350 @@
           "text": "O selo dos barris intactos é o mesmo usado nas mercadorias de Narek. Há marcas recentes de rodas entre cisterna e torre.",
           "when": "Cena 3, vestígio da carga."
         }
-      ]
+      ],
+      "minPlan": "mestre"
+    },
+    {
+      "id": "jardim-ecos",
+      "name": "O jardim dos ecos",
+      "place": "Santuário élfico esquecido",
+      "level": "Níveis 4–5",
+      "duration": "Uma sessão de 3–4 horas; pode ser dividida em duas.",
+      "objective": "Reabrir um observatório e devolver ao bosque as memórias presas em seus espelhos.",
+      "playerIntro": "A guardiã Naia espera sob um arco coberto de flores: “O jardim repete nossas últimas palavras, mas ninguém ouve o riacho. Meu aprendiz entrou para consertar os espelhos e não voltou.” Uma luz prateada pulsa entre as árvores.",
+      "map": {
+        "name": "O jardim dos ecos — mapa tático",
+        "image": "assets/img/kits/jardim.webp",
+        "columns": 30,
+        "rows": 20,
+        "cellMeters": 1.5,
+        "locations": [
+          {
+            "id": "1",
+            "name": "Arco de entrada",
+            "x": 20,
+            "y": 76,
+            "secret": false
+          },
+          {
+            "id": "2",
+            "name": "Biblioteca aberta",
+            "x": 24,
+            "y": 26,
+            "secret": false
+          },
+          {
+            "id": "3",
+            "name": "Observatório",
+            "x": 75,
+            "y": 25,
+            "secret": false
+          },
+          {
+            "id": "4",
+            "name": "Jardim das águas",
+            "x": 76,
+            "y": 76,
+            "secret": false
+          }
+        ],
+        "routes": []
+      },
+      "preparation": [
+        "Grupo de 3–5 personagens; referência: 4 jogadores. Níveis 4–5. Reserve 20 minutos para apresentar vínculos e regras.",
+        "Leia a verdade e os desfechos. Escolha um vínculo: alguém depende da carga, conhece um morador ou deve um favor à pessoa que pede ajuda.",
+        "Combine limites de conteúdo; qualquer pessoa pode pedir pausa. Aventura sem necessidade de tortura, crueldade com animais ou conflito entre jogadores.",
+        "Separe os materiais dos jogadores. Entregue cada pista somente na cena indicada; não mostre a legenda do mestre antes da exploração.",
+        "Use 30 × 20 quadrados, cada um com 1,5 m. Movimento de 6 m equivale a 4 quadrados; diagonais custam 1 quadrado, sem atravessar cantos de paredes. Paredes bloqueiam movimento; entulho e água rasa custam o dobro."
+      ],
+      "gmSections": [
+        {
+          "title": "Ficha rápida e verdade do mestre",
+          "text": "O aprendiz Eren desviou água do jardim para mover os espelhos. A comporta travou e o observatório passou a guardar ecos de vozes. Eren está vivo, preso na biblioteca por raízes que respondem à máquina. Não há maldição nem necessidade de destruir o bosque. Libertar Eren, restaurar o canal e alinhar três espelhos interrompe o ciclo.",
+          "points": [
+            "Ritmo sugerido: abertura 20 min, investigação 50 min, complicação 40 min, clímax 50 min, epílogo 20 min. Se faltar tempo, entregue a pista essencial sem teste.",
+            "Testes: 1d20 + atributo; ND 10 fácil, ND 13 moderado, ND 16 difícil. Perícia pertinente ou papel aplicável concede vantagem (2d20, fica o maior). Não acumule vantagens.",
+            "Pistas essenciais não dependem de sucesso. Testes revelam atalhos ou reduzem custos. Uma falha muda a situação; não impede continuar.",
+            "Estas fichas de adversários são próprias do kit. Ataque indica bônus total; dano já inclui bônus. Não some atributos outra vez. Um ataque ou outra ação por turno, movimento de 6 m salvo indicação."
+          ]
+        },
+        {
+          "title": "Leia na abertura",
+          "text": "A guardiã Naia espera sob um arco coberto de flores: “O jardim repete nossas últimas palavras, mas ninguém ouve o riacho. Meu aprendiz entrou para consertar os espelhos e não voltou.” Uma luz prateada pulsa entre as árvores.",
+          "points": []
+        },
+        {
+          "title": "1 · Arco: vozes emprestadas",
+          "text": "Leia: “Uma frase sai das folhas com a sua própria voz. O caminho se bifurca entre estantes de pedra e um espelho voltado para o céu.”",
+          "points": [
+            "Naia entrega corda, ferramenta de ajuste e a pista 1. Cada jogador conta uma lembrança feliz que seu personagem aceita compartilhar; isso é opcional e não exige relato pessoal do jogador.",
+            "Sabedoria ND 13 identifica que todos os ecos vêm do observatório. Falha revela o mesmo rumo, mas atrai uma raiz sentinela que bloqueia a passagem; contorná-la custa uma marca de tensão, sem combate obrigatório.",
+            "As duas trilhas estão abertas. A biblioteca contém o aprendiz e a instrução; o jardim contém a causa hidráulica. Podem ser visitados em qualquer ordem."
+          ]
+        },
+        {
+          "title": "2 · Biblioteca: resgate entre raízes",
+          "text": "Leia: “Eren mantém os pés sobre uma mesa. Raízes apertam a porta, enquanto uma estante repete: água, chão, céu.”",
+          "points": [
+            "Eren explica o erro e entrega a pista 2 mesmo se o grupo falhar. Uma ação e Força ND 13 afastam a raiz; Destreza ND 13 alcança o trinco pela janela. Falha causa 1d4 de dano a quem tenta, sem prender mais ninguém; outro método continua possível.",
+            "Apresentar a ferramenta de Naia e pedir calma, com Carisma ND 13, silencia o eco que agita as raízes. Sucesso liberta Eren sem dano. Ajudar usa uma ação e concede vantagem, conforme o Livro IV.",
+            "Eren acompanha o grupo como orientador; não resolve os testes. Se escoltado para fora, Naia cuida dele e o grupo pode prosseguir normalmente."
+          ]
+        },
+        {
+          "title": "3 · Águas: restaurar o fluxo",
+          "text": "Leia: “Um fio de água desaparece sob uma roda parada. Pedras e galhos comprimem a comporta.”",
+          "points": [
+            "Remova o entulho com uma ação e Força ND 13, depois ajuste a roda com uma ação e Destreza ou Sabedoria ND 13. Cada falha avança a tensão; o teste pode ser repetido com outra abordagem. Ferramentas adequadas permitem a tentativa, sem bônus automático.",
+            "Alternativa sem teste: três personagens usam suas ações na mesma rodada para segurar a roda, retirar pedras e abrir a passagem. Um grupo menor pode gastar dez minutos e duas marcas de tensão.",
+            "Restaurar o fluxo encerra o crescimento das raízes, mas os ecos persistem até alinhar os espelhos. A placa sob a roda é a pista 3, recuperável sem teste."
+          ]
+        },
+        {
+          "title": "4 · Observatório: água, chão, céu",
+          "text": "Leia: “Três espelhos cercam um cristal. Em cada superfície há uma imagem: uma gota, uma folha e uma estrela.”",
+          "points": [
+            "A ordem é gota voltada ao canal, folha ao arco de entrada, estrela ao cristal central. Com as pistas, cada ajuste custa uma ação e dispensa teste. Sem as pistas, Sabedoria ND 16 descobre um ajuste; falha avança o relógio e permite buscar a biblioteca.",
+            "Antes de restaurar o fluxo, a máquina desfaz o primeiro ajuste. Deixe isso visível e explique que falta água; não consuma todas as ações do grupo em tentativas inúteis.",
+            "Se quebrarem um espelho ou atacarem o cristal, desperte 2 raízes sentinelas e 1 guardião de pedra. Para 3 jogadores use só 1 raiz; para 5 use 3. Alinhar o último espelho encerra a luta imediatamente. Desligar a máquina com duas ações e Força ND 16 também encerra o perigo, mas perde o arquivo de ecos."
+          ]
+        },
+        {
+          "title": "Relógio de tensão · 6 marcas",
+          "text": "Marque uma vez ao entrar em cada novo local e nas falhas indicadas; no máximo uma marca extra por rodada.",
+          "points": [
+            "3: trilhas ganham raízes e passam a terreno difícil. 5: espelhos repetem frases, mas as pistas continuam legíveis. 6: a máquina fecha o arco com raízes; ainda é possível terminar a missão e reabrir a saída, ou sair pela trilha do riacho com movimento pela metade.",
+            "Restaurar o canal remove o terreno difícil. Não aumente atributos dos inimigos com o relógio. Naia ajuda na retirada, sem solucionar o observatório pelo grupo."
+          ]
+        },
+        {
+          "title": "Desfechos, recompensa e próxima sessão",
+          "text": "Jardim restaurado: Naia oferece abrigo, provisões para sete dias e uma cópia do mapa dos caminhos élficos, sem bônus numérico automático. Máquina desligada à força: todos sobrevivem, mas os ecos antigos são perdidos; Naia pede ajuda para registrar novas histórias. Se Eren não foi resgatado, Naia o procura e a relação com o grupo fica abalada. Gancho: uma voz recuperada menciona um farol que acende sem vigia.",
+          "points": [
+            "Cada personagem pode recuperar recursos com os descansos do Livro IV. Não restaure Vida ou Mana automaticamente entre cenas.",
+            "Após resolver a ameaça central e encerrar os vínculos, este kit conta como um marco de campanha. O mestre pode conceder 1 nível a quem estava no nível inicial indicado; não conceda níveis por repetir o kit.",
+            "Pergunte: quem você ajudou, o que mudou em seu personagem e qual promessa levará adiante? Registre relações, equipamentos e consequências na ficha."
+          ]
+        }
+      ],
+      "npcs": [
+        {
+          "name": "Naia",
+          "role": "Guardiã do jardim",
+          "approach": "Paciente, reconhece erros e pede que preservem as memórias.",
+          "combat": "Vida 18; Defesa 12; testes de natureza +5; ação Ajudar; não acompanha o combate."
+        },
+        {
+          "name": "Eren",
+          "role": "Aprendiz arrependido",
+          "approach": "Assume a responsabilidade e explica qualquer pista esquecida.",
+          "combat": "Vida 12; Defesa 11; testes de mecanismos +3; sem ataque; movimento 6 m."
+        },
+        {
+          "name": "Raiz sentinela",
+          "role": "Defesa do observatório",
+          "approach": "Só reage à máquina; para quando o cristal se apaga.",
+          "combat": "Vida 18; Defesa 12; ataque +5, ramo 1d6+2, alcance 1,5 m; movimento 3 m; testes +2. Sem imobilização adicional."
+        },
+        {
+          "name": "Guardião de pedra",
+          "role": "Vigia antigo",
+          "approach": "Protege o cristal e não persegue fora do observatório.",
+          "combat": "Vida 32; Defesa 14; ataque +6, golpe 1d8+3, alcance 1,5 m; movimento 6 m; testes +4. Sem resistências especiais."
+        }
+      ],
+      "handouts": [
+        {
+          "name": "Bilhete de Naia",
+          "text": "Não lutem contra uma voz. Sigam o fluxo: toda lembrança precisa de um caminho de volta.",
+          "when": "Entrada, entregue por Naia."
+        },
+        {
+          "name": "Página do aprendiz",
+          "text": "Primeiro água, depois chão, por último céu. A gota procura o canal; a folha, a entrada; a estrela, o coração de cristal.",
+          "when": "Biblioteca, com Eren."
+        },
+        {
+          "name": "Placa da comporta",
+          "text": "Sem corrente de água, os espelhos retornam à posição de repouso. Abra o canal antes de alinhar.",
+          "when": "Jardim, sob a roda."
+        }
+      ],
+      "minPlan": "deus"
+    },
+    {
+      "id": "farol-mares",
+      "name": "O farol das marés",
+      "place": "Costa dos reinos humanos",
+      "level": "Níveis 5–6",
+      "duration": "Uma sessão de 3–4 horas; pode ser dividida em duas.",
+      "objective": "Evacuar um farol isolado e impedir que um sinal falso atraia navios aos recifes.",
+      "playerIntro": "Uma lanterna pisca três vezes no nevoeiro. No cais, a barqueira Lia aponta para o farol: “A luz deveria avisar dos recifes. Hoje ela chama os navios para cima deles. Ainda há gente lá dentro.” A maré já cobre o primeiro degrau.",
+      "map": {
+        "name": "O farol das marés — mapa tático",
+        "image": "assets/img/kits/farol.webp",
+        "columns": 30,
+        "rows": 20,
+        "cellMeters": 1.5,
+        "locations": [
+          {
+            "id": "1",
+            "name": "Cais de resgate",
+            "x": 20,
+            "y": 77,
+            "secret": false
+          },
+          {
+            "id": "2",
+            "name": "Armazém",
+            "x": 25,
+            "y": 26,
+            "secret": false
+          },
+          {
+            "id": "3",
+            "name": "Mecanismo do farol",
+            "x": 75,
+            "y": 25,
+            "secret": false
+          },
+          {
+            "id": "4",
+            "name": "Gruta da maré",
+            "x": 75,
+            "y": 77,
+            "secret": false
+          }
+        ],
+        "routes": []
+      },
+      "preparation": [
+        "Grupo de 3–5 personagens; referência: 4 jogadores. Níveis 5–6. Reserve 20 minutos para apresentar vínculos e regras.",
+        "Leia a verdade e os desfechos. Escolha um vínculo: alguém depende da carga, conhece um morador ou deve um favor à pessoa que pede ajuda.",
+        "Combine limites de conteúdo; qualquer pessoa pode pedir pausa. Aventura sem necessidade de tortura, crueldade com animais ou conflito entre jogadores.",
+        "Separe os materiais dos jogadores. Entregue cada pista somente na cena indicada; não mostre a legenda do mestre antes da exploração.",
+        "Use 30 × 20 quadrados, cada um com 1,5 m. Movimento de 6 m equivale a 4 quadrados; diagonais custam 1 quadrado, sem atravessar cantos de paredes. Paredes bloqueiam movimento; entulho e água rasa custam o dobro."
+      ],
+      "gmSections": [
+        {
+          "title": "Ficha rápida e verdade do mestre",
+          "text": "O antigo vigia Otávio tentou girar a lente para chamar socorro durante uma pane. O freio quebrou e o sinal aponta para os recifes. A contrabandista Mira tomou o armazém para guardar carga, mas também ficou presa pela maré. Ela possui a peça do freio, retirada para reparar seu guincho. Todos podem ser salvos por cooperação; não existe vilão que precise morrer.",
+          "points": [
+            "Ritmo sugerido: abertura 20 min, investigação 50 min, complicação 40 min, clímax 50 min, epílogo 20 min. Se faltar tempo, entregue a pista essencial sem teste.",
+            "Testes: 1d20 + atributo; ND 10 fácil, ND 13 moderado, ND 16 difícil. Perícia pertinente ou papel aplicável concede vantagem (2d20, fica o maior). Não acumule vantagens.",
+            "Pistas essenciais não dependem de sucesso. Testes revelam atalhos ou reduzem custos. Uma falha muda a situação; não impede continuar.",
+            "Estas fichas de adversários são próprias do kit. Ataque indica bônus total; dano já inclui bônus. Não some atributos outra vez. Um ataque ou outra ação por turno, movimento de 6 m salvo indicação."
+          ]
+        },
+        {
+          "title": "Leia na abertura",
+          "text": "Uma lanterna pisca três vezes no nevoeiro. No cais, a barqueira Lia aponta para o farol: “A luz deveria avisar dos recifes. Hoje ela chama os navios para cima deles. Ainda há gente lá dentro.” A maré já cobre o primeiro degrau.",
+          "points": []
+        },
+        {
+          "title": "1 · Cais: um plano antes da subida",
+          "text": "Leia: “O barco bate contra pedras. Uma corda estala, e a luz do farol varre o mar na direção errada.”",
+          "points": [
+            "Lia entrega a pista 1 e mantém o barco pronto. O grupo escolhe salvar o vigia, corrigir o sinal ou negociar uma evacuação; as três tarefas se conectam, sem ordem obrigatória.",
+            "Prender a embarcação exige Destreza ND 13 ou duas ações de dois personagens usando a corda disponível, sem teste. Falha custa uma marca de maré; Lia conserva o barco, mas ele sai e retorna dez minutos depois.",
+            "O cais e os caminhos de pedra são seguros enquanto não forem inundados. Cair em água junto à borda exige uma ação e Força ND 13 para subir, ou ação de um aliado com corda sem teste. Falha causa 1d4 de dano de impacto e mantém a pessoa junto à borda; não há morte automática."
+          ]
+        },
+        {
+          "title": "2 · Armazém: negociar a peça",
+          "text": "Leia: “Mira empilha caixas acima da linha úmida na parede. No guincho, uma roda de bronze traz o mesmo símbolo do farol.”",
+          "points": [
+            "Mira troca a roda pela promessa de lugar no barco para sua equipe. Aceitar garante a peça sem teste e a pista 2. Carisma ND 16 também a convence a entregar a carga irregular às autoridades; falha mantém apenas o acordo de resgate.",
+            "Sabedoria ND 13 encontra uma segunda corda e uma prancha útil para a gruta. Falha encontra ambas, mas a busca avança a maré. Pistas essenciais não exigem teste.",
+            "Se o grupo atacar, use 2 marinheiros e 1 capataz; para 3 jogadores retire um marinheiro, para 5 acrescente um. Eles rendem-se quando o capataz cai ou quando recebem uma saída segura. Mira não luta e entrega a roda se ameaçada; registre a hostilidade futura."
+          ]
+        },
+        {
+          "title": "3 · Gruta: tirar Otávio da água",
+          "text": "Leia: “O vigia se apoia num patamar seco. A escada entre vocês perdeu três degraus. Ele segura um caderno sobre a cabeça.”",
+          "points": [
+            "Uma prancha e corda resolvem a travessia em duas ações, sem teste. Sem esses materiais, Destreza ND 16 permite atravessar pela borda; falha causa 1d4 de dano e devolve o personagem ao patamar inicial.",
+            "Otávio não anda depressa: escoltá-lo reduz o movimento pela metade, sem outra penalidade. Dois personagens podem carregá-lo juntos gastando suas ações para atravessar a lacuna. Ele entrega a pista 3 mesmo antes do resgate, gritando a instrução.",
+            "Otávio confirma que a roda é necessária. Se o grupo já improvisou o freio, ele orienta apenas o sinal. Não exige nova rolagem para repetir uma informação obtida."
+          ]
+        },
+        {
+          "title": "4 · Farol: frear, alinhar, avisar",
+          "text": "Leia: “O mecanismo gira aos solavancos. Entre cada clarão, um casco aparece no nevoeiro.”",
+          "points": [
+            "Com a roda, uma ação e Destreza ou Sabedoria ND 13 reinstalam o freio. Falha avança a maré e pode ser repetida. Duas pessoas com ferramentas e duas ações cada fazem o reparo sem teste.",
+            "Depois de frear, uma ação aponta a lente para o mar aberto e outra cobre a luz para fazer três lampejos, pausa, três lampejos. As pistas revelam o procedimento; executá-lo corretamente dispensa teste e afasta o navio.",
+            "Sem roda, Força ND 16 trava o eixo por uma rodada enquanto um aliado sinaliza. Falha causa 1d6 de dano a quem segura; permite outra tentativa ou buscar a peça. Alternativa: apagar o farol com uma ação e sinalizar com a lanterna do cais, gastando duas ações; salva o navio, mas deixa o farol sem funcionamento."
+          ]
+        },
+        {
+          "title": "Relógio de maré · 6 marcas",
+          "text": "Avance ao entrar num novo local e nas falhas indicadas; no máximo uma marca adicional por rodada.",
+          "points": [
+            "3: cais e gruta tornam-se terreno difícil. 5: o barco só encosta junto à escada do farol. 6: o navio atinge um banco de areia e precisa de reboque; ninguém morre automaticamente. O grupo pode terminar o sinal e organizar o resgate, mas a carga se perde.",
+            "Corrigir o sinal evita o encalhe, porém a maré continua subindo. Lia retorna pelo lado do farol; há espaço para todos em duas viagens. Na segunda, os personagens podem ajudar a transportar Otávio. Não exija um novo combate para encerrar."
+          ]
+        },
+        {
+          "title": "Desfechos, recompensa e próxima sessão",
+          "text": "Sinal corrigido e pessoas salvas: a vila oferece abrigo, provisões para uma semana e passagem futura num barco costeiro para o grupo. Se o navio encalhou, a recompensa é apenas abrigo e a amizade dos resgatados; a próxima missão pode ser recuperar a carga. Mira cumpre o acordo de resgate, mas a decisão de denunciá-la cabe ao grupo e às autoridades locais. Otávio pede ajuda para formar novos vigias. Gancho: a carga contém uma carta sobre espelhos de um jardim élfico.",
+          "points": [
+            "Cada personagem pode recuperar recursos com os descansos do Livro IV. Não restaure Vida ou Mana automaticamente entre cenas.",
+            "Após resolver a ameaça central e encerrar os vínculos, este kit conta como um marco de campanha. O mestre pode conceder 1 nível a quem estava no nível inicial indicado; não conceda níveis por repetir o kit.",
+            "Pergunte: quem você ajudou, o que mudou em seu personagem e qual promessa levará adiante? Registre relações, equipamentos e consequências na ficha."
+          ]
+        }
+      ],
+      "npcs": [
+        {
+          "name": "Lia",
+          "role": "Barqueira",
+          "approach": "Põe vidas antes da carga; explica que haverá duas viagens.",
+          "combat": "Vida 20; Defesa 12; testes de navegação +5; movimento 6 m; ação Ajudar."
+        },
+        {
+          "name": "Otávio",
+          "role": "Vigia ferido",
+          "approach": "Conhece o sinal e admite ter provocado a pane ao pedir ajuda.",
+          "combat": "Vida atual 5 de 16; Defesa 10; movimento 3 m; testes do farol +4; não luta."
+        },
+        {
+          "name": "Mira",
+          "role": "Dona da carga irregular",
+          "approach": "Negocia proteção para sua equipe antes de qualquer lucro.",
+          "combat": "Vida 18; Defesa 12; testes sociais +4; foge ou se rende; não combate."
+        },
+        {
+          "name": "Marinheiro",
+          "role": "Defensor do armazém",
+          "approach": "Quer sair vivo; aceita um acordo em qualquer rodada.",
+          "combat": "Vida 24; Defesa 13; ataque +6, bastão 1d6+3, alcance 1,5 m; movimento 6 m; testes +3."
+        },
+        {
+          "name": "Capataz",
+          "role": "Responsável pela equipe",
+          "approach": "Protege os marinheiros, não luta até a morte.",
+          "combat": "Vida 38; Defesa 15; ataque +7, maça 1d8+3, alcance 1,5 m; movimento 6 m; testes +4."
+        }
+      ],
+      "handouts": [
+        {
+          "name": "Código costeiro",
+          "text": "Três lampejos, pausa, três lampejos: recifes à frente, afastar para mar aberto. Luz contínua aponta o canal seguro.",
+          "when": "Cais, com Lia."
+        },
+        {
+          "name": "Inventário do guincho",
+          "text": "Roda de bronze emprestada do freio do farol. Devolver antes de acender a lente.",
+          "when": "Armazém, com Mira."
+        },
+        {
+          "name": "Caderno do vigia",
+          "text": "Reinstalar o freio. Virar a lente para o mar aberto. Avisar com três lampejos, pausa, três lampejos. Se não houver freio, apagar a lente e usar a lanterna do cais.",
+          "when": "Gruta, com Otávio."
+        }
+      ],
+      "minPlan": "deus"
     }
   ],
   "campaigns": [

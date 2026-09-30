@@ -46,7 +46,7 @@ function handle({req,res,url,data,db,user,config,reply}){
  }
  if(route==='/api/studio/resources'){
   if(req.method!=='GET')fail(405);const e=allowed(db,user);const raw=JSON.parse(fs.readFileSync(path.join(path.dirname(config.libraryPath),'studio.json'),'utf8'));
-  reply(res,200,{plan:e.plan,kits:raw.kits,campaigns:levels[e.plan]>=2?raw.campaigns:[],templates:levels[e.plan]>=3?raw.templates:[]});return true;
+  reply(res,200,{plan:e.plan,kits:raw.kits.filter(k=>(levels[k.minPlan]||1)<=levels[e.plan]),campaigns:levels[e.plan]>=2?raw.campaigns:[],templates:levels[e.plan]>=3?raw.templates:[]});return true;
  }
  if(route==='/api/bonus-book'){
   if(req.method!=='GET')fail(405);allowed(db,user);const file=path.join(path.dirname(config.libraryPath),'bonus-valedria.pdf');if(!fs.existsSync(file))fail(404);

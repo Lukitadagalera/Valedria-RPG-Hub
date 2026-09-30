@@ -13,7 +13,7 @@ const mounts=c.window.VALEDRIA_MONTARIAS;assert.equal(mounts.length,3);for(const
 const {rank}=require('../server/content.cjs');const db={prepare:()=>({get:()=>undefined})};assert.equal(rank(db,null),rank(db,'free'),'same content for anonymous and free members');
 const kits=JSON.parse(fs.readFileSync('assets/demo/studio.json','utf8')).kits;
 (async()=>{
- assert.equal(kits.length,3);assert.equal(new Set(kits.map(k=>k.id)).size,3);
+ assert.equal(kits.length,5);assert.equal(new Set(kits.map(k=>k.id)).size,5);
  for(const k of kits){assert.equal(k.map.locations.length,4);assert.ok(fs.existsSync(k.map.image));assert.ok(k.gmSections.length>=7);assert.ok(k.npcs.length>=4);assert.equal(k.handouts.length,3);
   const player=await c.window.ValedriaKits.pack(k,false),gm=await c.window.ValedriaKits.pack(k,true);
   assert.ok(player.includes('data:image/webp;base64,'),'offline artwork embedded');assert.ok(player.includes('tactical-grid'));
@@ -21,5 +21,5 @@ const kits=JSON.parse(fs.readFileSync('assets/demo/studio.json','utf8')).kits;
   for(const h of k.handouts)assert.ok(!player.includes(h.text),'future clue withheld');
   assert.ok(!c.window.ValedriaKits.map(k.map,false).includes('class="map-number"'),'player map has no GM markers');
  }
- console.log('PASS: level budgets 1–10, mount catalog assets, equal visitor/free access, three complete kits, offline maps and player spoiler separation.');
+ console.log('PASS: level budgets 1–10, mount catalog assets, equal visitor/free access, five complete kits, offline maps and player spoiler separation.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
