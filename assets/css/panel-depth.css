@@ -56,13 +56,13 @@ html:root[data-theme='dark'] .hero-seek::-moz-range-thumb{background:#cbd9e4}
 }
 @media print,(prefers-reduced-motion:reduce){.botanical-light{display:none!important}}
 
-/* Static letter halos preserve the floral artwork without extra text panels. */
-:root{--reading-halo:0 0 2px #071321,0 0 4px #071321,0 1px 2px #071321}
-:root[data-theme="light"]{--reading-halo:0 0 2px #fffdf5,0 0 4px #fffdf5,0 1px 2px #fffdf5}
-html:root[data-theme] body{text-shadow:var(--reading-halo)}
-html:root[data-theme] body :is(h1,h2,h3,h4,h5,h6,p,li,td,th,label,legend,summary,a,button,span,strong,small,output,.preview-name,.preview-meta,.eyebrow){text-shadow:var(--reading-halo)!important}
-html:root[data-theme] body :is(input,textarea,select){text-shadow:none!important}
-.back-to-top{position:fixed;right:22px;bottom:92px;z-index:90;width:46px;height:46px;display:grid;place-items:center;padding:0;border:1px solid var(--color-border);border-radius:999px;background:var(--color-surface);color:var(--color-text);box-shadow:0 3px 14px #0003;font:inherit;font-size:25px;line-height:1;cursor:pointer;text-shadow:var(--reading-halo)}
+/* Crisp text uses stronger ink contrast without halos over the floral artwork. */
+@media screen{
+html:root[data-theme='dark']{--color-text:#f3f2ed;--color-text-muted:#d8dfe4;--color-text-faint:#c5cfd7}
+html:root[data-theme='light']{--color-text:#29261f;--color-text-muted:#494236;--color-text-faint:#5b5040}
+html:root[data-theme] body,html:root[data-theme] body *{text-shadow:none!important}
+}
+.back-to-top{position:fixed;right:16px;bottom:72px;z-index:90;width:44px;height:44px;display:grid;place-items:center;padding:0;border:1px solid var(--color-border);border-radius:999px;background:var(--color-surface);color:var(--color-text);box-shadow:0 3px 14px #0003;font:inherit;font-size:25px;line-height:1;cursor:pointer;text-shadow:none}
 .back-to-top[hidden]{display:none}.back-to-top:focus-visible{outline:3px solid var(--color-primary);outline-offset:3px}
-@media(max-width:600px){.back-to-top{right:16px;bottom:88px;padding:0}}
+@media(max-width:700px){.back-to-top{right:12px;bottom:68px;padding:0}}
 @media print{.back-to-top{display:none!important}html:root[data-theme] body *{text-shadow:none!important}}
