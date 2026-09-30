@@ -47,11 +47,21 @@ html:root[data-theme='dark'] .hero-seek::-moz-range-thumb{background:#cbd9e4}
 .botanical-positioned{position:relative}
 .botanical-light{--branch-light:#e8f5ff;position:absolute;inset:0;border-radius:inherit;pointer-events:none;overflow:hidden;contain:paint;z-index:0}
 [data-theme='light'] .botanical-light{--branch-light:#f4d885}
-.botanical-branches{position:absolute;inset:0;overflow:hidden;mask:url('../img/decoracao/ramos-luz.svg') center bottom/640px 640px repeat;transform-origin:50% 100%;animation:botanical-wind 12s ease-in-out infinite;animation-play-state:paused}
+.botanical-branches{position:absolute;inset:0;overflow:hidden;mask:url('../img/decoracao/ramos-luz.svg') center bottom/640px 640px repeat;transform-origin:50% 100%;animation:botanical-wind 8s ease-in-out 1 both;animation-play-state:paused}
 .botanical-branches::before{content:"";position:absolute;inset:0;background:var(--branch-light);opacity:.13}
-.botanical-branches::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,var(--branch-light) 44%,#fff 50%,var(--branch-light) 56%,transparent 80%);transform:translateX(-110%);opacity:0;animation:botanical-flow 8s ease-in-out infinite;animation-play-state:paused}
+.botanical-branches::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,var(--branch-light) 44%,#fff 50%,var(--branch-light) 56%,transparent 80%);transform:translateX(-110%);opacity:0;animation:botanical-flow 8s ease-in-out 1 both;animation-play-state:paused}
 .botanical-light.is-awake .botanical-branches,.botanical-light.is-awake .botanical-branches::after{animation-play-state:running;will-change:transform,opacity}
 @keyframes botanical-wind{0%,100%{transform:translate(0,0) rotate(0deg)}35%{transform:translate(3px,-2px) rotate(.22deg)}70%{transform:translate(-2px,1px) rotate(-.18deg)}}
 @keyframes botanical-flow{0%{transform:translateX(-110%);opacity:0}12%{opacity:.65}70%{opacity:.65}88%,100%{transform:translateX(110%);opacity:0}}
 }
 @media print,(prefers-reduced-motion:reduce){.botanical-light{display:none!important}}
+
+/* Static letter halos preserve the floral artwork without extra text panels. */
+:root{--reading-halo:0 0 2px #071321,0 0 4px #071321,0 1px 2px #071321}
+:root[data-theme="light"]{--reading-halo:0 0 2px #fffdf5,0 0 4px #fffdf5,0 1px 2px #fffdf5}
+html:root[data-theme] body :is(main,aside,dialog,.music-panel) :is(h1,h2,h3,h4,h5,h6,p,li,td,th,label,legend,summary,a,button,span,strong,small,output,.preview-name,.preview-meta,.eyebrow){text-shadow:var(--reading-halo)!important}
+html:root[data-theme] body :is(input,textarea,select){text-shadow:none!important}
+.back-to-top{position:fixed;right:22px;bottom:92px;z-index:90;padding:12px 18px;border:1px solid var(--color-border);border-radius:999px;background:var(--color-surface);color:var(--color-text);box-shadow:0 3px 14px #0003;font:inherit;cursor:pointer;text-shadow:var(--reading-halo)}
+.back-to-top[hidden]{display:none}.back-to-top:focus-visible{outline:3px solid var(--color-primary);outline-offset:3px}
+@media(max-width:600px){.back-to-top{right:16px;bottom:88px;padding:10px 14px}}
+@media print{.back-to-top{display:none!important}html:root[data-theme] body *{text-shadow:none!important}}
