@@ -24,9 +24,11 @@ const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirector
 
 for(const file of walk(path.join(output,'assets/data'))){const rel=path.relative(output,file).replaceAll('\\','/');if(/(responsive-images\.js|access-policy\.json|master-config\.js|musicas\.js|conexoes\.js|hall\.js|search-index\.json)$/.test(file))continue;const rank=/regras|pericias|itens_basicos|montarias|papeis/.test(file)?1:(requirements[rel]||4);protect(rel,rank,file.endsWith('.json')?'application/json':'text/javascript; charset=utf-8');}
 
+const kitImages={};for(const k of JSON.parse(fs.readFileSync(path.join(output,'assets/demo/studio.json'),'utf8')).kits)for(const m of k.maps||[k.map])kitImages[m.image]={contador:2,mestre:3,deus:4}[k.minPlan]||4;
+
 // Illustrations outside the public home/decoration/plan samples are private too.
 
-for(const file of walk(path.join(output,'assets/img'))){const rel=path.relative(output,file).replaceAll('\\','/');if(/^assets\/img\/(home|decoracao|assinaturas)\//.test(rel))continue;protect(rel,(/assets\/img\/montarias\//.test(rel)?1:/assets\/img\/kits\//.test(rel)?(/(jardim|farol)\.webp$/.test(rel)?4:/(forja|oasis)\.webp$/.test(rel)?3:2):0)||requirements[rel]||requirements[rel.replace(/-(480|960|1440|1920)\.webp$/,'.webp')]||4,file.endsWith('.svg')?'image/svg+xml':'image/webp');}
+for(const file of walk(path.join(output,'assets/img'))){const rel=path.relative(output,file).replaceAll('\\','/');if(/^assets\/img\/(home|decoracao|assinaturas)\//.test(rel))continue;protect(rel,(/assets\/img\/montarias\//.test(rel)?1:/assets\/img\/kits\//.test(rel)?(kitImages[rel]||4):0)||requirements[rel]||requirements[rel.replace(/-(480|960|1440|1920)\.webp$/,'.webp')]||4,file.endsWith('.svg')?'image/svg+xml':'image/webp');}
 
 for(const f of fs.readdirSync(output).filter(f=>f.endsWith('.html'))){const p=path.join(output,f);fs.writeFileSync(p,fs.readFileSync(p,'utf8').replace('<head>','<head><script>window.VALEDRIA_ACCESS_ACTIVE=true;</script>'));}
 

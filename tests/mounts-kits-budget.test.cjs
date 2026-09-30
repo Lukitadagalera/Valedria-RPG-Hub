@@ -14,9 +14,9 @@ const {rank}=require('../server/content.cjs');const db={prepare:()=>({get:()=>un
 const kits=JSON.parse(fs.readFileSync('assets/demo/studio.json','utf8')).kits;
 (async()=>{
  assert.equal(kits.length,5);assert.equal(new Set(kits.map(k=>k.id)).size,5);
- for(const k of kits){assert.equal(k.map.locations.length,4);assert.ok(fs.existsSync(k.map.image));assert.ok(k.gmSections.length>=7);assert.ok(k.npcs.length>=4);assert.equal(k.handouts.length,3);
+ for(const k of kits){assert.equal(k.map.locations.length,4);assert.ok(fs.existsSync(k.map.image));assert.ok(k.gmSections.length>=7);assert.ok(k.npcs.length>=4);assert.equal(k.handouts.length,5);assert.equal(k.maps.length,2);for(const m of k.maps)assert.ok(fs.existsSync(m.image));assert.ok(k.gmSections.some(s=>s.title.startsWith('6 ')));
   const player=await c.window.ValedriaKits.pack(k,false),gm=await c.window.ValedriaKits.pack(k,true);
-  assert.ok(player.includes('data:image/webp;base64,'),'offline artwork embedded');assert.ok(player.includes('tactical-grid'));
+  assert.ok(player.includes('data:image/webp;base64,'),'offline artwork embedded');assert.ok(player.includes('tactical-grid'));assert.equal((player.match(/data:image\/webp;base64,/g)||[]).length,2,'both boards embedded offline');assert.equal((c.window.ValedriaKits.mapGallery(k,true).match(/data-kit-map-download=/g)||[]).length,2);
   assert.ok(gm.includes(k.gmSections[0].text));assert.ok(!player.includes(k.gmSections[0].text),'no GM truth in player packet');
   for(const h of k.handouts)assert.ok(!player.includes(h.text),'future clue withheld');
   assert.ok(!c.window.ValedriaKits.map(k.map,false).includes('class="map-number"'),'player map has no GM markers');

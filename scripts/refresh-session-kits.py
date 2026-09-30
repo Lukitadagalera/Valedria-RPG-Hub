@@ -200,8 +200,11 @@ kits.append(kit('farol-mares','O farol das marés','Costa dos reinos humanos','N
 for i,k in enumerate(kits):
     k['minPlan']='contador' if i==0 else 'mestre' if i<3 else 'deus'
 
+import runpy
+runpy.run_path(str(Path(__file__).with_name('expand-session-kits.py')))['expand'](kits,section,npc)
+
 p=Path('assets/demo/studio.json')
 data=json.loads(p.read_text(encoding='utf-8'))
 data['kits']=kits
 p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-print('Wrote five session kits with four tactical locations each.')
+print('Wrote five session kits with two illustrated boards and six scenes each.')
