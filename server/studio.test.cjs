@@ -15,5 +15,5 @@ db.prepare("UPDATE entitlements SET expires=? WHERE user_id='mestre'").run(Date.
 assert.equal(call('deus','/studio/documents/atlas',{version:0,documents:[{id:'a',name:'Atlas',locations:[{id:'x',name:'Lugar',x:101,y:0}],routes:[]}]}).status,400);
 assert.equal(call('deus','/studio/documents/adventures',{version:0,documents:[{id:'a',name:'Aventura',scenes:[{id:'x',name:'Cena',next:['missing']}]}]}).status,400);
 assert.equal(call('deus','/studio/documents/creations',{version:0,documents:[{id:'a',name:'Modelo'}]}).status,400);
-for(const [plan,count] of [['contador',1],['mestre',3],['deus',5]])assert.equal(call(plan,'/studio/resources').body.kits.length,count);
+for(const [plan,count] of [['contador',2],['mestre',4],['deus',6]])assert.equal(call(plan,'/studio/resources').body.kits.length,count);
 db.close();console.log('PASS: tiers, ownership, conflicts, private fields, expiration, revocation and document validation.');

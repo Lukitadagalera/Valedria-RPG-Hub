@@ -1,4 +1,4 @@
-"""Authoring source for the five session kits."""
+"""Authoring source for the six session kits."""
 import json
 from pathlib import Path
 
@@ -198,13 +198,15 @@ kits.append(kit('farol-mares','O farol das marés','Costa dos reinos humanos','N
  'Sinal corrigido e pessoas salvas: a vila oferece abrigo, provisões para uma semana e passagem futura num barco costeiro para o grupo. Se o navio encalhou, a recompensa é apenas abrigo e a amizade dos resgatados; a próxima missão pode ser recuperar a carga. Mira cumpre o acordo de resgate, mas a decisão de denunciá-la cabe ao grupo e às autoridades locais. Otávio pede ajuda para formar novos vigias. Gancho: a carga contém uma carta sobre espelhos de um jardim élfico.'))
 
 for i,k in enumerate(kits):
-    k['minPlan']='contador' if i==0 else 'mestre' if i<3 else 'deus'
+    k['minPlan']='contador' if i<2 else 'mestre' if i<4 else 'deus'
 
 import runpy
 runpy.run_path(str(Path(__file__).with_name('expand-session-kits.py')))['expand'](kits,section,npc)
+
+kits.append(runpy.run_path(str(Path(__file__).with_name('kit-mascaras.py')))['create'](kit,section,npc))
 
 p=Path('assets/demo/studio.json')
 data=json.loads(p.read_text(encoding='utf-8'))
 data['kits']=kits
 p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-print('Wrote five session kits with two illustrated boards and six scenes each.')
+print('Wrote six session kits with two illustrated boards and six scenes each.')

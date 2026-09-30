@@ -492,7 +492,7 @@
           "when": "Após estabilizar os tubos, cena 5."
         }
       ],
-      "minPlan": "mestre",
+      "minPlan": "contador",
       "maps": [
         {
           "name": "O sino sob a pedra — mapa tático",
@@ -1056,7 +1056,7 @@
           "when": "Travessia concluída, cena 5."
         }
       ],
-      "minPlan": "deus",
+      "minPlan": "mestre",
       "maps": [
         {
           "name": "O jardim dos ecos — mapa tático",
@@ -1400,6 +1400,290 @@
               "name": "Cais protegido",
               "x": 76,
               "y": 46,
+              "secret": false
+            }
+          ],
+          "routes": []
+        }
+      ]
+    },
+    {
+      "id": "mascaras-meia-noite",
+      "name": "As máscaras da meia-noite",
+      "place": "Cidade humana · bairro dos canais",
+      "level": "Níveis 6–7",
+      "duration": "One-shot de 4–5 horas para 3–5 jogadores; versão curta de 3 horas nas orientações.",
+      "objective": "Recuperar um selo de autenticação e impedir que um documento falso feche um abrigo de viajantes.",
+      "playerIntro": "No início da noite, a costureira Elisa entrega uma máscara simples a cada aventureiro: “Levaram o selo da nossa associação. Amanhã vão apresentar uma ordem para fechar o abrigo. A única pista é um convite para o leilão de hoje.” Ao fundo, sinos anunciam a entrada dos convidados.",
+      "map": {
+        "name": "As máscaras da meia-noite — mapa tático",
+        "image": "assets/img/kits/mascaras.webp",
+        "columns": 30,
+        "rows": 20,
+        "cellMeters": 1.5,
+        "locations": [
+          {
+            "id": "1",
+            "name": "Pátio de entrada",
+            "x": 23,
+            "y": 75,
+            "secret": false
+          },
+          {
+            "id": "2",
+            "name": "Ateliê de máscaras",
+            "x": 24,
+            "y": 25,
+            "secret": false
+          },
+          {
+            "id": "3",
+            "name": "Arquivo do leilão",
+            "x": 75,
+            "y": 25,
+            "secret": false
+          },
+          {
+            "id": "4",
+            "name": "Salão de lances",
+            "x": 75,
+            "y": 75,
+            "secret": false
+          }
+        ],
+        "routes": []
+      },
+      "preparation": [
+        "Grupo de 3–5 personagens; referência: 4 jogadores. Níveis 6–7. Reserve 15 minutos para vínculos e apresentação.",
+        "Leia as seis cenas e os cinco documentos. Não há orçamento obrigatório para lances: a recuperação do selo é feita por prova e acordo.",
+        "Combine limites de conteúdo; qualquer pessoa pode pedir pausa. Aventura sem necessidade de tortura, crueldade com animais ou conflito entre jogadores.",
+        "Separe os materiais dos jogadores. Entregue cada pista somente na cena indicada; não mostre a legenda do mestre antes da exploração.",
+        "Use 30 × 20 quadrados, cada um com 1,5 m. Movimento de 6 m equivale a 4 quadrados; diagonais custam 1 quadrado, sem atravessar cantos de paredes. Paredes bloqueiam movimento; entulho e água rasa custam o dobro.",
+        "Mapa 1 nas cenas 1–4; mapa 2 nas cenas 5–6. Narre a caminhada entre os bairros: os mapas não são geograficamente contíguos. Convites, máscaras e informações essenciais são fornecidos pelo kit."
+      ],
+      "gmSections": [
+        {
+          "title": "Ficha rápida e verdade do mestre",
+          "text": "O negociante Varo encomendou uma ordem falsa para tomar o prédio do abrigo. Um funcionário guardou o selo roubado num estojo de máscara, enviado por engano ao leilão. A organizadora Dália desconhece o golpe. O copista Tomás reconhece o papel falsificado e espera no cais, com medo de perder o trabalho. A prova completa combina o registro do arquivo, o selo recuperado e o depoimento voluntário de Tomás; sempre há alternativas para não depender de uma única rolagem.",
+          "points": [
+            "Ritmo: abertura 15 min, cenas 1–4 cerca de 90 min, intervalo e transição 15 min, cenas 5–6 cerca de 60 min, epílogo 15 min. Reserve mais 30–60 min para interpretação ou combate: aproximadamente 4–5 horas.",
+            "Testes: 1d20 + atributo; ND 10 fácil, ND 13 moderado, ND 16 difícil. Perícia pertinente ou papel aplicável concede vantagem (2d20, fica o maior). Não acumule vantagens.",
+            "Pistas essenciais não dependem de sucesso. Testes revelam atalhos ou reduzem custos. Uma falha muda a situação; não impede continuar.",
+            "Estas fichas de adversários são próprias do kit. Ataque indica bônus total; dano já inclui bônus. Não some atributos outra vez. Um ataque ou outra ação por turno, movimento de 6 m salvo indicação."
+          ]
+        },
+        {
+          "title": "Leia na abertura",
+          "text": "No início da noite, a costureira Elisa entrega uma máscara simples a cada aventureiro: “Levaram o selo da nossa associação. Amanhã vão apresentar uma ordem para fechar o abrigo. A única pista é um convite para o leilão de hoje.” Ao fundo, sinos anunciam a entrada dos convidados.",
+          "points": []
+        },
+        {
+          "title": "1 · Convites no pátio — 15 minutos",
+          "text": "Mapa 1, área 1. Leia: “Músicos afinam seus instrumentos. Um porteiro examina convites, enquanto vendedores penduram máscaras sob as lanternas.”",
+          "points": [
+            "Elisa possui convites válidos para todo o grupo; entrar não exige enganar, pagar nem passar em teste. Entregue a pista 1. Cada personagem escolhe uma máscara e um motivo fictício para conhecer o abrigo, sem modificar atributos.",
+            "O porteiro informa onde ficam ateliê, arquivo e salão. Sabedoria ND 13 percebe cera azul no pacote de um carregador. Falha perde a observação, mas Elisa reconhece o número do lote no convite e aponta o ateliê; a investigação prossegue.",
+            "Combine que armas permanecem embainhadas. Isso é um pedido da organização, não uma retirada automática do equipamento do personagem. Uma pessoa pode optar por esperar no pátio e acompanhar entregas."
+          ]
+        },
+        {
+          "title": "2 · Ateliê: o estojo trocado — 20 minutos",
+          "text": "Mapa 1, área 2. Leia: “Uma máscara dourada está sem seu estojo. Na mesa, linhas e lacres se misturam a uma lista de entregas.”",
+          "points": [
+            "A costureira local reconhece Elisa e entrega a pista 2 sem teste. O estojo do lote 17 está no salão. O selo não foi vendido ainda e pode ser recuperado por acordo, evitando uma disputa de dinheiro.",
+            "Destreza ND 13 recompõe um lacre de papel rasgado, revelando as iniciais de Varo. Falha rasga mais a borda; uma anotação duplicada no verso fornece as mesmas iniciais após dez minutos de busca. Não invente uma penalidade permanente por falhar.",
+            "Se o grupo pedir ajuda honestamente, a costureira escreve uma nota para Dália confirmar a procedência. A nota pode substituir o teste social da cena 4. Furto de objetos do ateliê torna a costureira desconfiada, mas não elimina o registro escrito."
+          ]
+        },
+        {
+          "title": "3 · Arquivo: o documento impossível — 25 minutos",
+          "text": "Mapa 1, área 3. Leia: “Uma pasta vazia tem a marca de um selo redondo. O funcionário folheia um registro: ‘Esse prédio foi cedido por um ano. Como poderiam retomá-lo amanhã?’”",
+          "points": [
+            "Mostrar o convite e explicar a ameaça permite consultar a pasta. Entregue a pista 3. O registro de cessão é público; o funcionário lê seu conteúdo se ninguém souber interpretar a escrita. Não exija perícia específica para receber a prova.",
+            "Sabedoria ND 13 identifica que a ordem de fechamento usa papel de compra recente, posterior à data nela escrita. Falha deixa essa confirmação para Tomás; a contradição entre a ordem e o registro permanece clara.",
+            "O funcionário oferece uma cópia autenticada provisória e o endereço do cais onde Tomás trabalha. Levar o original não é necessário. Se já visitaram o salão, esta cena ainda funciona antes de sair para o segundo mapa."
+          ]
+        },
+        {
+          "title": "4 · Salão: recuperar sem comprar — 30 minutos",
+          "text": "Mapa 1, área 4. Leia: “Dália ergue o estojo do lote 17. Um homem de luvas escuras tenta encerrar a oferta antes que alguém o examine.”",
+          "points": [
+            "Dália suspende o lote se receber a nota do ateliê ou a cópia do arquivo; não há teste. Sem nenhum documento, Carisma ND 16 consegue uma pausa para investigar. Falha mantém o lote em espera por dez minutos: um personagem pode buscar a nota enquanto outro observa o estojo. Não force um leilão com preços que o grupo não pode pagar.",
+            "Dentro do estojo estão o selo e a pista 4. Dália entrega ambos sob recibo quando verifica o registro do arquivo. A recuperação é garantida por provas e cooperação, não por combate obrigatório.",
+            "Varo oferece dinheiro para abandonarem o assunto, sem obrigação de aceitar. Se houver violência, use 2 guardas contratados e 1 chefe; para 3 jogadores retire um guarda, para 5 acrescente um. Eles rendem-se quando o chefe chega à metade da Vida ou quando Dália manda parar usando uma ação. O selo permanece no pedestal e pode ser recolhido com uma ação.",
+            "Relógio do leilão: quatro marcas, uma por cena concluída; dez minutos extras também avançam uma, no máximo uma por rodada. Na quarta, o salão fecha e Varo sai, mas Dália guarda o lote contestado e espera no pátio. A prova não desaparece e a passagem ao cais continua disponível."
+          ]
+        },
+        {
+          "title": "Passagem ao segundo cenário",
+          "text": "Dália indica a rota pública ao cais. O selo foi recuperado, mas ainda é preciso impedir que a ordem falsa seja aceita na audiência ao amanhecer. Tomás pode explicar a falsificação; se Varo escapou, ele tentará sustentar sua versão na praça.",
+          "points": [
+            "Encerre o relógio do leilão. As decisões sobre Varo e os guardas continuam válidas. Dália acompanha uma cópia do registro com mensageiro, sem resolver o depoimento pelo grupo.",
+            "Narre a caminhada e ofereça um descanso breve seguro no pavilhão, conforme o Livro IV. Não restaure Vida ou Mana automaticamente. A audiência espera os participantes; não use o descanso como armadilha.",
+            "Versão de 3 horas: ateliê e arquivo viram uma conversa conjunta de vinte minutos, com entrega das pistas. Resolva o salão por provas, narre a caminhada e concentre a interpretação no depoimento e na audiência. Se houver combate, reduza a busca e nunca remova a cena final."
+          ]
+        },
+        {
+          "title": "5 · Cais: uma testemunha livre — 25 minutos",
+          "text": "Mapa 2, área 1. Leia: “Tomás aperta uma pasta contra o peito. A barca está pronta, mas ele ainda não soltou a amarra. ‘Se eu falar, como volto a trabalhar?’”",
+          "points": [
+            "Entregue a pista 5 assim que explicarem que o abrigo corre risco. Tomás admite ter copiado a ordem sem conferir a autorização; Varo acrescentou a data e o selo. Não o trate como culpado automático por ter medo.",
+            "Uma promessa concreta de Dália de recebê-lo no arquivo ou a oferta de Elisa de trabalho no abrigo o convence sem teste. Carisma ND 13 também o tranquiliza. Falha significa que prefere um depoimento escrito assinado, entregue pela associação; ambas as formas valem na audiência.",
+            "Ameaças o fazem recusar presença pessoal. Ele ainda permite ao funcionário confirmar o lote de papel com a nota da pista 5. O grupo pode seguir com duas provas documentais, sem forçá-lo a falar.",
+            "Se Varo chegou antes, ele tenta comprar silêncio. Os personagens podem lembrar Tomás do registro público ou chamar Dália; não é necessário duelo. Se houver conflito, use no máximo 1 guarda restante da cena 4, com a Vida que tinha ao sair, sem criar reforços infinitos."
+          ]
+        },
+        {
+          "title": "6 · Praça: quem pode assinar uma mentira? — 35 minutos",
+          "text": "Mapa 2, área 2. Leia: “A escrivã coloca duas folhas sobre a mesa pública. Uma cede o prédio ao abrigo; a outra manda fechá-lo. ‘Apresentem suas provas, uma de cada vez.’”",
+          "points": [
+            "O objetivo é suspender o fechamento e devolver o selo à associação. Registro do arquivo e selo recuperado bastam para suspender a ordem, sem teste. O depoimento ou a nota de compra do papel demonstram a falsificação e encaminham a investigação de Varo. Não exija que um jogador faça um discurso perfeito: descrever o argumento é suficiente.",
+            "Com apenas uma dessas provas, Carisma ou Sabedoria ND 13 obtém prazo de sete dias para completar a investigação. Falha ainda concede um dia e a escrivã manda consultar o arquivo; o abrigo não é despejado durante a sessão. Se ninguém trouxe provas, Elisa pede a consulta pública e o grupo pode reconhecer seus erros sem encerrar a campanha.",
+            "Varo pode contestar, mas não decide a validade da prova. A escrivã não ordena execução nem punição imediata. Caso ele fuja, anote a busca futura como opção; a missão de proteger o abrigo termina aqui.",
+            "Sem relógio de combate nesta cena. Cada jogador pode contribuir com uma prova, uma testemunha ou uma descrição do valor do abrigo. Encerre quando a decisão for anunciada; não acrescente uma perseguição obrigatória após a vitória."
+          ]
+        },
+        {
+          "title": "Recompensas e encerramento do one-shot",
+          "text": "Ordem suspensa e fraude demonstrada: o abrigo permanece aberto, o selo retorna à associação e os personagens ganham hospedagem e refeições por uma semana, roupas reparadas e uma carta de recomendação, sem bônus automático. Só suspensão: as mesmas pessoas agradecem, mas a carta fica para quando a investigação terminar. Prazo provisório: há abrigo por uma noite e ajuda para reunir documentos; narre no epílogo a consulta do arquivo e a suspensão final, sem exigir outra sessão. Varo será investigado, Tomás escolhe onde trabalhar e Dália revisa os registros do leilão. Pergunte a cada jogador quem recebe sua máscara no fim da noite. A história termina na praça; qualquer continuação é opcional.",
+          "points": [
+            "Cada personagem pode recuperar recursos com os descansos do Livro IV. Não restaure Vida ou Mana automaticamente entre cenas.",
+            "Após resolver a ameaça central e encerrar os vínculos, este kit conta como um marco de campanha. O mestre pode conceder 1 nível a quem estava no nível inicial indicado; não conceda níveis por repetir o kit.",
+            "Pergunte: quem você ajudou, o que mudou em seu personagem e qual promessa levará adiante? Registre relações, equipamentos e consequências na ficha.",
+            "Conceda no máximo um marco de progressão ao completar a aventura inteira; não um por mapa. Os documentos e o selo não concedem poderes mágicos nem bônus de atributo."
+          ]
+        }
+      ],
+      "npcs": [
+        {
+          "name": "Elisa",
+          "role": "Representante do abrigo",
+          "approach": "Cuida dos viajantes e oferece trabalho a Tomás; quer o selo de volta.",
+          "combat": "Vida 18; Defesa 12; movimento 6 m; testes sociais +4; usa Ajudar, não ataca."
+        },
+        {
+          "name": "Dália",
+          "role": "Organizadora do leilão",
+          "approach": "Protege a reputação do evento, aceita documentos verificáveis e suspende um lote contestado.",
+          "combat": "Vida 20; Defesa 12; movimento 6 m; avaliação de documentos +5; não combate."
+        },
+        {
+          "name": "Tomás",
+          "role": "Copista e testemunha",
+          "approach": "Tem medo de perder o sustento, aceita garantias concretas e pode depor por escrito.",
+          "combat": "Vida 12; Defesa 10; movimento 6 m; escrita e papel +5; foge do combate."
+        },
+        {
+          "name": "Varo",
+          "role": "Negociante que encomendou a fraude",
+          "approach": "Nega até surgir prova, tenta negociar e deixa o local se estiver ameaçado.",
+          "combat": "Vida 22; Defesa 13; movimento 6 m; testes sociais +5; sem ataque especial; rende-se ou foge."
+        },
+        {
+          "name": "Guarda contratado",
+          "role": "Protege o lote",
+          "approach": "Obedece a Dália quando compreende a fraude.",
+          "combat": "Vida 28; Defesa 14; ataque +7, bastão 1d6+4, alcance 1,5 m; movimento 6 m; testes +3. Sem reação ou ataque extra."
+        },
+        {
+          "name": "Chefe da segurança",
+          "role": "Evita confusão no salão",
+          "approach": "Não aceita sacrificar sua equipe pela versão de Varo.",
+          "combat": "Vida 42; Defesa 15; ataque +8, maça 1d8+4, alcance 1,5 m; movimento 6 m; testes +4. Oferece rendição à metade da Vida."
+        },
+        {
+          "name": "Escrivã Irene",
+          "role": "Preside a audiência",
+          "approach": "Aceita relato simples, confronta registros e separa suspensão da ordem de julgamento criminal.",
+          "combat": "Vida 16; Defesa 11; movimento 6 m; registros públicos +6; não participa de combate."
+        }
+      ],
+      "handouts": [
+        {
+          "name": "Convite de Elisa",
+          "text": "Entrada autorizada para os acompanhantes da associação. Investigar o estojo de máscara do lote 17. A audiência do abrigo será na praça, ao amanhecer.",
+          "when": "Antes de entrar no pátio, cena 1."
+        },
+        {
+          "name": "Registro do ateliê",
+          "text": "Lote 17: máscara dourada, estojo redondo. Uma entrega de Varo foi guardada junto ao lote por engano. Pedir à organização que confira antes da venda.",
+          "when": "Ateliê, cena 2."
+        },
+        {
+          "name": "Cessão do prédio",
+          "text": "O edifício foi cedido à associação por um ano. Alterações exigem registro público. Não consta revogação nesta pasta.",
+          "when": "Arquivo, cena 3."
+        },
+        {
+          "name": "Bilhete no estojo",
+          "text": "Tomás: guardar a nota do papel. Caso questionem a data, nos encontramos no cais antes da audiência. — Varo",
+          "when": "Dentro do estojo recuperado, cena 4."
+        },
+        {
+          "name": "Nota do papel",
+          "text": "O lote usado na ordem foi comprado dois dias depois da data escrita nela. Fornecedor e recibo podem ser conferidos pela escrivã. Assinado: Tomás, copista.",
+          "when": "Cais, cena 5."
+        }
+      ],
+      "minPlan": "deus",
+      "maps": [
+        {
+          "name": "As máscaras da meia-noite — mapa tático",
+          "image": "assets/img/kits/mascaras.webp",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [
+            {
+              "id": "1",
+              "name": "Pátio de entrada",
+              "x": 23,
+              "y": 75,
+              "secret": false
+            },
+            {
+              "id": "2",
+              "name": "Ateliê de máscaras",
+              "x": 24,
+              "y": 25,
+              "secret": false
+            },
+            {
+              "id": "3",
+              "name": "Arquivo do leilão",
+              "x": 75,
+              "y": 25,
+              "secret": false
+            },
+            {
+              "id": "4",
+              "name": "Salão de lances",
+              "x": 75,
+              "y": 75,
+              "secret": false
+            }
+          ],
+          "routes": []
+        },
+        {
+          "name": "Cais e praça da audiência",
+          "image": "assets/img/kits/mascaras-final.webp",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [
+            {
+              "id": "1",
+              "name": "Pavilhão do cais",
+              "x": 25,
+              "y": 48,
+              "secret": false
+            },
+            {
+              "id": "2",
+              "name": "Praça da audiência",
+              "x": 75,
+              "y": 48,
               "secret": false
             }
           ],
