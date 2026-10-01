@@ -204,9 +204,10 @@ import runpy
 runpy.run_path(str(Path(__file__).with_name('continuations.py')))['expand'](kits,section,npc)
 
 kits.append(runpy.run_path(str(Path(__file__).with_name('masks.py')))['create'](kit,section,npc))
+runpy.run_path(str(Path(__file__).with_name('locations.py')))['expand'](kits)
 
 p=Path('assets/demo/studio.json')
 data=json.loads(p.read_text(encoding='utf-8'))
 data['kits']=kits
 p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-print('Wrote six session kits with two illustrated boards and six scenes each.')
+print('Wrote six session kits with two overview boards, six location boards and six scenes each.')

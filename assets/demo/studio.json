@@ -52,7 +52,8 @@
         "Combine limites de conteúdo; qualquer pessoa pode pedir pausa. Aventura sem necessidade de tortura, crueldade com animais ou conflito entre jogadores.",
         "Separe os materiais dos jogadores. Entregue cada pista somente na cena indicada; não mostre a legenda do mestre antes da exploração.",
         "Use 30 × 20 quadrados, cada um com 1,5 m. Movimento de 6 m equivale a 4 quadrados; diagonais custam 1 quadrado, sem atravessar cantos de paredes. Paredes bloqueiam movimento; entulho e água rasa custam o dobro.",
-        "Dois mapas por kit. Mapa 1: cenas 1–4; mapa 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles."
+        "Duas visões gerais por kit, além dos mapas de cada local. Visão geral 1: cenas 1–4; visão geral 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles.",
+        "Mapas de locais: cada uma das seis cenas possui um tabuleiro próprio, além das duas visões gerais. Use a visão geral para orientação e o mapa do local para movimentação. Não some as distâncias entre mapas: as transições continuam narrativas. Os mapas não introduzem novos perigos ou recompensas; valem as regras descritas na cena."
       ],
       "gmSections": [
         {
@@ -74,37 +75,45 @@
           "title": "1 · Acampamento: quem ficou para trás?",
           "text": "Leia: “Tendas vazias resistem ao vento. Um cavalo relincha junto à carroça quebrada; pegadas seguem para a ponte.”",
           "points": [
+            "Tabuleiro desta cena: Acampamento da caravana (mapa 3).",
             "Sem teste: as pegadas vão ao moinho; sob a lona há uma lista de carga (entregue a pista 1). Alina diz que Téo conhece reparos e não abandonaria os passageiros.",
             "Sabedoria ND 10 encontra corda e uma prancha firme: vantagem no primeiro teste de travessia ou reparo. Falha leva 10 minutos, mas ainda encontra a corda.",
             "O cavalo está assustado. Sabedoria ND 13 ou comida e 10 minutos o acalmam. Pode transportar a carga depois; não é prêmio automático. Siga para a ponte ou chame os viajantes da margem."
-          ]
+          ],
+          "mapIndex": 2
         },
         {
           "title": "2 · Ponte: atravessar sem perder a carga",
           "text": "Leia: “Duas lajes se moveram. A água passa logo abaixo delas. Do outro lado, alguém acena de uma janela.”",
           "points": [
+            "Tabuleiro desta cena: Ponte esquecida (mapa 4).",
             "A ponte é atravessável com cuidado, sem teste. Correr ou conduzir carroça exige Destreza ND 13. Falha: fica caído na ponte, sofre 1d4 e perde o movimento; não cai diretamente no rio.",
             "Reforçar com a prancha e corda custa uma ação e Força ou Sabedoria ND 13; ajuda de aliado concede vantagem. Falha consome tempo, permite nova tentativa com outra abordagem.",
             "Pelo rio: água rasa junto às margens é terreno difícil; a faixa central é profunda. Entrar exige Força ND 13 por travessia; falha leva 3 m rio abaixo e perde 1d4 de Vida, terminando numa pedra. Um aliado com corda pode puxar usando uma ação, sem novo teste."
-          ]
+          ],
+          "mapIndex": 3
         },
         {
           "title": "3 · Moinho: testemunhas e um acordo",
           "text": "Leia: “Seis viajantes dividem o chão com caixas de remédios. Téo segura uma roda quebrada. ‘Os cobradores levaram a ferramenta e a peça que falta.’”",
           "points": [
+            "Tabuleiro desta cena: Moinho dos viajantes (mapa 5).",
             "A pista 2 é dada por Téo sem teste. A peça fica no depósito. O grupo pode negociar, buscar outro eixo no acampamento ou recuperar a peça escondido.",
             "Téo oferece reparar a carroça em 20 minutos se trouxerem a peça. Sabedoria ND 13 adapta uma peça velha em 30 minutos; falha aumenta para 50 minutos. Os remédios podem ser levados a pé em duas viagens, sempre uma alternativa.",
             "Um passageiro ferido tem Vida 2/7, está consciente e não precisa de teste de morte. Medicina ND 10 o deixa apto a caminhar; falha permite levá-lo apoiado, com movimento do ajudante pela metade."
-          ]
+          ],
+          "mapIndex": 4
         },
         {
           "title": "4 · Depósito: a taxa de Dário",
           "text": "Leia: “Três figuras cercam uma lamparina. A ferramenta está sobre a mesa. ‘A ponte é nossa enquanto ninguém pagar pelo conserto’, diz Dário.”",
           "points": [
+            "Tabuleiro desta cena: Depósito dos cobradores (mapa 6).",
             "Dário aceita devolver a peça se o grupo prometer apresentar sua equipe à vila para trabalho legítimo ou ajudar a reforçar a ponte. Carisma ND 13 reduz a exigência a uma promessa simples; argumento concreto e prova da carga dispensam teste.",
             "Furtividade pertinente: Destreza ND 13 para pegar a ferramenta pela janela. Falha inicia conversa em posição desfavorável, não combate automático.",
             "Se houver combate, use Dário e 2 cobradores. Para 3 jogadores, apenas 1 cobrador; para 5, acrescente 1. Começam separados por 3 m. Cobradores rendem-se quando Dário cai ou quando dois adversários são derrotados. Dário oferece acordo a metade da Vida."
-          ]
+          ],
+          "mapIndex": 5
         },
         {
           "title": "Relógio da cheia · 4 marcas",
@@ -125,23 +134,27 @@
         },
         {
           "title": "5 · Enfermaria de Amieiro — 25 minutos",
-          "text": "Mapa 2, área 1. Leia: “O sino da vila toca devagar. Pessoas levantam camas, enquanto uma curandeira aponta para o celeiro seco do outro lado da rua.”",
+          "text": "Visão geral 2, área 1. Leia: “O sino da vila toca devagar. Pessoas levantam camas, enquanto uma curandeira aponta para o celeiro seco do outro lado da rua.”",
           "points": [
+            "Tabuleiro desta cena: Enfermaria de Amieiro (mapa 7).",
             "Objetivo: levar os seis passageiros e as três caixas à enfermaria provisória no celeiro. Entregue a pista 4. Separe dois trabalhos: transportar quem precisa de ajuda e proteger a carga. Cada personagem escolhe onde agir; descreva o resultado antes de pedir qualquer teste.",
             "Com Téo e a carroça, o transporte é automático em dez minutos. A pé, dois personagens gastam suas ações para carregar uma caixa por vez; os demais escoltam passageiros. A água rasa é terreno difícil, não exige teste para simplesmente andar.",
             "Uma prateleira cede: Força ND 10 segura as caixas ou Destreza ND 10 as recolhe. Falha molha apenas a embalagem e custa dez minutos para secar e conferir; os remédios continuam utilizáveis. Se Dário foi contratado, sua equipe segura a prateleira e dispensa esse teste.",
             "A curandeira entrega a pista 5 e aponta a comporta entupida. Passageiros seguros no celeiro permitem ao grupo cuidar dela sem reféns ou mortes automáticas."
-          ]
+          ],
+          "mapIndex": 6
         },
         {
           "title": "6 · Comporta do celeiro — 35 minutos",
-          "text": "Mapa 2, área 2. Leia: “Um galho prende a roda da comporta. Atrás dela, a água procura saída; o caminho para os campos ainda está livre.”",
+          "text": "Visão geral 2, área 2. Leia: “Um galho prende a roda da comporta. Atrás dela, a água procura saída; o caminho para os campos ainda está livre.”",
           "points": [
+            "Tabuleiro desta cena: Celeiro e comporta (mapa 8).",
             "Objetivo: escoar a água para o canal vazio, preservando os mantimentos. Não há combate. Uma ação e Força ND 13 retiram o galho; depois uma ação e Destreza ND 10 prendem a roda com corda. Falha desloca quem tenta um quadrado para trás, causa 1 ponto de dano e permite nova abordagem.",
             "Alternativa sem teste: três personagens, ou dois e um morador, usam três ações coordenadas para sustentar, limpar e prender. Os materiais estão ao lado da comporta. Outra saída é uma barreira de sacos: leva vinte minutos e salva o celeiro, mas os campos permanecerão alagados por uma semana.",
             "Use três marcas locais de água; avance só em falhas ou a cada dez minutos de hesitação. Na terceira, parte dos grãos se perde, nunca os remédios já guardados. Retirar os sacos para a parte alta encerra a ameaça mesmo sem reparar a comporta.",
             "Encerramento: pergunte quem entrega os remédios e quem responde à gratidão dos passageiros. A curandeira reconhece as escolhas sobre Dário e o cavalo. Conceda a recompensa original uma única vez após esta cena; a perda de grãos altera a festa, não cancela o reconhecimento pelo resgate."
-          ]
+          ],
+          "mapIndex": 7
         },
         {
           "title": "Recompensas e encerramento do one-shot",
@@ -276,6 +289,72 @@
             }
           ],
           "routes": []
+        },
+        {
+          "name": "Acampamento da caravana",
+          "image": "assets/img/kits/locais/demo-ponte-1.webp",
+          "scene": 1,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Ponte esquecida",
+          "image": "assets/img/kits/locais/demo-ponte-2.webp",
+          "scene": 2,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Moinho dos viajantes",
+          "image": "assets/img/kits/locais/demo-ponte-3.webp",
+          "scene": 3,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Depósito dos cobradores",
+          "image": "assets/img/kits/locais/demo-ponte-4.webp",
+          "scene": 4,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Enfermaria de Amieiro",
+          "image": "assets/img/kits/locais/demo-ponte-5.webp",
+          "scene": 5,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Celeiro e comporta",
+          "image": "assets/img/kits/locais/demo-ponte-6.webp",
+          "scene": 6,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
         }
       ]
     },
@@ -331,7 +410,8 @@
         "Combine limites de conteúdo; qualquer pessoa pode pedir pausa. Aventura sem necessidade de tortura, crueldade com animais ou conflito entre jogadores.",
         "Separe os materiais dos jogadores. Entregue cada pista somente na cena indicada; não mostre a legenda do mestre antes da exploração.",
         "Use 30 × 20 quadrados, cada um com 1,5 m. Movimento de 6 m equivale a 4 quadrados; diagonais custam 1 quadrado, sem atravessar cantos de paredes. Paredes bloqueiam movimento; entulho e água rasa custam o dobro.",
-        "Dois mapas por kit. Mapa 1: cenas 1–4; mapa 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles."
+        "Duas visões gerais por kit, além dos mapas de cada local. Visão geral 1: cenas 1–4; visão geral 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles.",
+        "Mapas de locais: cada uma das seis cenas possui um tabuleiro próprio, além das duas visões gerais. Use a visão geral para orientação e o mapa do local para movimentação. Não some as distâncias entre mapas: as transições continuam narrativas. Os mapas não introduzem novos perigos ou recompensas; valem as regras descritas na cena."
       ],
       "gmSections": [
         {
@@ -353,37 +433,45 @@
           "title": "1 · Pátio: entrar com segurança",
           "text": "Leia: “O sino vibra dentro da pedra. A cabra recua a cada toque. No chão, uma corrente foi abandonada às pressas.”",
           "points": [
+            "Tabuleiro desta cena: Pátio e estábulo da oficina (mapa 3).",
             "Brina entrega a chave da entrada e a pista 1. Não há teste para entrar. A cabra pode carregar ferramentas, mas não cabe no arquivo.",
             "Sabedoria ND 10 acalma a cabra e permite notar que os toques vêm da sala de bombas. Falha não bloqueia a pista: o animal aponta as orelhas naquela direção depois de alguns minutos.",
             "Retire uma corrente e duas cunhas do pátio. Servem para travar o guardião ou sustentar a válvula. O caminho leva à forja e ao arquivo, em qualquer ordem."
-          ]
+          ],
+          "mapIndex": 2
         },
         {
           "title": "2 · Forja: ferramenta e protocolo",
           "text": "Leia: “As brasas ainda brilham. Um braço de bronze se ergue: ‘Protocolo de cheia. Acesso à bomba interditado.’”",
           "points": [
+            "Tabuleiro desta cena: Forja de bronze (mapa 4).",
             "O guardião não ataca quem fica no corredor. Uma identificação da oficina, encontrada no arquivo, permite aproximação. Carisma ND 13 faz o guardião aceitar uma inspeção acompanhada por dois turnos.",
             "Sem teste: a bancada tem uma válvula correta e a pista 2. A peça pesa o bastante para ocupar as duas mãos. Levar a peça remove a necessidade de improvisar na cena 4.",
             "Se os jogadores atacarem ou forçarem a porta, use 1 guardião e 1 sentinela. Para 3 jogadores, só guardião; para 5, mais 1 sentinela. Todos param se ouvirem a ordem completa do arquivo. A corrente pode imobilizar um construto: ação e Força ND 13; ele usa a próxima ação para escapar, automaticamente."
-          ]
+          ],
+          "mapIndex": 3
         },
         {
           "title": "3 · Arquivo: o erro humano",
           "text": "Leia: “Na mesa, um manual está aberto e molhado. Entre as páginas há um desenho feito por alguém com pressa.”",
           "points": [
+            "Tabuleiro desta cena: Arquivo da oficina (mapa 5).",
             "Entregue a pista 3 sem teste. O protocolo escrito é completo: fechar a entrada de água, aliviar a pressão e só então trocar a válvula. Não exija que o jogador adivinhe palavras.",
             "Sabedoria ND 13 encontra um selo de manutenção: permite dar a ordem de desativação ao guardião sem teste. Falha encontra o selo, mas o relógio avança uma marca pelo tempo gasto.",
             "Ivo responde a batidas na tubulação e confirma estar consciente. O caminho de volta ao pátio permanece livre; retirada é possível."
-          ]
+          ],
+          "mapIndex": 4
         },
         {
           "title": "4 · Sala de bombas: três tarefas sob pressão",
           "text": "Leia: “Ivo se equilibra numa plataforma. A roda treme e a água alcança seus tornozelos.”",
           "points": [
+            "Tabuleiro desta cena: Sala de bombas (mapa 6).",
             "Resolva em ordem: fechar a entrada (Força ND 13), aliviar a pressão (Sabedoria ND 10), instalar a peça correta (Destreza ND 13). Cada tarefa usa uma ação; Ajudar concede vantagem. Sucesso permanece registrado.",
             "Falha causa 1d4 de dano de vapor ao executor e avança uma marca, mas permite tentar novamente. Com cunhas e corrente, o primeiro passo dispensa teste. Após ler o manual, o segundo passo dispensa teste. Usar peça improvisada eleva o terceiro a ND 16.",
             "Alternativa: retirar Ivo com corda, uma ação e Força ND 10, abandonar a bomba e evacuar. Salva a vida, mas a oficina fecha por semanas. Não é necessário derrotar o guardião para vencer."
-          ]
+          ],
+          "mapIndex": 5
         },
         {
           "title": "Relógio da pressão · 5 marcas",
@@ -404,23 +492,27 @@
         },
         {
           "title": "5 · Galeria de manutenção — 25 minutos",
-          "text": "Mapa 2, área 1. Leia: “Três tubos vibram sobre o carrinho de ferramentas. Ivo reconhece a peça que instalou: ela cabe no encaixe, mas tampa a passagem lateral.”",
+          "text": "Visão geral 2, área 1. Leia: “Três tubos vibram sobre o carrinho de ferramentas. Ivo reconhece a peça que instalou: ela cabe no encaixe, mas tampa a passagem lateral.”",
           "points": [
+            "Tabuleiro desta cena: Galeria de manutenção (mapa 7).",
             "Entregue a pista 4. A válvula curta do carrinho é a peça correta; o desenho a identifica, sem exigir teste. Sabedoria ND 13 explica como isolar o tubo antes da troca. Falha provoca um jato de água fria que custa uma marca de pressão, sem dano.",
             "Uma pessoa mantém a alavanca de isolamento usando uma ação por rodada; outra usa uma ação e Destreza ND 13 para trocar a peça. Falha permite repetir e avança a pressão. Duas pessoas com ferramentas podem fazer a troca sem teste em três rodadas, mantendo a alavanca.",
             "Se Ivo foi levado para fora, Brina lê o desenho em seu lugar. Se o guardião foi destruído, o braço mecânico não ajuda, mas as ferramentas manuais continuam suficientes. Não anule escolhas do primeiro ato.",
             "A peça nova estabiliza os tubos e revela a pista 5 na placa da câmara seguinte. Trocar a peça não esvazia sozinho o reservatório."
-          ]
+          ],
+          "mapIndex": 6
         },
         {
           "title": "6 · Câmara de alívio — 35 minutos",
-          "text": "Mapa 2, área 2. Leia: “Uma passarela contorna a água. Na porta de saída, uma roda tem duas posições: canal da mina e tanque de reserva.”",
+          "text": "Visão geral 2, área 2. Leia: “Uma passarela contorna a água. Na porta de saída, uma roda tem duas posições: canal da mina e tanque de reserva.”",
           "points": [
+            "Tabuleiro desta cena: Câmara de alívio (mapa 8).",
             "O canal da mina está ocupado por trabalhadores; Brina informa isso sem teste. O tanque de reserva está vazio. A pista 5 mostra como direcionar o alívio para o tanque. Com essa informação, girar a roda custa duas ações e dispensa teste.",
             "Uma trava empenada prende a última volta: Força ND 13 ou Destreza ND 13 com ferramenta. Falha causa 1d4 de dano por esforço ou impacto e avança a pressão. Duas pessoas usando uma ação cada com uma barra de apoio resolvem sem teste.",
             "Pressão local: quatro marcas, uma por falha indicada. Na quarta, um cano rompe e alaga a passarela, tornando-a terreno difícil. Todos ainda podem sair pela galeria; fechar a oficina pela alavanca de emergência termina a ameaça, mas exige semanas de reparo. Não reinicie o relógio de inundação do primeiro mapa.",
             "Final: alívio para o tanque salva água e oficina. Fechamento de emergência salva todos, mas adia a produção. Brina reconhece Ivo por assumir o erro; os jogadores decidem se propõem treinamento ou afastamento. A recompensa original só é entregue agora e não se duplica."
-          ]
+          ],
+          "mapIndex": 7
         },
         {
           "title": "Recompensas e encerramento do one-shot",
@@ -555,6 +647,72 @@
             }
           ],
           "routes": []
+        },
+        {
+          "name": "Pátio e estábulo da oficina",
+          "image": "assets/img/kits/locais/sino-pedra-1.webp",
+          "scene": 1,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Forja de bronze",
+          "image": "assets/img/kits/locais/sino-pedra-2.webp",
+          "scene": 2,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Arquivo da oficina",
+          "image": "assets/img/kits/locais/sino-pedra-3.webp",
+          "scene": 3,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Sala de bombas",
+          "image": "assets/img/kits/locais/sino-pedra-4.webp",
+          "scene": 4,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Galeria de manutenção",
+          "image": "assets/img/kits/locais/sino-pedra-5.webp",
+          "scene": 5,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Câmara de alívio",
+          "image": "assets/img/kits/locais/sino-pedra-6.webp",
+          "scene": 6,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
         }
       ]
     },
@@ -610,7 +768,8 @@
         "Combine limites de conteúdo; qualquer pessoa pode pedir pausa. Aventura sem necessidade de tortura, crueldade com animais ou conflito entre jogadores.",
         "Separe os materiais dos jogadores. Entregue cada pista somente na cena indicada; não mostre a legenda do mestre antes da exploração.",
         "Use 30 × 20 quadrados, cada um com 1,5 m. Movimento de 6 m equivale a 4 quadrados; diagonais custam 1 quadrado, sem atravessar cantos de paredes. Paredes bloqueiam movimento; entulho e água rasa custam o dobro.",
-        "Dois mapas por kit. Mapa 1: cenas 1–4; mapa 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles."
+        "Duas visões gerais por kit, além dos mapas de cada local. Visão geral 1: cenas 1–4; visão geral 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles.",
+        "Mapas de locais: cada uma das seis cenas possui um tabuleiro próprio, além das duas visões gerais. Use a visão geral para orientação e o mapa do local para movimentação. Não some as distâncias entre mapas: as transições continuam narrativas. Os mapas não introduzem novos perigos ou recompensas; valem as regras descritas na cena."
       ],
       "gmSections": [
         {
@@ -632,37 +791,45 @@
           "title": "1 · Caravanas: duas versões",
           "text": "Leia: “Sacos de ração viraram assentos. Todos falam ao mesmo tempo; ninguém olha para a rachadura úmida no chão.”",
           "points": [
+            "Tabuleiro desta cena: Acampamento e curral das caravanas (mapa 3).",
             "Samira informa gratuitamente que o nível caiu durante a noite. Narek culpa os recém-chegados. A condutora Luma apresenta sua lista: os próprios barris também estão vazios (pista 1).",
             "Carisma ND 13 estabelece uma trégua até a investigação terminar. Falha exige deixar uma pessoa de confiança junto a Samira ou oferecer um barril de garantia; nenhuma condição bloqueia o acesso aos locais.",
             "Uma montaria fareja a trilha úmida que leva à cisterna. Sabedoria ND 10 a conduz com calma; falha exige conduzi-la pelas rédeas. Não force combate com o animal."
-          ]
+          ],
+          "mapIndex": 2
         },
         {
           "title": "2 · Oásis: seguir o caminho da água",
           "text": "Leia: “Bolhas surgem num canto do poço. A corrente puxa folhas para uma fenda sob as pedras.”",
           "points": [
+            "Tabuleiro desta cena: Oásis das cinzas (mapa 4).",
             "Sem teste: há um vazamento, não veneno. A pista 2 mostra a ligação antiga com a torre. Observar por alguns minutos revela o sentido da água.",
             "Sabedoria ND 13 encontra um ponto seguro para bloquear a fissura com tecido e argila; sucesso atrasa o relógio em uma marca. Falha gasta o material sem piorar a água.",
             "Entrar na água custa movimento dobrado. A cisterna tem escadas; ninguém precisa mergulhar para achar a pista. Luma pode ficar cuidando das montarias."
-          ]
+          ],
+          "mapIndex": 3
         },
         {
           "title": "3 · Cisterna: fechar a fuga",
           "text": "Leia: “Uma comporta empenada deixa passar um fio constante. Marcas de mãos recentes cobrem a poeira.”",
           "points": [
+            "Tabuleiro desta cena: Cisterna do posto (mapa 5).",
             "A fissura se fecha com duas ações: Força ND 13 para alinhar a comporta, depois Destreza ou Sabedoria ND 13 para vedar. Corda, tecido e argila estão no posto, sem custo adicional. Falha avança o relógio, permite outro método; Ajudar concede vantagem.",
             "Entregue a pista 3: marcas de rodas seguem para a torre e o lacre pertence a Narek. Pode ser prova para negociar ou motivo para ir discretamente ao depósito.",
             "Alternativa: esvaziar a cisterna em barris e abandonar o posto. Leva duas cenas de trabalho e salva água suficiente para todos viajarem, mas o entreposto fecha."
-          ]
+          ],
+          "mapIndex": 4
         },
         {
           "title": "4 · Torre: recuperar sem iniciar uma guerra",
           "text": "Leia: “Barricas intactas ocupam o depósito. Narek baixa a voz: ‘Eu só queria garantir a próxima viagem. Posso devolver.’”",
           "points": [
+            "Tabuleiro desta cena: Torre e depósito de água (mapa 6).",
             "Apresentar lacre e trilha basta para Narek admitir. Carisma ND 13 obtém devolução e confissão pública; falha obtém devolução em troca de escolta segura. Os vigias aceitam a verdade e não precisam ser derrotados.",
             "Se atacado, Narek foge em vez de lutar. Use 2 vigias e 1 chefe; para 3 jogadores retire 1 vigia, para 5 acrescente 1. Barris dão +2 Defesa contra ataques à distância quando cobrem ao menos metade do alvo; não acumulam com outra cobertura.",
             "Vigias rendem-se quando o chefe cai ou quando a prova é apresentada usando uma ação e Carisma ND 13. Uma pessoa pode mover um barril com ação e movimento pela metade. Não incendie automaticamente barris de água."
-          ]
+          ],
+          "mapIndex": 5
         },
         {
           "title": "Relógio de tensão · 5 marcas",
@@ -683,23 +850,27 @@
         },
         {
           "title": "5 · Travessia do leito seco — 25 minutos",
-          "text": "Mapa 2, área 1. Leia: “Uma roda afunda na areia. Do outro lado do leito, as sombras do pátio prometem descanso. Luma pede que soltem os animais antes de puxar a carroça.”",
+          "text": "Visão geral 2, área 1. Leia: “Uma roda afunda na areia. Do outro lado do leito, as sombras do pátio prometem descanso. Luma pede que soltem os animais antes de puxar a carroça.”",
           "points": [
+            "Tabuleiro desta cena: Travessia do leito seco (mapa 7).",
             "Entregue a pista 4. Soltar os animais é uma ação, sem teste. Use Força ND 13 para empurrar com uma prancha ou Sabedoria ND 13 para montar apoio com pedras. Falha custa tempo e derrama um único cantil, não toda a água.",
             "Alternativa sem teste: descarregar, atravessar os barris rolando sobre pranchas e remontar a carga leva vinte minutos. Cada personagem descreve uma função. Se Narek confessou, ele e os vigias trabalham; diminua esse tempo para dez minutos.",
             "Uma rajada levanta areia: o grupo pode parar cinco minutos sob uma lona, sem rolar dados. Atravessar durante a rajada exige Constituição ND 13; falha deixa o personagem Exausto até um descanso breve, conforme o Livro IV. Não exija o teste de quem esperou.",
             "No outro lado, entregue a pista 5. As duas caravanas concordam sobre quanto cada uma trouxe; a disputa é sobre quem assume a perda. Siga para o pátio, sem segundo encontro de combate obrigatório."
-          ]
+          ],
+          "mapIndex": 6
         },
         {
           "title": "6 · Pátio de partilha — 35 minutos",
-          "text": "Mapa 2, área 2. Leia: “Dois recipientes vazios estão sobre a mesa. Samira coloca entre eles o livro de carga: ‘Precisamos de água para todos chegarem, não de um vencedor.’”",
+          "text": "Visão geral 2, área 2. Leia: “Dois recipientes vazios estão sobre a mesa. Samira coloca entre eles o livro de carga: ‘Precisamos de água para todos chegarem, não de um vencedor.’”",
           "points": [
+            "Tabuleiro desta cena: Pátio de partilha (mapa 8).",
             "Objetivo: garantir a reserva mínima de viagem de ambas as caravanas e registrar a restituição. A água presente sempre permite o mínimo; se o posto foi abandonado, ninguém terá sobra para vender. Apresente esses fatos claramente, sem conta escondida.",
             "Cada grupo quer uma garantia: Luma pede pesagem pública; os outros viajantes pedem prioridade para feridos; Narek pede escolta para responder pelo prejuízo sem sofrer agressão. Uma proposta que atenda aos três pontos dispensa teste.",
             "Carisma ND 13 persuade as caravanas a dividirem também ferramentas e guia. Falha mantém o acordo mínimo; não desfaz o abastecimento. Se o grupo recusar negociar, Samira faz a divisão mínima e cada caravana segue sozinha.",
             "Final: acordo amplo cria uma rota compartilhada e o grupo ganha as recompensas originais. Acordo mínimo preserva vidas e o posto, sem novo animal além do já prometido. Dê a cada personagem uma pergunta de epílogo: com quem viajará, que promessa fará ou o que aprendeu sobre confiança?"
-          ]
+          ],
+          "mapIndex": 7
         },
         {
           "title": "Recompensas e encerramento do one-shot",
@@ -840,6 +1011,72 @@
             }
           ],
           "routes": []
+        },
+        {
+          "name": "Acampamento e curral das caravanas",
+          "image": "assets/img/kits/locais/agua-cinzas-1.webp",
+          "scene": 1,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Oásis das cinzas",
+          "image": "assets/img/kits/locais/agua-cinzas-2.webp",
+          "scene": 2,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Cisterna do posto",
+          "image": "assets/img/kits/locais/agua-cinzas-3.webp",
+          "scene": 3,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Torre e depósito de água",
+          "image": "assets/img/kits/locais/agua-cinzas-4.webp",
+          "scene": 4,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Travessia do leito seco",
+          "image": "assets/img/kits/locais/agua-cinzas-5.webp",
+          "scene": 5,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Pátio de partilha",
+          "image": "assets/img/kits/locais/agua-cinzas-6.webp",
+          "scene": 6,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
         }
       ]
     },
@@ -895,7 +1132,8 @@
         "Combine limites de conteúdo; qualquer pessoa pode pedir pausa. Aventura sem necessidade de tortura, crueldade com animais ou conflito entre jogadores.",
         "Separe os materiais dos jogadores. Entregue cada pista somente na cena indicada; não mostre a legenda do mestre antes da exploração.",
         "Use 30 × 20 quadrados, cada um com 1,5 m. Movimento de 6 m equivale a 4 quadrados; diagonais custam 1 quadrado, sem atravessar cantos de paredes. Paredes bloqueiam movimento; entulho e água rasa custam o dobro.",
-        "Dois mapas por kit. Mapa 1: cenas 1–4; mapa 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles."
+        "Duas visões gerais por kit, além dos mapas de cada local. Visão geral 1: cenas 1–4; visão geral 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles.",
+        "Mapas de locais: cada uma das seis cenas possui um tabuleiro próprio, além das duas visões gerais. Use a visão geral para orientação e o mapa do local para movimentação. Não some as distâncias entre mapas: as transições continuam narrativas. Os mapas não introduzem novos perigos ou recompensas; valem as regras descritas na cena."
       ],
       "gmSections": [
         {
@@ -917,37 +1155,45 @@
           "title": "1 · Arco: vozes emprestadas",
           "text": "Leia: “Uma frase sai das folhas com a sua própria voz. O caminho se bifurca entre estantes de pedra e um espelho voltado para o céu.”",
           "points": [
+            "Tabuleiro desta cena: Arco de entrada do jardim (mapa 3).",
             "Naia entrega corda, ferramenta de ajuste e a pista 1. Cada jogador conta uma lembrança feliz que seu personagem aceita compartilhar; isso é opcional e não exige relato pessoal do jogador.",
             "Sabedoria ND 13 identifica que todos os ecos vêm do observatório. Falha revela o mesmo rumo, mas atrai uma raiz sentinela que bloqueia a passagem; contorná-la custa uma marca de tensão, sem combate obrigatório.",
             "As duas trilhas estão abertas. A biblioteca contém o aprendiz e a instrução; o jardim contém a causa hidráulica. Podem ser visitados em qualquer ordem."
-          ]
+          ],
+          "mapIndex": 2
         },
         {
           "title": "2 · Biblioteca: resgate entre raízes",
           "text": "Leia: “Eren mantém os pés sobre uma mesa. Raízes apertam a porta, enquanto uma estante repete: água, chão, céu.”",
           "points": [
+            "Tabuleiro desta cena: Biblioteca entre raízes (mapa 4).",
             "Eren explica o erro e entrega a pista 2 mesmo se o grupo falhar. Uma ação e Força ND 13 afastam a raiz; Destreza ND 13 alcança o trinco pela janela. Falha causa 1d4 de dano a quem tenta, sem prender mais ninguém; outro método continua possível.",
             "Apresentar a ferramenta de Naia e pedir calma, com Carisma ND 13, silencia o eco que agita as raízes. Sucesso liberta Eren sem dano. Ajudar usa uma ação e concede vantagem, conforme o Livro IV.",
             "Eren acompanha o grupo como orientador; não resolve os testes. Se escoltado para fora, Naia cuida dele e o grupo pode prosseguir normalmente."
-          ]
+          ],
+          "mapIndex": 3
         },
         {
           "title": "3 · Águas: restaurar o fluxo",
           "text": "Leia: “Um fio de água desaparece sob uma roda parada. Pedras e galhos comprimem a comporta.”",
           "points": [
+            "Tabuleiro desta cena: Jardim das águas (mapa 5).",
             "Remova o entulho com uma ação e Força ND 13, depois ajuste a roda com uma ação e Destreza ou Sabedoria ND 13. Cada falha avança a tensão; o teste pode ser repetido com outra abordagem. Ferramentas adequadas permitem a tentativa, sem bônus automático.",
             "Alternativa sem teste: três personagens usam suas ações na mesma rodada para segurar a roda, retirar pedras e abrir a passagem. Um grupo menor pode gastar dez minutos e duas marcas de tensão.",
             "Restaurar o fluxo encerra o crescimento das raízes, mas os ecos persistem até alinhar os espelhos. A placa sob a roda é a pista 3, recuperável sem teste."
-          ]
+          ],
+          "mapIndex": 4
         },
         {
           "title": "4 · Observatório: água, chão, céu",
           "text": "Leia: “Três espelhos cercam um cristal. Em cada superfície há uma imagem: uma gota, uma folha e uma estrela.”",
           "points": [
+            "Tabuleiro desta cena: Observatório dos espelhos (mapa 6).",
             "A ordem é gota voltada ao canal, folha ao arco de entrada, estrela ao cristal central. Com as pistas, cada ajuste custa uma ação e dispensa teste. Sem as pistas, Sabedoria ND 16 descobre um ajuste; falha avança o relógio e permite buscar a biblioteca.",
             "Antes de restaurar o fluxo, a máquina desfaz o primeiro ajuste. Deixe isso visível e explique que falta água; não consuma todas as ações do grupo em tentativas inúteis.",
             "Se quebrarem um espelho ou atacarem o cristal, desperte 2 raízes sentinelas e 1 guardião de pedra. Para 3 jogadores use só 1 raiz; para 5 use 3. Alinhar o último espelho encerra a luta imediatamente. Desligar a máquina com duas ações e Força ND 16 também encerra o perigo, mas perde o arquivo de ecos."
-          ]
+          ],
+          "mapIndex": 5
         },
         {
           "title": "Relógio de tensão · 6 marcas",
@@ -968,23 +1214,27 @@
         },
         {
           "title": "5 · Riacho das raízes — 25 minutos",
-          "text": "Mapa 2, área 1. Leia: “A corrente passa por pedras claras. Uma árvore caída interrompe a trilha, mas sua copa formou uma passagem até a outra margem.”",
+          "text": "Visão geral 2, área 1. Leia: “A corrente passa por pedras claras. Uma árvore caída interrompe a trilha, mas sua copa formou uma passagem até a outra margem.”",
           "points": [
+            "Tabuleiro desta cena: Riacho das raízes (mapa 7).",
             "Naia entrega a pista 4. A placa não exige sintonização, magia nem sacrifício. Não peça memórias pessoais aos jogadores: toda lembrança narrada pode ser inventada para o personagem, ou substituída por uma simples promessa.",
             "Destreza ND 13 atravessa pela árvore e prende uma corda. Falha faz perder o equilíbrio, custa uma marca de crepúsculo e retorna à margem sem dano. Com a corda presa, todos atravessam sem teste. Outra opção é contornar o riacho, gastando vinte minutos e uma marca.",
             "Força ND 13 remove um galho que bloqueia o fluxo. Falha causa 1d4 de dano por arranhão, mas abre a passagem. Dois personagens com uma corda podem deslocá-lo usando uma ação cada, sem teste.",
             "Se Eren foi resgatado, ele carrega ferramentas e sugere o contorno; não faz o teste pelo grupo. Sem ele, Naia oferece a mesma informação. Ao atravessar, entregue a pista 5."
-          ]
+          ],
+          "mapIndex": 6
         },
         {
           "title": "6 · Santuário da memória — 35 minutos",
-          "text": "Mapa 2, área 2. Leia: “Três pedestais cercam uma bacia cristalina. Nenhum pede sangue ou poder: nas bases estão gravadas as palavras acolher, recordar e devolver.”",
+          "text": "Visão geral 2, área 2. Leia: “Três pedestais cercam uma bacia cristalina. Nenhum pede sangue ou poder: nas bases estão gravadas as palavras acolher, recordar e devolver.”",
           "points": [
+            "Tabuleiro desta cena: Santuário da memória (mapa 8).",
             "A solução é colocar a placa no pedestal acolher, narrar uma lembrança fictícia ou promessa em recordar, e abrir o pequeno canal em devolver. A pista explica a sequência; cada passo custa uma ação, sem teste. Não existe resposta emocional correta.",
             "Se errarem a ordem, a luz se apaga e podem recomeçar, avançando uma marca de crepúsculo. Sabedoria ND 13 percebe a sequência sem ler a pista; falha apenas indica que devem examinar as inscrições. A canaleta emperrada pode ser limpa em uma ação com a ferramenta de Naia, sem teste.",
             "Crepúsculo: três marcas locais. Na terceira, acende-se a lanterna fornecida por Naia e a caminhada de volta leva mais tempo; o ritual permanece possível. Não use monstros extras para alongar a sessão.",
             "Final: se o observatório sobreviveu, a placa devolve os ecos antigos ao bosque. Se foi desligado à força, surge apenas a nova lembrança ou promessa; o passado continua perdido, preservando a consequência. Naia agradece e entrega a recompensa original uma vez. Cada personagem escolhe uma palavra que o jardim lembrará."
-          ]
+          ],
+          "mapIndex": 7
         },
         {
           "title": "Recompensas e encerramento do one-shot",
@@ -1119,6 +1369,72 @@
             }
           ],
           "routes": []
+        },
+        {
+          "name": "Arco de entrada do jardim",
+          "image": "assets/img/kits/locais/jardim-ecos-1.webp",
+          "scene": 1,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Biblioteca entre raízes",
+          "image": "assets/img/kits/locais/jardim-ecos-2.webp",
+          "scene": 2,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Jardim das águas",
+          "image": "assets/img/kits/locais/jardim-ecos-3.webp",
+          "scene": 3,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Observatório dos espelhos",
+          "image": "assets/img/kits/locais/jardim-ecos-4.webp",
+          "scene": 4,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Riacho das raízes",
+          "image": "assets/img/kits/locais/jardim-ecos-5.webp",
+          "scene": 5,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Santuário da memória",
+          "image": "assets/img/kits/locais/jardim-ecos-6.webp",
+          "scene": 6,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
         }
       ]
     },
@@ -1174,7 +1490,8 @@
         "Combine limites de conteúdo; qualquer pessoa pode pedir pausa. Aventura sem necessidade de tortura, crueldade com animais ou conflito entre jogadores.",
         "Separe os materiais dos jogadores. Entregue cada pista somente na cena indicada; não mostre a legenda do mestre antes da exploração.",
         "Use 30 × 20 quadrados, cada um com 1,5 m. Movimento de 6 m equivale a 4 quadrados; diagonais custam 1 quadrado, sem atravessar cantos de paredes. Paredes bloqueiam movimento; entulho e água rasa custam o dobro.",
-        "Dois mapas por kit. Mapa 1: cenas 1–4; mapa 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles."
+        "Duas visões gerais por kit, além dos mapas de cada local. Visão geral 1: cenas 1–4; visão geral 2: cenas 5–6. Entregue as pistas 4 e 5 somente nos momentos indicados. Os dois mapas não são geograficamente contíguos: narre a transição entre eles.",
+        "Mapas de locais: cada uma das seis cenas possui um tabuleiro próprio, além das duas visões gerais. Use a visão geral para orientação e o mapa do local para movimentação. Não some as distâncias entre mapas: as transições continuam narrativas. Os mapas não introduzem novos perigos ou recompensas; valem as regras descritas na cena."
       ],
       "gmSections": [
         {
@@ -1196,37 +1513,45 @@
           "title": "1 · Cais: um plano antes da subida",
           "text": "Leia: “O barco bate contra pedras. Uma corda estala, e a luz do farol varre o mar na direção errada.”",
           "points": [
+            "Tabuleiro desta cena: Cais de resgate (mapa 3).",
             "Lia entrega a pista 1 e mantém o barco pronto. O grupo escolhe salvar o vigia, corrigir o sinal ou negociar uma evacuação; as três tarefas se conectam, sem ordem obrigatória.",
             "Prender a embarcação exige Destreza ND 13 ou duas ações de dois personagens usando a corda disponível, sem teste. Falha custa uma marca de maré; Lia conserva o barco, mas ele sai e retorna dez minutos depois.",
             "O cais e os caminhos de pedra são seguros enquanto não forem inundados. Cair em água junto à borda exige uma ação e Força ND 13 para subir, ou ação de um aliado com corda sem teste. Falha causa 1d4 de dano de impacto e mantém a pessoa junto à borda; não há morte automática."
-          ]
+          ],
+          "mapIndex": 2
         },
         {
           "title": "2 · Armazém: negociar a peça",
           "text": "Leia: “Mira empilha caixas acima da linha úmida na parede. No guincho, uma roda de bronze traz o mesmo símbolo do farol.”",
           "points": [
+            "Tabuleiro desta cena: Armazém da enseada (mapa 4).",
             "Mira troca a roda pela promessa de lugar no barco para sua equipe. Aceitar garante a peça sem teste e a pista 2. Carisma ND 16 também a convence a entregar a carga irregular às autoridades; falha mantém apenas o acordo de resgate.",
             "Sabedoria ND 13 encontra uma segunda corda e uma prancha útil para a gruta. Falha encontra ambas, mas a busca avança a maré. Pistas essenciais não exigem teste.",
             "Se o grupo atacar, use 2 marinheiros e 1 capataz; para 3 jogadores retire um marinheiro, para 5 acrescente um. Eles rendem-se quando o capataz cai ou quando recebem uma saída segura. Mira não luta e entrega a roda se ameaçada; registre a hostilidade futura."
-          ]
+          ],
+          "mapIndex": 3
         },
         {
           "title": "3 · Gruta: tirar Otávio da água",
           "text": "Leia: “O vigia se apoia num patamar seco. A escada entre vocês perdeu três degraus. Ele segura um caderno sobre a cabeça.”",
           "points": [
+            "Tabuleiro desta cena: Gruta da maré (mapa 5).",
             "Uma prancha e corda resolvem a travessia em duas ações, sem teste. Sem esses materiais, Destreza ND 16 permite atravessar pela borda; falha causa 1d4 de dano e devolve o personagem ao patamar inicial.",
             "Otávio não anda depressa: escoltá-lo reduz o movimento pela metade, sem outra penalidade. Dois personagens podem carregá-lo juntos gastando suas ações para atravessar a lacuna. Ele entrega a pista 3 mesmo antes do resgate, gritando a instrução.",
             "Otávio confirma que a roda é necessária. Se o grupo já improvisou o freio, ele orienta apenas o sinal. Não exige nova rolagem para repetir uma informação obtida."
-          ]
+          ],
+          "mapIndex": 4
         },
         {
           "title": "4 · Farol: frear, alinhar, avisar",
           "text": "Leia: “O mecanismo gira aos solavancos. Entre cada clarão, um casco aparece no nevoeiro.”",
           "points": [
+            "Tabuleiro desta cena: Mecanismo do farol (mapa 6).",
             "Com a roda, uma ação e Destreza ou Sabedoria ND 13 reinstalam o freio. Falha avança a maré e pode ser repetida. Duas pessoas com ferramentas e duas ações cada fazem o reparo sem teste.",
             "Depois de frear, uma ação aponta a lente para o mar aberto e outra cobre a luz para fazer três lampejos, pausa, três lampejos. As pistas revelam o procedimento; executá-lo corretamente dispensa teste e afasta o navio.",
             "Sem roda, Força ND 16 trava o eixo por uma rodada enquanto um aliado sinaliza. Falha causa 1d6 de dano a quem segura; permite outra tentativa ou buscar a peça. Alternativa: apagar o farol com uma ação e sinalizar com a lanterna do cais, gastando duas ações; salva o navio, mas deixa o farol sem funcionamento."
-          ]
+          ],
+          "mapIndex": 5
         },
         {
           "title": "Relógio de maré · 6 marcas",
@@ -1247,23 +1572,27 @@
         },
         {
           "title": "5 · Convés do navio — 25 minutos",
-          "text": "Mapa 2, área 1. Leia: “O navio repousa inclinado na areia. A capitã aponta para uma prancha de embarque: ‘Primeiro as pessoas. As caixas podem esperar.’”",
+          "text": "Visão geral 2, área 1. Leia: “O navio repousa inclinado na areia. A capitã aponta para uma prancha de embarque: ‘Primeiro as pessoas. As caixas podem esperar.’”",
           "points": [
+            "Tabuleiro desta cena: Convés do navio (mapa 7).",
             "Entregue a pista 4. São seis passageiros, um deles precisa de apoio. Com o barco de Lia ou uma prancha presa por cordas, desembarcar todos dispensa teste e leva dez minutos. Dois personagens acompanham quem tem dificuldade, usando movimento pela metade.",
             "Se o casco foi avariado no primeiro mapa, uma caixa fica presa: Força ND 13 a libera ou Destreza ND 13 solta a amarra. Falha custa uma marca de onda. Deixar a caixa é sempre possível, sem prejudicar o resgate; ela contém mercadorias, não remédios nem pessoas.",
             "Se o sinal foi corrigido a tempo, o casco intacto permite recuperar a caixa sem teste. A capitã entrega a pista 5, agradecendo a diferença que a ação no farol fez. Otávio fica com Lia, sem precisar ser resgatado outra vez.",
             "Mira cumpre um acordo de evacuação feito no armazém e ajuda a levar cordas. Se o grupo a hostilizou, a capitã fornece o material: nenhuma escolha anterior bloqueia a continuação."
-          ]
+          ],
+          "mapIndex": 6
         },
         {
           "title": "6 · Cais protegido — 35 minutos",
-          "text": "Mapa 2, área 2. Leia: “Uma lanterna indica a água tranquila entre duas pedras. O cais está perto, mas uma amarra solta bate contra a parede.”",
+          "text": "Visão geral 2, área 2. Leia: “Uma lanterna indica a água tranquila entre duas pedras. O cais está perto, mas uma amarra solta bate contra a parede.”",
           "points": [
+            "Tabuleiro desta cena: Cais protegido (mapa 8).",
             "Objetivo: prender a prancha ou a embarcação, receber passageiros e encerrar o resgate. Uma ação e Destreza ND 13 fazem o nó sob pressão. Falha custa uma marca de onda, sem derrubar passageiros. Duas pessoas usando duas ações cada podem fazer o trabalho sem teste.",
             "Três marcas locais de onda; avance nas falhas indicadas ou ao insistir dez minutos em carga opcional. Na terceira, a caixa remanescente é levada, mas todos os passageiros que aguardam no convés continuam seguros até a próxima viagem. Lia faz quantas viagens forem necessárias; não mate pessoas por um teste isolado.",
             "A capitã confirma a lista da pista 4. Com todos presentes, encerre os testes. Se houver acusações sobre Mira, a guarda recolhe depoimentos no cais; não exija outro combate nem resolva julgamento durante esta sessão.",
             "Epílogo: peça aos jogadores uma cena curta na vila, mostrando quem recebeu ajuda e o que ficou para trás. Recompensas originais são entregues uma vez. Farol reparado mantém a costa segura; farol apagado requer uma equipe de reparo. O estado do navio e a perda de carga continuam os estabelecidos pelas escolhas anteriores."
-          ]
+          ],
+          "mapIndex": 7
         },
         {
           "title": "Recompensas e encerramento do one-shot",
@@ -1404,6 +1733,72 @@
             }
           ],
           "routes": []
+        },
+        {
+          "name": "Cais de resgate",
+          "image": "assets/img/kits/locais/farol-mares-1.webp",
+          "scene": 1,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Armazém da enseada",
+          "image": "assets/img/kits/locais/farol-mares-2.webp",
+          "scene": 2,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Gruta da maré",
+          "image": "assets/img/kits/locais/farol-mares-3.webp",
+          "scene": 3,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Mecanismo do farol",
+          "image": "assets/img/kits/locais/farol-mares-4.webp",
+          "scene": 4,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Convés do navio",
+          "image": "assets/img/kits/locais/farol-mares-5.webp",
+          "scene": 5,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Cais protegido",
+          "image": "assets/img/kits/locais/farol-mares-6.webp",
+          "scene": 6,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
         }
       ]
     },
@@ -1459,7 +1854,8 @@
         "Combine limites de conteúdo; qualquer pessoa pode pedir pausa. Aventura sem necessidade de tortura, crueldade com animais ou conflito entre jogadores.",
         "Separe os materiais dos jogadores. Entregue cada pista somente na cena indicada; não mostre a legenda do mestre antes da exploração.",
         "Use 30 × 20 quadrados, cada um com 1,5 m. Movimento de 6 m equivale a 4 quadrados; diagonais custam 1 quadrado, sem atravessar cantos de paredes. Paredes bloqueiam movimento; entulho e água rasa custam o dobro.",
-        "Mapa 1 nas cenas 1–4; mapa 2 nas cenas 5–6. Narre a caminhada entre os bairros: os mapas não são geograficamente contíguos. Convites, máscaras e informações essenciais são fornecidos pelo kit."
+        "Mapa 1 nas cenas 1–4; mapa 2 nas cenas 5–6. Narre a caminhada entre os bairros: os mapas não são geograficamente contíguos. Convites, máscaras e informações essenciais são fornecidos pelo kit.",
+        "Mapas de locais: cada uma das seis cenas possui um tabuleiro próprio, além das duas visões gerais. Use a visão geral para orientação e o mapa do local para movimentação. Não some as distâncias entre mapas: as transições continuam narrativas. Os mapas não introduzem novos perigos ou recompensas; valem as regras descritas na cena."
       ],
       "gmSections": [
         {
@@ -1479,40 +1875,48 @@
         },
         {
           "title": "1 · Convites no pátio — 15 minutos",
-          "text": "Mapa 1, área 1. Leia: “Músicos afinam seus instrumentos. Um porteiro examina convites, enquanto vendedores penduram máscaras sob as lanternas.”",
+          "text": "Visão geral 1, área 1. Leia: “Músicos afinam seus instrumentos. Um porteiro examina convites, enquanto vendedores penduram máscaras sob as lanternas.”",
           "points": [
+            "Tabuleiro desta cena: Pátio dos convites (mapa 3).",
             "Elisa possui convites válidos para todo o grupo; entrar não exige enganar, pagar nem passar em teste. Entregue a pista 1. Cada personagem escolhe uma máscara e um motivo fictício para conhecer o abrigo, sem modificar atributos.",
             "O porteiro informa onde ficam ateliê, arquivo e salão. Sabedoria ND 13 percebe cera azul no pacote de um carregador. Falha perde a observação, mas Elisa reconhece o número do lote no convite e aponta o ateliê; a investigação prossegue.",
             "Combine que armas permanecem embainhadas. Isso é um pedido da organização, não uma retirada automática do equipamento do personagem. Uma pessoa pode optar por esperar no pátio e acompanhar entregas."
-          ]
+          ],
+          "mapIndex": 2
         },
         {
           "title": "2 · Ateliê: o estojo trocado — 20 minutos",
-          "text": "Mapa 1, área 2. Leia: “Uma máscara dourada está sem seu estojo. Na mesa, linhas e lacres se misturam a uma lista de entregas.”",
+          "text": "Visão geral 1, área 2. Leia: “Uma máscara dourada está sem seu estojo. Na mesa, linhas e lacres se misturam a uma lista de entregas.”",
           "points": [
+            "Tabuleiro desta cena: Ateliê de máscaras (mapa 4).",
             "A costureira local reconhece Elisa e entrega a pista 2 sem teste. O estojo do lote 17 está no salão. O selo não foi vendido ainda e pode ser recuperado por acordo, evitando uma disputa de dinheiro.",
             "Destreza ND 13 recompõe um lacre de papel rasgado, revelando as iniciais de Varo. Falha rasga mais a borda; uma anotação duplicada no verso fornece as mesmas iniciais após dez minutos de busca. Não invente uma penalidade permanente por falhar.",
             "Se o grupo pedir ajuda honestamente, a costureira escreve uma nota para Dália confirmar a procedência. A nota pode substituir o teste social da cena 4. Furto de objetos do ateliê torna a costureira desconfiada, mas não elimina o registro escrito."
-          ]
+          ],
+          "mapIndex": 3
         },
         {
           "title": "3 · Arquivo: o documento impossível — 25 minutos",
-          "text": "Mapa 1, área 3. Leia: “Uma pasta vazia tem a marca de um selo redondo. O funcionário folheia um registro: ‘Esse prédio foi cedido por um ano. Como poderiam retomá-lo amanhã?’”",
+          "text": "Visão geral 1, área 3. Leia: “Uma pasta vazia tem a marca de um selo redondo. O funcionário folheia um registro: ‘Esse prédio foi cedido por um ano. Como poderiam retomá-lo amanhã?’”",
           "points": [
+            "Tabuleiro desta cena: Arquivo do leilão (mapa 5).",
             "Mostrar o convite e explicar a ameaça permite consultar a pasta. Entregue a pista 3. O registro de cessão é público; o funcionário lê seu conteúdo se ninguém souber interpretar a escrita. Não exija perícia específica para receber a prova.",
             "Sabedoria ND 13 identifica que a ordem de fechamento usa papel de compra recente, posterior à data nela escrita. Falha deixa essa confirmação para Tomás; a contradição entre a ordem e o registro permanece clara.",
             "O funcionário oferece uma cópia autenticada provisória e o endereço do cais onde Tomás trabalha. Levar o original não é necessário. Se já visitaram o salão, esta cena ainda funciona antes de sair para o segundo mapa."
-          ]
+          ],
+          "mapIndex": 4
         },
         {
           "title": "4 · Salão: recuperar sem comprar — 30 minutos",
-          "text": "Mapa 1, área 4. Leia: “Dália ergue o estojo do lote 17. Um homem de luvas escuras tenta encerrar a oferta antes que alguém o examine.”",
+          "text": "Visão geral 1, área 4. Leia: “Dália ergue o estojo do lote 17. Um homem de luvas escuras tenta encerrar a oferta antes que alguém o examine.”",
           "points": [
+            "Tabuleiro desta cena: Salão de lances (mapa 6).",
             "Dália suspende o lote se receber a nota do ateliê ou a cópia do arquivo; não há teste. Sem nenhum documento, Carisma ND 16 consegue uma pausa para investigar. Falha mantém o lote em espera por dez minutos: um personagem pode buscar a nota enquanto outro observa o estojo. Não force um leilão com preços que o grupo não pode pagar.",
             "Dentro do estojo estão o selo e a pista 4. Dália entrega ambos sob recibo quando verifica o registro do arquivo. A recuperação é garantida por provas e cooperação, não por combate obrigatório.",
             "Varo oferece dinheiro para abandonarem o assunto, sem obrigação de aceitar. Se houver violência, use 2 guardas contratados e 1 chefe; para 3 jogadores retire um guarda, para 5 acrescente um. Eles rendem-se quando o chefe chega à metade da Vida ou quando Dália manda parar usando uma ação. O selo permanece no pedestal e pode ser recolhido com uma ação.",
             "Relógio do leilão: quatro marcas, uma por cena concluída; dez minutos extras também avançam uma, no máximo uma por rodada. Na quarta, o salão fecha e Varo sai, mas Dália guarda o lote contestado e espera no pátio. A prova não desaparece e a passagem ao cais continua disponível."
-          ]
+          ],
+          "mapIndex": 5
         },
         {
           "title": "Passagem ao segundo cenário",
@@ -1525,23 +1929,27 @@
         },
         {
           "title": "5 · Cais: uma testemunha livre — 25 minutos",
-          "text": "Mapa 2, área 1. Leia: “Tomás aperta uma pasta contra o peito. A barca está pronta, mas ele ainda não soltou a amarra. ‘Se eu falar, como volto a trabalhar?’”",
+          "text": "Visão geral 2, área 1. Leia: “Tomás aperta uma pasta contra o peito. A barca está pronta, mas ele ainda não soltou a amarra. ‘Se eu falar, como volto a trabalhar?’”",
           "points": [
+            "Tabuleiro desta cena: Pavilhão do cais (mapa 7).",
             "Entregue a pista 5 assim que explicarem que o abrigo corre risco. Tomás admite ter copiado a ordem sem conferir a autorização; Varo acrescentou a data e o selo. Não o trate como culpado automático por ter medo.",
             "Uma promessa concreta de Dália de recebê-lo no arquivo ou a oferta de Elisa de trabalho no abrigo o convence sem teste. Carisma ND 13 também o tranquiliza. Falha significa que prefere um depoimento escrito assinado, entregue pela associação; ambas as formas valem na audiência.",
             "Ameaças o fazem recusar presença pessoal. Ele ainda permite ao funcionário confirmar o lote de papel com a nota da pista 5. O grupo pode seguir com duas provas documentais, sem forçá-lo a falar.",
             "Se Varo chegou antes, ele tenta comprar silêncio. Os personagens podem lembrar Tomás do registro público ou chamar Dália; não é necessário duelo. Se houver conflito, use no máximo 1 guarda restante da cena 4, com a Vida que tinha ao sair, sem criar reforços infinitos."
-          ]
+          ],
+          "mapIndex": 6
         },
         {
           "title": "6 · Praça: quem pode assinar uma mentira? — 35 minutos",
-          "text": "Mapa 2, área 2. Leia: “A escrivã coloca duas folhas sobre a mesa pública. Uma cede o prédio ao abrigo; a outra manda fechá-lo. ‘Apresentem suas provas, uma de cada vez.’”",
+          "text": "Visão geral 2, área 2. Leia: “A escrivã coloca duas folhas sobre a mesa pública. Uma cede o prédio ao abrigo; a outra manda fechá-lo. ‘Apresentem suas provas, uma de cada vez.’”",
           "points": [
+            "Tabuleiro desta cena: Praça da audiência (mapa 8).",
             "O objetivo é suspender o fechamento e devolver o selo à associação. Registro do arquivo e selo recuperado bastam para suspender a ordem, sem teste. O depoimento ou a nota de compra do papel demonstram a falsificação e encaminham a investigação de Varo. Não exija que um jogador faça um discurso perfeito: descrever o argumento é suficiente.",
             "Com apenas uma dessas provas, Carisma ou Sabedoria ND 13 obtém prazo de sete dias para completar a investigação. Falha ainda concede um dia e a escrivã manda consultar o arquivo; o abrigo não é despejado durante a sessão. Se ninguém trouxe provas, Elisa pede a consulta pública e o grupo pode reconhecer seus erros sem encerrar a campanha.",
             "Varo pode contestar, mas não decide a validade da prova. A escrivã não ordena execução nem punição imediata. Caso ele fuja, anote a busca futura como opção; a missão de proteger o abrigo termina aqui.",
             "Sem relógio de combate nesta cena. Cada jogador pode contribuir com uma prova, uma testemunha ou uma descrição do valor do abrigo. Encerre quando a decisão for anunciada; não acrescente uma perseguição obrigatória após a vitória."
-          ]
+          ],
+          "mapIndex": 7
         },
         {
           "title": "Recompensas e encerramento do one-shot",
@@ -1687,6 +2095,72 @@
               "secret": false
             }
           ],
+          "routes": []
+        },
+        {
+          "name": "Pátio dos convites",
+          "image": "assets/img/kits/locais/mascaras-meia-noite-1.webp",
+          "scene": 1,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Ateliê de máscaras",
+          "image": "assets/img/kits/locais/mascaras-meia-noite-2.webp",
+          "scene": 2,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Arquivo do leilão",
+          "image": "assets/img/kits/locais/mascaras-meia-noite-3.webp",
+          "scene": 3,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Salão de lances",
+          "image": "assets/img/kits/locais/mascaras-meia-noite-4.webp",
+          "scene": 4,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Pavilhão do cais",
+          "image": "assets/img/kits/locais/mascaras-meia-noite-5.webp",
+          "scene": 5,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
+          "routes": []
+        },
+        {
+          "name": "Praça da audiência",
+          "image": "assets/img/kits/locais/mascaras-meia-noite-6.webp",
+          "scene": 6,
+          "kind": "location",
+          "columns": 30,
+          "rows": 20,
+          "cellMeters": 1.5,
+          "locations": [],
           "routes": []
         }
       ]
