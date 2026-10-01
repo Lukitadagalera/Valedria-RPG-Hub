@@ -56,9 +56,9 @@ html:root[data-theme] .sheet-refined .btn,html:root[data-theme] .catalog-option 
 .sheet-refined .resource-restore>.btn{min-height:48px;width:100%;margin:0}
 .sheet-refined .resource-restore:has(>#btn-vida-restaurar){grid-column:1/-1}
 
-/* Two equally sized portraits fill the identity column without a blank lower half. */
+/* Portrait and mount share the identity column; mount preserves its native ratio. */
 .sheet-refined .sheet-identity{align-items:stretch}
-.sheet-refined .sheet-identity>.portrait-card{position:static;align-self:stretch;display:grid;grid-template-rows:1fr 1fr;gap:24px}
+.sheet-refined .sheet-identity>.portrait-card{position:static;align-self:stretch;display:grid;grid-template-rows:auto auto;gap:24px}
 .sheet-refined .portrait-slot{align-self:stretch;display:grid;grid-template-rows:auto minmax(200px,1fr) auto auto;gap:14px;width:100%;min-width:0;min-height:0}
 .sheet-refined .portrait-slot .portrait-frame{width:100%;max-width:none;height:100%;min-height:200px;aspect-ratio:auto;position:relative}
 .sheet-refined .portrait-slot .portrait-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
@@ -76,4 +76,4 @@ html body #f-papel-usado{width:18px!important;height:18px!important;min-height:1
 .mount-selector{display:grid;grid-template-columns:44px 1fr 44px;gap:10px;align-items:center;margin:18px 0}.mount-selector strong{text-align:center}.mount-selector .btn{padding:8px;min-width:0}
 #montaria-detalhes{font-size:15px;line-height:1.6}#f-montaria-preview{object-fit:contain!important}
 
-.sheet-refined .portrait-slot:has(#f-montaria-preview){grid-template-rows:auto auto auto auto;align-content:start}.sheet-refined .portrait-slot .portrait-frame:has(#f-montaria-preview){aspect-ratio:3/2;height:auto;min-height:0}.sheet-refined .sheet-identity>.portrait-card{grid-template-rows:auto auto}
+.sheet-refined .portrait-slot:has(#f-montaria-preview){grid-template-rows:auto auto auto auto;align-content:start}.sheet-refined .portrait-slot .portrait-frame:has(#f-montaria-preview){aspect-ratio:3/2;height:auto;min-height:0}

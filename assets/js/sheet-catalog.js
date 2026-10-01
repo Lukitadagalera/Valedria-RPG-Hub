@@ -70,7 +70,6 @@ window.SheetCatalog=function(options){
     try{var image=new Image();image.src=url;await image.decode();var scale=Math.min(1,1280/Math.max(image.width,image.height));var canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(image.width*scale));canvas.height=Math.max(1,Math.round(image.height*scale));canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height);if(version!==photoVersion)return;await crop.open(canvas.toDataURL('image/webp',.88));$('#foto-status').textContent='Ajuste o enquadramento e aplique o recorte.';}catch(error){$('#foto-status').textContent='Não foi possível abrir essa imagem. Escolha outro arquivo.';}finally{URL.revokeObjectURL(url);}
   });
   $('#foto-remover').onclick=function(){photoVersion++;crop.cancel();state.foto='';state.fotoOriginal='';state.fotoRecorte=null;$('#foto-status').textContent='Retrato removido.';render();options.onChange();};
-  render();
   $('#montaria-anterior').onclick=function(){mountIndex=(mountIndex+mounts.length-1)%mounts.length;render();};
   $('#montaria-proxima').onclick=function(){mountIndex=(mountIndex+1)%mounts.length;render();};
   $('#montaria-escolher').onclick=function(){var m=mounts[mountIndex];if(!m)return;state.montariaId=m.id;state.montaria=m.imagem;state.montariaOriginal='';state.montariaRecorte=null;render();options.onChange();};

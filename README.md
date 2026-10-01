@@ -27,4 +27,8 @@ Requer Node 24 ou posterior para os testes com SQLite.
 
 O GitHub Pages publica a raiz da branch `main`. A demonstração não recebe pagamentos nem envia e-mails reais. Consulte [cadastro e lançamento](docs/CONTA-E-LANCAMENTO.md) antes de ativar a operação comercial.
 
-[Auditoria geral — 29/09/2026](docs/AUDITORIA-2026-09-29.md).
+## Editar os kits
+
+As fontes dos seis kits ficam em `scripts/kits/`: `build.py` reúne a base, `continuations.py` amplia as aventuras e `masks.py` compõe o sexto kit. Execute `python scripts/refresh-session-kits.py` para atualizar `assets/demo/studio.json`; não edite esse catálogo gerado diretamente. A verificação do GitHub confere se fontes e catálogo estão sincronizados.
+
+[Revisão atual — 30/09/2026](docs/AUDITORIA-2026-09-30.md). A [auditoria de 29/09](docs/AUDITORIA-2026-09-29.md) registra o estado anterior do projeto.

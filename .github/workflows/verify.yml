@@ -14,6 +14,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - run: python scripts/refresh-session-kits.py
+      - run: git diff --exit-code -- assets/demo/studio.json
       - run: npm run build
       - run: npm test
       - run: node scripts/verify-commercial.cjs

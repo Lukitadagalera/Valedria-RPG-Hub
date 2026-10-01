@@ -2,7 +2,7 @@
 
 
 
-Coloque cada imagem na pasta indicada, mantendo o nome e a extensão `.png`. O espaço reservado desaparece automaticamente quando o arquivo é carregado. Não é preciso alterar o HTML. As capas devem incluir o numeral e o título como na referência. Paisagens e retratos devem vir sem texto.
+Coloque cada imagem na pasta indicada, mantendo o nome e a extensão `.webp`. O espaço reservado desaparece automaticamente quando o arquivo é carregado. Não é preciso alterar o HTML. As dimensões abaixo são referências de composição, não um limite para reduzir originais de maior resolução. As capas devem incluir o numeral e o título como na referência. Paisagens e retratos devem vir sem texto.
 
 
 

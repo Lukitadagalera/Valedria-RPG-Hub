@@ -34,4 +34,7 @@ for(const f of fs.readdirSync(output).filter(f=>f.endsWith('.html'))){const p=pa
 
 fs.writeFileSync(path.join(output,'assets/data/search-index.json'),JSON.stringify(policy.entries.map(e=>({title:e.title,url:e.file,category:'Livros',text:e.summary+' Disponível a partir de '+policy.labels[e.rank]}))));
 
+// Demo catalogues contain complete kits; keep them out of commercial public output.
+for(const file of walk(path.join(output,'assets/demo'))){const rel=path.relative(output,file).replaceAll('\\','/');protect(rel,4,'application/json');}
+
 fs.writeFileSync(path.join(privateDir,'manifest.json'),JSON.stringify(manifest,null,2));console.log('Secure public build ready; private files moved outside public output.');

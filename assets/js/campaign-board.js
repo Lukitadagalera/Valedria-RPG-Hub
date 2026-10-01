@@ -33,7 +33,7 @@
       card.append(el('h3', item.nome), el('p', `Mestre: ${item.mestre || 'A informar'}`),
         el('p', `${item.jogadores} / ${item.limite} jogadores · ${vacancies ? `${vacancies} ${vacancies === 1 ? 'vaga' : 'vagas'}` : 'Mesa completa'}`),
         el('p', `Quando: ${item.horario || 'A combinar'}`), el('p', item.descricao));
-      if(vacancies){const join=el('button','Quero participar','btn btn-primary');join.type='button';join.addEventListener('click',()=>{const form=document.getElementById('notice-form');form.hidden=false;document.getElementById('request-success').hidden=true;form.elements.mesa.value=item.id||item.nome;form.elements.papel.value='Quero jogar';form.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});form.elements.nome.focus({preventScroll:true});});card.append(join);}
+      if(vacancies){const join=el('button','Quero participar','btn btn-primary');join.type='button';join.addEventListener('click',()=>{const form=document.getElementById('notice-form');if(form.getAttribute('aria-busy')==='true')return;form.dispatchEvent(new Event('campaign-request-open'));form.hidden=false;document.getElementById('request-success').hidden=true;form.elements.mesa.value=item.id||item.nome;form.elements.papel.value='Quero jogar';form.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});form.elements.nome.focus({preventScroll:true});});card.append(join);}
       contact(card, item.discord);
       if(Array.isArray(item.participantes)&&item.participantes.length)card.append(el('p','Jogadores: '+item.participantes.join(', ')));
       board.append(card);

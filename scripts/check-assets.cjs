@@ -19,4 +19,12 @@ function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
  else for(const m of source.matchAll(/["'](assets\/[^"']+\.(?:webp|png|wav|mp3|css|js|json))(?:\?[^"']*)?["']/g))check(m[1],'.',file);
 }}
 walk('assets');
+// Structured catalogues also reference images that never appear directly in HTML.
+function catalogue(value,from){
+ if(typeof value==='string'&&value.startsWith('assets/')&&/\.(webp|png|svg|json|js|css)(?:[?#].*)?$/.test(value))check(value,'.',from);
+ else if(Array.isArray(value))value.forEach(v=>catalogue(v,from));
+ else if(value&&typeof value==='object')Object.values(value).forEach(v=>catalogue(v,from));
+}
+for(const dir of ['assets/data','assets/demo'])for(const name of fs.readdirSync(dir).filter(f=>f.endsWith('.json')))catalogue(JSON.parse(fs.readFileSync(path.join(dir,name),'utf8')),dir+'/'+name);
+
 if(errors.size){console.error([...errors].join('\n'));process.exitCode=1;}else console.log(checked+' local references verified.');

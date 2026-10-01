@@ -5,7 +5,7 @@
 - API com sessão em cookie HttpOnly, CSRF, confirmação de e-mail, senha derivada com scrypt e limites de tentativa.
 - Perfil e histórico de suporte persistidos no banco privado. Cada conversa pertence à conta que a abriu.
 - Troca de senha revoga sessões. Botão para encerrar as demais sessões.
-- Cinco níveis: visitante, cadastro gratuito, Contador de Histórias, Mestre das Aventuras, Deus das Lendas.
+- Quatro faixas de conteúdo: Visitante (com ou sem cadastro), Contador de Histórias, Mestre das Aventuras e Deus das Lendas. O cadastro sem assinatura não libera conteúdo adicional.
 - Matriz inicial revisável em assets/data/access-policy.json. É uma proposta de distribuição por capítulos, ainda não uma curadoria final de cada personagem/localidade.
 
 ## Publicação atual e demonstração
@@ -13,7 +13,7 @@ O GitHub Pages executa uma demonstração local explícita. Nenhum dado é envia
 
 Perfis: usuario@valedria.local (gratuito), contador@valedria.local, mestre@valedria.local e deus@valedria.local. Senha inicial: Valedria@Teste2026! São contas fictícias públicas, sem acesso a serviços reais; não reutilize essa senha em produção.
 
-Os botões de perfil entram diretamente para facilitar revisão. Também é possível cadastrar dados fictícios, confirmar pela caixa de e-mails de teste, recuperar e alterar a senha, editar perfil, abrir atendimento, simular resposta e encerramento, trocar plano e simular cancelamento/expiração. Biblioteca, ferramentas, caderno, kit de exemplo e documentos funcionam no navegador. O painel dos jogadores funciona somente nesse mesmo navegador. Os dados de cada perfil ficam separados por ID, mas não há proteção real contra inspeção do armazenamento local. Não use conteúdo confidencial na demonstração.
+Os botões de perfil entram diretamente para facilitar revisão. Também é possível cadastrar dados fictícios, confirmar pela caixa de e-mails de teste, recuperar e alterar a senha, editar perfil, abrir atendimento, simular resposta e encerramento, trocar plano e simular cancelamento/expiração. Biblioteca, ferramentas, caderno, seis kits e documentos funcionam no navegador. Contador vê dois kits, Mestre quatro e Deus das Lendas seis. O painel dos jogadores e os pedidos de participação nas mesas funcionam somente nesse mesmo navegador. Os dados de cada perfil ficam separados por ID, mas não há proteção real contra inspeção do armazenamento local. Não use conteúdo confidencial na demonstração.
 
 A prévia de bloqueios indica o plano necessário. A distribuição inicial é por capítulo; a curadoria de personagens e localidades pode ser refinada na matriz. O código e as amostras continuam públicos. O servidor real mantém a validação e os arquivos privados.
 

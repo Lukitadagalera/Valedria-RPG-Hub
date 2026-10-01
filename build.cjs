@@ -1,3 +1,5 @@
+// Resolve every input and output relative to this repository.
+process.chdir(__dirname);
 require('./scripts/build-content.cjs');
 require('./scripts/build-search.cjs');
 const fs=require('node:fs');const path=require('node:path');
