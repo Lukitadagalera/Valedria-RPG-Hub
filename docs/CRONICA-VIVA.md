@@ -18,6 +18,7 @@ No GitHub Pages, o modo de demonstração salva neste navegador, separado por co
 
 ## Organização
 
+- `assets/js/studio-documents.js`: validação comum dos documentos do editor, da demonstração e do servidor.
 - `assets/js/living-chronicle.js`: modelo, validação compartilhada pelo navegador/servidor, avanço, desfazer e seleção dos dados públicos.
 - `assets/js/chronicle-view.js`: editor e exportação HTML, com texto escapado.
 - `assets/js/master-studio.js`: integração com documentos, kits e controles da Área do Mestre.

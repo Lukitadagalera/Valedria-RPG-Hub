@@ -2,6 +2,7 @@ const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/st
 const storage=()=>{const map=new Map();return {getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};};
 const context={window:{dispatchEvent(){},addEventListener(){}},document:{addEventListener(){},querySelectorAll(){return[];}},location:{hostname:'lukitadagalera.github.io',search:''},sessionStorage:storage(),localStorage:storage(),crypto:require('node:crypto').webcrypto,TextEncoder,URLSearchParams,Event,fetch:async url=>({json:async()=>JSON.parse(fs.readFileSync(url,'utf8'))})};
 vm.runInNewContext(fs.readFileSync('assets/js/living-chronicle.js','utf8'),context);
+vm.runInNewContext(fs.readFileSync('assets/js/studio-documents.js','utf8'),context);
 vm.runInNewContext(fs.readFileSync('assets/js/session.js','utf8'),context);
 (async()=>{const api=context.window.ValedriaSession.request;
 assert.equal((await api('/session')).user,null);
@@ -10,7 +11,8 @@ assert.equal((await api('/session')).entitlement.status,'inactive');await assert
 await api('/account/tickets',{subject:'Test',message:'Sample'});const id=(await api('/account/tickets')).tickets[0].id;
 await api('/demo/support',{id,close:true});assert.equal((await api('/account/tickets')).tickets[0].messages.length,2);await assert.rejects(api('/account/reply',{id,message:'closed'}));
 await api('/demo/subscription',{plan:'contador'});assert.ok((await api('/library')).items.length);await assert.rejects(api('/studio/documents/campaigns'));
-await api('/demo/subscription',{plan:'mestre'});await api('/studio/documents/campaigns',{version:0,documents:[{id:'test',name:'Campaign',sessions:[{name:'Visible',summary:'Public',secret:'Hidden',revealed:true}],npcs:[],quests:[],inventory:[],encounter:[]}]});await assert.rejects(api('/studio/documents/campaigns',{version:0,documents:[]}));
+await api('/demo/subscription',{plan:'mestre'});await api('/studio/documents/campaigns',{version:0,documents:[{id:'test',name:'Campaign',sessions:[{id:'session-1',name:'Visible',summary:'Public',secret:'Hidden',revealed:true}],npcs:[],quests:[],inventory:[],encounter:[]}]});await assert.rejects(api('/studio/documents/campaigns',{version:0,documents:[]}));
+await assert.rejects(api('/studio/documents/campaigns',{version:1,documents:[{id:'bad',name:'Quebrado'}]}));assert.equal((await api('/studio/documents/campaigns')).documents[0].id,'test');
 const share=await api('/studio/share',{campaignId:'test'});assert.equal((await api('/table/'+share.token)).sessions[0].summary,'Public');assert.equal((await api('/table/'+share.token)).sessions[0].secret,undefined);await api('/studio/share',{campaignId:'test',revoke:true});await assert.rejects(api('/table/'+share.token));
 await api('/login',{email:'deus@valedria.local',password:'Valedria@Teste2026!'});assert.equal((await api('/account/tickets')).tickets.length,0);assert.equal((await api('/studio/documents/campaigns')).documents.length,0);await api('/studio/documents/atlas',{version:0,documents:[]});
 for(const [plan,count] of [['contador',2],['mestre',4],['deus',6]]){await api('/demo/subscription',{plan});assert.equal((await api('/studio/resources')).kits.length,count);}
