@@ -16,4 +16,11 @@ assert.equal(call('deus','/studio/documents/atlas',{version:0,documents:[{id:'a'
 assert.equal(call('deus','/studio/documents/adventures',{version:0,documents:[{id:'a',name:'Aventura',scenes:[{id:'x',name:'Cena',next:['missing']}]}]}).status,400);
 assert.equal(call('deus','/studio/documents/creations',{version:0,documents:[{id:'a',name:'Modelo'}]}).status,400);
 for(const [plan,count] of [['contador',2],['mestre',4],['deus',6]])assert.equal(call(plan,'/studio/resources').body.kits.length,count);
+const chronicle=require('../assets/js/living-chronicle.js').create('chronicle','Crônica');
+for(const user of ['contador','mestre']){assert.equal(call(user,'/studio/documents/chronicles').status,403);assert.equal(call(user,'/studio/documents/chronicles',{version:0,documents:[chronicle]}).status,403);}
+assert.equal(call('deus','/studio/documents/chronicles',{version:0,documents:[chronicle]}).status,200);
+assert.equal(call('deus','/studio/documents/chronicles').body.documents[0].name,'Crônica');
+assert.equal(call('deus','/studio/documents/chronicles',{version:0,documents:[]}).status,409);
+assert.equal(call('deus','/studio/documents/chronicles',{version:1,documents:[{...chronicle,session:-1}]}).status,400);
+db.prepare("UPDATE entitlements SET expires=0 WHERE user_id='deus'").run();assert.equal(call('deus','/studio/documents/chronicles').status,403);
 db.close();console.log('PASS: tiers, ownership, conflicts, private fields, expiration, revocation and document validation.');

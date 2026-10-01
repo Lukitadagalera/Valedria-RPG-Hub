@@ -1,6 +1,7 @@
 const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/strict');
 const storage=()=>{const map=new Map();return {getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};};
 const context={window:{dispatchEvent(){},addEventListener(){}},document:{addEventListener(){},querySelectorAll(){return[];}},location:{hostname:'lukitadagalera.github.io',search:''},sessionStorage:storage(),localStorage:storage(),crypto:require('node:crypto').webcrypto,TextEncoder,URLSearchParams,Event,fetch:async url=>({json:async()=>JSON.parse(fs.readFileSync(url,'utf8'))})};
+vm.runInNewContext(fs.readFileSync('assets/js/living-chronicle.js','utf8'),context);
 vm.runInNewContext(fs.readFileSync('assets/js/session.js','utf8'),context);
 (async()=>{const api=context.window.ValedriaSession.request;
 assert.equal((await api('/session')).user,null);
@@ -13,6 +14,12 @@ await api('/demo/subscription',{plan:'mestre'});await api('/studio/documents/cam
 const share=await api('/studio/share',{campaignId:'test'});assert.equal((await api('/table/'+share.token)).sessions[0].summary,'Public');assert.equal((await api('/table/'+share.token)).sessions[0].secret,undefined);await api('/studio/share',{campaignId:'test',revoke:true});await assert.rejects(api('/table/'+share.token));
 await api('/login',{email:'deus@valedria.local',password:'Valedria@Teste2026!'});assert.equal((await api('/account/tickets')).tickets.length,0);assert.equal((await api('/studio/documents/campaigns')).documents.length,0);await api('/studio/documents/atlas',{version:0,documents:[]});
 for(const [plan,count] of [['contador',2],['mestre',4],['deus',6]]){await api('/demo/subscription',{plan});assert.equal((await api('/studio/resources')).kits.length,count);}
+const chronicle=context.window.ValedriaChronicle.create('c','Minha crônica');
+await api('/studio/documents/chronicles',{version:0,documents:[chronicle]});
+assert.equal((await api('/studio/documents/chronicles')).documents[0].name,'Minha crônica');
+await assert.rejects(api('/studio/documents/chronicles',{version:1,documents:[{...chronicle,session:0}]}));
+await api('/demo/subscription',{plan:'mestre'});await assert.rejects(api('/studio/documents/chronicles'));await assert.rejects(api('/studio/documents/chronicles',{version:1,documents:[]}));
+await api('/demo/subscription',{plan:'deus'});assert.equal((await api('/studio/documents/chronicles')).documents.length,1);
 await api('/demo/subscription',{plan:null});await assert.rejects(api('/library'));
 await api('/logout',{});await api('/register',{email:'new@example.test',password:'a-test-password-123'});await assert.rejects(api('/login',{email:'new@example.test',password:'a-test-password-123'}));
 let messages=(await api('/demo/inbox')).messages;await api('/verify-email',{token:messages.at(-1).id});await assert.rejects(api('/verify-email',{token:messages.at(-1).id}));await api('/login',{email:'new@example.test',password:'a-test-password-123'});

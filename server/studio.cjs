@@ -1,7 +1,8 @@
 const fs=require('node:fs'),path=require('node:path'),{randomBytes}=require('node:crypto');
+const chronicle=require('../assets/js/living-chronicle.js');
 const levels={contador:1,mestre:2,deus:3};
 const labels={contador:'Contador de Histórias',mestre:'Mestre das Aventuras',deus:'Deus das Lendas'};
-const requirements={campaigns:2,adventures:3,atlas:3,creations:3};
+const requirements={campaigns:2,adventures:3,atlas:3,creations:3,chronicles:3};
 function setup(db){
  if(!db.prepare('PRAGMA table_info(entitlements)').all().some(c=>c.name==='plan'))db.exec("ALTER TABLE entitlements ADD COLUMN plan TEXT NOT NULL DEFAULT 'contador'");
  db.exec(`CREATE TABLE IF NOT EXISTS studio_documents(user_id TEXT NOT NULL REFERENCES users(id),kind TEXT NOT NULL,payload TEXT NOT NULL,version INTEGER NOT NULL DEFAULT 1,PRIMARY KEY(user_id,kind));
@@ -16,6 +17,7 @@ function validDoc(kind,docs){
  const ids=new Set();
  for(const d of docs){
   if(!d||!string(d.id,80)||!d.id||ids.has(d.id)||!string(d.name,200))return false;ids.add(d.id);
+  if(kind==='chronicles'&&!chronicle.valid(d))return false;
   const arrays=kind==='campaigns'?['sessions','npcs','quests','inventory','encounter']:kind==='adventures'?['scenes']:kind==='atlas'?['locations','routes']:[];
   for(const key of arrays)if(!Array.isArray(d[key])||d[key].length>300)return false;
   for(const key of arrays)if(d[key].some(r=>!r||typeof r!=='object'||Array.isArray(r)))return false;
