@@ -103,7 +103,7 @@ function watchSources() {
       }
     },
   )
-  for (const directory of ['config', 'controllers', 'models', 'routes', 'server']) {
+  for (const directory of ['api', 'config', 'controllers', 'models', 'routes', 'server']) {
     const watcher = fs.watch(
       path.join(projectRoot, directory),
       { recursive: true },

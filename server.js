@@ -101,7 +101,7 @@ async function createApplication() {
         cookie: {
           httpOnly: true,
           sameSite: 'lax',
-          secure: process.env.NODE_ENV === 'production',
+          secure: process.env.NODE_ENV === 'production' || Boolean(process.env.VERCEL),
           maxAge: 7 * 24 * 60 * 60 * 1000,
         },
       }),
