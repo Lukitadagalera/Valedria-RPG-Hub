@@ -28,6 +28,43 @@ body {
   background-color: var(--color-bg);
 }
 
+html,
+* {
+  scrollbar-color: var(--color-primary, #a8894e) var(--color-surface-offset, #202a31);
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-surface-offset, #202a31);
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 3px solid var(--color-surface-offset, #202a31);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-primary, #a8894e) 68%, white),
+    var(--color-primary, #a8894e),
+    color-mix(in srgb, var(--color-primary, #a8894e) 72%, black)
+  );
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-primary, #a8894e) 78%, white),
+    color-mix(in srgb, var(--color-primary, #a8894e) 88%, white),
+    var(--color-primary, #a8894e)
+  );
+  background-clip: padding-box;
+}
+
 img,
 picture,
 video,

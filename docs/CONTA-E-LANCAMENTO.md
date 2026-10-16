@@ -1,15 +1,18 @@
-# Cadastro e lançamento comercial
+# Conta e lançamento comercial
 
-## O que está pronto
-- Página Minha conta: dados pessoais básicos, acesso e segurança, atendimento, conversas abertas/encerradas e assinatura.
-- API com sessão em cookie HttpOnly, CSRF, confirmação de e-mail, senha derivada com scrypt e limites de tentativa.
-- Perfil e histórico de suporte persistidos no banco privado. Cada conversa pertence à conta que a abriu.
-- Troca de senha revoga sessões. Botão para encerrar as demais sessões.
-- Quatro faixas de conteúdo: Visitante (com ou sem cadastro), Contador de Histórias, Mestre das Aventuras e Deus das Lendas. O cadastro sem assinatura não libera conteúdo adicional.
-- Matriz inicial revisável em assets/data/access-policy.json. É uma proposta de distribuição por capítulos, ainda não uma curadoria final de cada personagem/localidade.
+## Estado da autenticação
+O botão principal usa Google Identity Services no navegador, valida o ID token no servidor Express e cria ou atualiza o usuário no MongoDB. Após sucesso, os dados públicos do perfil ficam em `localStorage` e a página direciona para `conta.html`; esse fluxo não cria uma sessão no servidor.
+
+O link “OAuth web do Google” inicia o fluxo Passport em `/auth/google`. O callback cria uma sessão persistente no MongoDB e retorna a `conta.html`; `/auth/status` consulta a sessão e `/auth/logout` a encerra. As rotas `/api/fichas` exigem essa sessão e associam as fichas ao usuário autenticado. O fluxo Passport e o endpoint `/api/auth/google` são mantidos em paralelo.
+
+`login.html` carrega `assets/js/login.js`; o Client ID público é servido por `/api/auth/config`, e o segredo nunca é enviado ao navegador. Configure `GOOGLE_CLIENT_SECRET`, `SESSION_SECRET` (segredo aleatório próprio, recomendado com pelo menos 32 caracteres) e `GOOGLE_CALLBACK_URL=https://valedria.lat/auth/google/callback`; registre essa URL como URI de redirecionamento autorizado no Google Cloud. Sem `SESSION_SECRET`, o servidor deriva uma chave de compatibilidade do segredo OAuth e emite um aviso; configure a chave dedicada antes da produção. Se o site estiver atrás de proxy HTTPS, configure `TRUST_PROXY=true` e `NODE_ENV=production` para que o cookie da sessão seja seguro. A conexão MongoDB usa `MONGO_URI` (aceita também `MONGODB_URI` para compatibilidade), além de `GOOGLE_CLIENT_ID`.
+
+`conta.html` ainda mantém os dados e funcionalidades locais atuais. A sessão Passport autentica apenas as rotas do servidor que a verificam; não substitui autorização nas APIs separadas do serviço da Área do Mestre.
+
+No Google Cloud Console, configure o OAuth Client ID do tipo **Aplicativo da Web** e inclua `https://lukitadagalera.github.io` em **Origens JavaScript autorizadas** para a publicação no GitHub Pages. Em desenvolvimento, cadastre também a origem exata usada no navegador (por exemplo, `http://localhost:3000` ou `http://127.0.0.1:3000`). A origem não inclui caminho como `/login.html`; protocolo, host e porta devem corresponder exatamente. Um erro Google `400: origin_mismatch` acontece antes da chamada à API e exige essa configuração no Console.
 
 ## Publicação atual e demonstração
-O GitHub Pages executa uma demonstração local explícita. Nenhum dado é enviado a um servidor, nenhum e-mail é entregue e nenhuma cobrança é feita. Minha conta é o único login. O menu Área do Mestre só aparece para perfis com um plano ativo.
+A conta agora exige o login Google pelo servidor Express; uma prévia estática no GitHub Pages não conclui esse fluxo. Os testes da demonstração continuam disponíveis sem serviços externos e não enviam dados, e-mails ou cobranças reais. A autenticação simulada não é a autenticação de produção.
 
 Perfis: usuario@valedria.local (gratuito), contador@valedria.local, mestre@valedria.local e deus@valedria.local. Senha inicial: Valedria@Teste2026! São contas fictícias públicas, sem acesso a serviços reais; não reutilize essa senha em produção.
 
@@ -17,19 +20,19 @@ Os botões de perfil entram diretamente para facilitar revisão. Também é poss
 
 A prévia de bloqueios indica o plano necessário. A distribuição inicial é por capítulo; a curadoria de personagens e localidades pode ser refinada na matriz. O código e as amostras continuam públicos. O servidor real mantém a validação e os arquivos privados.
 
-Para testar localmente a demonstração, abra conta.html?demo=1. A escolha vale para a aba. A versão comercial define VALEDRIA_ACCESS_ACTIVE antes de carregar a sessão e desativa a simulação, mesmo que a aba tenha sido usada para testes.
+Os testes automatizados da demonstração exercitam os perfis e fluxos simulados sem abrir `conta.html`; a página de conta requer uma sessão Google válida no navegador.
 
-## Para ativar o acesso protegido
-1. Contratar hospedagem Node 24+ com HTTPS, disco persistente e backup do SQLite. Servidor e site precisam estar na mesma origem.
-2. Configurar MASTER_ORIGIN, MASTER_DB e MASTER_LIBRARY. Banco, biblioteca e MASTER_CONTENT ficam fora da pasta pública e fora do Git.
-3. Configurar o adaptador de e-mail transacional usando MASTER_MAIL_ENDPOINT e MASTER_MAIL_TOKEN, conforme MASTER-API.md.
-4. Executar node build.cjs, depois node scripts/build-commercial.cjs com MASTER_CONTENT apontando para uma pasta privada externa ao repositório.
-5. Publicar somente dist como arquivos públicos e usar server/index.cjs para servir site e API. O middleware serve os originais privados somente após verificar sessão e nível em cada pedido. Não disponibilizar a pasta privada pelo proxy/CDN. Uma nova execução de build.cjs precisa SEMPRE ser seguida de build-commercial.cjs antes da publicação comercial.
-6. Definir o provedor e os preços. Integrar checkout hospedado e webhook assinado/idempotente; concessão e renovação vêm do webhook, nunca de uma flag enviada pelo cliente. Testar expiração, cancelamento, falha de pagamento e estorno.
-7. Configurar canal e responsável pelo suporte. A ferramenta privada server/support.cjs permite listar solicitações, registrar respostas e encerrar atendimentos. O usuário vê as respostas na conta; não existe chat ao vivo ou notificação por e-mail de suporte nesta etapa.
-8. Revisar a matriz e escolher quais páginas/personagens/localidades serão amostras públicas. Aprovar textos de privacidade, atendimento e assinatura antes de começar a coleta real.
+## Antes de reativar o acesso protegido
+1. Conectar a sessão Passport às APIs de conta, oficina, biblioteca e conteúdo privado; adicionar testes de autorização e expiração.
+2. Adicionar proteção CSRF explícita e limites de tentativas às operações autenticadas.
+3. Configurar hospedagem Node.js 20.19+ com HTTPS, MongoDB persistente e backups. Definir `MONGO_URI` (ou `MONGODB_URI`), `GOOGLE_CLIENT_ID`, `MASTER_ORIGIN` e `MASTER_LIBRARY` no `.env`.
+4. O servidor serve diretamente os arquivos públicos da raiz e `assets/`. Não coloque conteúdo privado nessas pastas nem publique esta árvore sem revisar os arquivos estáticos acessíveis; mantenha acervos privados fora do diretório servido.
+5. Só então definir provedor/preços, integrar checkout e webhook assinado/idempotente e testar expiração, cancelamento, falha de pagamento e estorno.
+6. Configurar canal e responsável pelo suporte, revisar a matriz de acesso e aprovar textos de privacidade, atendimento e assinatura antes da coleta real.
 
 O histórico público do repositório e versões já baixadas não se tornam secretos ao ativar a nova distribuição. Conteúdos comerciais novos devem ser mantidos em armazenamento privado desde a criação.
+
+Não existe migração automática de contas ou sessões antigas. Planeje uma migração explícita se dados reais precisarem ser preservados.
 
 ## Testes
 node server/security.test.cjs

@@ -1,8 +1,9 @@
 /* Verify local references after asset moves; no network required. */
 const fs=require('node:fs'),path=require('node:path');
 const errors=new Set();let checked=0;
+const serverRoutes=new Set(['/auth/google']);
 function check(ref,base,from){
- if(!ref||/^(?:https?:|data:|#|mailto:|javascript:)/i.test(ref)||/[{}*+]/.test(ref))return;
+ if(!ref||serverRoutes.has(ref)||/^(?:https?:|data:|#|mailto:|javascript:)/i.test(ref)||/[{}*+]/.test(ref))return;
  const file=ref.split(/[?#]/)[0];if(!file)return;
  checked++;if(!fs.existsSync(path.resolve(base,file)))errors.add(from+': '+ref);
 }

@@ -1,0 +1,21 @@
+const assert = require('node:assert/strict')
+const fs = require('node:fs')
+
+const script = fs.readFileSync('assets/js/account-fichas.js', 'utf8')
+const html = fs.readFileSync('conta.html', 'utf8')
+const routes = fs.readFileSync('routes/index.js', 'utf8')
+
+assert.match(script, /data-lucide/)
+assert.match(script, /className = 'account-ficha-delete'/)
+assert.match(script, /className = 'account-ficha-edit'/)
+assert.match(script, /setAttribute\('aria-label', `Editar ficha/)
+assert.match(script, /deleteDialog\.showModal\(\)/)
+assert.match(script, /method: 'DELETE'/)
+assert.match(script, /fichas = fichas\.filter/)
+assert.match(script, /delete-ficha-error/)
+assert.match(html, /<dialog[^>]+id="delete-ficha-dialog"/)
+assert.match(html, /id="cancel-delete-ficha"/)
+assert.match(html, /id="confirm-delete-ficha"/)
+assert.match(routes, /router\.delete\('\/api\/fichas\/:id'/)
+
+console.log('PASS: account ficha icons, accessible delete confirmation and DELETE API wiring.')

@@ -9,23 +9,22 @@
 - `assets/demo/`: amostras públicas da demonstração.
 - `assets/img/`: imagens e variantes WebP separadas por assunto.
 - `assets/audio/`: trilhas e relatos, carregados sob demanda.
-- `scripts/`: compilação, validações, índices e utilitários de manutenção.
+- `models/`, `controllers/` e `routes/`: modelos Mongoose, lógica de requisição e mapeamento das rotas Express.
+- `config/`: conexão MongoDB e configuração Passport.
+- `scripts/`: watcher de desenvolvimento, validações, geração de índices e utilitários de manutenção.
 - `tests/`: testes da demonstração, conta, recorte, animação e consistência das regras.
 - `server/`: API privada e testes de integração colocados junto aos módulos que exercitam.
 - `docs/`: decisões, licenças, integrações e relatórios de revisão.
-- `dist/`: saída gerada e ignorada pelo Git. Nunca editar diretamente.
 
 ## Verificar e executar
 
-Requer Node 24 ou posterior para os testes com SQLite.
+Requer Node.js 20.19 ou posterior. A API privada usa MongoDB; os testes de integração usam um MongoDB temporário.
 
-- `npm run build`: atualiza as fontes derivadas e gera `dist`.
+- `npm run dev`: serve diretamente a raiz do projeto, recarrega páginas abertas após alterações em HTML/CSS/JS e reinicia o Express após alterações no backend. Abre `http://localhost:3000/login.html` (respeita `PORT` quando definido); o servidor fica vinculado a `localhost`.
 - `npm test`: executa verificações de referências, sintaxe, regras e os testes de funcionalidades e servidor.
-- `node scripts/verify-commercial.cjs`: verifica a separação de arquivos privados em uma pasta temporária e restaura a compilação pública ao terminar. Não executar simultaneamente com outro build.
-- `python -m http.server 4184 --bind 127.0.0.1 --directory dist`: prévia local.
-- Abra `http://127.0.0.1:4184/conta.html?demo=1` para testar sem serviços externos.
+- `npm start`: serve a raiz do projeto e inicia a API depois de preencher as variáveis do `.env` e disponibilizar o MongoDB.
 
-O GitHub Pages publica a raiz da branch `main`. A demonstração não recebe pagamentos nem envia e-mails reais. Consulte [cadastro e lançamento](docs/CONTA-E-LANCAMENTO.md) antes de ativar a operação comercial.
+O servidor Express serve os HTML da raiz e os assets diretamente de `assets/`. Não há pasta de distribuição ou etapa de build. O login Google valida a credencial no servidor Express e salva o usuário no MongoDB; após sucesso, direciona para `conta.html`. O fluxo Passport opcional cria sessão MongoDB para endpoints que exigem autenticação. Consulte [cadastro e lançamento](docs/CONTA-E-LANCAMENTO.md).
 
 ## Editar os kits
 

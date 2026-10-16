@@ -1,0 +1,1 @@
+try{var m=location.search.match(/theme=(dark|light)/);var t=m?m[1]:null;document.documentElement.setAttribute('data-theme',t||((document.cookie.match(/(?:^|; )vcodex_theme=(dark|light)/)||[])[1])||'dark');}catch(e){}

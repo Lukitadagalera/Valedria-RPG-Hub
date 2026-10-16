@@ -1,4 +1,4 @@
-/* Coordinates belong to the approved artwork. Descriptions are synchronized by build-content.cjs. */
+/* Coordinates belong to the approved artwork; descriptions are synchronized with geography data. */
 window.MAPA_DIMENSOES = {
   "largura": 1536,
   "altura": 1024

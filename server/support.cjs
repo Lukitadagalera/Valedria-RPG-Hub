@@ -1,3 +1,15 @@
-// Private operator tool: node server/support.cjs list | reply TICKET message.txt | close TICKET
-const fs=require('node:fs'),{DatabaseSync}=require('node:sqlite'),{randomUUID}=require('node:crypto');
-if(!process.env.MASTER_DB)throw Error('MASTER_DB required');const db=new DatabaseSync(process.env.MASTER_DB);const [action,id,file]=process.argv.slice(2);try{if(action==='list')console.log(db.prepare('SELECT id,subject,status,created FROM tickets ORDER BY created DESC LIMIT 100').all());else if(action==='reply'){const body=fs.readFileSync(file,'utf8').trim();if(!body||body.length>4000||!db.prepare("SELECT 1 FROM tickets WHERE id=? AND status='open'").get(id))throw Error('Invalid open ticket or reply');db.prepare('INSERT INTO ticket_messages VALUES(?,?,?,?,?)').run(randomUUID(),id,'support',body,Date.now());console.log('Reply saved');}else if(action==='close'){if(!db.prepare('UPDATE tickets SET status=? WHERE id=?').run('closed',id).changes)throw Error('Ticket not found');console.log('Ticket closed');}else throw Error('Use list, reply or close');}finally{db.close();}
+// Operator-only support tool: node server/support.cjs list | reply TICKET message.txt | close TICKET
+require('dotenv').config({path:require('node:path').resolve(__dirname,'../.env'),quiet:true});
+const fs=require('node:fs'),mongoose=require('mongoose'),{createModels}=require('../models'),studio=require('../controllers/studioController');
+if(!process.env.MONGODB_URI)throw Error('MONGODB_URI required');
+const [action,id,file]=process.argv.slice(2);
+async function main(){
+ const connection=await mongoose.createConnection(process.env.MONGODB_URI).asPromise(),models=createModels(connection);
+ try{
+  if(action==='list')console.log(await models.Ticket.find({},{subject:1,status:1,created:1}).sort({created:-1}).limit(100).lean());
+  else if(action==='reply'){const body=fs.readFileSync(file,'utf8').trim();if(!body||body.length>4000)throw Error('Invalid reply');const ticket=await models.Ticket.findOne({_id:id,status:'open'});if(!ticket)throw Error('Invalid open ticket');ticket.messages.push({sender:'support',body,created:Date.now()});await ticket.save();console.log('Reply saved');}
+  else if(action==='close'){const result=await models.Ticket.updateOne({_id:id},{$set:{status:'closed'}});if(!result.matchedCount)throw Error('Ticket not found');console.log('Ticket closed');}
+  else throw Error('Use list, reply or close');
+ }finally{await connection.close();}
+}
+main().catch(error=>{console.error(error.message);process.exitCode=1;});

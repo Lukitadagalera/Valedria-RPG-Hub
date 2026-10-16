@@ -1,15 +1,37 @@
 // Operator-only entitlement management until a verified payment webhook is integrated.
-const {DatabaseSync}=require('node:sqlite');
-const [action,email,date,plan='contador']=process.argv.slice(2);
-if(!process.env.MASTER_DB||!['grant','revoke'].includes(action)||!email)throw Error('Set MASTER_DB, then: node server/access.cjs grant email YYYY-MM-DD | revoke email');
-const db=new DatabaseSync(process.env.MASTER_DB);
-try{
- const user=db.prepare('SELECT id,verified FROM users WHERE email=?').get(email.trim().toLowerCase());
- if(!user?.verified)throw Error('Verified account required.');
- if(action==='grant'){
-  if(!['contador','mestre','deus'].includes(plan))throw Error('Unknown plan.');
-  const expires=Date.parse(date+'T23:59:59Z');if(!Number.isFinite(expires)||expires<=Date.now())throw Error('Future expiry required.');
-  db.prepare('INSERT INTO entitlements(user_id,expires,source,plan) VALUES(?,?,?,?) ON CONFLICT(user_id) DO UPDATE SET expires=excluded.expires,source=excluded.source,plan=excluded.plan').run(user.id,expires,'operator',plan);
- }else db.prepare('DELETE FROM entitlements WHERE user_id=?').run(user.id);
- db.prepare('INSERT INTO audit VALUES(?,?,?)').run(Date.now(),action==='grant'?'access_granted':'access_revoked',user.id);console.log('Access updated.');
-}finally{db.close();}
+require('dotenv').config({ path: require('node:path').resolve(__dirname, '../.env'), quiet: true })
+const mongoose = require('mongoose'),
+  { createModels } = require('../models')
+const [action, userId, date, plan = 'contador'] = process.argv.slice(2)
+if (!process.env.MONGODB_URI || !['grant', 'revoke'].includes(action) || !userId)
+  throw Error(
+    'Set MONGODB_URI, then: node server/access.cjs grant USER_ID YYYY-MM-DD [plan] | revoke USER_ID',
+  )
+async function main() {
+  const connection = await mongoose.createConnection(process.env.MONGODB_URI).asPromise(),
+    models = createModels(connection)
+  try {
+    if (action === 'grant') {
+      if (!['contador', 'mestre', 'deus'].includes(plan)) throw Error('Unknown plan.')
+      const expires = Date.parse(date + 'T23:59:59Z')
+      if (!Number.isFinite(expires) || expires <= Date.now()) throw Error('Future expiry required.')
+      await models.Entitlement.updateOne(
+        { userId },
+        { $set: { expires, source: 'operator', plan } },
+        { upsert: true },
+      )
+    } else await models.Entitlement.deleteOne({ userId })
+    await models.Audit.create({
+      at: Date.now(),
+      event: action === 'grant' ? 'access_granted' : 'access_revoked',
+      userId,
+    })
+    console.log('Access updated.')
+  } finally {
+    await connection.close()
+  }
+}
+main().catch((error) => {
+  console.error(error.message)
+  process.exitCode = 1
+})

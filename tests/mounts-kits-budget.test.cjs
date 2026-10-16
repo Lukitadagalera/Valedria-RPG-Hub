@@ -10,9 +10,10 @@ const over=r.limitarAtributos({forca:1,destreza:1,constituicao:1,sabedoria:15,ca
 assert.equal(Object.values(r.limitarAtributos(over,2)).reduce((a,b)=>a+b,0),15,'level increase does not spend points automatically');
 const base={forca:3,destreza:3,constituicao:3,sabedoria:3,carisma:3};assert.deepEqual(JSON.parse(JSON.stringify(r.limitarAtributos(base,1))),base);
 const mounts=c.window.VALEDRIA_MONTARIAS;assert.equal(mounts.length,3);for(const m of mounts){assert.ok(fs.existsSync(m.imagem));assert.ok(m.vida>0&&m.defesa>0&&m.movimento>=9);}
-const {rank}=require('../server/content.cjs');const db={prepare:()=>({get:()=>undefined})};assert.equal(rank(db,null),rank(db,'free'),'same content for anonymous and free members');
+const {rank}=require('../controllers/contentController'),models={Entitlement:{findOne:()=>({lean:async()=>null})}};
 const kits=JSON.parse(fs.readFileSync('assets/demo/studio.json','utf8')).kits;
 (async()=>{
+ assert.equal(await rank(models,null),await rank(models,'free'),'same content for anonymous and free members');
  assert.equal(kits.length,6);assert.equal(new Set(kits.map(k=>k.id)).size,6);
  for(const k of kits){assert.ok(['contador','mestre','deus'].includes(k.minPlan));assert.equal(k.map.locations.length,4);assert.ok(fs.existsSync(k.map.image));assert.ok(k.gmSections.length>=7);assert.ok(k.npcs.length>=4);assert.equal(k.handouts.length,5);assert.equal(k.maps.length,8);for(const m of k.maps)assert.ok(fs.existsSync(m.image));assert.equal(new Set(k.maps.map(m=>m.image)).size,8);for(let n=1;n<=6;n++){const scene=k.gmSections.find(s=>s.title.startsWith(n+' ·'));assert.equal(k.maps[scene.mapIndex].scene,n);}assert.ok(k.gmSections.some(s=>s.title.startsWith('6 ')));
   const player=await c.window.ValedriaKits.pack(k,false),gm=await c.window.ValedriaKits.pack(k,true);
