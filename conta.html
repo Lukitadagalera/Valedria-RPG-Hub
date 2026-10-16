@@ -19,7 +19,7 @@
     <script src="assets/data/responsive-images.js?v=2"></script>
     <link rel="stylesheet" href="assets/css/master-studio.css?v=20260929b">
     <link rel="stylesheet" href="assets/css/panel-depth.css?v=15">
-    <link rel="stylesheet" href="assets/css/account.css?v=20261015a">
+    <link rel="stylesheet" href="assets/css/account.css?v=20261015b">
     <script src="assets/js/session.js?v=20261001r"></script>
     <link rel="stylesheet" href="assets/css/plan-comparison.css?v=20261001">
   </head>
@@ -68,6 +68,15 @@
       </form>
       <div class="account-workspace" id="account-workspace">
         <nav class="account-menu" aria-label="Seções da conta">
+          <label class="account-menu-select-label" for="account-menu-select">Ir para a seção</label>
+          <select class="account-menu-select" id="account-menu-select" aria-label="Seção da conta">
+            <option value="fichas" selected>Minhas fichas</option>
+            <option value="dados">Seus dados</option>
+            <option value="seguranca">Acesso e segurança</option>
+            <option value="atendimento">Atendimento ao cliente</option>
+            <option value="mensagens">Mensagens e histórico</option>
+            <option value="assinatura">Sua assinatura</option>
+          </select>
           <a id="account-tab-dados" class="account-menu-link" href="#dados" aria-controls="dados">Seus dados</a>
           <a id="account-tab-seguranca" class="account-menu-link" href="#seguranca" aria-controls="seguranca">Acesso e segurança</a>
           <a id="account-tab-atendimento" class="account-menu-link" href="#atendimento" aria-controls="atendimento">Atendimento ao cliente</a>
@@ -184,6 +193,6 @@
         <div class="topbar-actions"><button class="icon-btn" data-theme-toggle aria-label="Alternar tema"></button></div>
       </details>
     </footer>
-    <script src="assets/js/app.js?v=26"></script><script src="assets/js/redesign.js?v=2" defer></script><script src="assets/data/conexoes.js"></script><script src="assets/js/external-links.js"></script><script src="assets/js/site-tools.js?v=1"></script><script src="assets/js/access-badges.js?v=20260929b"></script><script src="assets/js/image-quality.js?v=1"></script><script src="assets/js/botanical-motion.js?v=5" defer></script><script src="assets/js/plan-comparison.js?v=20261001"></script><script src="assets/js/account-plan.js"></script><script src="assets/js/account-navigation.js"></script><script src="assets/js/account-fichas.js?v=20261015a"></script><script src="assets/js/account-logout.js"></script>
+    <script src="assets/js/app.js?v=26"></script><script src="assets/js/redesign.js?v=2" defer></script><script src="assets/data/conexoes.js"></script><script src="assets/js/external-links.js"></script><script src="assets/js/site-tools.js?v=1"></script><script src="assets/js/access-badges.js?v=20260929b"></script><script src="assets/js/image-quality.js?v=1"></script><script src="assets/js/botanical-motion.js?v=5" defer></script><script src="assets/js/plan-comparison.js?v=20261001"></script><script src="assets/js/account-plan.js"></script><script src="assets/js/account-navigation.js?v=20261015b"></script><script src="assets/js/account-fichas.js?v=20261015b"></script><script src="assets/js/account-logout.js"></script>
   </body>
 </html>

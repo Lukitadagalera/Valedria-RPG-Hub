@@ -15,8 +15,11 @@ assert.doesNotMatch(styles, /account-content\{[^}]*height:var\(--account-menu-he
 assert.doesNotMatch(script, /syncMenuHeight|ResizeObserver|account-menu-height/)
 assert.match(html, /<select class="account-menu-select" id="account-menu-select"[^>]*>\s*<option value="fichas" selected>Minhas fichas<\/option>/)
 assert.match(styles, /\.account-menu-select\{display:block/)
-assert.match(styles, /\.account-menu-select\{[^}]*#a97932[^}]*color-mix\(in srgb,#c49345/)
-assert.match(styles, /\.account-menu-select:focus-visible\{outline:3px solid #b98235/)
+assert.match(styles, /\.account-page \.account-menu-select\{[^}]*background:#f5efdf;color:#111/)
+assert.match(styles, /\.account-page \.account-menu-select:focus-visible\{border-color:#c8bda8;outline:2px solid #514b40/)
+assert.match(html, /account\.css\?v=20261015b/)
+assert.match(html, /account-navigation\.js\?v=20261015b/)
+assert.match(html, /account-fichas\.js\?v=20261015b/)
 assert.match(styles, /\.account-menu-link\{display:none\}/)
 assert.match(styles, /border-radius:18px!important/)
 for (const id of sectionIds) {
