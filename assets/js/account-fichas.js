@@ -164,5 +164,8 @@
   window.addEventListener('hashchange', () => {
     if (window.location.hash === '#fichas') void load()
   })
-  if (window.location.hash === '#fichas') void load()
+  window.addEventListener('valedria:account-section-change', () => {
+    if (!section.hidden) void load()
+  })
+  if (!section.hidden || window.location.hash === '#fichas') void load()
 })()

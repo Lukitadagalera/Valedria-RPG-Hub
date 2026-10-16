@@ -2,20 +2,10 @@
   const sessionKey = 'valedria-google-session'
   const account = document.querySelector('#account-private')
   const menu = document.querySelector('.account-menu')
-  const workspace = document.querySelector('#account-workspace')
+  const selector = document.querySelector('#account-menu-select')
   const links = [...document.querySelectorAll('.account-menu a[aria-controls]')]
   const panels = [...document.querySelectorAll('.account-content [role="region"]')]
-  if (!account || !menu || !workspace || !links.length || !panels.length) return
-
-  const syncMenuHeight = () => {
-    workspace.style.setProperty('--account-menu-height', `${menu.getBoundingClientRect().height}px`)
-  }
-  syncMenuHeight()
-  if ('ResizeObserver' in window) {
-    new ResizeObserver(syncMenuHeight).observe(menu)
-  } else {
-    window.addEventListener('resize', syncMenuHeight)
-  }
+  if (!account || !menu || !links.length || !panels.length) return
 
   const selectPanel = id => {
     const selectedLink = links.find(link => link.hash === `#${id}`)
@@ -27,7 +17,9 @@
       if (link === selectedLink) link.setAttribute('aria-current', 'page')
       else link.removeAttribute('aria-current')
     }
+    if (selector) selector.value = id
     for (const panel of panels) panel.hidden = panel !== selectedPanel
+    window.dispatchEvent(new Event('valedria:account-section-change'))
     return true
   }
 
@@ -38,7 +30,7 @@
     } catch (error) {
       console.error('Não foi possível interpretar a seção da conta:', error.message)
     }
-    if (!selectPanel(id)) selectPanel('dados')
+    if (!selectPanel(id)) selectPanel('fichas')
   }
 
   function startNavigation() {
@@ -49,6 +41,10 @@
         selectPanel('dados')
       })
     }
+    selector?.addEventListener('change', () => {
+      if (!selectPanel(selector.value)) return
+      window.location.hash = `#${selector.value}`
+    })
     window.addEventListener('hashchange', syncFromHash)
     syncFromHash()
   }
