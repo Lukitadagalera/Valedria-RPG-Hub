@@ -9,3 +9,7 @@ body{background:var(--color-bg);font-family:Georgia,'Times New Roman',serif}.ref
 @media print{.footer-settings{display:none}}
 
 .player-badge{position:absolute;right:10px;bottom:9px;width:65px;height:46px;border:0;background:transparent}.player-badge .art-label{padding:0}.player-badge .art-label code{font-size:8px;line-height:1.1}.player-badge img{object-fit:contain}.reference-header>.header-sheet{margin-left:auto}.reference-home .reference-book h3{margin-top:4px}.reference-home .reference-heading{margin-bottom:13px}.reference-home .reference-hall .reference-heading{margin-bottom:0}
+
+.reference-header{position:fixed;inset:0 0 auto;z-index:80}
+body:has(> .reference-header){padding-top:52px}
+@media(max-width:850px){body:has(> .reference-header){padding-top:64px}}
