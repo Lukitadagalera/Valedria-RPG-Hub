@@ -21,10 +21,15 @@
 Requer Node.js 20.19 ou posterior. A API privada usa MongoDB; os testes de integração usam um MongoDB temporário.
 
 - `npm run dev`: serve diretamente a raiz do projeto, recarrega páginas abertas após alterações em HTML/CSS/JS e reinicia o Express após alterações no backend. Abre `http://localhost:3000/login.html` (respeita `PORT` quando definido); o servidor fica vinculado a `localhost`.
+- `npm run build`: gera os arquivos estáticos para o Vercel em `public/` e exporta a aplicação Express para as rotas dinâmicas.
 - `npm test`: executa verificações de referências, sintaxe, regras e os testes de funcionalidades e servidor.
 - `npm start`: serve a raiz do projeto e inicia a API depois de preencher as variáveis do `.env` e disponibilizar o MongoDB.
 
-O servidor Express serve os HTML da raiz e os assets diretamente de `assets/`. Não há pasta de distribuição ou etapa de build. O login Google valida a credencial no servidor Express e salva o usuário no MongoDB; após sucesso, direciona para `conta.html`. O fluxo Passport opcional cria sessão MongoDB para endpoints que exigem autenticação. Consulte [cadastro e lançamento](docs/CONTA-E-LANCAMENTO.md).
+No desenvolvimento local, o servidor Express serve os HTML da raiz e os assets diretamente de `assets/`. O login Google valida a credencial no servidor Express e salva o usuário no MongoDB; após sucesso, direciona para `conta.html`. O fluxo Passport cria uma sessão MongoDB para endpoints que exigem autenticação. Consulte [cadastro e lançamento](docs/CONTA-E-LANCAMENTO.md).
+
+## Publicar no Vercel
+
+Conecte o repositório ao Vercel usando a raiz do projeto e mantenha o build command padrão (`npm run build`). O build publica os HTML e assets em `public/`; o Express exportado por `server.js` atende a API e as rotas OAuth. As variáveis são lidas em tempo de execução: configure `MONGO_URI`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `SESSION_SECRET` e `GOOGLE_CALLBACK_URL` no ambiente Production e faça um novo deploy depois de alterá-las. Use um `SESSION_SECRET` próprio e aleatório. Autorize no Google OAuth a origem JavaScript exata do domínio publicado e o callback exato configurado, por exemplo `https://www.valedria.lat/auth/google/callback`.
 
 ## Editar os kits
 

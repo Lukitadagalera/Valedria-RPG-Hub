@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "node scripts/dev.cjs",
     "start": "node server.js",
+    "build": "node scripts/build-vercel.cjs",
     "test": "node scripts/test.cjs",
     "check": "node scripts/check-assets.cjs && node scripts/audit-site.cjs"
   },
